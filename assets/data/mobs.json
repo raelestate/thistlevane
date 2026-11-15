@@ -1,0 +1,619 @@
+{
+  "mobs": {
+    "slime": {
+      "name": "Slime",
+      "placeholder": true,
+      "sheet": "mobs/slime.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "columns": 6,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9166666666666666
+      },
+      "footOffsetY": -1,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 1,
+        "down-right": 2,
+        "up-left": 1,
+        "up-right": 2
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 2,
+          "frameRate": 2
+        },
+        "walk": {
+          "startColumn": 2,
+          "frames": 4,
+          "frameRate": 8
+        }
+      },
+      "walkTicksPerTile": 8,
+      "wander": {
+        "pauseTicksMin": 20,
+        "pauseTicksMax": 90,
+        "maxSteps": 4
+      }
+    },
+    "grass_thistle": {
+      "name": "Grass Thistle",
+      "placeholder": true,
+      "sheet": "mobs/grass_thistle.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "columns": 6,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9166666666666666
+      },
+      "footOffsetY": -1,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 1,
+        "down-right": 2,
+        "up-left": 1,
+        "up-right": 2
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 2,
+          "frameRate": 2
+        },
+        "walk": {
+          "startColumn": 2,
+          "frames": 4,
+          "frameRate": 8
+        }
+      },
+      "walkTicksPerTile": 10,
+      "wander": {
+        "pauseTicksMin": 20,
+        "pauseTicksMax": 90,
+        "maxSteps": 4
+      }
+    },
+    "chomper_plant": {
+      "name": "Chomper Plant",
+      "placeholder": true,
+      "sheet": "mobs/chomper_plant.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "columns": 6,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9166666666666666
+      },
+      "footOffsetY": -1,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 1,
+        "down-right": 2,
+        "up-left": 1,
+        "up-right": 2
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 2,
+          "frameRate": 2
+        },
+        "walk": {
+          "startColumn": 2,
+          "frames": 4,
+          "frameRate": 8
+        }
+      },
+      "walkTicksPerTile": 12,
+      "wander": {
+        "pauseTicksMin": 20,
+        "pauseTicksMax": 90,
+        "maxSteps": 4
+      }
+    },
+    "scorpion": {
+      "name": "Scorpion",
+      "placeholder": true,
+      "sheet": "mobs/scorpion.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "columns": 6,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9166666666666666
+      },
+      "footOffsetY": -1,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 1,
+        "down-right": 2,
+        "up-left": 1,
+        "up-right": 2
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 2,
+          "frameRate": 2
+        },
+        "walk": {
+          "startColumn": 2,
+          "frames": 4,
+          "frameRate": 8
+        }
+      },
+      "walkTicksPerTile": 6,
+      "wander": {
+        "pauseTicksMin": 20,
+        "pauseTicksMax": 90,
+        "maxSteps": 4
+      }
+    },
+    "desert_crocodile": {
+      "name": "Desert Crocodile",
+      "placeholder": true,
+      "sheet": "mobs/desert_crocodile.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "columns": 6,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      },
+      "footOffsetY": -1,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 1,
+        "down-right": 2,
+        "up-left": 1,
+        "up-right": 2
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 2,
+          "frameRate": 2
+        },
+        "walk": {
+          "startColumn": 2,
+          "frames": 4,
+          "frameRate": 8
+        }
+      },
+      "walkTicksPerTile": 7,
+      "wander": {
+        "pauseTicksMin": 20,
+        "pauseTicksMax": 90,
+        "maxSteps": 4
+      }
+    },
+    "walking_cactus": {
+      "name": "Walking Cactus",
+      "placeholder": true,
+      "sheet": "mobs/walking_cactus.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "columns": 6,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9166666666666666
+      },
+      "footOffsetY": -1,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 1,
+        "down-right": 2,
+        "up-left": 1,
+        "up-right": 2
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 2,
+          "frameRate": 2
+        },
+        "walk": {
+          "startColumn": 2,
+          "frames": 4,
+          "frameRate": 8
+        }
+      },
+      "walkTicksPerTile": 9,
+      "wander": {
+        "pauseTicksMin": 20,
+        "pauseTicksMax": 90,
+        "maxSteps": 4
+      }
+    },
+    "thorny_flower": {
+      "name": "Thorny Flower",
+      "placeholder": true,
+      "sheet": "mobs/thorny_flower.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "columns": 6,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9166666666666666
+      },
+      "footOffsetY": -1,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 1,
+        "down-right": 2,
+        "up-left": 1,
+        "up-right": 2
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 2,
+          "frameRate": 2
+        },
+        "walk": {
+          "startColumn": 2,
+          "frames": 4,
+          "frameRate": 8
+        }
+      },
+      "walkTicksPerTile": 12,
+      "wander": {
+        "pauseTicksMin": 20,
+        "pauseTicksMax": 90,
+        "maxSteps": 4
+      }
+    },
+    "wisp": {
+      "name": "Wisp",
+      "placeholder": true,
+      "sheet": "mobs/wisp.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "columns": 6,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9166666666666666
+      },
+      "footOffsetY": -1,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 1,
+        "down-right": 2,
+        "up-left": 1,
+        "up-right": 2
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 2,
+          "frameRate": 2
+        },
+        "walk": {
+          "startColumn": 2,
+          "frames": 4,
+          "frameRate": 8
+        }
+      },
+      "walkTicksPerTile": 5,
+      "wander": {
+        "pauseTicksMin": 20,
+        "pauseTicksMax": 90,
+        "maxSteps": 4
+      }
+    },
+    "hollow_stag": {
+      "name": "Hollow Stag",
+      "placeholder": true,
+      "sheet": "mobs/hollow_stag.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "columns": 6,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      },
+      "footOffsetY": -1,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 1,
+        "down-right": 2,
+        "up-left": 1,
+        "up-right": 2
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 2,
+          "frameRate": 2
+        },
+        "walk": {
+          "startColumn": 2,
+          "frames": 4,
+          "frameRate": 8
+        }
+      },
+      "walkTicksPerTile": 5,
+      "wander": {
+        "pauseTicksMin": 20,
+        "pauseTicksMax": 90,
+        "maxSteps": 4
+      }
+    },
+    "myconid": {
+      "name": "Myconid",
+      "placeholder": true,
+      "sheet": "mobs/myconid.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "columns": 6,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9166666666666666
+      },
+      "footOffsetY": -1,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 1,
+        "down-right": 2,
+        "up-left": 1,
+        "up-right": 2
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 2,
+          "frameRate": 2
+        },
+        "walk": {
+          "startColumn": 2,
+          "frames": 4,
+          "frameRate": 8
+        }
+      },
+      "walkTicksPerTile": 9,
+      "wander": {
+        "pauseTicksMin": 20,
+        "pauseTicksMax": 90,
+        "maxSteps": 4
+      }
+    },
+    "web_spider": {
+      "name": "Web Spider",
+      "placeholder": true,
+      "sheet": "mobs/web_spider.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "columns": 6,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9166666666666666
+      },
+      "footOffsetY": -1,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 1,
+        "down-right": 2,
+        "up-left": 1,
+        "up-right": 2
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 2,
+          "frameRate": 2
+        },
+        "walk": {
+          "startColumn": 2,
+          "frames": 4,
+          "frameRate": 8
+        }
+      },
+      "walkTicksPerTile": 5,
+      "wander": {
+        "pauseTicksMin": 20,
+        "pauseTicksMax": 90,
+        "maxSteps": 4
+      }
+    },
+    "frost_wolf": {
+      "name": "Frost Wolf",
+      "placeholder": true,
+      "sheet": "mobs/frost_wolf.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "columns": 6,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      },
+      "footOffsetY": -1,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 1,
+        "down-right": 2,
+        "up-left": 1,
+        "up-right": 2
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 2,
+          "frameRate": 2
+        },
+        "walk": {
+          "startColumn": 2,
+          "frames": 4,
+          "frameRate": 8
+        }
+      },
+      "walkTicksPerTile": 4,
+      "wander": {
+        "pauseTicksMin": 20,
+        "pauseTicksMax": 90,
+        "maxSteps": 4
+      }
+    },
+    "ice_wisp": {
+      "name": "Ice Wisp",
+      "placeholder": true,
+      "sheet": "mobs/ice_wisp.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "columns": 6,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9166666666666666
+      },
+      "footOffsetY": -1,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 1,
+        "down-right": 2,
+        "up-left": 1,
+        "up-right": 2
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 2,
+          "frameRate": 2
+        },
+        "walk": {
+          "startColumn": 2,
+          "frames": 4,
+          "frameRate": 8
+        }
+      },
+      "walkTicksPerTile": 5,
+      "wander": {
+        "pauseTicksMin": 20,
+        "pauseTicksMax": 90,
+        "maxSteps": 4
+      }
+    },
+    "snow_troll": {
+      "name": "Snow Troll",
+      "placeholder": true,
+      "sheet": "mobs/snow_troll.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "columns": 6,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      },
+      "footOffsetY": -1,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 1,
+        "down-right": 2,
+        "up-left": 1,
+        "up-right": 2
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 2,
+          "frameRate": 2
+        },
+        "walk": {
+          "startColumn": 2,
+          "frames": 4,
+          "frameRate": 8
+        }
+      },
+      "walkTicksPerTile": 8,
+      "wander": {
+        "pauseTicksMin": 20,
+        "pauseTicksMax": 90,
+        "maxSteps": 4
+      }
+    },
+    "snow_hare": {
+      "name": "Snow Hare",
+      "placeholder": true,
+      "sheet": "mobs/snow_hare.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "columns": 6,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9166666666666666
+      },
+      "footOffsetY": -1,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 1,
+        "down-right": 2,
+        "up-left": 1,
+        "up-right": 2
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 2,
+          "frameRate": 2
+        },
+        "walk": {
+          "startColumn": 2,
+          "frames": 4,
+          "frameRate": 8
+        }
+      },
+      "walkTicksPerTile": 4,
+      "wander": {
+        "pauseTicksMin": 20,
+        "pauseTicksMax": 90,
+        "maxSteps": 4
+      }
+    }
+  }
+}

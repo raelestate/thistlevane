@@ -1,0 +1,34 @@
+{
+ "frames": {
+  "rowan_down": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 26,
+    "h": 34
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 26,
+    "h": 34
+   },
+   "sourceSize": {
+    "w": 26,
+    "h": 34
+   }
+  }
+ },
+ "meta": {
+  "app": "pxl",
+  "image": "rowan_test.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 26,
+   "h": 34
+  },
+  "scale": "1"
+ }
+}

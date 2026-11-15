@@ -1,0 +1,56 @@
+{
+  "effects": {
+    "dust-small": {
+      "sheet": "effects/effects.png",
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "startFrame": 0,
+      "frames": 4,
+      "frameRate": 14,
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "layer": "below"
+    },
+    "dust-large": {
+      "sheet": "effects/effects.png",
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "startFrame": 6,
+      "frames": 5,
+      "frameRate": 16,
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "layer": "below"
+    },
+    "leaves": {
+      "sheet": "effects/effects.png",
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "startFrame": 12,
+      "frames": 6,
+      "frameRate": 14,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.75
+      },
+      "layer": "above"
+    },
+    "splash": {
+      "sheet": "effects/effects.png",
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "startFrame": 18,
+      "frames": 6,
+      "frameRate": 16,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.75
+      },
+      "layer": "above"
+    }
+  }
+}

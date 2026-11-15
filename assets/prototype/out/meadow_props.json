@@ -1,0 +1,174 @@
+{
+ "frames": {
+  "tree_oak": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 34
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 34
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 34
+   }
+  },
+  "tree_birch": {
+   "frame": {
+    "x": 19,
+    "y": 0,
+    "w": 18,
+    "h": 34
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 34
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 34
+   }
+  },
+  "rock_small": {
+   "frame": {
+    "x": 38,
+    "y": 0,
+    "w": 16,
+    "h": 9
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 16,
+    "h": 9
+   },
+   "sourceSize": {
+    "w": 16,
+    "h": 9
+   }
+  },
+  "rock_large": {
+   "frame": {
+    "x": 55,
+    "y": 0,
+    "w": 20,
+    "h": 11
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 11
+   },
+   "sourceSize": {
+    "w": 20,
+    "h": 11
+   }
+  },
+  "rock_mossy": {
+   "frame": {
+    "x": 0,
+    "y": 35,
+    "w": 16,
+    "h": 9
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 16,
+    "h": 9
+   },
+   "sourceSize": {
+    "w": 16,
+    "h": 9
+   }
+  },
+  "flower_dandelion": {
+   "frame": {
+    "x": 17,
+    "y": 35,
+    "w": 16,
+    "h": 16
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 16,
+    "h": 16
+   },
+   "sourceSize": {
+    "w": 16,
+    "h": 16
+   }
+  },
+  "flower_thistle": {
+   "frame": {
+    "x": 34,
+    "y": 35,
+    "w": 16,
+    "h": 16
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 16,
+    "h": 16
+   },
+   "sourceSize": {
+    "w": 16,
+    "h": 16
+   }
+  },
+  "flower_poppy": {
+   "frame": {
+    "x": 51,
+    "y": 35,
+    "w": 16,
+    "h": 16
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 16,
+    "h": 16
+   },
+   "sourceSize": {
+    "w": 16,
+    "h": 16
+   }
+  }
+ },
+ "meta": {
+  "app": "pxl",
+  "image": "meadow_props.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 75,
+   "h": 51
+  },
+  "scale": "1"
+ }
+}

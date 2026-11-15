@@ -1,0 +1,35 @@
+{
+  "startZone": "main_town",
+  "zones": {
+    "main_town": {
+      "name": "Main Town",
+      "file": "maps/test-map.json",
+      "difficulty": "safe"
+    },
+    "barren_grasslands": {
+      "name": "The Barren Grasslands",
+      "file": "maps/barren_grasslands.json",
+      "difficulty": "easy"
+    },
+    "wastelands": {
+      "name": "The Wastelands",
+      "file": "maps/wastelands.json",
+      "difficulty": "medium"
+    },
+    "thistlevane_hollow": {
+      "name": "Thistlevane Hollow",
+      "file": "maps/thistlevane_hollow.json",
+      "difficulty": "medium"
+    },
+    "frostvane_peaks": {
+      "name": "Frostvane Peaks",
+      "file": "maps/frostvane_peaks.json",
+      "difficulty": "hard"
+    },
+    "meadow": {
+      "name": "Thistlevane Meadow",
+      "file": "maps/meadow.json",
+      "difficulty": "easy"
+    }
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "defaultCharacter": "rowan",
+  "characters": [
+    {
+      "id": "rowan",
+      "name": "Rowan",
+      "title": "Thistle Wayfarer",
+      "sheet": "characters/rowan.png",
+      "frameWidth": 24,
+      "frameHeight": 32,
+      "columns": 22,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      },
+      "footOffsetY": -2,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 4,
+        "down-right": 5,
+        "up-left": 6,
+        "up-right": 7
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 6,
+          "frameRate": 5
+        },
+        "walk": {
+          "startColumn": 6,
+          "frames": 8,
+          "frameRate": 14
+        },
+        "run": {
+          "startColumn": 14,
+          "frames": 8,
+          "frameRate": 20
+        }
+      },
+      "effects": {
+        "walkStep": "dust-small",
+        "runStep": "dust-large"
+      }
+    },
+    {
+      "id": "lilac",
+      "name": "Lilac",
+      "title": "Hedge Mage",
+      "sheet": "characters/lilac.png",
+      "frameWidth": 24,
+      "frameHeight": 32,
+      "columns": 22,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      },
+      "footOffsetY": -2,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 4,
+        "down-right": 5,
+        "up-left": 6,
+        "up-right": 7
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 6,
+          "frameRate": 5
+        },
+        "walk": {
+          "startColumn": 6,
+          "frames": 8,
+          "frameRate": 14
+        },
+        "run": {
+          "startColumn": 14,
+          "frames": 8,
+          "frameRate": 20
+        }
+      },
+      "effects": {
+        "walkStep": "dust-small",
+        "runStep": "dust-large"
+      }
+    },
+    {
+      "id": "pip",
+      "name": "Pip",
+      "title": "Cat-folk Courier",
+      "sheet": "characters/pip.png",
+      "frameWidth": 24,
+      "frameHeight": 32,
+      "columns": 22,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      },
+      "footOffsetY": -2,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 4,
+        "down-right": 5,
+        "up-left": 6,
+        "up-right": 7
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 6,
+          "frameRate": 5
+        },
+        "walk": {
+          "startColumn": 6,
+          "frames": 8,
+          "frameRate": 14
+        },
+        "run": {
+          "startColumn": 14,
+          "frames": 8,
+          "frameRate": 20
+        }
+      },
+      "effects": {
+        "walkStep": "dust-small",
+        "runStep": "dust-large"
+      }
+    },
+    {
+      "id": "ash",
+      "name": "Ash",
+      "title": "Lantern Scholar",
+      "sheet": "characters/ash.png",
+      "frameWidth": 24,
+      "frameHeight": 32,
+      "columns": 22,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      },
+      "footOffsetY": -2,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3,
+        "down-left": 4,
+        "down-right": 5,
+        "up-left": 6,
+        "up-right": 7
+      },
+      "animations": {
+        "idle": {
+          "startColumn": 0,
+          "frames": 6,
+          "frameRate": 5
+        },
+        "walk": {
+          "startColumn": 6,
+          "frames": 8,
+          "frameRate": 14
+        },
+        "run": {
+          "startColumn": 14,
+          "frames": 8,
+          "frameRate": 20
+        }
+      },
+      "effects": {
+        "walkStep": "dust-small",
+        "runStep": "dust-large"
+      }
+    }
+  ]
+}

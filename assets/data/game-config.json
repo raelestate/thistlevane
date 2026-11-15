@@ -1,0 +1,87 @@
+{
+  "simulation": {
+    "tickRate": 20
+  },
+  "movement": {
+    "walkTicksPerTile": 2,
+    "runTicksPerTile": 3,
+    "turnDelayTicks": 2,
+    "playersBlockEachOther": true
+  },
+  "network": {
+    "wsPath": "/ws",
+    "port": 3000,
+    "maxMessageBytes": 1024,
+    "maxMessagesPerSecond": 60,
+    "maxInputCredits": 4,
+    "maxQueuedInputs": 20,
+    "inputJitterBufferTicks": 2,
+    "idleFillAfterTicks": 3,
+    "heartbeatMs": 10000,
+    "maxBufferedBytes": 262144,
+    "interestRadiusTiles": 40
+  },
+  "players": {
+    "maxNameLength": 16,
+    "defaultName": "Wanderer"
+  },
+  "world": {
+    "startZone": "barren_grasslands",
+    "layers": {
+      "collision": "collision",
+      "spawns": "spawns",
+      "spawnType": "player_spawn",
+      "mobSpawnType": "mob_spawn",
+      "portals": "portals",
+      "portalType": "portal",
+      "aboveCharactersProperty": "aboveCharacters"
+    }
+  },
+  "client": {
+    "interpolationDelayMs": 100,
+    "targetViewWidth": 320,
+    "targetViewHeight": 220,
+    "cameraLerp": 0.18,
+    "maxFrameMs": 250,
+    "backgroundColor": "#1b1a22",
+    "controls": {
+      "up": [
+        "ArrowUp",
+        "KeyW"
+      ],
+      "down": [
+        "ArrowDown",
+        "KeyS"
+      ],
+      "left": [
+        "ArrowLeft",
+        "KeyA"
+      ],
+      "right": [
+        "ArrowRight",
+        "KeyD"
+      ],
+      "run": [
+        "ShiftLeft",
+        "ShiftRight"
+      ]
+    },
+    "nameLabel": {
+      "fontFamily": "ui-monospace, Consolas, monospace",
+      "fontSizePx": 6,
+      "color": "#ffffff",
+      "localColor": "#ffe9a8",
+      "strokeColor": "#1b1a22",
+      "strokeThickness": 2,
+      "offsetY": 2
+    },
+    "effects": {
+      "bumpCooldownMs": 350
+    },
+    "chunk": {
+      "windowWidth": 72,
+      "windowHeight": 48,
+      "refillMarginTiles": 10
+    }
+  }
+}
