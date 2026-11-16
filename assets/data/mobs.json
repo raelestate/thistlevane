@@ -39,6 +39,16 @@
         "pauseTicksMin": 20,
         "pauseTicksMax": 90,
         "maxSteps": 4
+      },
+      "level": 1,
+      "combat": {
+        "maxHp": 40,
+        "maxMp": 0,
+        "attack": 4,
+        "defense": 1
+      },
+      "effects": {
+        "attackHit": "impact"
       }
     },
     "grass_thistle": {
@@ -80,6 +90,16 @@
         "pauseTicksMin": 20,
         "pauseTicksMax": 90,
         "maxSteps": 4
+      },
+      "level": 2,
+      "combat": {
+        "maxHp": 55,
+        "maxMp": 0,
+        "attack": 6,
+        "defense": 2
+      },
+      "effects": {
+        "attackHit": "impact"
       }
     },
     "chomper_plant": {
@@ -121,6 +141,16 @@
         "pauseTicksMin": 20,
         "pauseTicksMax": 90,
         "maxSteps": 4
+      },
+      "level": 3,
+      "combat": {
+        "maxHp": 70,
+        "maxMp": 0,
+        "attack": 9,
+        "defense": 3
+      },
+      "effects": {
+        "attackHit": "impact"
       }
     },
     "scorpion": {
@@ -162,6 +192,16 @@
         "pauseTicksMin": 20,
         "pauseTicksMax": 90,
         "maxSteps": 4
+      },
+      "level": 5,
+      "combat": {
+        "maxHp": 90,
+        "maxMp": 0,
+        "attack": 12,
+        "defense": 4
+      },
+      "effects": {
+        "attackHit": "impact"
       }
     },
     "desert_crocodile": {
@@ -203,6 +243,16 @@
         "pauseTicksMin": 20,
         "pauseTicksMax": 90,
         "maxSteps": 4
+      },
+      "level": 8,
+      "combat": {
+        "maxHp": 160,
+        "maxMp": 0,
+        "attack": 19,
+        "defense": 8
+      },
+      "effects": {
+        "attackHit": "impact"
       }
     },
     "walking_cactus": {
@@ -244,6 +294,16 @@
         "pauseTicksMin": 20,
         "pauseTicksMax": 90,
         "maxSteps": 4
+      },
+      "level": 6,
+      "combat": {
+        "maxHp": 110,
+        "maxMp": 0,
+        "attack": 14,
+        "defense": 6
+      },
+      "effects": {
+        "attackHit": "impact"
       }
     },
     "thorny_flower": {
@@ -285,6 +345,16 @@
         "pauseTicksMin": 20,
         "pauseTicksMax": 90,
         "maxSteps": 4
+      },
+      "level": 9,
+      "combat": {
+        "maxHp": 130,
+        "maxMp": 0,
+        "attack": 17,
+        "defense": 7
+      },
+      "effects": {
+        "attackHit": "impact"
       }
     },
     "wisp": {
@@ -326,6 +396,16 @@
         "pauseTicksMin": 20,
         "pauseTicksMax": 90,
         "maxSteps": 4
+      },
+      "level": 12,
+      "combat": {
+        "maxHp": 120,
+        "maxMp": 0,
+        "attack": 26,
+        "defense": 5
+      },
+      "effects": {
+        "attackHit": "impact"
       }
     },
     "hollow_stag": {
@@ -367,6 +447,16 @@
         "pauseTicksMin": 20,
         "pauseTicksMax": 90,
         "maxSteps": 4
+      },
+      "level": 14,
+      "combat": {
+        "maxHp": 230,
+        "maxMp": 0,
+        "attack": 28,
+        "defense": 12
+      },
+      "effects": {
+        "attackHit": "impact"
       }
     },
     "myconid": {
@@ -408,6 +498,16 @@
         "pauseTicksMin": 20,
         "pauseTicksMax": 90,
         "maxSteps": 4
+      },
+      "level": 10,
+      "combat": {
+        "maxHp": 150,
+        "maxMp": 0,
+        "attack": 20,
+        "defense": 8
+      },
+      "effects": {
+        "attackHit": "impact"
       }
     },
     "web_spider": {
@@ -449,6 +549,16 @@
         "pauseTicksMin": 20,
         "pauseTicksMax": 90,
         "maxSteps": 4
+      },
+      "level": 11,
+      "combat": {
+        "maxHp": 145,
+        "maxMp": 0,
+        "attack": 23,
+        "defense": 7
+      },
+      "effects": {
+        "attackHit": "impact"
       }
     },
     "frost_wolf": {
@@ -490,6 +600,16 @@
         "pauseTicksMin": 20,
         "pauseTicksMax": 90,
         "maxSteps": 4
+      },
+      "level": 18,
+      "combat": {
+        "maxHp": 240,
+        "maxMp": 0,
+        "attack": 35,
+        "defense": 13
+      },
+      "effects": {
+        "attackHit": "impact"
       }
     },
     "ice_wisp": {
@@ -531,6 +651,16 @@
         "pauseTicksMin": 20,
         "pauseTicksMax": 90,
         "maxSteps": 4
+      },
+      "level": 17,
+      "combat": {
+        "maxHp": 180,
+        "maxMp": 0,
+        "attack": 32,
+        "defense": 8
+      },
+      "effects": {
+        "attackHit": "impact"
       }
     },
     "snow_troll": {
@@ -572,6 +702,16 @@
         "pauseTicksMin": 20,
         "pauseTicksMax": 90,
         "maxSteps": 4
+      },
+      "level": 20,
+      "combat": {
+        "maxHp": 380,
+        "maxMp": 0,
+        "attack": 42,
+        "defense": 18
+      },
+      "effects": {
+        "attackHit": "impact"
       }
     },
     "snow_hare": {
@@ -613,6 +753,16 @@
         "pauseTicksMin": 20,
         "pauseTicksMax": 90,
         "maxSteps": 4
+      },
+      "level": 15,
+      "combat": {
+        "maxHp": 160,
+        "maxMp": 0,
+        "attack": 22,
+        "defense": 9
+      },
+      "effects": {
+        "attackHit": "impact"
       }
     }
   }

@@ -1,5 +1,6 @@
 import * as Phaser from 'phaser';
 import {
+  DIRECTION_DELTAS,
   isMoving,
   tickMs,
   type GameRules,
@@ -10,21 +11,28 @@ import {
   type StepOutcome,
   type ZoneSnapshot,
 } from '@thistlevane/shared';
-import { findCharacter, findMob, type ClientContent, type SpriteRef } from '../content/ContentLoader';
+import { CombatPreview } from '../combat/CombatPreview';
+import { findCharacter, findMob, keys, type ClientContent, type SpriteRef } from '../content/ContentLoader';
 import { EntitySprite } from '../entities/EntitySprite';
 import { InputController } from '../input/InputController';
 import { LocalPlayerPredictor } from '../net/LocalPlayerPredictor';
 import { NetClient } from '../net/NetClient';
 import { RemotePlayerBuffer } from '../net/RemotePlayerBuffer';
 import { ServerClock } from '../net/ServerClock';
-import { DevHud } from '../ui/DevHud';
+import { CombatTextManager } from '../ui/CombatText';
+import { GameHud, SKILL_SLOTS } from '../ui/GameHud';
 import { EffectsManager } from '../world/EffectsManager';
 import { MapView } from '../world/MapView';
 
 interface RemoteEntity {
   sprite: EntitySprite;
   buffer: RemotePlayerBuffer;
+  /** Mob kind id (mobs only) — the key into mobs.json. */
+  kind?: string;
 }
+
+/** Phaser key names for the hotbar digits, in slot order. */
+const DIGIT_KEYS = ['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX'];
 
 /** Everything tied to the zone we are currently standing in. Rebuilt on every zone change. */
 interface Session {
@@ -46,8 +54,11 @@ export class WorldScene extends Phaser.Scene {
   private content!: ClientContent;
   private net!: NetClient;
   private controls!: InputController;
-  private hud!: DevHud;
+  private hud!: GameHud;
   private effects!: EffectsManager;
+  private combatText!: CombatTextManager;
+  private combat: CombatPreview | null = null;
+  private targetRing: Phaser.GameObjects.Image | null = null;
   private zoom = 1;
 
   private myId: string | null = null;
@@ -73,9 +84,13 @@ export class WorldScene extends Phaser.Scene {
     this.applyIntegerZoom();
     this.scale.on(Phaser.Scale.Events.RESIZE, () => this.applyIntegerZoom());
 
-    this.hud = new DevHud(document.getElementById('hud'), this.content);
+    this.hud = new GameHud(document.getElementById('game-ui')!, this.content);
     this.controls = new InputController(config.client.controls);
     this.effects = new EffectsManager(this, this.content.effects);
+    this.combatText = new CombatTextManager(this);
+
+    this.hud.onSkill = (slot) => this.useSkill(slot.id);
+    this.bindCombatKeys();
 
     this.net = new NetClient(NetClient.defaultUrl(config.network.wsPath));
     this.net.onStatusChange = (status) => {
@@ -122,6 +137,7 @@ export class WorldScene extends Phaser.Scene {
     }
 
     s.map.update(now);
+    this.updateCombatUi(elapsed);
     this.hud.update({
       zone: this.content.zones.zones[s.zoneId]?.name ?? s.zoneId,
       tile: `${me.tileX},${me.tileY} L${s.map.model.levelAt(me.tileX, me.tileY)}`,
@@ -192,7 +208,19 @@ export class WorldScene extends Phaser.Scene {
         map.update(performance.now());
         this.hud.setLoading('');
         const info = infos.get(myId);
-        this.hud.setIdentity(info?.name ?? '?', myId, info?.characterId ?? '?');
+        const characterId = info?.characterId ?? '';
+        const def = findCharacter(this.content, characterId);
+        const stats = def.combat ?? { maxHp: 100, maxMp: 50, attack: 10, defense: 5 };
+        // Carry level/XP across a zone change; health is not simulated yet.
+        const level = this.combat?.level ?? 1;
+        const xp = this.combat?.xp ?? 0;
+        this.combat = new CombatPreview(stats, () => performance.now());
+        this.combat.level = level;
+        this.combat.xp = xp;
+        this.hud.setPlayer(info?.name ?? '?', characterId, level, stats);
+        this.hud.updateXp(xp, this.combat.xpForLevel, level);
+        this.hud.clearTarget();
+        this.targetRing?.setVisible(false);
       })
       .catch((err: Error) => {
         console.error('[world]', err);
@@ -204,6 +232,9 @@ export class WorldScene extends Phaser.Scene {
     const s = this.session;
     if (!s) return;
     this.session = null;
+    this.combat?.clear();
+    this.targetRing?.setVisible(false);
+    this.hud.clearTarget();
     this.cameras.main.stopFollow();
     s.sprite.destroy();
     for (const r of s.remotes.values()) r.sprite.destroy();
@@ -245,12 +276,21 @@ export class WorldScene extends Phaser.Scene {
       if (!remote) {
         const ref = findMob(this.content, mob.kind);
         if (!ref) continue;
-        remote = { sprite: this.createEntity(s, ref, null), buffer: new RemotePlayerBuffer() };
+        remote = { sprite: this.createEntity(s, ref, null), buffer: new RemotePlayerBuffer(), kind: mob.kind };
+        const mobId = mob.id;
+        remote.sprite.sprite.setInteractive({ useHandCursor: true });
+        remote.sprite.sprite.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => this.selectTarget(mobId));
+        if (this.combat?.isDefeated(mobId)) remote.sprite.setDefeated(true);
         s.mobs.set(mob.id, remote);
       }
       remote.buffer.push(serverTime, { ...mob, gait: 'walk', turnTicksLeft: 0 });
     }
-    for (const [id, m] of s.mobs) if (!seenMobs.has(id)) { m.sprite.destroy(); s.mobs.delete(id); }
+    for (const [id, m] of s.mobs) {
+      if (seenMobs.has(id)) continue;
+      m.sprite.destroy();
+      s.mobs.delete(id);
+      if (this.combat?.targetId === id) this.selectTarget(null); // it walked out of range
+    }
   }
 
   // ---------- entities & effects ----------
@@ -285,6 +325,206 @@ export class WorldScene extends Phaser.Scene {
     s.remotes.get(id)?.sprite.destroy();
     s.remotes.delete(id);
     s.infos.delete(id);
+  }
+
+  // ---------- combat preview (client-side only; see CombatPreview) ----------
+
+  private bindCombatKeys(): void {
+    const kb = this.input.keyboard;
+    if (!kb) return;
+    // Tab would move browser focus out of the canvas, so the scene claims it.
+    kb.addCapture(['TAB', 'SPACE', 'ESC']);
+    kb.on('keydown-SPACE', () => this.useSkill('strike'));
+    kb.on('keydown-TAB', () => this.cycleTarget());
+    kb.on('keydown-ESC', () => this.selectTarget(null));
+    SKILL_SLOTS.forEach((slot, i) => {
+      const key = DIGIT_KEYS[i];
+      if (key) kb.on(`keydown-${key}`, () => this.useSkill(slot.id));
+    });
+  }
+
+  /** Per-frame HUD work: cooldown sweep, mana regen, target frame and ring. */
+  private updateCombatUi(elapsedMs: number): void {
+    const s = this.session;
+    const c = this.combat;
+    if (!s || !c) return;
+
+    c.tick(elapsedMs);
+    this.hud.setCooldown(0, c.cooldownProgress());
+    this.hud.updatePlayerMp(c.mp, c.maxMp);
+    this.hud.updateXp(c.xp, c.xpForLevel, c.level);
+
+    const target = c.targetId ? s.mobs.get(c.targetId) : null;
+    if (!target) {
+      this.targetRing?.setVisible(false);
+      return;
+    }
+    const foot = target.sprite.footPosition;
+    const ring = this.ensureTargetRing();
+    ring.setVisible(true).setPosition(foot.x, foot.y - 1).setDepth(foot.y - 0.5);
+  }
+
+  private ensureTargetRing(): Phaser.GameObjects.Image {
+    if (this.targetRing) return this.targetRing;
+    const fx = this.content.effects.effects['target-ring'];
+    if (!fx) throw new Error('effects.json is missing the "target-ring" effect');
+    const ring = this.add
+      .image(0, 0, keys.effectSheet(fx.sheet, fx.frameWidth, fx.frameHeight), fx.startFrame)
+      .setOrigin(0.5, 0.5)
+      .setVisible(false);
+    this.tweens.add({ targets: ring, alpha: { from: 0.5, to: 1 }, duration: 650, yoyo: true, repeat: -1 });
+    this.targetRing = ring;
+    return ring;
+  }
+
+  /** Selects a mob (or clears the target with `null`). */
+  private selectTarget(mobId: string | null): void {
+    const s = this.session;
+    const c = this.combat;
+    if (!s || !c) return;
+
+    if (c.targetId && c.targetId !== mobId) {
+      const previous = s.mobs.get(c.targetId);
+      previous?.sprite.removeLabel();
+      previous?.sprite.setHealth(null);
+    }
+    c.targetId = mobId;
+    if (!mobId) {
+      this.hud.clearTarget();
+      this.targetRing?.setVisible(false);
+      return;
+    }
+
+    const entity = s.mobs.get(mobId);
+    const def = entity?.kind ? this.content.mobs.mobs[entity.kind] : undefined;
+    if (!entity || !def?.combat) {
+      c.targetId = null;
+      return;
+    }
+    const hp = c.hpOf(mobId, def.combat.maxHp);
+    entity.sprite.setLabel(def.name, '#ffc8b8');
+    entity.sprite.setHealth(hp, def.combat.maxHp);
+    this.hud.setTarget({
+      name: def.name,
+      level: def.level ?? 1,
+      subtitle: hp > 0 ? 'Wandering creature' : 'Defeated',
+      hp,
+      maxHp: def.combat.maxHp,
+      def,
+    });
+  }
+
+  /** Tab-target: the nearest living mob on screen, cycling through the rest. */
+  private cycleTarget(): void {
+    const s = this.session;
+    const c = this.combat;
+    if (!s || !c) return;
+    const me = s.predictor.current;
+    // Only what the player can actually see — targeting something off-screen
+    // tells them nothing about what they just selected.
+    const view = this.cameras.main.worldView;
+    const candidates = [...s.mobs.entries()]
+      .filter(([id, m]) => m.sprite.visualTile && !c.isDefeated(id))
+      .filter(([, m]) => view.contains(m.sprite.footPosition.x, m.sprite.footPosition.y))
+      .map(([id, m]) => {
+        const tile = m.sprite.visualTile!;
+        return { id, distance: Math.hypot(tile.x - me.tileX, tile.y - me.tileY) };
+      })
+      .sort((a, b) => a.distance - b.distance);
+    if (candidates.length === 0) return;
+    const currentIndex = candidates.findIndex((m) => m.id === c.targetId);
+    const next = candidates[(currentIndex + 1) % candidates.length];
+    if (next) this.selectTarget(next.id);
+  }
+
+  private useSkill(id: string): void {
+    const slot = SKILL_SLOTS.find((entry) => entry.id === id);
+    const s = this.session;
+    if (!slot || !s) return;
+    if (slot.locked) {
+      this.floatOverPlayer(`${slot.name} not learned`, 'miss');
+      return;
+    }
+    this.strike();
+  }
+
+  /** The one wired skill: swing the weapon, then resolve on the impact frame. */
+  private strike(): void {
+    const s = this.session;
+    const c = this.combat;
+    if (!s || !c) return;
+    if (!c.canAttack()) {
+      if (c.mp < 6) this.floatOverPlayer('No energy', 'miss');
+      return;
+    }
+    c.beginAttack();
+    this.hud.flashSlot(0);
+
+    const me = s.predictor.current;
+    s.sprite.playCombat('attack', me.facing);
+
+    // The arc lands a tile ahead, on the attack animation's impact frame.
+    const delta = DIRECTION_DELTAS[me.facing];
+    const position = s.predictor.renderPosition(0);
+    const [fx, fy] = s.map.tileFoot(position.x + delta.dx * 0.8, position.y + delta.dy * 0.8);
+    this.time.delayedCall(90, () => {
+      if (this.session !== s) return;
+      this.effects.play('slash', fx, fy - s.map.tileSize.height * 0.5, fy + 1);
+    });
+    this.time.delayedCall(150, () => {
+      if (this.session === s) this.resolveStrike(s, c);
+    });
+  }
+
+  private resolveStrike(s: Session, c: CombatPreview): void {
+    if (!c.targetId) return;
+    const entity = s.mobs.get(c.targetId);
+    const def = entity?.kind ? this.content.mobs.mobs[entity.kind] : undefined;
+    if (!entity || !def?.combat || c.isDefeated(c.targetId)) return;
+
+    const tile = entity.sprite.visualTile;
+    const me = s.predictor.current;
+    if (!tile || Math.max(Math.abs(tile.x - me.tileX), Math.abs(tile.y - me.tileY)) > 1) {
+      this.floatOverPlayer('Out of range', 'miss');
+      return;
+    }
+
+    const result = c.resolveAttack(c.targetId, def.combat);
+    const foot = entity.sprite.footPosition;
+    this.effects.play(def.effects?.attackHit ?? 'impact', foot.x, foot.y - def.frameHeight * 0.45, foot.y + 1);
+    entity.sprite.flashHit();
+    entity.sprite.setHealth(result.hpAfter, def.combat.maxHp);
+    this.combatText.spawn(
+      foot.x,
+      entity.sprite.headY - 6, // clear of the nameplate
+      result.crit ? `${result.damage}!` : `${result.damage}`,
+      result.crit ? 'crit' : 'damage',
+    );
+    this.hud.updateTargetHp(result.hpAfter, def.combat.maxHp);
+
+    if (result.defeated) {
+      entity.sprite.setDefeated(true);
+      entity.sprite.setHealth(null);
+      entity.sprite.setLabel(def.name, '#8a7e68');
+      this.hud.setTarget({
+        name: def.name,
+        level: def.level ?? 1,
+        subtitle: 'Defeated',
+        hp: 0,
+        maxHp: def.combat.maxHp,
+        def,
+      });
+      this.time.delayedCall(260, () => {
+        if (this.session === s) this.floatOverPlayer('+XP', 'xp');
+      });
+    }
+  }
+
+  private floatOverPlayer(text: string, kind: 'miss' | 'xp'): void {
+    const s = this.session;
+    if (!s) return;
+    const foot = s.sprite.footPosition;
+    this.combatText.spawn(foot.x, s.sprite.headY, text, kind);
   }
 
   // ---------- setup helpers ----------

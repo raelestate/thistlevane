@@ -1,0 +1,106 @@
+{
+ "frames": {
+  "d_attack_0": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 32
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 32
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 32
+   },
+   "duration": 71
+  },
+  "d_attack_1": {
+   "frame": {
+    "x": 24,
+    "y": 0,
+    "w": 24,
+    "h": 32
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 32
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 32
+   },
+   "duration": 71
+  },
+  "d_attack_2": {
+   "frame": {
+    "x": 48,
+    "y": 0,
+    "w": 24,
+    "h": 32
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 32
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 32
+   },
+   "duration": 71
+  },
+  "d_attack_3": {
+   "frame": {
+    "x": 72,
+    "y": 0,
+    "w": 24,
+    "h": 32
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 32
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 32
+   },
+   "duration": 71
+  }
+ },
+ "meta": {
+  "app": "pxl",
+  "image": "d_attack.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 96,
+   "h": 32
+  },
+  "scale": "1",
+  "frameTags": [
+   {
+    "name": "d_attack",
+    "from": 0,
+    "to": 3,
+    "direction": "forward"
+   }
+  ]
+ }
+}

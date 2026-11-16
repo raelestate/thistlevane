@@ -197,3 +197,58 @@ The following asset types do not exist yet:
 8. **Anchor/foot positions** are data-driven — must match if frame size changes
 9. **Tile properties** (collides, walkable, ramp, level, stepEffect, rustleAnimation, etc.) are embedded in tilesets — must be preserved or remapped
 10. **Maps reference tilesets by relative path** — changing tileset filenames requires updating map JSON
+
+---
+
+# Redesigned assets — update 2026-11-16
+
+The character sheets listed above were replaced by the 8-direction redesign
+(`assets/prototype/*-redesign.px.js`, built with the pxl skill) and then extended
+with a combat animation. Two new sheets joined them.
+
+## Character spritesheets (current)
+
+| Character | File | Sheet | Frame | Cols x Rows | Animations |
+|---|---|---|---|---|---|
+| Rowan (Thistle Wayfarer) | `assets/characters/rowan.png` | 624 x 256 | 24 x 32 | 26 x 8 | idle(6f), walk(8f), run(8f), **attack(4f)** |
+| Lilac (Hedge Mage) | `assets/characters/lilac.png` | 624 x 256 | 24 x 32 | 26 x 8 | idle(6f), walk(8f), run(8f), **attack(4f)** |
+| Pip (Cat-folk Courier) | `assets/characters/pip.png` | 624 x 256 | 24 x 32 | 26 x 8 | idle(6f), walk(8f), run(8f), **attack(4f)** |
+| Ash (Lantern Scholar) | `assets/characters/ash.png` | 624 x 256 | 24 x 32 | 26 x 8 | idle(6f), walk(8f), run(8f), **attack(4f)** |
+
+- Rows (unchanged): down, left, right, up, down-left, down-right, up-left, up-right
+- Columns: idle 0-5 (5fps) · walk 6-13 (14fps) · run 14-21 (20fps) · attack 22-25 (14fps, plays once)
+- Anchor (0.5, 0.9375), foot offset -2 px — unchanged, so nothing had to move in the scene
+- Each character swings their own weapon, drawn only during the attack frames:
+  Rowan a short sword, Pip a dagger (shorter reach), Lilac a branch wand with a
+  leaf-light tip, Ash a lantern rod with an amber glow.
+
+## Combat effects — `assets/effects/combat.png`
+
+| Property | Value |
+|---|---|
+| Sheet | 120 x 72 px, 24 x 24 frames, 5 columns |
+| `slash` | frames 0-4, 20fps — the weapon arc, played a tile ahead of the attacker |
+| `impact` | frames 5-9, 22fps — hit spark, played on the defender |
+| `target-ring` | frame 10, single frame — the selection ring, pulsed by a tween |
+
+Source: `assets/prototype/combat-fx.px.js`. Kept separate from the older
+`effects/effects.png` (dust, leaves, splash) so that placeholder sheet can be
+replaced on its own.
+
+## HUD icons — `assets/ui/icons.png`
+
+| Property | Value |
+|---|---|
+| Sheet | 96 x 16 px, six 16 x 16 cells, drawn at 2x in the hotbar |
+| Cells | 0 strike (sword) · 1 thistle bolt · 2 guard (shield) · 3 dash (boot) · 4 salve (flask) · 5 lantern |
+
+Source: `assets/prototype/ui-icons.px.js`. Referenced from CSS
+(`client/index.html`), not through Phaser, so it needs no data entry.
+
+## Data changes
+
+- `characters.json`: `columns` 22 -> 26, `animations.attack`, `effects.attackHit`,
+  and a `combat` block (maxHp/maxMp/attack/defense) per character.
+- `mobs.json`: every mob gained `level` and a `combat` block; levels run 1 (Slime)
+  to 20 (Snow Troll) roughly in zone order.
+- `effects.json`: `slash`, `impact` and `target-ring` entries.

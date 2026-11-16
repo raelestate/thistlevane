@@ -8,7 +8,7 @@
       "sheet": "characters/rowan.png",
       "frameWidth": 24,
       "frameHeight": 32,
-      "columns": 22,
+      "columns": 26,
       "anchor": {
         "x": 0.5,
         "y": 0.9375
@@ -39,11 +39,23 @@
           "startColumn": 14,
           "frames": 8,
           "frameRate": 20
+        },
+        "attack": {
+          "startColumn": 22,
+          "frames": 4,
+          "frameRate": 14
         }
       },
       "effects": {
         "walkStep": "dust-small",
-        "runStep": "dust-large"
+        "runStep": "dust-large",
+        "attackHit": "impact"
+      },
+      "combat": {
+        "maxHp": 130,
+        "maxMp": 40,
+        "attack": 14,
+        "defense": 8
       }
     },
     {
@@ -53,7 +65,7 @@
       "sheet": "characters/lilac.png",
       "frameWidth": 24,
       "frameHeight": 32,
-      "columns": 22,
+      "columns": 26,
       "anchor": {
         "x": 0.5,
         "y": 0.9375
@@ -84,11 +96,23 @@
           "startColumn": 14,
           "frames": 8,
           "frameRate": 20
+        },
+        "attack": {
+          "startColumn": 22,
+          "frames": 4,
+          "frameRate": 14
         }
       },
       "effects": {
         "walkStep": "dust-small",
-        "runStep": "dust-large"
+        "runStep": "dust-large",
+        "attackHit": "impact"
+      },
+      "combat": {
+        "maxHp": 95,
+        "maxMp": 110,
+        "attack": 16,
+        "defense": 5
       }
     },
     {
@@ -98,7 +122,7 @@
       "sheet": "characters/pip.png",
       "frameWidth": 24,
       "frameHeight": 32,
-      "columns": 22,
+      "columns": 26,
       "anchor": {
         "x": 0.5,
         "y": 0.9375
@@ -129,11 +153,23 @@
           "startColumn": 14,
           "frames": 8,
           "frameRate": 20
+        },
+        "attack": {
+          "startColumn": 22,
+          "frames": 4,
+          "frameRate": 14
         }
       },
       "effects": {
         "walkStep": "dust-small",
-        "runStep": "dust-large"
+        "runStep": "dust-large",
+        "attackHit": "impact"
+      },
+      "combat": {
+        "maxHp": 110,
+        "maxMp": 55,
+        "attack": 13,
+        "defense": 6
       }
     },
     {
@@ -143,7 +179,7 @@
       "sheet": "characters/ash.png",
       "frameWidth": 24,
       "frameHeight": 32,
-      "columns": 22,
+      "columns": 26,
       "anchor": {
         "x": 0.5,
         "y": 0.9375
@@ -174,11 +210,23 @@
           "startColumn": 14,
           "frames": 8,
           "frameRate": 20
+        },
+        "attack": {
+          "startColumn": 22,
+          "frames": 4,
+          "frameRate": 14
         }
       },
       "effects": {
         "walkStep": "dust-small",
-        "runStep": "dust-large"
+        "runStep": "dust-large",
+        "attackHit": "impact"
+      },
+      "combat": {
+        "maxHp": 100,
+        "maxMp": 95,
+        "attack": 15,
+        "defense": 5
       }
     }
   ]

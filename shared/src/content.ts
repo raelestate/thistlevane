@@ -14,7 +14,9 @@ export const CONTENT_FILES = {
 } as const;
 
 export type Gait = 'walk' | 'run';
-export const ANIMATION_NAMES = ['idle', 'walk', 'run'] as const;
+export const MOVEMENT_ANIM_NAMES = ['idle', 'walk', 'run'] as const;
+export const COMBAT_ANIM_NAMES = ['attack', 'hit', 'death'] as const;
+export const ANIMATION_NAMES = [...MOVEMENT_ANIM_NAMES, ...COMBAT_ANIM_NAMES] as const;
 export type AnimationName = (typeof ANIMATION_NAMES)[number];
 
 /** How a spritesheet is laid out and animated. Shared by characters and mobs. */
@@ -27,17 +29,25 @@ export interface SpriteDefinition {
   /** Vertical offset (px) of the feet from the bottom edge of the tile. */
   footOffsetY: number;
   rows: Record<Direction, number>;
-  /** `run` is optional (mobs usually only walk). */
+  /** `run`, `attack`, `hit`, `death` are optional; `idle` and `walk` are required. */
   animations: Partial<Record<AnimationName, { startColumn: number; frames: number; frameRate: number }>> &
     Record<'idle' | 'walk', { startColumn: number; frames: number; frameRate: number }>;
-  /** Effect ids from effects.json played as the entity moves. */
-  effects?: { walkStep?: string; runStep?: string };
+  /** Effect ids from effects.json played as the entity moves or fights. */
+  effects?: { walkStep?: string; runStep?: string; attackHit?: string; death?: string };
+}
+
+export interface CombatStats {
+  maxHp: number;
+  maxMp: number;
+  attack: number;
+  defense: number;
 }
 
 export interface CharacterDefinition extends SpriteDefinition {
   id: string;
   name: string;
   title?: string;
+  combat?: CombatStats;
 }
 
 export interface CharacterCatalog {
@@ -50,10 +60,13 @@ export interface MobDefinition extends SpriteDefinition {
   name: string;
   /** Ticks per tile while walking (independent of player speed). */
   walkTicksPerTile: number;
-  /** Wandering behaviour (no combat yet). */
+  /** Wandering behaviour. */
   wander: { pauseTicksMin: number; pauseTicksMax: number; maxSteps: number };
   /** Marks generated stand-in art so it's never mistaken for final art. */
   placeholder?: boolean;
+  combat?: CombatStats;
+  /** Level shown in the target frame. */
+  level?: number;
 }
 
 export interface MobCatalog {
@@ -84,6 +97,8 @@ export interface ZoneRegistry {
 const isObj = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null;
 const posInt = (v: unknown) => Number.isInteger(v) && (v as number) > 0;
 
+const REQUIRED_ANIMS = new Set<string>(['idle', 'walk']);
+
 function validateSprite(c: Record<string, unknown>, where: string, needRun: boolean): void {
   if (typeof c.sheet !== 'string') throw new ConfigError(`${where}: missing sheet`);
   for (const k of ['frameWidth', 'frameHeight', 'columns'] as const) {
@@ -95,7 +110,11 @@ function validateSprite(c: Record<string, unknown>, where: string, needRun: bool
   if (!isObj(c.animations)) throw new ConfigError(`${where}: missing animations`);
   for (const name of ANIMATION_NAMES) {
     const a = (c.animations as Record<string, unknown>)[name];
-    if (a === undefined && name === 'run' && !needRun) continue;
+    if (a === undefined) {
+      if (REQUIRED_ANIMS.has(name)) throw new ConfigError(`${where}: animation "${name}" is required`);
+      if (name === 'run' && needRun) throw new ConfigError(`${where}: animation "run" is required for characters`);
+      continue;
+    }
     if (!isObj(a) || !Number.isInteger(a.startColumn) || !posInt(a.frames) || !(Number(a.frameRate) > 0)) {
       throw new ConfigError(`${where}: animation "${name}" needs startColumn, frames, frameRate`);
     }

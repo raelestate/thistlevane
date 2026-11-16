@@ -51,6 +51,45 @@
         "y": 0.75
       },
       "layer": "above"
+    },
+    "slash": {
+      "sheet": "effects/combat.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "startFrame": 0,
+      "frames": 5,
+      "frameRate": 20,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "layer": "above"
+    },
+    "impact": {
+      "sheet": "effects/combat.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "startFrame": 5,
+      "frames": 5,
+      "frameRate": 22,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "layer": "above"
+    },
+    "target-ring": {
+      "sheet": "effects/combat.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "startFrame": 10,
+      "frames": 1,
+      "frameRate": 1,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "layer": "below"
     }
   }
 }

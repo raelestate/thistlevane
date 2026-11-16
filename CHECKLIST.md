@@ -2,7 +2,7 @@
 
 Legend: `[x]` Completed (implemented **and** verified) · `[~]` Ongoing · `[ ]` Pending · `[!]` On hold / blocked
 
-Last updated: 2026-11-15 (iteration 3)
+Last updated: 2026-11-16 (iteration 4)
 
 ## Milestone 0 — Multiplayer Proof of Concept — **[x] Complete**
 
@@ -80,9 +80,42 @@ These items were requested by the project owner after Milestone 0. They pull a f
 - Map JSON is ~3 MB per zone; first load of a zone takes a second or two on localhost.
 - Portal test uses a test-only teleport next to the portal (walking 250 tiles is too slow for a test).
 
+## Iteration 4 — Attack animation + MMORPG interface (art pass; no gameplay systems changed)
+
+| Task | Status | Verified by |
+|---|---|---|
+| Attack animation, 4 frames x 8 directions, for all four characters (sheets 22 -> 26 columns) | [x] | pxl previews at 16x; in-game: `character:<id>:attack:<dir>` plays and returns to idle |
+| Per-character weapons (sword / dagger / branch wand / lantern rod) | [x] | side-by-side preview of all four attack strips |
+| Combat effects sheet: slash arc, impact spark, target ring | [x] | previews + screenshots of a live fight |
+| Hotbar icon sheet (6 icons, 16x16) | [x] | preview; readable at 2x in the running HUD |
+| HP / MP / XP bars, player unit frame with portrait, level and title | [x] | browser: `130 / 130`, `40 / 40`, portrait drawn from the sheet |
+| Target frame: portrait, level, health, defeated state | [x] | browser: Slime Lv 1, 40 -> 25 -> 11 -> 0, frame greys out |
+| Target selection: click a mob, Tab for the nearest on screen, Esc to clear | [x] | browser: Tab selects, ring follows, Esc clears |
+| Six-slot hotbar with keybinds, cooldown wipe and locked slots | [x] | browser: cooldown height animates 0 -> 100%, slots 2-6 say "not learned" |
+| Combat indicators: damage / crit / miss / XP numbers, hit flash, nameplate health bars | [x] | screenshots of a full kill |
+| HUD scales down on small windows | [x] | browser at 640x480: frames stack, hint hides, hotbar shrinks |
+| Directional movement + animation transitions after the sheet change | [x] | browser: all 8 directions walk/run/idle, 0 corrections |
+| Sprite alignment unchanged by the wider sheets | [x] | anchors/foot offsets untouched; feet still sit on the tile line |
+| Typecheck + unit and multiplayer integration tests | [x] | `npm run typecheck`, `npm test` both green |
+| Production build | [x] | `npm run build` |
+| **Manual check on your machine** | [ ] | Your turn |
+
+### Known limitations
+- **Combat is a client-side preview only.** The server has no combat (Milestone 4):
+  mob health, damage rolls, cooldowns, mana and XP live in your browser tab and
+  reset when the mob leaves interest range or you change zone. Another player
+  does not see your hits. `client/src/combat/CombatPreview.ts` is the seam where
+  server results will replace the local rolls.
+- Only the first hotbar slot does anything; slots 2-6 are drawn and locked.
+- Player health never changes — nothing attacks you yet.
+- Mobs have no hurt or death animation (their sheets have none), so a defeated
+  mob dims instead of playing a death.
+- Mob art is still placeholder.
+
 ## Milestone 1 — Character System
 Partly started by Iteration 1: spritesheets, idle/walk animations, 4 directions, appearance variety.
-Still to do: attack/hurt/death animations, HP/MP, level/XP, nameplates, health bars.
+Iteration 4 added the attack animation, HP/MP/XP bars, nameplates and health bars (interface only).
+Still to do: hurt/death animations, server-side health, real levelling.
 
 ## Milestones 2–10
 [ ] Not started.
