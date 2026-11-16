@@ -1,8 +1,15 @@
 import {
+  DIRECTION_DELTAS,
   PlayerAwareWalkability,
   clonePlayerState,
+  meleeHitTest,
   occupiesTile,
+  resolveDamage,
   stepMovement,
+  tilePosition,
+  type CombatEvent,
+  type CombatStats,
+  type Direction,
   type GameConfig,
   type MapModel,
   type MobCatalog,
@@ -11,9 +18,11 @@ import {
   type Mover,
   type PlayerState,
   type Portal,
+  type WeaponDefinition,
 } from '@thistlevane/shared';
 import { Mob } from './Mob';
 import { Player } from './Player';
+import { Projectile, PROJECTILE_HIT_RADIUS_TILES } from './Projectile';
 
 const IDLE: MoveIntent = { dir: null, run: false };
 
@@ -29,8 +38,12 @@ export interface PortalCrossing {
 export class World {
   readonly players = new Map<string, Player>();
   readonly mobs = new Map<string, Mob>();
+  readonly projectiles = new Map<string, Projectile>();
   tick = 0;
+  /** Combat occurrences from the tick just run; read by ConnectionManager, cleared at the top of the next step(). */
+  pendingEvents: CombatEvent[] = [];
   private readonly random: () => number;
+  private nextProjectileId = 1;
 
   constructor(
     readonly zoneId: string,
@@ -44,9 +57,9 @@ export class World {
   }
 
   /** Add a player at a named spawn (or the first one). The caller supplies a globally unique id. */
-  addPlayer(id: string, name: string, characterId: string, spawnName?: string): Player {
+  addPlayer(id: string, name: string, characterId: string, combat: CombatStats, weapon: WeaponDefinition, spawnName?: string): Player {
     const spawn = this.findFreeSpawnTile(spawnName);
-    const player = new Player(id, name, characterId, spawn.tileX, spawn.tileY, this.config.movement, this.config.network.maxInputCredits);
+    const player = new Player(id, name, characterId, spawn.tileX, spawn.tileY, this.config.movement, this.config.network.maxInputCredits, combat, weapon);
     player.lastInputTick = this.tick;
     this.players.set(id, player);
     return player;
@@ -75,14 +88,33 @@ export class World {
     player.inputQueue.push({ seq, dir: intent.dir, run: intent.run, arrivedTick: this.tick });
   }
 
+  /** Accept one basic-attack attempt. Deduped by its own seq, independent of movement input. */
+  queueAttack(playerId: string, seq: number, aim: Direction): void {
+    const player = this.players.get(playerId);
+    if (!player) return;
+    if (seq <= player.lastQueuedAttackSeq) return;
+    player.lastQueuedAttackSeq = seq;
+    if (player.attackQueue.length >= this.config.network.maxQueuedInputs) return;
+    player.attackQueue.push({ seq, aim, arrivedTick: this.tick });
+  }
+
   /** Advance the simulation by one fixed tick. Returns players who finished a step on a portal. */
   step(): PortalCrossing[] {
     this.tick += 1;
+    this.pendingEvents = [];
     const { maxInputCredits, idleFillAfterTicks, inputJitterBufferTicks: buffer } = this.config.network;
     const movers = () => this.allMovers();
     const crossings: PortalCrossing[] = [];
 
     for (const player of this.players.values()) {
+      if (player.state.hp <= 0) {
+        // Frozen while dead: no movement, no attacks, just the respawn countdown.
+        if (player.respawnTicksLeft <= 0) player.respawnTicksLeft = this.config.combat.playerRespawnTicks;
+        player.respawnTicksLeft -= 1;
+        if (player.respawnTicksLeft <= 0) this.respawnPlayer(player);
+        continue;
+      }
+
       const walkability = new PlayerAwareWalkability(this.map, movers, player.id, this.config.movement);
       player.inputCredits = Math.min(maxInputCredits, player.inputCredits + 1);
       const queue = player.inputQueue;
@@ -113,11 +145,21 @@ export class World {
         const portal = this.map.portalAt(player.state.tileX, player.state.tileY);
         if (portal) crossings.push({ player, portal });
       }
+
+      this.drainAttack(player);
     }
 
     for (const mob of this.mobs.values()) {
-      mob.tick(new PlayerAwareWalkability(this.map, movers, mob.id, mob.rules));
+      mob.tick({
+        world: new PlayerAwareWalkability(this.map, movers, mob.id, mob.rules),
+        map: this.map,
+        players: this.players,
+        emit: (e) => this.pendingEvents.push(e),
+        spawnProjectile: (origin, aim, attack, weapon) => this.spawnProjectile(mob.id, false, true, origin, aim, attack, weapon),
+      });
     }
+
+    this.advanceProjectiles();
     return crossings;
   }
 
@@ -138,6 +180,123 @@ export class World {
     for (const m of this.mobs.values()) if (near(m.state)) mobs.push(m.snapshot());
     return { players, mobs };
   }
+
+  // ---------- combat ----------
+
+  private drainAttack(player: Player): void {
+    const input = player.attackQueue.shift();
+    if (!input) return;
+    if (this.tick - player.lastAttackTick < player.weapon.cooldownTicks) return; // on cooldown: drop silently
+    player.lastAttackTick = this.tick;
+
+    const origin = tilePosition(player.state);
+    this.pendingEvents.push({ kind: 'attack', sourceId: player.id, aim: input.aim });
+
+    if (player.weapon.kind === 'melee') {
+      for (const mob of this.mobs.values()) {
+        if (mob.state.hp <= 0) continue;
+        if (!meleeHitTest(origin, input.aim, tilePosition(mob.state), player.weapon, this.map)) continue;
+        this.applyDamageToMob(player.id, player.combat.attack, mob);
+      }
+      // PvP: a player's melee weapon can also reach other players.
+      for (const other of this.players.values()) {
+        if (other.id === player.id || other.state.hp <= 0) continue;
+        if (!meleeHitTest(origin, input.aim, tilePosition(other.state), player.weapon, this.map)) continue;
+        this.applyDamageToPlayer(player.id, player.combat.attack, other);
+      }
+    } else {
+      // A player's shot can hit mobs and other players; mobs still never fight each other.
+      this.spawnProjectile(player.id, true, true, origin, input.aim, player.combat.attack, player.weapon);
+    }
+  }
+
+  private applyDamageToMob(sourceId: string, attack: number, mob: Mob): void {
+    const { damage, crit } = resolveDamage(attack, mob.def.combat?.defense ?? 0);
+    mob.state.hp = Math.max(0, mob.state.hp - damage);
+    mob.addThreat(sourceId, damage);
+    this.pendingEvents.push({ kind: 'hit', sourceId, targetId: mob.id, damage, crit, hpAfter: mob.state.hp });
+    if (mob.state.hp <= 0) this.pendingEvents.push({ kind: 'death', sourceId, targetId: mob.id });
+  }
+
+  private applyDamageToPlayer(sourceId: string, attack: number, target: Player): void {
+    const { damage, crit } = resolveDamage(attack, target.combat.defense);
+    target.state.hp = Math.max(0, target.state.hp - damage);
+    this.pendingEvents.push({ kind: 'hit', sourceId, targetId: target.id, damage, crit, hpAfter: target.state.hp });
+    if (target.state.hp <= 0) this.pendingEvents.push({ kind: 'death', sourceId, targetId: target.id });
+  }
+
+  private spawnProjectile(
+    sourceId: string,
+    canHitMobs: boolean,
+    canHitPlayers: boolean,
+    origin: { x: number; y: number },
+    aim: Direction,
+    attack: number,
+    weapon: WeaponDefinition,
+  ): void {
+    const id = `proj:${this.zoneId}:${this.nextProjectileId++}`;
+    const speed = weapon.projectileSpeedTilesPerSec ?? 1;
+    const projectile = new Projectile(id, sourceId, canHitMobs, canHitPlayers, origin.x, origin.y, aim, attack, speed, weapon.rangeTiles, this.config.simulation.tickRate);
+    this.projectiles.set(id, projectile);
+    const delta = DIRECTION_DELTAS[aim];
+    this.pendingEvents.push({
+      kind: 'projectile',
+      sourceId,
+      aim,
+      projectileId: id,
+      projectile: { fromX: origin.x, fromY: origin.y, dirX: delta.dx, dirY: delta.dy, speedTilesPerSec: speed, rangeTiles: weapon.rangeTiles },
+    });
+  }
+
+  private advanceProjectiles(): void {
+    for (const [id, projectile] of this.projectiles) {
+      const stillAlive = projectile.advance();
+      // Walls block arrows/bolts same as melee: a shot that flies into one just vanishes, no hit.
+      const blocked = !this.map.isWalkable(Math.round(projectile.x), Math.round(projectile.y));
+      const hit = !blocked && this.resolveProjectileHit(projectile);
+      if (hit || blocked || !stillAlive) this.projectiles.delete(id);
+    }
+  }
+
+  private resolveProjectileHit(projectile: Projectile): boolean {
+    if (projectile.canHitMobs) {
+      for (const mob of this.mobs.values()) {
+        if (mob.state.hp <= 0 || !this.withinProjectileRadius(projectile, tilePosition(mob.state))) continue;
+        const { damage, crit } = resolveDamage(projectile.attack, mob.def.combat?.defense ?? 0);
+        mob.state.hp = Math.max(0, mob.state.hp - damage);
+        mob.addThreat(projectile.sourceId, damage);
+        this.pendingEvents.push({ kind: 'hit', sourceId: projectile.sourceId, targetId: mob.id, damage, crit, hpAfter: mob.state.hp, projectileId: projectile.id });
+        if (mob.state.hp <= 0) this.pendingEvents.push({ kind: 'death', sourceId: projectile.sourceId, targetId: mob.id });
+        return true;
+      }
+    }
+    if (projectile.canHitPlayers) {
+      for (const player of this.players.values()) {
+        if (player.id === projectile.sourceId || player.state.hp <= 0) continue;
+        if (!this.withinProjectileRadius(projectile, tilePosition(player.state))) continue;
+        const { damage, crit } = resolveDamage(projectile.attack, player.combat.defense);
+        player.state.hp = Math.max(0, player.state.hp - damage);
+        this.pendingEvents.push({ kind: 'hit', sourceId: projectile.sourceId, targetId: player.id, damage, crit, hpAfter: player.state.hp, projectileId: projectile.id });
+        if (player.state.hp <= 0) this.pendingEvents.push({ kind: 'death', sourceId: projectile.sourceId, targetId: player.id });
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private withinProjectileRadius(projectile: Projectile, target: { x: number; y: number }): boolean {
+    return Math.hypot(projectile.x - target.x, projectile.y - target.y) <= PROJECTILE_HIT_RADIUS_TILES;
+  }
+
+  private respawnPlayer(player: Player): void {
+    const spawn = this.findFreeSpawnTile();
+    player.resetAt(spawn.tileX, spawn.tileY, this.config.movement);
+    player.state.hp = player.combat.maxHp;
+    player.respawnTicksLeft = 0;
+    player.lastInputTick = this.tick;
+  }
+
+  // ---------- internals ----------
 
   private *allMovers(): Iterable<Mover> {
     for (const p of this.players.values()) yield p.state;

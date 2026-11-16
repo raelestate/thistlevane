@@ -25,6 +25,9 @@
     "maxNameLength": 16,
     "defaultName": "Wanderer"
   },
+  "combat": {
+    "playerRespawnTicks": 100
+  },
   "world": {
     "startZone": "barren_grasslands",
     "layers": {
@@ -64,6 +67,9 @@
       "run": [
         "ShiftLeft",
         "ShiftRight"
+      ],
+      "attack": [
+        "Numpad1"
       ]
     },
     "nameLabel": {

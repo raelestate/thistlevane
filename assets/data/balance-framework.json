@@ -1,0 +1,53 @@
+{
+ "stats": {
+  "atk": "20 + 4*L",
+  "matk": "20 + 4*L",
+  "hp": "(180 + 22*L) * hp_multiplier",
+  "mitigation": "raw * 100 / (100 + DEF)",
+  "crit": {
+   "base_chance": 0.05,
+   "multiplier": 1.5
+  }
+ },
+ "skill_budget": {
+  "multiplier": "0.9 + 0.30 * cooldown^0.8 + 0.25 * cast_time",
+  "aoe_factor": "1 / (1 + 0.35 * (targets - 1)), max 6 targets",
+  "dot_total": "1.15 * budget",
+  "hard_cc_cost_per_s": 0.35,
+  "soft_cc_cost_per_s": 0.12,
+  "mobility_cost": 0.25,
+  "role_damage_share": "data/classes damage_share",
+  "heal_multiplier": "0.85 * budget",
+  "ultimate": {
+   "cooldown_s": [
+    90,
+    180
+   ],
+   "multiplier": [
+    8,
+    12
+   ],
+   "max_rotation_share": 0.2
+  },
+  "tolerance": 0.15
+ },
+ "resource_cost": "pool * (0.04 + 0.012 * cooldown); builders cost 0 or generate",
+ "crowd_control": {
+  "diminishing_returns": [
+   1.0,
+   0.5,
+   0.25,
+   0.0
+  ],
+  "immunity_s": 15,
+  "boss_hard_cc_immune": true,
+  "boss_slow_factor": 0.5,
+  "taunt_s": 3
+ },
+ "category_mix": {
+  "active": 8,
+  "passive": 4,
+  "utility_or_defensive": 2,
+  "ultimate": 1
+ }
+}

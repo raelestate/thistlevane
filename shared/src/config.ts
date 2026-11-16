@@ -23,6 +23,7 @@ export interface GameConfig {
     maxBufferedBytes: number;
   };
   players: { maxNameLength: number; defaultName: string };
+  combat: { playerRespawnTicks: number };
   world: {
     startZone: string;
     layers: {
@@ -43,7 +44,7 @@ export interface GameConfig {
     maxFrameMs: number;
     backgroundColor: string;
     /** KeyboardEvent.code values per action. */
-    controls: Record<'up' | 'down' | 'left' | 'right' | 'run', string[]>;
+    controls: Record<'up' | 'down' | 'left' | 'right' | 'run' | 'attack', string[]>;
     nameLabel: {
       fontFamily: string;
       fontSizePx: number;
@@ -99,6 +100,7 @@ const SCHEMA: Schema = {
     heartbeatMs: 'posInt', maxBufferedBytes: 'posInt',
   },
   players: { maxNameLength: 'posInt', defaultName: 'string' },
+  combat: { playerRespawnTicks: 'posInt' },
   world: {
     startZone: 'string',
     layers: {
@@ -109,7 +111,7 @@ const SCHEMA: Schema = {
   client: {
     interpolationDelayMs: 'nonNegInt', targetViewWidth: 'posInt', targetViewHeight: 'posInt',
     cameraLerp: 'unit', maxFrameMs: 'posInt', backgroundColor: 'string',
-    controls: { up: 'keyList', down: 'keyList', left: 'keyList', right: 'keyList', run: 'keyList' },
+    controls: { up: 'keyList', down: 'keyList', left: 'keyList', right: 'keyList', run: 'keyList', attack: 'keyList' },
     nameLabel: {
       fontFamily: 'string', fontSizePx: 'posInt', color: 'string', localColor: 'string',
       strokeColor: 'string', strokeThickness: 'nonNegInt', offsetY: 'nonNegInt',

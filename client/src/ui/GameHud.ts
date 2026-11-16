@@ -66,6 +66,7 @@ export class GameHud {
   private connectionStatus: ConnectionStatus = 'connecting';
   private loadingZone = '';
   private errorMsg = '';
+  private downed = false;
   private devText = '';
 
   /** Fired when a hotbar slot is clicked. */
@@ -193,7 +194,7 @@ export class GameHud {
     const hint = document.createElement('div');
     hint.id = 'control-hint';
     hint.innerHTML =
-      '<b>WASD</b> move · <b>Shift</b> run · <b>Tab</b> / click target · <b>Space</b> strike · <b>Esc</b> clear';
+      '<b>WASD</b> move · <b>Shift</b> run · <b>Mouse</b> aim · <b>Numpad1</b> attack · <b>Tab</b> / click target · <b>Esc</b> clear';
     return hint;
   }
 
@@ -236,6 +237,12 @@ export class GameHud {
     this.refreshStatus();
   }
 
+  /** Shows/hides the "you died" banner while the server counts down to respawn. */
+  setDowned(show: boolean): void {
+    this.downed = show;
+    this.refreshStatus();
+  }
+
   private refreshStatus(): void {
     const show = (text: string, bad: boolean) => {
       this.statusOverlay.textContent = text;
@@ -244,6 +251,7 @@ export class GameHud {
     };
     if (this.errorMsg) show(this.errorMsg, true);
     else if (this.connectionStatus === 'closed') show('Disconnected — refresh to rejoin.', true);
+    else if (this.downed) show('You have fallen… respawning.', true);
     else if (this.loadingZone) show(`Entering ${this.loadingZone}…`, false);
     else if (this.connectionStatus === 'connecting') show('Connecting…', false);
     else this.statusOverlay.style.display = 'none';
@@ -322,11 +330,14 @@ export class GameHud {
     corrections: number;
     pendingInputs: number;
     gait: string;
+    mouseTile: string;
+    aim: string;
+    nearestMob: string;
   }): void {
     const text =
       `${stats.zone} · ${stats.tile}\n` +
       `${stats.playerCount}p ${stats.mobCount}m · ${stats.gait} · c${stats.corrections} q${stats.pendingInputs}\n` +
-      `combat: client-side preview`;
+      `mouse ${stats.mouseTile} · aim ${stats.aim} · ${stats.nearestMob}`;
     if (text !== this.devText) {
       this.devText = text;
       this.devOverlay.textContent = text;

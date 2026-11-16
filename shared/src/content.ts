@@ -4,6 +4,7 @@
  */
 import { ConfigError } from './config';
 import { CARDINAL_DIRECTIONS, DIRECTIONS, type Direction } from './protocol';
+import type { AggroConfig, WeaponDefinition } from './combat';
 
 export const CONTENT_FILES = {
   config: 'data/game-config.json',
@@ -14,10 +15,12 @@ export const CONTENT_FILES = {
 } as const;
 
 export type Gait = 'walk' | 'run';
-export const MOVEMENT_ANIM_NAMES = ['idle', 'walk', 'run'] as const;
+export const MOVEMENT_ANIM_NAMES = ['idle', 'walk', 'run', 'run_stop'] as const;
 export const COMBAT_ANIM_NAMES = ['attack', 'hit', 'death'] as const;
 export const ANIMATION_NAMES = [...MOVEMENT_ANIM_NAMES, ...COMBAT_ANIM_NAMES] as const;
 export type AnimationName = (typeof ANIMATION_NAMES)[number];
+/** Animations that play once and stop, instead of looping. */
+export const NON_LOOPING_ANIM_NAMES = [...COMBAT_ANIM_NAMES, 'run_stop'] as const;
 
 /** How a spritesheet is laid out and animated. Shared by characters and mobs. */
 export interface SpriteDefinition {
@@ -29,7 +32,7 @@ export interface SpriteDefinition {
   /** Vertical offset (px) of the feet from the bottom edge of the tile. */
   footOffsetY: number;
   rows: Record<Direction, number>;
-  /** `run`, `attack`, `hit`, `death` are optional; `idle` and `walk` are required. */
+  /** `run`, `run_stop`, `attack`, `hit`, `death` are optional; `idle` and `walk` are required. */
   animations: Partial<Record<AnimationName, { startColumn: number; frames: number; frameRate: number }>> &
     Record<'idle' | 'walk', { startColumn: number; frames: number; frameRate: number }>;
   /** Effect ids from effects.json played as the entity moves or fights. */
@@ -48,6 +51,8 @@ export interface CharacterDefinition extends SpriteDefinition {
   name: string;
   title?: string;
   combat?: CombatStats;
+  /** Optional: classes without one fall back to DEFAULT_WEAPON (see shared/src/combat.ts). */
+  weapon?: WeaponDefinition;
 }
 
 export interface CharacterCatalog {
@@ -67,6 +72,9 @@ export interface MobDefinition extends SpriteDefinition {
   combat?: CombatStats;
   /** Level shown in the target frame. */
   level?: number;
+  /** Optional: mobs without one fall back to DEFAULT_WEAPON/DEFAULT_AGGRO (see shared/src/combat.ts). */
+  weapon?: WeaponDefinition;
+  aggro?: AggroConfig;
 }
 
 export interface MobCatalog {
@@ -96,6 +104,7 @@ export interface ZoneRegistry {
 
 const isObj = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null;
 const posInt = (v: unknown) => Number.isInteger(v) && (v as number) > 0;
+const posNum = (v: unknown) => typeof v === 'number' && v > 0;
 
 const REQUIRED_ANIMS = new Set<string>(['idle', 'walk']);
 
@@ -121,6 +130,29 @@ function validateSprite(c: Record<string, unknown>, where: string, needRun: bool
   }
 }
 
+/** Optional: classes/mobs without one fall back to DEFAULT_WEAPON at the use site, not here. */
+function validateWeapon(value: unknown, where: string): void {
+  if (value === undefined) return;
+  if (!isObj(value)) throw new ConfigError(`${where}: weapon must be an object`);
+  if (value.kind !== 'melee' && value.kind !== 'ranged') throw new ConfigError(`${where}: weapon.kind must be "melee" or "ranged"`);
+  if (!posNum(value.rangeTiles)) throw new ConfigError(`${where}: weapon.rangeTiles must be a positive number`);
+  if (!posNum(value.arcDegrees)) throw new ConfigError(`${where}: weapon.arcDegrees must be a positive number`);
+  if (!posInt(value.cooldownTicks)) throw new ConfigError(`${where}: weapon.cooldownTicks must be a positive integer`);
+  if (value.kind === 'ranged' && !posNum(value.projectileSpeedTilesPerSec)) {
+    throw new ConfigError(`${where}: weapon.projectileSpeedTilesPerSec is required for ranged weapons`);
+  }
+}
+
+/** Optional: mobs without one fall back to DEFAULT_AGGRO at the use site, not here. */
+function validateAggro(value: unknown, where: string): void {
+  if (value === undefined) return;
+  if (!isObj(value)) throw new ConfigError(`${where}: aggro must be an object`);
+  if (!posNum(value.detectionRangeTiles)) throw new ConfigError(`${where}: aggro.detectionRangeTiles must be a positive number`);
+  if (!posNum(value.leashRangeTiles)) throw new ConfigError(`${where}: aggro.leashRangeTiles must be a positive number`);
+  if (!posInt(value.attackWindupTicks)) throw new ConfigError(`${where}: aggro.attackWindupTicks must be a positive integer`);
+  if (!posInt(value.respawnTicks)) throw new ConfigError(`${where}: aggro.respawnTicks must be a positive integer`);
+}
+
 export function validateCharacters(raw: unknown, source = 'characters.json'): CharacterCatalog {
   if (!isObj(raw) || !Array.isArray(raw.characters) || raw.characters.length === 0) {
     throw new ConfigError(`${source}: "characters" must be a non-empty array`);
@@ -132,6 +164,7 @@ export function validateCharacters(raw: unknown, source = 'characters.json'): Ch
     if (ids.has(c.id)) throw new ConfigError(`${where}: duplicate id`);
     ids.add(c.id);
     validateSprite(c, where, true);
+    validateWeapon(c.weapon, where);
   }
   if (typeof raw.defaultCharacter !== 'string' || !ids.has(raw.defaultCharacter)) {
     throw new ConfigError(`${source}: defaultCharacter must be one of ${[...ids].join(', ')}`);
@@ -150,6 +183,8 @@ export function validateMobs(raw: unknown, source = 'mobs.json'): MobCatalog {
     if (!isObj(w) || !posInt(w.pauseTicksMin) || !posInt(w.pauseTicksMax) || !posInt(w.maxSteps) || (w.pauseTicksMax as number) < (w.pauseTicksMin as number)) {
       throw new ConfigError(`${where}: wander needs pauseTicksMin ≤ pauseTicksMax and maxSteps`);
     }
+    validateWeapon(m.weapon, where);
+    validateAggro(m.aggro, where);
   }
   return raw as unknown as MobCatalog;
 }

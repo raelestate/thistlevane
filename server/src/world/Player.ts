@@ -1,4 +1,13 @@
-import { createPlayerState, type MoveIntent, type MovementRules, type PlayerInfo, type PlayerState } from '@thistlevane/shared';
+import {
+  createPlayerState,
+  type CombatStats,
+  type Direction,
+  type MoveIntent,
+  type MovementRules,
+  type PlayerInfo,
+  type PlayerState,
+  type WeaponDefinition,
+} from '@thistlevane/shared';
 
 export interface QueuedInput extends MoveIntent {
   seq: number;
@@ -6,7 +15,13 @@ export interface QueuedInput extends MoveIntent {
   arrivedTick: number;
 }
 
-/** Server-side player: public info, authoritative movement state, and input bookkeeping. */
+export interface QueuedAttack {
+  seq: number;
+  aim: Direction;
+  arrivedTick: number;
+}
+
+/** Server-side player: public info, authoritative movement + combat state, and input bookkeeping. */
 export class Player {
   state: PlayerState;
   readonly inputQueue: QueuedInput[] = [];
@@ -23,6 +38,14 @@ export class Player {
   /** Zone the player is currently in (maintained by WorldManager). */
   zoneId = '';
 
+  /** Combat: attacks have their own, independent monotonic seq (never ride movement's). */
+  readonly attackQueue: QueuedAttack[] = [];
+  lastQueuedAttackSeq = 0;
+  /** World tick of the last resolved attack; gates the next one via weapon.cooldownTicks. */
+  lastAttackTick = -Infinity;
+  /** Counts down to 0 while dead, then the player is respawned. */
+  respawnTicksLeft = 0;
+
   constructor(
     readonly id: string,
     readonly name: string,
@@ -31,16 +54,20 @@ export class Player {
     tileY: number,
     rules: MovementRules,
     maxInputCredits: number,
+    readonly combat: CombatStats,
+    readonly weapon: WeaponDefinition,
   ) {
     this.state = createPlayerState(id, tileX, tileY, rules);
+    this.state.hp = combat.maxHp;
     this.inputCredits = maxInputCredits;
   }
 
-  /** Teleport (zone transfer): new position, drop queued inputs; seq numbering continues. */
+  /** Teleport (zone transfer or respawn): new position, drop queued inputs/attacks; seq numbering continues. hp carries over (respawn overwrites it after calling this). */
   resetAt(tileX: number, tileY: number, rules: MovementRules): void {
-    const facing = this.state.facing;
-    this.state = { ...createPlayerState(this.id, tileX, tileY, rules), facing };
+    const { facing, hp } = this.state;
+    this.state = { ...createPlayerState(this.id, tileX, tileY, rules), facing, hp };
     this.inputQueue.length = 0;
+    this.attackQueue.length = 0;
     this.buffering = true;
   }
 

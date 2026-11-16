@@ -1,0 +1,88 @@
+{
+ "brackets": [
+  {
+   "range": [
+    1,
+    5
+   ],
+   "levels": [
+    1,
+    3
+   ],
+   "theme": "foundation"
+  },
+  {
+   "range": [
+    5,
+    10
+   ],
+   "levels": [
+    6,
+    9
+   ],
+   "theme": "early specialization"
+  },
+  {
+   "range": [
+    10,
+    15
+   ],
+   "levels": [
+    11,
+    14
+   ],
+   "theme": "core identity"
+  },
+  {
+   "range": [
+    15,
+    30
+   ],
+   "levels": [
+    18,
+    25
+   ],
+   "theme": "combat expansion"
+  },
+  {
+   "range": [
+    30,
+    50
+   ],
+   "levels": [
+    34,
+    45
+   ],
+   "theme": "advanced techniques"
+  },
+  {
+   "range": [
+    50,
+    70
+   ],
+   "levels": [
+    55,
+    65
+   ],
+   "theme": "mastery"
+  },
+  {
+   "range": [
+    70,
+    100
+   ],
+   "levels": [
+    75,
+    88,
+    100
+   ],
+   "theme": "ultimate development"
+  }
+ ],
+ "slot_categories": {
+  "75": "major_active",
+  "88": "capstone_passive",
+  "100": "ultimate"
+ },
+ "rule": "identical for all classes; no level on a bracket boundary; one skill per level"
+}

@@ -1,4 +1,4 @@
-import type { PlayerInfo, ZoneSnapshot } from '@thistlevane/shared';
+import { getWeapon, type PlayerInfo, type ZoneSnapshot } from '@thistlevane/shared';
 import type { ServerContent } from '../content/loadContent';
 import { log } from '../log';
 import { Player } from './Player';
@@ -45,7 +45,10 @@ export class WorldManager {
 
   join(name: string, characterId: string): Player {
     const world = this.startZone;
-    const player = world.addPlayer(`p${this.nextPlayerNumber++}`, name, characterId);
+    // ConnectionManager already validated characterId against the catalog before calling this.
+    const def = this.content.characters.characters.find((c) => c.id === characterId)!;
+    const combat = def.combat ?? { maxHp: 100, maxMp: 50, attack: 10, defense: 5 };
+    const player = world.addPlayer(`p${this.nextPlayerNumber++}`, name, characterId, combat, getWeapon(def));
     player.zoneId = world.zoneId;
     return player;
   }

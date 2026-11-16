@@ -67,6 +67,10 @@ export class LocalPlayerPredictor {
     if (!sameMovementState(corrected, this.current)) {
       this.corrections += 1;
       this.current = corrected;
+    } else {
+      // hp is authoritative, continuous state — never predicted/rewound — so it must always
+      // sync even when movement didn't change (e.g. standing still while fighting).
+      this.current.hp = serverState.hp;
     }
   }
 

@@ -23,6 +23,8 @@ export class EntitySprite {
   private readonly labelOffsetY: number;
   private currentKey = '';
   private combatLock: AnimationName | null = null;
+  private stopping = false;
+  private lastFacing: Direction = 'down';
   onCombatComplete: ((anim: AnimationName) => void) | null = null;
 
   /** Floating health bar, built on demand (mobs only get one once you fight them). */
@@ -58,6 +60,7 @@ export class EntitySprite {
 
   /** `x`,`y` in tile units (fractional mid-step). */
   update(x: number, y: number, facing: Direction, moving: boolean, gait: Gait): void {
+    this.lastFacing = facing;
     const def = this.ref.def;
     const footX = (x + 0.5) * this.tile.width;
     const footY = (y + 1) * this.tile.height + def.footOffsetY;
@@ -75,16 +78,27 @@ export class EntitySprite {
       this.hpFill.setPosition(footX - this.hpWidth / 2, barY).setDepth(footY + 0.7);
     }
 
-    if (!this.combatLock) {
+    if (!this.combatLock && !this.stopping) {
       let anim: 'idle' | 'walk' | 'run' = moving ? gait : 'idle';
       if (anim === 'run' && !def.animations.run) anim = 'walk';
       const key = keys.anim(this.ref, anim, facing);
       if (key !== this.currentKey) {
-        const wasMoving = this.currentKey.includes(':walk:') || this.currentKey.includes(':run:');
-        const phase = this.sprite.anims.currentFrame?.index ?? 1;
-        const frames = def.animations[anim]!.frames;
-        this.sprite.play({ key, startFrame: moving && wasMoving ? (phase - 1) % frames : 0 });
-        this.currentKey = key;
+        const wasRunning = this.currentKey.includes(':run:');
+        if (anim === 'idle' && wasRunning && def.animations.run_stop) {
+          const stopKey = keys.anim(this.ref, 'run_stop', facing);
+          this.stopping = true;
+          this.currentKey = stopKey;
+          this.sprite.play(stopKey);
+          this.sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+            if (this.currentKey === stopKey) this.stopping = false;
+          });
+        } else {
+          const wasMoving = wasRunning || this.currentKey.includes(':walk:');
+          const phase = this.sprite.anims.currentFrame?.index ?? 1;
+          const frames = def.animations[anim]!.frames;
+          this.sprite.play({ key, startFrame: moving && wasMoving ? (phase - 1) % frames : 0 });
+          this.currentKey = key;
+        }
       }
     }
 
@@ -116,6 +130,11 @@ export class EntitySprite {
 
   get isInCombatAnim(): boolean {
     return this.combatLock !== null;
+  }
+
+  /** Last facing direction passed to `update()` — used to pick a direction for hit/death reactions. */
+  get facing(): Direction {
+    return this.lastFacing;
   }
 
   /** World position of the sprite's feet — where effects and target rings go. */

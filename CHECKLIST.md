@@ -112,10 +112,31 @@ These items were requested by the project owner after Milestone 0. They pull a f
   mob dims instead of playing a death.
 - Mob art is still placeholder.
 
+## Iteration 5 — New character roster: Corin Ashvale + 18 classes (replaces the 4 chibi characters)
+
+| Task | Status | Verified by |
+|---|---|---|
+| Retired Rowan/Lilac/Pip/Ash (art, `pxl` sources, placeholder generator) | [x] | `git status`; `tools/art/characters.py` removed |
+| Converted two delivered 96×96 sprite packs into the engine's sheet layout (one sheet per character, 8 direction-rows, animations as column ranges) | [x] | conversion script; `npm test` → "real content files pass validation" |
+| Corin Ashvale: idle/walk/run + attack (stab), hit (hurt), death — full combat set | [x] | schema validation; sheet inspected visually |
+| 18 classes (Monk, Ironwarden, Ravager, Nightveil, Arcanist, Ranger, Necromancer, Dawnkeeper, Flintlock, Druid, Oathblade, Minstrel, Thornlancer, Warlock, Beastmaster, Briarwarden, Vaneweaver, Hollowstrider): idle/walk/run only | [x] | schema validation; sheets inspected visually |
+| New `run_stop` transition clip (engine feature): run → idle now plays a skid instead of a hard cut, for any character/mob that defines it | [x] | `shared/src/content.ts`, `EntitySprite.ts`; typecheck + unit tests green |
+| `defaultCharacter` set to `ashvale` (only character with a working attack animation) | [x] | `assets/data/characters.json` |
+| Combat stats for the 18 classes derived from their `hp_multiplier`/`damage_share` (scaled to the existing stat range, not the delivered pack's own level-1-100 formula) | [~] | placeholder tuning — revisit when server combat (Milestone 4) and the skill/balance system (Milestone 5) land |
+| `assets/data/classes.json`, `balance-framework.json`, `unlock-schedule.json` kept as design reference for Milestone 5 (270-skill system), not wired into gameplay | [x] | files present; not read by any loader yet |
+| Typecheck, unit + integration tests, production build | [x] | `npm run typecheck`, `npm test`, `npm run build` all green |
+| **Manual check on your machine** | [ ] | Your turn |
+
+### Known limitations
+- The 18 classes have no attack/hurt/death animation yet (that's their own pack's Milestone 4, not delivered). Pressing attack still deals damage via `CombatPreview` but plays no swing animation for them.
+- Combat stats for the 18 classes are a reasonable approximation, not the delivered balance framework's formula — there's no in-engine skill system yet to spend that framework on.
+- Mobs do not yet use the new `run_stop` clip; only characters that define one get it (currently just the 19 playable characters, which all have it except Ashvale, whose `run_stop` frames exist in the source pack but weren't carried over — Ashvale's run still cuts to idle).
+
 ## Milestone 1 — Character System
 Partly started by Iteration 1: spritesheets, idle/walk animations, 4 directions, appearance variety.
 Iteration 4 added the attack animation, HP/MP/XP bars, nameplates and health bars (interface only).
-Still to do: hurt/death animations, server-side health, real levelling.
+Iteration 5 replaced the roster entirely; combat (hit/death) animations now exist for Ashvale.
+Still to do: hurt/death animations for the 18 classes, server-side health, real levelling.
 
 ## Milestones 2–10
 [ ] Not started.

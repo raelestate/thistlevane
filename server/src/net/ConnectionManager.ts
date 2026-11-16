@@ -58,8 +58,12 @@ export class ConnectionManager {
       const world = this.worlds.zone(player.zoneId);
       if (!world) continue;
       const near = world.nearby(player.state.tileX, player.state.tileY, radius);
+      const nearIds = new Set<string>();
+      for (const p of near.players) nearIds.add(p.id);
+      for (const m of near.mobs) nearIds.add(m.id);
+      const events = world.pendingEvents.filter((e) => nearIds.has(e.sourceId) || (e.targetId !== undefined && nearIds.has(e.targetId)));
       conn.socket.send(
-        JSON.stringify({ type: 'snapshot', tick: world.tick, ackSeq: player.lastAppliedSeq, players: near.players, mobs: near.mobs }),
+        JSON.stringify({ type: 'snapshot', tick: world.tick, ackSeq: player.lastAppliedSeq, players: near.players, mobs: near.mobs, events }),
       );
     }
   }
@@ -113,6 +117,11 @@ export class ConnectionManager {
       case 'input': {
         if (!conn.player) return;
         this.worlds.zone(conn.player.zoneId)?.queueInput(conn.player.id, msg.seq, msg);
+        return;
+      }
+      case 'attack': {
+        if (!conn.player) return;
+        this.worlds.zone(conn.player.zoneId)?.queueAttack(conn.player.id, msg.seq, msg.aim);
         return;
       }
     }

@@ -14,10 +14,16 @@ export class InputController {
   private readonly codeToDirection = new Map<string, CardinalDirection>();
   private readonly runCodes: Set<string>;
   private readonly runHeld = new Set<string>();
+  private readonly attackCodes: Set<string>;
+  private attackHeld = false;
+
+  /** Fired once per physical key press (not per OS key-repeat) when an attack binding goes down. */
+  onAttackPressed: () => void = () => {};
 
   constructor(controls: Controls) {
     for (const dir of CARDINAL_ACTIONS) for (const code of controls[dir]) this.codeToDirection.set(code, dir);
     this.runCodes = new Set(controls.run);
+    this.attackCodes = new Set(controls.attack);
     window.addEventListener('keydown', this.onKeyDown);
     window.addEventListener('keyup', this.onKeyUp);
     window.addEventListener('blur', this.releaseAll);
@@ -48,6 +54,14 @@ export class InputController {
 
   private readonly onKeyDown = (event: KeyboardEvent): void => {
     if (this.runCodes.has(event.code)) this.runHeld.add(event.code);
+    if (this.attackCodes.has(event.code)) {
+      event.preventDefault();
+      if (!this.attackHeld) {
+        this.attackHeld = true;
+        this.onAttackPressed();
+      }
+      return;
+    }
     const dir = this.codeToDirection.get(event.code);
     if (!dir) return;
     event.preventDefault();
@@ -56,6 +70,10 @@ export class InputController {
 
   private readonly onKeyUp = (event: KeyboardEvent): void => {
     this.runHeld.delete(event.code);
+    if (this.attackCodes.has(event.code)) {
+      this.attackHeld = false;
+      return;
+    }
     const dir = this.codeToDirection.get(event.code);
     if (!dir) return;
     const index = this.held.indexOf(dir);
@@ -65,5 +83,6 @@ export class InputController {
   private readonly releaseAll = (): void => {
     this.held.length = 0;
     this.runHeld.clear();
+    this.attackHeld = false;
   };
 }

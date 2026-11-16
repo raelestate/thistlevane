@@ -11,6 +11,7 @@ export class BotClient {
   readonly messages: ServerMessage[] = [];
   yourId = '';
   private seq = 0;
+  private attackSeqCounter = 0;
   private waiters: Array<{ predicate: (m: ServerMessage) => boolean; resolve: (m: ServerMessage) => void }> = [];
 
   private constructor(readonly socket: WebSocket) {
@@ -35,9 +36,9 @@ export class BotClient {
     return new BotClient(socket);
   }
 
-  static async join(port: number, name: string): Promise<BotClient> {
+  static async join(port: number, name: string, characterId?: string): Promise<BotClient> {
     const bot = await BotClient.connect(port);
-    bot.send({ type: 'join', name });
+    bot.send({ type: 'join', name, characterId });
     await bot.waitFor((m) => m.type === 'welcome');
     return bot;
   }
@@ -65,6 +66,13 @@ export class BotClient {
       await sleep(tickMs);
     }
     return last;
+  }
+
+  /** Send one basic-attack attempt aimed in `aim`. Returns the seq used (its own, independent counter). */
+  attack(aim: Direction): number {
+    this.attackSeqCounter += 1;
+    this.send({ type: 'attack', seq: this.attackSeqCounter, aim });
+    return this.attackSeqCounter;
   }
 
   waitFor(predicate: (m: ServerMessage) => boolean, timeoutMs = 3000): Promise<ServerMessage> {

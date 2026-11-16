@@ -32,6 +32,8 @@ export interface PlayerState {
   gait: Gait;
   /** Ticks left before a freshly turned player starts walking. */
   turnTicksLeft: number;
+  /** Authoritative health. Continuous state, like position — never predicted/rewound client-side. */
+  hp: number;
 }
 
 export interface PlayerInfo {
@@ -40,7 +42,7 @@ export interface PlayerInfo {
   characterId: string;
 }
 
-/** A wandering monster as seen by clients (no combat yet). */
+/** A wandering (or fighting) monster as seen by clients. */
 export interface MobState {
   id: string;
   kind: string;
@@ -51,6 +53,9 @@ export interface MobState {
   facing: Direction;
   moveTicksLeft: number;
   stepTicks: number;
+  hp: number;
+  /** AI state machine state name (see server/src/world/Mob.ts). Dev/debug display only. */
+  aiState: string;
 }
 
 /** One tick of player intent. */
@@ -73,7 +78,19 @@ export interface InputMessage extends MoveIntent {
   seq: number;
 }
 
-export type ClientMessage = JoinMessage | InputMessage;
+/**
+ * A basic-attack attempt, aimed independently of movement. Its own monotonic
+ * `seq` (separate from InputMessage's) is deduped the same way movement input
+ * is — see World.queueAttack. Attacks never need prediction/rewind (one-shot
+ * server verdict), so they do not ride InputMessage's reconciliation path.
+ */
+export interface AttackMessage {
+  type: 'attack';
+  seq: number;
+  aim: Direction;
+}
+
+export type ClientMessage = JoinMessage | InputMessage | AttackMessage;
 
 // ---------- Server → Client ----------
 
@@ -107,6 +124,39 @@ export interface PlayerLeftMessage {
   id: string;
 }
 
+/**
+ * One-shot combat occurrence, delivered alongside (not interpolated like)
+ * continuous state — attacks, hits, deaths, aggro and windups each happen
+ * once and must be rendered exactly once, so they ride a discrete event list
+ * rather than RemotePlayerBuffer's sample-based interpolation.
+ */
+export type CombatEventKind = 'attack' | 'hit' | 'death' | 'aggro' | 'windup' | 'projectile';
+
+export interface CombatEvent {
+  kind: CombatEventKind;
+  /** Attacker (player or mob id). */
+  sourceId: string;
+  /** Defender, or aggro target. */
+  targetId?: string;
+  /** Aim direction — 'attack', 'windup', 'projectile'. */
+  aim?: Direction;
+  /** 'hit' only. */
+  damage?: number;
+  crit?: boolean;
+  /** 'hit' only: target's hp after this damage was applied. */
+  hpAfter?: number;
+  /** Correlates a 'projectile' spawn with its later resolving 'hit' (or silent expiry). */
+  projectileId?: string;
+  projectile?: {
+    fromX: number;
+    fromY: number;
+    dirX: number;
+    dirY: number;
+    speedTilesPerSec: number;
+    rangeTiles: number;
+  };
+}
+
 /** Authoritative state of everything near this client (area of interest), every tick. */
 export interface SnapshotMessage {
   type: 'snapshot';
@@ -115,6 +165,7 @@ export interface SnapshotMessage {
   ackSeq: number;
   players: PlayerState[];
   mobs: MobState[];
+  events: CombatEvent[];
 }
 
 export interface ErrorMessage {
@@ -156,6 +207,10 @@ export function parseClientMessage(raw: string): ClientMessage | null {
       if (msg.dir !== null && !isDirection(msg.dir)) return null;
       if (msg.run !== undefined && typeof msg.run !== 'boolean') return null;
       return { type: 'input', seq: msg.seq as number, dir: msg.dir as Direction | null, run: msg.run === true };
+    case 'attack':
+      if (!Number.isSafeInteger(msg.seq) || (msg.seq as number) < 0) return null;
+      if (!isDirection(msg.aim)) return null;
+      return { type: 'attack', seq: msg.seq as number, aim: msg.aim };
     default:
       return null;
   }

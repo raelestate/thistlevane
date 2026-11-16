@@ -1,5 +1,5 @@
 import * as Phaser from 'phaser';
-import { DIRECTIONS, ANIMATION_NAMES, COMBAT_ANIM_NAMES, type SpriteDefinition } from '@thistlevane/shared';
+import { DIRECTIONS, ANIMATION_NAMES, NON_LOOPING_ANIM_NAMES, type SpriteDefinition } from '@thistlevane/shared';
 import { assetUrl, keys, loadClientContent, type ClientContent } from '../content/ContentLoader';
 
 /**
@@ -59,12 +59,12 @@ export class BootScene extends Phaser.Scene {
           const a = s.def.animations[name];
           if (!a) continue;
           const first = s.def.rows[dir] * s.def.columns + a.startColumn;
-          const isCombat = (COMBAT_ANIM_NAMES as readonly string[]).includes(name);
+          const loops = !(NON_LOOPING_ANIM_NAMES as readonly string[]).includes(name);
           this.anims.create({
             key: keys.anim(s, name, dir),
             frames: this.anims.generateFrameNumbers(keys.sheet(s), { start: first, end: first + a.frames - 1 }),
             frameRate: a.frameRate,
-            repeat: isCombat ? 0 : -1,
+            repeat: loops ? -1 : 0,
           });
         }
       }
