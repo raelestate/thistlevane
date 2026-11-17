@@ -36,6 +36,7 @@ export function createPlayerState(id: string, tileX: number, tileY: number, rule
     id, tileX, tileY, fromX: tileX, fromY: tileY, facing: 'down',
     moveTicksLeft: 0, stepTicks: rules.walkTicksPerTile, gait: 'walk', turnTicksLeft: 0,
     hp: 0, // placeholder — the caller (Player/Mob) overwrites with the real maxHp immediately
+    level: 1,
   };
 }
 

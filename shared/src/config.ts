@@ -44,7 +44,7 @@ export interface GameConfig {
     maxFrameMs: number;
     backgroundColor: string;
     /** KeyboardEvent.code values per action. */
-    controls: Record<'up' | 'down' | 'left' | 'right' | 'run' | 'attack', string[]>;
+    controls: Record<'up' | 'down' | 'left' | 'right' | 'run' | 'attack' | 'mapGuide', string[]>;
     nameLabel: {
       fontFamily: string;
       fontSizePx: number;
@@ -111,7 +111,7 @@ const SCHEMA: Schema = {
   client: {
     interpolationDelayMs: 'nonNegInt', targetViewWidth: 'posInt', targetViewHeight: 'posInt',
     cameraLerp: 'unit', maxFrameMs: 'posInt', backgroundColor: 'string',
-    controls: { up: 'keyList', down: 'keyList', left: 'keyList', right: 'keyList', run: 'keyList', attack: 'keyList' },
+    controls: { up: 'keyList', down: 'keyList', left: 'keyList', right: 'keyList', run: 'keyList', attack: 'keyList', mapGuide: 'keyList' },
     nameLabel: {
       fontFamily: 'string', fontSizePx: 'posInt', color: 'string', localColor: 'string',
       strokeColor: 'string', strokeThickness: 'nonNegInt', offsetY: 'nonNegInt',

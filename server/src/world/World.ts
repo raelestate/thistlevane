@@ -1,12 +1,18 @@
 import {
+  DIRECTION_ANGLES,
   DIRECTION_DELTAS,
   PlayerAwareWalkability,
+  applyXpGain,
   clonePlayerState,
+  hasLineOfSight,
   meleeHitTest,
   occupiesTile,
   resolveDamage,
+  snapAngleToDirection,
   stepMovement,
   tilePosition,
+  withinRadius,
+  xpForLevel,
   type CombatEvent,
   type CombatStats,
   type Direction,
@@ -16,12 +22,14 @@ import {
   type MobState,
   type MoveIntent,
   type Mover,
+  type PlayerPrivateState,
   type PlayerState,
   type Portal,
+  type Skill,
   type WeaponDefinition,
 } from '@thistlevane/shared';
 import { Mob } from './Mob';
-import { Player } from './Player';
+import { Player, type QueuedAttack, type QueuedCast } from './Player';
 import { Projectile, PROJECTILE_HIT_RADIUS_TILES } from './Projectile';
 
 const IDLE: MoveIntent = { dir: null, run: false };
@@ -44,15 +52,20 @@ export class World {
   pendingEvents: CombatEvent[] = [];
   private readonly random: () => number;
   private nextProjectileId = 1;
+  /** O(1) skill lookup by id — playerPrivateState/drainCast run every tick per player, so this
+   * avoids scanning the full 270-skill catalogue that often (see the loop-timing note below). */
+  private readonly skillsById: ReadonlyMap<string, Skill>;
 
   constructor(
     readonly zoneId: string,
     readonly map: MapModel,
     private readonly config: GameConfig,
     mobCatalog: MobCatalog,
+    skills: Skill[],
     seed = 1,
   ) {
     this.random = mulberry32(seed);
+    this.skillsById = new Map(skills.map((s) => [s.id, s]));
     this.spawnMobs(mobCatalog);
   }
 
@@ -89,13 +102,46 @@ export class World {
   }
 
   /** Accept one basic-attack attempt. Deduped by its own seq, independent of movement input. */
-  queueAttack(playerId: string, seq: number, aim: Direction): void {
+  queueAttack(playerId: string, seq: number, aim: Direction, targetId?: string): void {
     const player = this.players.get(playerId);
     if (!player) return;
     if (seq <= player.lastQueuedAttackSeq) return;
     player.lastQueuedAttackSeq = seq;
     if (player.attackQueue.length >= this.config.network.maxQueuedInputs) return;
-    player.attackQueue.push({ seq, aim, arrivedTick: this.tick });
+    player.attackQueue.push({ seq, aim, targetId, arrivedTick: this.tick });
+  }
+
+  /**
+   * Accept one skill-cast attempt. Deduped by its own seq, independent of movement/attack input.
+   * `aim` is the snapped Direction (still used for the broadcast CombatEvent, i.e. which way the
+   * caster visually faces/animates); `aimDeg` is the real, continuous angle the client was
+   * actually pointed at, used for the hit-test math — see applySkillEffect.
+   */
+  queueCast(playerId: string, seq: number, skillId: string, aim: Direction, aimDeg: number, targetId?: string): void {
+    const player = this.players.get(playerId);
+    if (!player) return;
+    if (seq <= player.lastQueuedCastSeq) return;
+    player.lastQueuedCastSeq = seq;
+    if (player.castQueue.length >= this.config.network.maxQueuedInputs) return;
+    player.castQueue.push({ seq, skillId, aim, aimDeg, targetId, arrivedTick: this.tick });
+  }
+
+  /**
+   * Per-connection data never broadcast to other clients — see ConnectionManager. Called every
+   * tick for every connected player, so this only ever iterates `player.skillCooldowns` (at most
+   * a handful of entries — the skills actually on cooldown right now), never the full catalogue.
+   */
+  playerPrivateState(player: Player): PlayerPrivateState {
+    const tickRate = this.config.simulation.tickRate;
+    const cooldownsMs: Record<string, number> = {};
+    for (const [skillId, lastUsed] of player.skillCooldowns) {
+      const skill = this.skillsById.get(skillId);
+      if (!skill) continue;
+      const cooldownTicks = Math.max(1, Math.round(skill.cooldown * tickRate));
+      const remainingTicks = cooldownTicks - (this.tick - lastUsed);
+      if (remainingTicks > 0) cooldownsMs[skillId] = Math.round((remainingTicks * 1000) / tickRate);
+    }
+    return { xp: player.xp, xpForLevel: xpForLevel(player.level), resourceCurrent: player.resourceCurrent, resourceMax: 100, cooldownsMs };
   }
 
   /** Advance the simulation by one fixed tick. Returns players who finished a step on a portal. */
@@ -147,6 +193,7 @@ export class World {
       }
 
       this.drainAttack(player);
+      this.drainCast(player);
     }
 
     for (const mob of this.mobs.values()) {
@@ -168,7 +215,7 @@ export class World {
   }
 
   snapshotMobs(): MobState[] {
-    return [...this.mobs.values()].map((m) => m.snapshot());
+    return [...this.mobs.values()].filter((m) => m.isVisible).map((m) => m.snapshot());
   }
 
   /** Players and mobs within `radius` tiles (Chebyshev) of a point. */
@@ -177,7 +224,7 @@ export class World {
     const players: PlayerState[] = [];
     for (const p of this.players.values()) if (near(p.state)) players.push(clonePlayerState(p.state));
     const mobs: MobState[] = [];
-    for (const m of this.mobs.values()) if (near(m.state)) mobs.push(m.snapshot());
+    for (const m of this.mobs.values()) if (m.isVisible && near(m.state)) mobs.push(m.snapshot());
     return { players, mobs };
   }
 
@@ -190,24 +237,184 @@ export class World {
     player.lastAttackTick = this.tick;
 
     const origin = tilePosition(player.state);
-    this.pendingEvents.push({ kind: 'attack', sourceId: player.id, aim: input.aim });
+    const aim = this.resolveAttackAim(origin, input);
+    this.pendingEvents.push({ kind: 'attack', sourceId: player.id, aim });
 
     if (player.weapon.kind === 'melee') {
       for (const mob of this.mobs.values()) {
         if (mob.state.hp <= 0) continue;
-        if (!meleeHitTest(origin, input.aim, tilePosition(mob.state), player.weapon, this.map)) continue;
+        if (!meleeHitTest(origin, DIRECTION_ANGLES[aim], tilePosition(mob.state), player.weapon, this.map)) continue;
         this.applyDamageToMob(player.id, player.combat.attack, mob);
       }
       // PvP: a player's melee weapon can also reach other players.
       for (const other of this.players.values()) {
         if (other.id === player.id || other.state.hp <= 0) continue;
-        if (!meleeHitTest(origin, input.aim, tilePosition(other.state), player.weapon, this.map)) continue;
+        if (!meleeHitTest(origin, DIRECTION_ANGLES[aim], tilePosition(other.state), player.weapon, this.map)) continue;
         this.applyDamageToPlayer(player.id, player.combat.attack, other);
       }
     } else {
       // A player's shot can hit mobs and other players; mobs still never fight each other.
-      this.spawnProjectile(player.id, true, true, origin, input.aim, player.combat.attack, player.weapon);
+      this.spawnProjectile(player.id, true, true, origin, aim, player.combat.attack, player.weapon);
     }
+  }
+
+  /**
+   * The direction a swing/shot is actually aimed. With a live `targetId`, recompute it from the
+   * real attacker→target vector — exactly how a mob already aims at a player every tick — so
+   * the swing lands regardless of which way the attacker's claimed facing happens to be. Falls
+   * back to the client-claimed `aim` with no `targetId`, or if the named target has died/left
+   * since the click. This can never bypass range/LOS: meleeHitTest and projectile resolution
+   * still check the target's real position independently of whatever direction was claimed.
+   */
+  private resolveAttackAim(origin: { x: number; y: number }, input: { aim: Direction; targetId?: string }): Direction {
+    if (!input.targetId) return input.aim;
+    const mob = this.mobs.get(input.targetId);
+    if (mob && mob.state.hp > 0) {
+      const pos = tilePosition(mob.state);
+      return snapAngleToDirection(pos.x - origin.x, pos.y - origin.y);
+    }
+    const other = this.players.get(input.targetId);
+    if (other && other.state.hp > 0) {
+      const pos = tilePosition(other.state);
+      return snapAngleToDirection(pos.x - origin.x, pos.y - origin.y);
+    }
+    return input.aim;
+  }
+
+  /**
+   * Resolves one queued skill cast. Server-authoritative on every gate: class ownership,
+   * unlock level, cooldown and resource cost. Mirrors drainAttack's shape; damage/heal numbers
+   * reuse the exact same resolveDamage/HP pipeline so a skill's `effect.multiplier` just scales
+   * the attacker's existing `attack` stat rather than replacing this engine's damage formula —
+   * see shared/src/classes.ts and the integration notes for why.
+   */
+  private drainCast(player: Player): void {
+    const input = player.castQueue.shift();
+    if (!input) return;
+    const skill = this.skillsById.get(input.skillId);
+    if (!skill || skill.class !== player.characterId) return; // unknown skill, or doesn't belong to this player's class: silently ignored
+    if (skill.category === 'passive') return; // always-on traits have no activation to request
+    if (player.level < skill.level_required) return; // not unlocked yet
+    const cooldownTicks = Math.max(1, Math.round(skill.cooldown * this.config.simulation.tickRate));
+    const lastUsed = player.skillCooldowns.get(skill.id) ?? -Infinity;
+    if (this.tick - lastUsed < cooldownTicks) return; // still on cooldown: drop silently
+    if (skill.resource_cost > player.resourceCurrent) return; // can't afford
+
+    player.skillCooldowns.set(skill.id, this.tick);
+    player.resourceCurrent = Math.max(0, Math.min(100, player.resourceCurrent - skill.resource_cost + skill.resource_gain));
+
+    const origin = tilePosition(player.state);
+    const aim = this.resolveAttackAim(origin, input); // Direction, for the broadcast event (facing/animation) only
+    this.pendingEvents.push({ kind: 'cast', sourceId: player.id, aim, skillId: skill.id, targetId: input.targetId });
+    this.applySkillEffect(player, skill, origin, input.aimDeg, input.targetId);
+  }
+
+  /**
+   * Applies what a skill's own data can mechanically express today: damage (effect.multiplier)
+   * or healing (effect.heal_ally_pct). Status effects (crowd control, buffs/stances, summons) in
+   * skill.status[] are NOT applied — this engine has no status-effect/summon subsystem yet, and
+   * building one was out of scope for this integration pass (see the final report).
+   *
+   * Targeting is free-aim, not grid-snapped: `aimDeg` is the real angle the client was pointed
+   * at (not one of the 8 rendered directions), and range/radius are true continuous distance —
+   * movement stays tile-based, but a skill's reach never does. A locked `targetId` always wins
+   * when it's alive and in range (tab-target precision shouldn't depend on exact mouse angle);
+   * `aimDeg` only drives a free "skillshot" when no target is locked.
+   */
+  private applySkillEffect(caster: Player, skill: Skill, origin: { x: number; y: number }, aimDeg: number, targetId?: string): void {
+    if (skill.effect.heal_ally_pct > 0) {
+      const healTarget = this.resolveHealTarget(caster, targetId);
+      if (healTarget) this.applyHeal(caster.id, healTarget, skill.effect.heal_ally_pct);
+      return;
+    }
+    if (skill.effect.multiplier <= 0) return; // pure buff/passive/utility: cast event + animation/VFX only
+
+    const attackPower = caster.combat.attack * skill.effect.multiplier;
+    const range = skill.range > 0 ? skill.range : 1.5;
+
+    // skills.json's own target strings are 'single_enemy' | 'self' | 'area_enemy' | 'ally_or_self'
+    // — not 'aoe' (an earlier guess here never actually matched, so every area skill was silently
+    // routed through the single-target branch below; fixed here, verified against the real data).
+    if (skill.target === 'area_enemy') {
+      const center = this.resolveAoeCenter(origin, aimDeg, range, targetId);
+      const radius = skill.radius > 0 ? skill.radius : range;
+      for (const mob of this.mobs.values()) {
+        if (mob.state.hp <= 0) continue;
+        const pos = tilePosition(mob.state);
+        if (!withinRadius(center, pos, radius) || !hasLineOfSight(origin, pos, this.map)) continue;
+        this.applyDamageToMob(caster.id, attackPower, mob);
+      }
+      for (const other of this.players.values()) {
+        if (other.id === caster.id || other.state.hp <= 0) continue;
+        const pos = tilePosition(other.state);
+        if (!withinRadius(center, pos, radius) || !hasLineOfSight(origin, pos, this.map)) continue;
+        this.applyDamageToPlayer(caster.id, attackPower, other);
+      }
+      return;
+    }
+
+    if (targetId) {
+      const mob = this.mobs.get(targetId);
+      if (mob && mob.state.hp > 0 && this.canReach(origin, tilePosition(mob.state), range)) {
+        this.applyDamageToMob(caster.id, attackPower, mob);
+        return;
+      }
+      const other = this.players.get(targetId);
+      if (other && other.id !== caster.id && other.state.hp > 0 && this.canReach(origin, tilePosition(other.state), range)) {
+        this.applyDamageToPlayer(caster.id, attackPower, other);
+        return;
+      }
+      return; // named target died/left/moved out of range since the click: the cast still happened, it just whiffs
+    }
+
+    // No lock: a free skillshot in whatever direction was actually aimed (continuous, not snapped).
+    const reach: WeaponDefinition = { kind: 'melee', rangeTiles: range, arcDegrees: 70, cooldownTicks: 0 };
+    for (const mob of this.mobs.values()) {
+      if (mob.state.hp <= 0) continue;
+      if (!meleeHitTest(origin, aimDeg, tilePosition(mob.state), reach, this.map)) continue;
+      this.applyDamageToMob(caster.id, attackPower, mob);
+      return;
+    }
+    for (const other of this.players.values()) {
+      if (other.id === caster.id || other.state.hp <= 0) continue;
+      if (!meleeHitTest(origin, aimDeg, tilePosition(other.state), reach, this.map)) continue;
+      this.applyDamageToPlayer(caster.id, attackPower, other);
+      return;
+    }
+  }
+
+  private canReach(origin: { x: number; y: number }, target: { x: number; y: number }, range: number): boolean {
+    return withinRadius(origin, target, range) && hasLineOfSight(origin, target, this.map);
+  }
+
+  /** Where an AoE actually lands: centered on a locked, reachable target if there is one
+   * (matches how tab-targeted AoE works in most MMOs), otherwise a point `range` tiles out
+   * along the real aim angle — a skillshot blast, not "everything near me". */
+  private resolveAoeCenter(origin: { x: number; y: number }, aimDeg: number, range: number, targetId?: string): { x: number; y: number } {
+    if (targetId) {
+      const mob = this.mobs.get(targetId);
+      if (mob && mob.state.hp > 0 && this.canReach(origin, tilePosition(mob.state), range)) return tilePosition(mob.state);
+      const other = this.players.get(targetId);
+      if (other && other.state.hp > 0 && this.canReach(origin, tilePosition(other.state), range)) return tilePosition(other.state);
+    }
+    const rad = (aimDeg * Math.PI) / 180;
+    return { x: origin.x + Math.cos(rad) * range, y: origin.y + Math.sin(rad) * range };
+  }
+
+  /** No party/friendly-targeting system exists yet, so an ally heal only ever reaches a live,
+   * explicitly-targeted player, falling back to the caster themself (self-heal is always valid). */
+  private resolveHealTarget(caster: Player, targetId?: string): Player | null {
+    if (targetId) {
+      const target = this.players.get(targetId);
+      if (target && target.state.hp > 0) return target;
+    }
+    return caster.state.hp > 0 ? caster : null;
+  }
+
+  private applyHeal(sourceId: string, target: Player, healAllyPct: number): void {
+    const healing = Math.round(target.combat.maxHp * healAllyPct);
+    target.state.hp = Math.min(target.combat.maxHp, target.state.hp + healing);
+    this.pendingEvents.push({ kind: 'heal', sourceId, targetId: target.id, healing, hpAfter: target.state.hp });
   }
 
   private applyDamageToMob(sourceId: string, attack: number, mob: Mob): void {
@@ -215,7 +422,21 @@ export class World {
     mob.state.hp = Math.max(0, mob.state.hp - damage);
     mob.addThreat(sourceId, damage);
     this.pendingEvents.push({ kind: 'hit', sourceId, targetId: mob.id, damage, crit, hpAfter: mob.state.hp });
-    if (mob.state.hp <= 0) this.pendingEvents.push({ kind: 'death', sourceId, targetId: mob.id });
+    if (mob.state.hp <= 0) {
+      this.pendingEvents.push({ kind: 'death', sourceId, targetId: mob.id });
+      this.awardXp(sourceId, mob.def.combat);
+    }
+  }
+
+  /** Mob kills only (matches the old client-only progression's behaviour) — PvP grants no XP. */
+  private awardXp(sourceId: string, defeated: CombatStats | undefined): void {
+    if (!defeated) return;
+    const player = this.players.get(sourceId);
+    if (!player) return;
+    const { level, xp } = applyXpGain({ level: player.level, xp: player.xp }, defeated);
+    player.level = level;
+    player.xp = xp;
+    player.state.level = level;
   }
 
   private applyDamageToPlayer(sourceId: string, attack: number, target: Player): void {
@@ -292,15 +513,17 @@ export class World {
     const spawn = this.findFreeSpawnTile();
     player.resetAt(spawn.tileX, spawn.tileY, this.config.movement);
     player.state.hp = player.combat.maxHp;
+    player.resourceCurrent = 100;
     player.respawnTicksLeft = 0;
     player.lastInputTick = this.tick;
   }
 
   // ---------- internals ----------
 
+  /** Dead players/mobs never occupy a tile — a corpse must not block movement, chase pathing, or spawn placement. */
   private *allMovers(): Iterable<Mover> {
-    for (const p of this.players.values()) yield p.state;
-    for (const m of this.mobs.values()) yield m.state;
+    for (const p of this.players.values()) if (p.state.hp > 0) yield p.state;
+    for (const m of this.mobs.values()) if (m.state.hp > 0) yield m.state;
   }
 
   private spawnMobs(catalog: MobCatalog): void {

@@ -2,9 +2,11 @@ import * as Phaser from 'phaser';
 import {
   DEFAULT_WEAPON,
   DIRECTION_DELTAS,
+  angleOfVector,
   getAggro,
   getWeapon,
   isMoving,
+  parseVfxRef,
   snapAngleToDirection,
   tickMs,
   type CombatEvent,
@@ -12,26 +14,38 @@ import {
   type Direction,
   type GameRules,
   type MobState,
+  type MoveIntent,
+  type PlayerPrivateState,
   type PlayerState,
   type ServerMessage,
+  type Skill,
   type SnapshotMessage,
   type StepOutcome,
+  type Walkability,
   type WeaponDefinition,
   type ZoneSnapshot,
 } from '@thistlevane/shared';
-import { ClientProgression } from '../combat/ClientProgression';
+import { TargetingController } from '../combat/TargetingController';
 import { findCharacter, findMob, keys, type ClientContent, type SpriteRef } from '../content/ContentLoader';
 import { EntitySprite } from '../entities/EntitySprite';
+import { ClickToMoveController } from '../input/ClickToMoveController';
 import { InputController } from '../input/InputController';
 import { LocalPlayerPredictor } from '../net/LocalPlayerPredictor';
 import { NetClient } from '../net/NetClient';
 import { RemotePlayerBuffer } from '../net/RemotePlayerBuffer';
 import { ServerClock } from '../net/ServerClock';
 import { CombatTextManager } from '../ui/CombatText';
-import { GameHud, SKILL_SLOTS } from '../ui/GameHud';
+import { GameHud } from '../ui/GameHud';
+import { MapGuide } from '../ui/MapGuide';
 import { DebugOverlay, type DebugMobInfo } from '../world/DebugOverlay';
 import { EffectsManager } from '../world/EffectsManager';
 import { MapView } from '../world/MapView';
+
+const EMPTY_PRIVATE_STATE: PlayerPrivateState = { xp: 0, xpForLevel: 1, resourceCurrent: 0, resourceMax: 0, cooldownsMs: {} };
+/** These 3 archetypes hold for as long as a buff/stance/channel is active, but this engine has
+ * no status-effect/duration system to tell the VFX when that ends (see the integration notes) —
+ * so they're given this fixed, reasonable hold time instead of looping forever. */
+const LOOPING_VFX_FALLBACK_MS = 1800;
 
 interface RemoteEntity {
   sprite: EntitySprite;
@@ -56,6 +70,9 @@ interface Session {
   remotes: Map<string, RemoteEntity>;
   mobs: Map<string, RemoteEntity>;
   infos: Map<string, { name: string; characterId: string }>;
+  /** Local player's hp sign as of the last snapshot — lets onSnapshot detect the 0→positive
+   * transition (revive) without a dedicated server event for it. */
+  wasAlive: boolean;
 }
 
 /**
@@ -70,10 +87,17 @@ export class WorldScene extends Phaser.Scene {
   private net!: NetClient;
   private controls!: InputController;
   private hud!: GameHud;
+  private mapGuide!: MapGuide;
   private effects!: EffectsManager;
   private combatText!: CombatTextManager;
   private debugOverlay: DebugOverlay | null = null;
-  private readonly progression = new ClientProgression();
+  private readonly clickToMove = new ClickToMoveController();
+  /** Server-authoritative xp/resource/cooldowns for the local player only — never broadcast to
+   * other clients (see shared/src/protocol.ts PlayerPrivateState). */
+  private you: PlayerPrivateState = EMPTY_PRIVATE_STATE;
+  /** classId of the local player's character, or null for a grid (no-class) character. */
+  private myClassId: string | null = null;
+  private destinationMarker: Phaser.GameObjects.Graphics | null = null;
   private targetRing: Phaser.GameObjects.Image | null = null;
   private zoom = 1;
 
@@ -88,6 +112,9 @@ export class WorldScene extends Phaser.Scene {
 
   // Combat: aim is independent of movement facing, driven by the mouse.
   private aimDirection: Direction = 'down';
+  /** Real, continuous aim angle (degrees) behind aimDirection — sent with skill casts so
+   * targeting is free-aim, not snapped to one of 8 directions (movement stays tile-based). */
+  private aimDegrees = 90;
   private mouseWorldTile = { x: 0, y: 0 };
   private myWeapon: WeaponDefinition = DEFAULT_WEAPON;
   private myCombat: CombatStats = { maxHp: 100, maxMp: 50, attack: 10, defense: 5 };
@@ -95,7 +122,14 @@ export class WorldScene extends Phaser.Scene {
   private attackSeq = 0;
   /** Client-side mirror only (drives the hotbar sweep); the server independently re-validates. */
   private lastAttackAt = -Infinity;
-  private selectedTargetId: string | null = null;
+  private castSeq = 0;
+  /** Client-side mirror only, keyed by skillId (drives responsiveness before the server's own
+   * you.cooldownsMs arrives); the server independently re-validates every cast. */
+  private readonly lastCastAt = new Map<string, number>();
+  private readonly targeting = new TargetingController();
+  /** Looping VFX (passive_aura/channel_pulse/buff_aura) spawned by a cast, torn down after
+   * LOOPING_VFX_FALLBACK_MS — tracked only so a stale one can't outlive its sprite's destroy(). */
+  private readonly activeLoopingVfx = new Set<Phaser.GameObjects.Sprite>();
 
   constructor() {
     super('world');
@@ -111,20 +145,27 @@ export class WorldScene extends Phaser.Scene {
     this.applyIntegerZoom();
     this.scale.on(Phaser.Scale.Events.RESIZE, () => this.applyIntegerZoom());
 
-    this.hud = new GameHud(document.getElementById('game-ui')!, this.content);
+    this.hud = new GameHud(document.getElementById('game-ui')!, this.content, import.meta.env.DEV);
+    this.mapGuide = new MapGuide(document.getElementById('game-ui')!, this.content);
     this.controls = new InputController(config.client.controls);
-    this.controls.onAttackPressed = () => this.attemptAttack();
+    this.controls.onAttackPressed = () => this.useSkill(this.hud.skillAt(0)?.id ?? null);
+    this.controls.onMapGuidePressed = () => this.mapGuide.toggle();
     this.effects = new EffectsManager(this, this.content.effects);
     this.combatText = new CombatTextManager(this);
     this.debugOverlay = import.meta.env.DEV ? new DebugOverlay(this) : null;
 
-    this.hud.onSkill = (slot) => this.useSkill(slot.id);
+    this.hud.onSkillSlotActivated = (skillId) => this.useSkill(skillId);
     this.bindCombatKeys();
     this.input.on(Phaser.Input.Events.POINTER_MOVE, (pointer: Phaser.Input.Pointer) => this.onPointerMove(pointer));
-    // Left click is the brief's own fallback trigger — works with no physical numpad.
-    this.input.on(Phaser.Input.Events.POINTER_DOWN, (pointer: Phaser.Input.Pointer) => {
-      if (pointer.leftButtonDown()) this.attemptAttack();
-    });
+    // Primary movement: left-click empty, walkable ground to walk there. Clicking a mob/player
+    // sprite instead hits that object's own interactive area (targeting) — `currentlyOver`
+    // tells us which happened, so a click never does both.
+    this.input.on(
+      Phaser.Input.Events.POINTER_DOWN,
+      (pointer: Phaser.Input.Pointer, currentlyOver: Phaser.GameObjects.GameObject[]) => {
+        if (pointer.leftButtonDown() && currentlyOver.length === 0) this.onClickGround(pointer);
+      },
+    );
 
     this.net = new NetClient(NetClient.defaultUrl(config.network.wsPath));
     this.net.onStatusChange = (status) => {
@@ -154,7 +195,11 @@ export class WorldScene extends Phaser.Scene {
     this.accumulator += Math.min(elapsed, this.content.config.client.maxFrameMs);
     const alive = s.predictor.current.hp > 0;
     while (this.accumulator >= this.tickLength) {
-      if (alive) this.onLocalOutcome(s.predictor.tick(this.controls.intent));
+      if (alive) {
+        this.onLocalOutcome(s.predictor.tick(this.resolveMoveIntent()));
+        const current = s.predictor.current;
+        if (this.clickToMove.afterTick(current.tileX, current.tileY, current.moveTicksLeft)) this.replanClickToMove(s);
+      }
       this.accumulator -= this.tickLength;
     }
     const pos = s.predictor.renderPosition(this.accumulator / this.tickLength);
@@ -174,20 +219,23 @@ export class WorldScene extends Phaser.Scene {
     }
 
     s.map.update(now);
+    this.updateHoverCombat(s);
     this.updateCombatUi();
     this.updateDebugOverlay(s, pos);
-    this.hud.update({
-      zone: this.content.zones.zones[s.zoneId]?.name ?? s.zoneId,
-      tile: `${me.tileX},${me.tileY} L${s.map.model.levelAt(me.tileX, me.tileY)}`,
-      playerCount: s.remotes.size + 1,
-      mobCount: s.mobs.size,
-      corrections: s.predictor.corrections,
-      pendingInputs: s.predictor.pendingCount,
-      gait: me.gait,
-      mouseTile: `${this.mouseWorldTile.x.toFixed(1)},${this.mouseWorldTile.y.toFixed(1)}`,
-      aim: this.aimDirection,
-      nearestMob: this.nearestMobDebugLabel(s),
-    });
+    if (import.meta.env.DEV) {
+      this.hud.update({
+        zone: this.content.zones.zones[s.zoneId]?.name ?? s.zoneId,
+        tile: `${me.tileX},${me.tileY} L${s.map.model.levelAt(me.tileX, me.tileY)}`,
+        playerCount: s.remotes.size + 1,
+        mobCount: s.mobs.size,
+        corrections: s.predictor.corrections,
+        pendingInputs: s.predictor.pendingCount,
+        gait: me.gait,
+        mouseTile: `${this.mouseWorldTile.x.toFixed(1)},${this.mouseWorldTile.y.toFixed(1)}`,
+        aim: this.aimDirection,
+        nearestMob: this.nearestMobDebugLabel(s),
+      });
+    }
   }
 
   // ---------- networking ----------
@@ -199,9 +247,11 @@ export class WorldScene extends Phaser.Scene {
         this.rules = msg.rules;
         this.tickLength = tickMs(msg.rules);
         this.clock = new ServerClock(this.tickLength);
+        this.you = msg.you;
         this.enterZone(msg);
         return;
       case 'zoneChange':
+        this.you = msg.you;
         this.enterZone(msg);
         return;
       case 'playerJoined':
@@ -236,11 +286,16 @@ export class WorldScene extends Phaser.Scene {
         const predictor = new LocalPlayerPredictor(me, map.model, rules.movement, (input) => this.net.send(input));
         predictor.reconcile(me, 0, [...others, ...zone.mobs.map(mobAsMover)]);
 
-        const session: Session = { zoneId: zone.zoneId, map, predictor, sprite: null as unknown as EntitySprite, remotes: new Map(), mobs: new Map(), infos };
+        const session: Session = {
+          zoneId: zone.zoneId, map, predictor, sprite: null as unknown as EntitySprite,
+          remotes: new Map(), mobs: new Map(), infos, wasAlive: me.hp > 0,
+        };
         session.sprite = this.createCharacter(session, myId, true);
         this.session = session;
         this.accumulator = 0;
         this.loadingZone = null;
+        this.mapGuide.setCurrentZone(zone.zoneId);
+        this.mapGuide.recordPortals(zone.zoneId, map.model.portals);
 
         const lerp = this.content.config.client.cameraLerp;
         const start = predictor.renderPosition(0);
@@ -255,11 +310,13 @@ export class WorldScene extends Phaser.Scene {
         this.myCombat = stats;
         this.myWeapon = getWeapon(def);
         this.myFrameHeight = def.frameHeight;
-        this.hud.setPlayer(info?.name ?? '?', characterId, this.progression.level, stats);
+        this.myClassId = this.hud.classIdFor(characterId);
+        this.hud.setPlayer(info?.name ?? '?', characterId, me.level, stats);
+        this.hud.setSkills(this.content.skills, this.myClassId, me.level);
         this.hud.updatePlayerHp(me.hp, stats.maxHp);
-        this.hud.updateXp(this.progression.xp, this.progression.xpForLevel, this.progression.level);
+        this.hud.updateXp(this.you.xp, this.you.xpForLevel, me.level);
         this.hud.setDowned(me.hp <= 0);
-        this.selectedTargetId = null;
+        this.targeting.clear();
         this.hud.clearTarget();
         this.targetRing?.setVisible(false);
       })
@@ -273,8 +330,12 @@ export class WorldScene extends Phaser.Scene {
     const s = this.session;
     if (!s) return;
     this.session = null;
+    this.targeting.clear();
     this.targetRing?.setVisible(false);
     this.hud.clearTarget();
+    this.clickToMove.clear();
+    this.destinationMarker?.destroy();
+    this.destinationMarker = null;
     this.cameras.main.stopFollow();
     s.sprite.destroy();
     for (const r of s.remotes.values()) r.sprite.destroy();
@@ -287,6 +348,7 @@ export class WorldScene extends Phaser.Scene {
     if (!s || !this.clock || !this.myId) return; // still loading a zone
     this.clock.observe(msg.tick);
     const serverTime = this.clock.serverTimeOfTick(msg.tick);
+    this.you = msg.you;
 
     let mine: PlayerState | null = null;
     const others: PlayerState[] = [];
@@ -295,6 +357,12 @@ export class WorldScene extends Phaser.Scene {
       else others.push(state);
     }
     if (!mine) return; // snapshot from the zone we just left
+    const aliveNow = mine.hp > 0;
+    if (!s.wasAlive && aliveNow) {
+      s.sprite.revive();
+      this.hud.setDowned(false);
+    }
+    s.wasAlive = aliveNow;
     s.predictor.reconcile(mine, msg.ackSeq, [...others, ...msg.mobs.map(mobAsMover)]);
 
     const seenPlayers = new Set<string>();
@@ -304,6 +372,10 @@ export class WorldScene extends Phaser.Scene {
       if (!remote) {
         remote = { sprite: this.createCharacter(s, state.id, false), buffer: new RemotePlayerBuffer(), hp: state.hp };
         s.remotes.set(state.id, remote);
+        // A late joiner must see an already-dead remote player correctly, not standing normally.
+        if (state.hp <= 0) remote.sprite.request('dead', 'death', remote.sprite.facing);
+      } else if (remote.hp <= 0 && state.hp > 0) {
+        remote.sprite.revive();
       }
       remote.hp = state.hp;
       remote.buffer.push(serverTime, state);
@@ -320,26 +392,29 @@ export class WorldScene extends Phaser.Scene {
         remote = { sprite: this.createEntity(s, ref, null), buffer: new RemotePlayerBuffer(), kind: mob.kind, hp: mob.hp, aiState: mob.aiState };
         const mobId = mob.id;
         remote.sprite.sprite.setInteractive({ useHandCursor: true });
-        remote.sprite.sprite.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => this.selectTarget(mobId));
+        remote.sprite.sprite.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => this.lockTarget(mobId));
+        remote.sprite.sprite.on(Phaser.Input.Events.GAMEOBJECT_POINTER_OVER, () => this.targeting.setHover(mobId));
+        remote.sprite.sprite.on(Phaser.Input.Events.GAMEOBJECT_POINTER_OUT, () => {
+          if (this.targeting.hoveredTargetId === mobId) this.targeting.setHover(null);
+        });
         // A late joiner must see an already-damaged/defeated mob correctly, not at full health.
         const maxHp = this.content.mobs.mobs[mob.kind]?.combat?.maxHp ?? mob.hp;
-        if (mob.hp <= 0) remote.sprite.setDefeated(true);
+        if (mob.hp <= 0) remote.sprite.request('dead', 'death', remote.sprite.facing);
         else if (mob.hp < maxHp) remote.sprite.setHealth(mob.hp, maxHp);
         s.mobs.set(mob.id, remote);
       } else if (remote.hp <= 0 && mob.hp > 0) {
         // Respawned: the server resets hp without a dedicated event; detect the transition here.
-        remote.sprite.setDefeated(false);
-        remote.sprite.setHealth(null);
+        remote.sprite.revive();
       }
       remote.hp = mob.hp;
       remote.aiState = mob.aiState;
-      remote.buffer.push(serverTime, { ...mob, gait: 'walk', turnTicksLeft: 0 });
+      remote.buffer.push(serverTime, { ...mob, gait: 'walk', turnTicksLeft: 0, level: 1 });
     }
     for (const [id, m] of s.mobs) {
       if (seenMobs.has(id)) continue;
       m.sprite.destroy();
       s.mobs.delete(id);
-      if (this.selectedTargetId === id) this.selectTarget(null); // it walked out of range
+      this.forgetTarget(id); // out of range, or dead and hidden until it respawns
     }
 
     for (const event of msg.events) this.handleCombatEvent(s, event);
@@ -364,9 +439,7 @@ export class WorldScene extends Phaser.Scene {
   }
 
   private createEntity(s: Session, ref: SpriteRef, label: { text: string; color: string } | null): EntitySprite {
-    const sprite = new EntitySprite(this, ref, s.map.tileSize, label, this.content.config.client.nameLabel, this.zoom);
-    sprite.onCombatComplete = () => {}; // combatLock clears automatically; no extra bookkeeping needed yet
-    return sprite;
+    return new EntitySprite(this, ref, s.map.tileSize, label, this.content.config.client.nameLabel, this.zoom);
   }
 
   private onLocalOutcome(outcome: StepOutcome): void {
@@ -388,8 +461,80 @@ export class WorldScene extends Phaser.Scene {
     if (!s) return;
     const world = this.cameras.main.getWorldPoint(pointer.x, pointer.y);
     const foot = s.sprite.footPosition;
-    this.aimDirection = snapAngleToDirection(world.x - foot.x, world.y - foot.y);
+    const dx = world.x - foot.x, dy = world.y - foot.y;
+    this.aimDirection = snapAngleToDirection(dx, dy);
+    this.aimDegrees = angleOfVector(dx, dy);
     this.mouseWorldTile = { x: world.x / s.map.tileSize.width, y: world.y / s.map.tileSize.height };
+  }
+
+  // ---------- click-to-move ----------
+
+  /** Left-click on open ground: plans a route there, replacing whatever path was active. */
+  private onClickGround(pointer: Phaser.Input.Pointer): void {
+    const s = this.session;
+    if (!s) return;
+    const world = this.cameras.main.getWorldPoint(pointer.x, pointer.y);
+    const tile = { x: Math.floor(world.x / s.map.tileSize.width), y: Math.floor(world.y / s.map.tileSize.height) };
+    const from = { x: s.predictor.current.tileX, y: s.predictor.current.tileY };
+    if (this.clickToMove.moveTo(from, tile, this.buildDynamicWorld(s))) this.showDestinationMarker(tile, s);
+  }
+
+  /** Held keyboard movement always wins and cancels any active route; click-to-move is the
+   * default driver otherwise, so pressing a key never has to fight an autopiloted path. */
+  private resolveMoveIntent(): MoveIntent {
+    const keyboard = this.controls.intent;
+    if (keyboard.dir !== null) {
+      this.clickToMove.clear();
+      return keyboard;
+    }
+    const dir = this.clickToMove.currentDirection;
+    return dir !== null ? { dir, run: this.controls.isRunHeld } : { dir: null, run: false };
+  }
+
+  private replanClickToMove(s: Session): void {
+    const dest = this.clickToMove.destinationTile;
+    const owner = this.clickToMove.currentOwner;
+    if (!dest || !owner) return;
+    const from = { x: s.predictor.current.tileX, y: s.predictor.current.tileY };
+    this.clickToMove.moveTo(from, dest, this.buildDynamicWorld(s), owner);
+  }
+
+  /** The static map plus every currently-known living mob/remote-player tile as a soft
+   * obstacle — click-to-move reuses the exact `Walkability` contract `stepMovement` itself
+   * consumes, so a planned route is never stricter or looser than what the server will accept. */
+  private buildDynamicWorld(s: Session): Walkability {
+    const blocked = new Set<string>();
+    for (const m of s.mobs.values()) if (m.hp > 0 && m.sprite.visualTile) blocked.add(`${m.sprite.visualTile.x},${m.sprite.visualTile.y}`);
+    for (const r of s.remotes.values()) if (r.hp > 0 && r.sprite.visualTile) blocked.add(`${r.sprite.visualTile.x},${r.sprite.visualTile.y}`);
+    const map = s.map.model;
+    return { isWalkable: (x, y, fromX, fromY) => map.isWalkable(x, y, fromX, fromY) && !blocked.has(`${x},${y}`) };
+  }
+
+  /** Small, brief, non-circular destination mark — just enough feedback to show where a click landed. */
+  private showDestinationMarker(tile: { x: number; y: number }, s: Session): void {
+    this.destinationMarker?.destroy();
+    const [fx, fy] = s.map.tileFoot(tile.x, tile.y);
+    const g = this.add.graphics({ x: fx, y: fy }).setDepth(fy - 0.2);
+    const r = 5;
+    g.lineStyle(1, 0xf0e6c8, 0.9);
+    g.beginPath();
+    g.moveTo(0, -r);
+    g.lineTo(r, 0);
+    g.lineTo(0, r);
+    g.lineTo(-r, 0);
+    g.closePath();
+    g.strokePath();
+    this.destinationMarker = g;
+    this.tweens.add({
+      targets: g,
+      alpha: 0,
+      duration: 450,
+      delay: 150,
+      onComplete: () => {
+        g.destroy();
+        if (this.destinationMarker === g) this.destinationMarker = null;
+      },
+    });
   }
 
   // ---------- combat input ----------
@@ -400,32 +545,39 @@ export class WorldScene extends Phaser.Scene {
     // Tab would move browser focus out of the canvas, so the scene claims it.
     kb.addCapture(['TAB', 'ESC']);
     kb.on('keydown-TAB', () => this.cycleTarget());
-    kb.on('keydown-ESC', () => this.selectTarget(null));
-    SKILL_SLOTS.forEach((slot, i) => {
-      if (slot.id === 'strike') return; // Numpad1 (InputController) and the hotbar click own this now
-      const key = DIGIT_KEYS[i];
-      if (key) kb.on(`keydown-${key}`, () => this.useSkill(slot.id));
+    kb.on('keydown-ESC', () => {
+      if (this.mapGuide.isOpen) this.mapGuide.close();
+      else this.lockTarget(null);
+    });
+    DIGIT_KEYS.forEach((key, i) => {
+      kb.on(`keydown-${key}`, () => {
+        const skill = this.hud.skillAt(i);
+        if (skill !== undefined) this.useSkill(skill?.id ?? null);
+      });
     });
   }
 
-  private useSkill(id: string): void {
-    const slot = SKILL_SLOTS.find((entry) => entry.id === id);
+  /** `skillId === null` is the no-class "Strike" fallback (the old generic basic attack);
+   * anything else is cast through the real skill system. */
+  private useSkill(skillId: string | null): void {
     const s = this.session;
-    if (!slot || !s) return;
-    if (slot.locked) {
-      this.floatOverPlayer(`${slot.name} not learned`, 'miss');
+    if (!s) return;
+    if (skillId === null) {
+      this.attemptAttack(this.targeting.effectiveTargetId ?? undefined);
       return;
     }
-    this.attemptAttack();
+    this.castSkill(skillId, this.targeting.effectiveTargetId ?? undefined);
   }
 
   /**
-   * Mouse-directed basic attack: no target selection required. Sends the
-   * attack to the server (which alone decides cooldown/range/damage), and
-   * optimistically plays the local swing right away for responsiveness — the
-   * same cosmetic path a remote player's broadcast 'attack' event uses.
+   * Basic attack attempt. Sends it to the server (which alone decides cooldown/range/damage),
+   * and optimistically plays the local swing right away for responsiveness — the same cosmetic
+   * path a remote player's broadcast 'attack' event uses. With a live `targetId`, the server
+   * recomputes the swing's real direction from the target's position (see World.resolveAttackAim)
+   * instead of trusting `aim`, so this lands regardless of which way the mouse happens to be
+   * pointed — `aim` is sent only as the untargeted fallback.
    */
-  private attemptAttack(): void {
+  private attemptAttack(targetId?: string): void {
     const s = this.session;
     if (!s || !this.myId) return;
     if (s.predictor.current.hp <= 0) return; // dead: no attacking
@@ -434,20 +586,75 @@ export class WorldScene extends Phaser.Scene {
     if (now - this.lastAttackAt < cooldownMs) return; // client-side mirror only; server re-validates
     this.lastAttackAt = now;
     this.attackSeq += 1;
-    this.net.send({ type: 'attack', seq: this.attackSeq, aim: this.aimDirection });
-    this.hud.flashSlot(0);
+    this.net.send({ type: 'attack', seq: this.attackSeq, aim: this.aimDirection, targetId });
+    this.hud.flashSkill(null);
     this.onAttackEvent(s, { kind: 'attack', sourceId: this.myId, aim: this.aimDirection });
   }
 
-  /** Per-frame HUD work: cooldown sweep, XP display, target ring position. */
+  /**
+   * Skill-cast attempt. Sends it to the server (which alone decides unlock level, cooldown,
+   * resource and effect), and optimistically plays the cast locally right away, same pattern as
+   * attemptAttack — see onCastEvent for the animation/VFX this drives, both here and for a
+   * remote player's/mob's broadcast 'cast' event.
+   */
+  private castSkill(skillId: string, targetId?: string): void {
+    const s = this.session;
+    if (!s || !this.myId) return;
+    if (s.predictor.current.hp <= 0) return;
+    const skill = this.content.skills.find((sk) => sk.id === skillId);
+    if (!skill) return;
+    const now = performance.now();
+    const cooldownMs = skill.cooldown * 1000;
+    const last = this.lastCastAt.get(skillId) ?? -Infinity;
+    if (now - last < cooldownMs) return; // client-side mirror only; server re-validates
+    this.lastCastAt.set(skillId, now);
+    this.castSeq += 1;
+    this.net.send({ type: 'cast', seq: this.castSeq, skillId, aim: this.aimDirection, aimDeg: this.aimDegrees, targetId });
+    this.hud.flashSkill(skillId);
+    this.onCastEvent(s, { kind: 'cast', sourceId: this.myId, aim: this.aimDirection, skillId, targetId });
+  }
+
+  /**
+   * Hover-to-attack: drives the current effective target (lock or hover) every frame — faces
+   * it, approaches if out of range (unless the player has their own path going), and attacks on
+   * cooldown once in range. Does nothing with no target, a dead target, or while dead itself.
+   */
+  private updateHoverCombat(s: Session): void {
+    if (s.predictor.current.hp <= 0) return;
+    const targetId = this.targeting.effectiveTargetId;
+    if (!targetId) return;
+    const target = s.mobs.get(targetId);
+    const targetTile = target?.sprite.visualTile;
+    if (!target || target.hp <= 0 || !targetTile) return;
+
+    const foot = target.sprite.footPosition;
+    const myFoot = s.sprite.footPosition;
+    const dx = foot.x - myFoot.x, dy = foot.y - myFoot.y;
+    this.aimDirection = snapAngleToDirection(dx, dy);
+    this.aimDegrees = angleOfVector(dx, dy);
+
+    const me = s.predictor.current;
+    const distanceTiles = Math.hypot(targetTile.x - me.tileX, targetTile.y - me.tileY);
+    if (distanceTiles <= this.myWeapon.rangeTiles) {
+      if (this.clickToMove.currentOwner === 'auto') this.clickToMove.clear(); // close enough: stop approaching
+      this.useSkill(this.hud.skillAt(0)?.id ?? null);
+    } else if (!this.clickToMove.isActive || this.clickToMove.currentOwner === 'auto') {
+      this.clickToMove.moveTo({ x: me.tileX, y: me.tileY }, targetTile, this.buildDynamicWorld(s), 'auto');
+    }
+  }
+
+  /** Per-frame HUD work: cooldown sweep, resource/XP display, target ring position. */
   private updateCombatUi(): void {
     const s = this.session;
     if (!s) return;
-    const progress = Math.min(1, (performance.now() - this.lastAttackAt) / (this.myWeapon.cooldownTicks * this.tickLength));
-    this.hud.setCooldown(0, progress);
-    this.hud.updateXp(this.progression.xp, this.progression.xpForLevel, this.progression.level);
+    const basicProgress = Math.min(1, (performance.now() - this.lastAttackAt) / (this.myWeapon.cooldownTicks * this.tickLength));
+    this.hud.setSkills(this.content.skills, this.myClassId, s.predictor.current.level); // no-op unless level just changed
+    this.hud.updateCooldowns(this.you.cooldownsMs, basicProgress);
+    this.hud.updatePlayerMp(this.you.resourceCurrent, this.you.resourceMax);
+    this.hud.updateXp(this.you.xp, this.you.xpForLevel, s.predictor.current.level);
 
-    const target = this.selectedTargetId ? s.mobs.get(this.selectedTargetId) : null;
+    const targetId = this.targeting.effectiveTargetId;
+    const target = targetId ? s.mobs.get(targetId) : null;
     if (!target) {
       this.targetRing?.setVisible(false);
       return;
@@ -470,14 +677,17 @@ export class WorldScene extends Phaser.Scene {
     return ring;
   }
 
-  /** Selects a mob (or clears the target with `null`) for the target-frame *display* only — never gates attacks. */
-  private selectTarget(mobId: string | null): void {
+  /** Explicitly locks a mob as the target (or clears the lock with `null`) — persists through
+   * the pointer leaving, unlike a bare hover. Drives the target-frame display; combat itself
+   * reads `targeting.effectiveTargetId`, not this call, so it never gates attacks on its own. */
+  private lockTarget(mobId: string | null): void {
     const s = this.session;
     if (!s) return;
-    if (this.selectedTargetId && this.selectedTargetId !== mobId) {
-      s.mobs.get(this.selectedTargetId)?.sprite.removeLabel();
+    const previous = this.targeting.effectiveTargetId;
+    if (previous && previous !== mobId) {
+      s.mobs.get(previous)?.sprite.removeLabel();
     }
-    this.selectedTargetId = mobId;
+    this.targeting.lock(mobId);
     if (!mobId) {
       this.hud.clearTarget();
       this.targetRing?.setVisible(false);
@@ -487,7 +697,7 @@ export class WorldScene extends Phaser.Scene {
     const entity = s.mobs.get(mobId);
     const def = entity?.kind ? this.content.mobs.mobs[entity.kind] : undefined;
     if (!entity || !def?.combat) {
-      this.selectedTargetId = null;
+      this.targeting.lock(null);
       return;
     }
     const hp = entity.hp;
@@ -502,7 +712,18 @@ export class WorldScene extends Phaser.Scene {
     });
   }
 
-  /** Tab-target: the nearest living mob on screen, cycling through the rest. Display only. */
+  /** Clears a lock/hover pointing at `id` (it died-and-hid, or left interest range), and clears
+   * the HUD/ring too if it was the effective target. */
+  private forgetTarget(id: string): void {
+    const wasEffective = this.targeting.effectiveTargetId === id;
+    this.targeting.forget(id);
+    if (wasEffective) {
+      this.hud.clearTarget();
+      this.targetRing?.setVisible(false);
+    }
+  }
+
+  /** Tab-target: the nearest living mob on screen, cycling through the rest. Locks it, same as a click. */
   private cycleTarget(): void {
     const s = this.session;
     if (!s) return;
@@ -519,9 +740,9 @@ export class WorldScene extends Phaser.Scene {
       })
       .sort((a, b) => a.distance - b.distance);
     if (candidates.length === 0) return;
-    const currentIndex = candidates.findIndex((c) => c.id === this.selectedTargetId);
+    const currentIndex = candidates.findIndex((c) => c.id === this.targeting.effectiveTargetId);
     const next = candidates[(currentIndex + 1) % candidates.length];
-    if (next) this.selectTarget(next.id);
+    if (next) this.lockTarget(next.id);
   }
 
   // ---------- server-driven combat rendering ----------
@@ -529,8 +750,10 @@ export class WorldScene extends Phaser.Scene {
   private handleCombatEvent(s: Session, e: CombatEvent): void {
     switch (e.kind) {
       case 'attack': return this.onAttackEvent(s, e);
+      case 'cast': return this.onCastEvent(s, e);
       case 'windup': return this.onWindupEvent(s, e);
       case 'hit': return this.onHitEvent(s, e);
+      case 'heal': return this.onHealEvent(s, e);
       case 'death': return this.onDeathEvent(s, e);
       case 'projectile': return this.onProjectileEvent(s, e);
       case 'aggro': return; // no visual of its own; the windup telegraph that follows carries it
@@ -541,12 +764,78 @@ export class WorldScene extends Phaser.Scene {
     const sprite = this.findEntitySprite(s, e.sourceId);
     if (!sprite) return;
     const aim = e.aim ?? sprite.facing;
-    sprite.playCombat('attack', aim);
+    const weapon = this.resolveWeapon(s, e.sourceId);
+    sprite.request('attacking', weapon.kind === 'ranged' ? 'attack_ranged' : 'attack', aim);
     const delta = DIRECTION_DELTAS[aim];
     const foot = sprite.footPosition;
     const fx = foot.x + delta.dx * 0.8 * s.map.tileSize.width;
     const fy = foot.y + delta.dy * 0.8 * s.map.tileSize.height;
     this.effects.play('slash', fx, fy - s.map.tileSize.height * 0.5, fy + 1);
+  }
+
+  /**
+   * Renders a skill cast: plays the skill's own clip (if it has one — passives don't), then
+   * spawns its VFX archetype at hit_ms (impact-style skills) or activate_ms (everything else,
+   * including self-casts with no real "hit"), parented to the clip's own attach point for the
+   * frame nearest that moment. Fires for the local player's own optimistic cast and for every
+   * remote player's/mob's broadcast 'cast' event alike (see findEntitySprite).
+   */
+  private onCastEvent(s: Session, e: CombatEvent): void {
+    const sprite = this.findEntitySprite(s, e.sourceId);
+    const skill = e.skillId ? this.content.skills.find((sk) => sk.id === e.skillId) : undefined;
+    if (!sprite || !skill) return;
+    const aim = e.aim ?? sprite.facing;
+    if (skill.animation.clip) sprite.playSkillClip(skill.animation.clip, aim, skill.category === 'ultimate' ? 'attacking' : 'casting');
+    const delayMs = skill.animation.hit_ms > 0 ? skill.animation.hit_ms : skill.animation.activate_ms;
+    this.time.delayedCall(Math.max(0, delayMs), () => {
+      if (this.session === s) this.spawnSkillVfx(sprite, skill);
+    });
+  }
+
+  /** Spawns one skill's VFX archetype, tinted per-class by the pre-rendered sheet itself (no
+   * runtime tinting needed), positioned at the caster's "chest" attach point for whatever
+   * clip/direction/frame is playing right now — falling back to the sprite's own position if the
+   * clip has no attach data for this frame (e.g. a passive with no clip at all). */
+  private spawnSkillVfx(sprite: EntitySprite, skill: Skill): void {
+    const { classId, archetype } = parseVfxRef(skill.vfx);
+    const archetypeDef = this.content.vfxManifest.archetypes[archetype];
+    if (!archetypeDef) {
+      console.warn(`[vfx] unknown archetype "${archetype}" (skill ${skill.id})`);
+      return;
+    }
+    const attach = sprite.attachPoint('chest');
+    const foot = sprite.footPosition;
+    const x = attach?.x ?? foot.x;
+    const y = attach?.y ?? foot.y - 24;
+    const depthY = attach ? foot.y + attach.depth * -0.01 : foot.y;
+    const img = this.add.sprite(x, y, keys.vfxSheet(classId, archetype)).setOrigin(0.5, 0.5).setDepth(depthY);
+    img.play(keys.vfxAnim(classId, archetype));
+    if (archetypeDef.loop) {
+      this.activeLoopingVfx.add(img);
+      this.time.delayedCall(LOOPING_VFX_FALLBACK_MS, () => {
+        if (!img.active) return;
+        this.activeLoopingVfx.delete(img);
+        img.destroy();
+      });
+    } else {
+      img.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => img.destroy());
+    }
+  }
+
+  private onHealEvent(s: Session, e: CombatEvent): void {
+    if (!e.targetId) return;
+    const target = this.resolveTarget(s, e.targetId);
+    if (!target) return;
+    const hpAfter = e.hpAfter ?? 0;
+    const foot = target.sprite.footPosition;
+    this.combatText.spawn(foot.x, target.sprite.headY - 6, `+${e.healing ?? 0}`, 'heal');
+    target.sprite.setHealth(hpAfter, target.maxHp);
+    if (e.targetId === this.myId) this.hud.updatePlayerHp(hpAfter, target.maxHp);
+    const mobEntity = s.mobs.get(e.targetId);
+    if (mobEntity) mobEntity.hp = hpAfter;
+    const playerEntity = s.remotes.get(e.targetId);
+    if (playerEntity) playerEntity.hp = hpAfter;
+    if (this.targeting.effectiveTargetId === e.targetId) this.hud.updateTargetHp(hpAfter, target.maxHp);
   }
 
   private onWindupEvent(s: Session, e: CombatEvent): void {
@@ -563,7 +852,7 @@ export class WorldScene extends Phaser.Scene {
     if (!target) return;
     const hpAfter = e.hpAfter ?? 0;
 
-    target.sprite.playCombat('hit', target.sprite.facing);
+    target.sprite.request('hit', 'hit', target.sprite.facing);
     target.sprite.flashHit();
     const foot = target.sprite.footPosition;
     this.effects.play(target.attackHitEffect ?? 'impact', foot.x, foot.y - target.frameHeight * 0.45, foot.y + 1);
@@ -577,16 +866,15 @@ export class WorldScene extends Phaser.Scene {
     const playerEntity = s.remotes.get(e.targetId);
     if (playerEntity) playerEntity.hp = hpAfter;
 
-    if (e.sourceId === this.myId && e.targetId !== this.myId && s.mobs.has(e.targetId)) this.selectTarget(e.targetId);
-    if (this.selectedTargetId === e.targetId) this.hud.updateTargetHp(hpAfter, target.maxHp);
+    if (e.sourceId === this.myId && e.targetId !== this.myId && s.mobs.has(e.targetId)) this.lockTarget(e.targetId);
+    if (this.targeting.effectiveTargetId === e.targetId) this.hud.updateTargetHp(hpAfter, target.maxHp);
   }
 
   private onDeathEvent(s: Session, e: CombatEvent): void {
     if (!e.targetId) return;
     const target = this.resolveTarget(s, e.targetId);
     if (target) {
-      target.sprite.playCombat('death', target.sprite.facing);
-      target.sprite.setDefeated(true);
+      target.sprite.request('dead', 'death', target.sprite.facing);
       target.sprite.setHealth(null);
     }
 
@@ -601,11 +889,12 @@ export class WorldScene extends Phaser.Scene {
 
     if (e.sourceId === this.myId && mobEntity) {
       const def = mobEntity.kind ? this.content.mobs.mobs[mobEntity.kind] : undefined;
-      if (def?.combat) this.progression.awardXp(def.combat);
+      // XP itself is server-authoritative now (World.ts awardXp) — the next snapshot's `you.xp`
+      // already reflects it; this is just the "+XP" floatie's cue.
       this.time.delayedCall(260, () => {
         if (this.session === s) this.floatOverPlayer('+XP', 'xp');
       });
-      if (this.selectedTargetId === e.targetId && def?.combat) {
+      if (this.targeting.effectiveTargetId === e.targetId && def?.combat) {
         this.hud.setTarget({ name: def.name, level: def.level ?? 1, subtitle: 'Defeated', hp: 0, maxHp: def.combat.maxHp, def });
       }
     }
@@ -614,6 +903,11 @@ export class WorldScene extends Phaser.Scene {
   private onProjectileEvent(s: Session, e: CombatEvent): void {
     const p = e.projectile;
     if (!p) return;
+    const fxDef = this.content.effects.effects['projectile-bolt'];
+    if (!fxDef) {
+      console.warn('[effects] missing "projectile-bolt" in effects.json');
+      return;
+    }
     const mag = Math.hypot(p.dirX, p.dirY) || 1;
     const travelSeconds = p.rangeTiles / p.speedTilesPerSec;
     const [fx, fy] = s.map.tileFoot(p.fromX, p.fromY);
@@ -621,7 +915,11 @@ export class WorldScene extends Phaser.Scene {
     const toY = p.fromY + (p.dirY / mag) * p.rangeTiles;
     const [tx, ty] = s.map.tileFoot(toX, toY);
     const riseY = s.map.tileSize.height * 0.3;
-    const bolt = this.add.circle(fx, fy - riseY, 3, 0xfff066, 1).setDepth(fy + 1);
+    const bolt = this.add
+      .image(fx, fy - riseY, keys.effectSheet(fxDef.sheet, fxDef.frameWidth, fxDef.frameHeight), fxDef.startFrame)
+      .setOrigin(0.5, 0.5)
+      .setRotation(Math.atan2(p.dirY, p.dirX))
+      .setDepth(fy + 1);
     this.tweens.add({
       targets: bolt,
       x: tx,
@@ -633,9 +931,17 @@ export class WorldScene extends Phaser.Scene {
   }
 
   private showWindupTelegraph(sprite: EntitySprite, durationMs: number): void {
+    const fxDef = this.content.effects.effects['windup-telegraph'];
+    if (!fxDef) {
+      console.warn('[effects] missing "windup-telegraph" in effects.json');
+      return;
+    }
     const foot = sprite.footPosition;
-    const marker = this.add.circle(foot.x, foot.y - 2, 6, 0xff3030, 0.5).setDepth(foot.y - 0.4);
-    this.tweens.add({ targets: marker, alpha: { from: 0.2, to: 0.7 }, duration: 160, yoyo: true, repeat: Math.max(0, Math.floor(durationMs / 320)) });
+    const marker = this.add
+      .image(foot.x, foot.y - 2, keys.effectSheet(fxDef.sheet, fxDef.frameWidth, fxDef.frameHeight), fxDef.startFrame)
+      .setOrigin(0.5, 0.5)
+      .setDepth(foot.y - 0.4);
+    this.tweens.add({ targets: marker, alpha: { from: 0.3, to: 1 }, duration: 160, yoyo: true, repeat: Math.max(0, Math.floor(durationMs / 320)) });
     this.time.delayedCall(durationMs, () => marker.destroy());
   }
 
@@ -661,6 +967,22 @@ export class WorldScene extends Phaser.Scene {
       return { sprite: playerEntity.sprite, maxHp: def.combat?.maxHp ?? 100, frameHeight: def.frameHeight, attackHitEffect: def.effects?.attackHit };
     }
     return null;
+  }
+
+  /** Weapon of whoever just attacked (local player, remote player, or mob) — decides melee vs ranged animation. */
+  private resolveWeapon(s: Session, sourceId: string): WeaponDefinition {
+    if (sourceId === this.myId) return this.myWeapon;
+    const mobEntity = s.mobs.get(sourceId);
+    if (mobEntity?.kind) {
+      const def = this.content.mobs.mobs[mobEntity.kind];
+      if (def) return getWeapon(def);
+    }
+    const playerEntity = s.remotes.get(sourceId);
+    if (playerEntity) {
+      const info = s.infos.get(sourceId);
+      return getWeapon(findCharacter(this.content, info?.characterId ?? ''));
+    }
+    return DEFAULT_WEAPON;
   }
 
   private floatOverPlayer(text: string, kind: 'miss' | 'xp'): void {
@@ -726,5 +1048,5 @@ export class WorldScene extends Phaser.Scene {
 
 /** Mobs block movement like players; give the predictor their movement fields. */
 function mobAsMover(m: MobState): PlayerState {
-  return { ...m, gait: 'walk', turnTicksLeft: 0 };
+  return { ...m, gait: 'walk', turnTicksLeft: 0, level: 1 };
 }

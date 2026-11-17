@@ -90,6 +90,32 @@
         "y": 0.5
       },
       "layer": "below"
+    },
+    "windup-telegraph": {
+      "sheet": "effects/combat.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "startFrame": 11,
+      "frames": 1,
+      "frameRate": 1,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "layer": "above"
+    },
+    "projectile-bolt": {
+      "sheet": "effects/combat.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "startFrame": 12,
+      "frames": 1,
+      "frameRate": 1,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "layer": "above"
     }
   }
 }

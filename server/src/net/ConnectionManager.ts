@@ -63,7 +63,10 @@ export class ConnectionManager {
       for (const m of near.mobs) nearIds.add(m.id);
       const events = world.pendingEvents.filter((e) => nearIds.has(e.sourceId) || (e.targetId !== undefined && nearIds.has(e.targetId)));
       conn.socket.send(
-        JSON.stringify({ type: 'snapshot', tick: world.tick, ackSeq: player.lastAppliedSeq, players: near.players, mobs: near.mobs, events }),
+        JSON.stringify({
+          type: 'snapshot', tick: world.tick, ackSeq: player.lastAppliedSeq,
+          players: near.players, mobs: near.mobs, events, you: world.playerPrivateState(player),
+        }),
       );
     }
   }
@@ -106,6 +109,7 @@ export class ConnectionManager {
           yourId: player.id,
           rules: rulesFromConfig(this.config),
           ...this.worlds.zoneSnapshot(player.zoneId),
+          you: this.worlds.zone(player.zoneId)!.playerPrivateState(player),
         });
         this.broadcastInZone(player.zoneId, { type: 'playerJoined', player: player.info }, conn);
         log(
@@ -121,7 +125,12 @@ export class ConnectionManager {
       }
       case 'attack': {
         if (!conn.player) return;
-        this.worlds.zone(conn.player.zoneId)?.queueAttack(conn.player.id, msg.seq, msg.aim);
+        this.worlds.zone(conn.player.zoneId)?.queueAttack(conn.player.id, msg.seq, msg.aim, msg.targetId);
+        return;
+      }
+      case 'cast': {
+        if (!conn.player) return;
+        this.worlds.zone(conn.player.zoneId)?.queueCast(conn.player.id, msg.seq, msg.skillId, msg.aim, msg.aimDeg, msg.targetId);
         return;
       }
     }
@@ -130,7 +139,9 @@ export class ConnectionManager {
   private onTransfer({ player, fromZone, toZone }: ZoneTransfer): void {
     const conn = [...this.connections].find((c) => c.player === player);
     this.broadcastInZone(fromZone, { type: 'playerLeft', id: player.id }, conn);
-    if (conn) this.send(conn, { type: 'zoneChange', ...this.worlds.zoneSnapshot(toZone) });
+    if (conn) {
+      this.send(conn, { type: 'zoneChange', ...this.worlds.zoneSnapshot(toZone), you: this.worlds.zone(toZone)!.playerPrivateState(player) });
+    }
     this.broadcastInZone(toZone, { type: 'playerJoined', player: player.info }, conn);
   }
 

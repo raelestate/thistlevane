@@ -6,6 +6,13 @@
 import { DIRECTIONS, type Direction } from './protocol';
 import { DIRECTION_DELTAS, type Walkability } from './movement';
 
+export interface CombatStats {
+  maxHp: number;
+  maxMp: number;
+  attack: number;
+  defense: number;
+}
+
 export interface WeaponDefinition {
   kind: 'melee' | 'ranged';
   /** Melee reach, or ranged max travel distance, in tiles. */
@@ -31,6 +38,8 @@ export interface AggroConfig {
   /** Telegraph timer before an attack lands; damage ties to this, never to animation start. */
   attackWindupTicks: number;
   respawnTicks: number;
+  /** How long (ticks) a corpse stays in snapshots after death before it's hidden until respawn. */
+  corpseTicks?: number;
 }
 
 export const DEFAULT_AGGRO: AggroConfig = {
@@ -38,6 +47,7 @@ export const DEFAULT_AGGRO: AggroConfig = {
   leashRangeTiles: 7,
   attackWindupTicks: 12,
   respawnTicks: 100,
+  corpseTicks: 40,
 };
 
 export function getWeapon(def: { weapon?: WeaponDefinition }): WeaponDefinition {
@@ -57,11 +67,15 @@ function angleDifference(a: number, b: number): number {
   return diff > 180 ? 360 - diff : diff;
 }
 
-function angleOfVector(dx: number, dy: number): number {
+/** Continuous angle (degrees, 0-360) of a vector — exported so callers that need a real,
+ * unsnapped aim angle (e.g. free-aim skill targeting) don't have to reimplement this. */
+export function angleOfVector(dx: number, dy: number): number {
   return normalizeDegrees((Math.atan2(dy, dx) * 180) / Math.PI);
 }
 
-const DIRECTION_ANGLES: Record<Direction, number> = Object.fromEntries(
+/** The continuous angle each of the 8 grid directions represents — exported so a caller with
+ * only a Direction (not a raw aim angle) can still call meleeHitTest, which takes degrees. */
+export const DIRECTION_ANGLES: Record<Direction, number> = Object.fromEntries(
   DIRECTIONS.map((d) => [d, angleOfVector(DIRECTION_DELTAS[d].dx, DIRECTION_DELTAS[d].dy)]),
 ) as Record<Direction, number>;
 
@@ -82,15 +96,17 @@ export function snapAngleToDirection(dx: number, dy: number): Direction {
 }
 
 /**
- * Does a melee swing aimed at `aim` from `attacker` reach `target`? Works in
- * continuous tile-space (not tile enumeration): a distance check against
- * `weapon.rangeTiles`, an angle check against `weapon.arcDegrees`, and a
- * line-of-sight check so a swing can't reach through a wall. `world` is
- * required (not optional) so a call site can't forget the wall check.
+ * Does a melee swing aimed at `aimDeg` (a real, continuous angle in degrees — pass
+ * `DIRECTION_ANGLES[dir]` for a caller that only has a snapped 8-way Direction, e.g. the grid
+ * basic-attack path, so its behaviour is bit-for-bit unchanged) from `attacker` reach `target`?
+ * Works in continuous tile-space (not tile enumeration): a distance check against
+ * `weapon.rangeTiles`, an angle check against `weapon.arcDegrees`, and a line-of-sight check so
+ * a swing can't reach through a wall. `world` is required (not optional) so a call site can't
+ * forget the wall check.
  */
 export function meleeHitTest(
   attacker: { x: number; y: number },
-  aim: Direction,
+  aimDeg: number,
   target: { x: number; y: number },
   weapon: WeaponDefinition,
   world: Walkability,
@@ -100,9 +116,14 @@ export function meleeHitTest(
   const distance = Math.hypot(dx, dy);
   if (distance > weapon.rangeTiles) return false;
   if (distance < 1e-6) return true; // standing on the attacker's own spot: never out of arc
-  const diff = angleDifference(angleOfVector(dx, dy), DIRECTION_ANGLES[aim]);
+  const diff = angleDifference(angleOfVector(dx, dy), aimDeg);
   if (diff > weapon.arcDegrees / 2) return false;
   return hasLineOfSight(attacker, target, world);
+}
+
+/** Is `target` within `radius` (continuous tile distance, a true circle — not a cone) of `point`? */
+export function withinRadius(point: { x: number; y: number }, target: { x: number; y: number }, radius: number): boolean {
+  return Math.hypot(target.x - point.x, target.y - point.y) <= radius;
 }
 
 /**

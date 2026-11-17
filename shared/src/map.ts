@@ -84,14 +84,52 @@ export type MapLayerNames = GameConfig['world']['layers'];
 
 export interface SpawnPoint { name: string; tileX: number; tileY: number }
 export interface TileRect { x: number; y: number; w: number; h: number }
-export interface Portal extends TileRect { name: string; targetZone: string; targetSpawn: string }
-export interface MobSpawn extends TileRect { mob: string; count: number }
+export interface Portal extends TileRect {
+  /** Unique within its zone; defaults to `name` if no explicit `id` property is set. */
+  id: string;
+  name: string;
+  targetZone: string;
+  targetSpawn: string;
+  /** Advisory only in this version: shown by the map guide, not enforced — there is no
+   * server-side player level to check it against yet. */
+  requiredLevel?: number;
+  /** Advisory only, same as requiredLevel — free-form tags for a future quest/item system. */
+  requirements?: string[];
+}
+export interface MobSpawn extends TileRect {
+  mob: string;
+  count: number;
+  /** Per-spawn-group overrides; fall back to the mob definition's own aggro.* values when unset. */
+  respawnTicks?: number;
+  corpseTicks?: number;
+}
 
 /** Tiled stores flip flags in the top bits of a gid. */
 const GID_MASK = 0x1fffffff;
 
 export function propertyValue(props: TiledProperty[] | undefined, name: string): unknown {
   return props?.find((p) => p.name === name)?.value;
+}
+
+function numberProperty(props: TiledProperty[] | undefined, name: string): number | undefined {
+  const value = propertyValue(props, name);
+  return typeof value === 'number' ? value : undefined;
+}
+
+/** Tiled has no native string-array property type, so one is stored as a JSON string, same
+ * convention as tile reaction animations (client/src/world/MapView.ts's parseFrames). A
+ * malformed value is treated as "not set" rather than a load-time error — this field is
+ * advisory/display-only, not worth failing the whole map over. */
+function stringArrayProperty(props: TiledProperty[] | undefined, name: string): string[] | undefined {
+  const value = propertyValue(props, name);
+  if (typeof value !== 'string') return undefined;
+  try {
+    const parsed = JSON.parse(value) as unknown;
+    if (Array.isArray(parsed) && parsed.every((v) => typeof v === 'string')) return parsed as string[];
+  } catch {
+    /* treated as not set, below */
+  }
+  return undefined;
 }
 
 export class MapModel implements Walkability {
@@ -181,11 +219,28 @@ export class MapModel implements Walkability {
       .filter((p) => this.isWalkable(p.tileX, p.tileY));
     this.mobSpawns = (spawnLayer?.objects ?? [])
       .filter((o) => typeOf(o) === layerNames.mobSpawnType)
-      .map((o) => ({ ...toRect(o), mob: String(propertyValue(o.properties, 'mob') ?? o.name ?? ''), count: Number(propertyValue(o.properties, 'count') ?? 1) }))
+      .map((o) => ({
+        ...toRect(o),
+        mob: String(propertyValue(o.properties, 'mob') ?? o.name ?? ''),
+        count: Number(propertyValue(o.properties, 'count') ?? 1),
+        respawnTicks: numberProperty(o.properties, 'respawnTicks'),
+        corpseTicks: numberProperty(o.properties, 'corpseTicks'),
+      }))
       .filter((m) => m.mob && m.count > 0);
     this.portals = (objectLayer(layerNames.portals)?.objects ?? [])
       .filter((o) => typeOf(o) === layerNames.portalType)
-      .map((o) => ({ ...toRect(o), name: o.name ?? '', targetZone: String(propertyValue(o.properties, 'targetZone') ?? ''), targetSpawn: String(propertyValue(o.properties, 'targetSpawn') ?? '') }))
+      .map((o) => {
+        const name = o.name ?? '';
+        return {
+          ...toRect(o),
+          id: String(propertyValue(o.properties, 'id') ?? name),
+          name,
+          targetZone: String(propertyValue(o.properties, 'targetZone') ?? ''),
+          targetSpawn: String(propertyValue(o.properties, 'targetSpawn') ?? ''),
+          requiredLevel: numberProperty(o.properties, 'requiredLevel'),
+          requirements: stringArrayProperty(o.properties, 'requirements'),
+        };
+      })
       .filter((p) => p.targetZone);
   }
 

@@ -4,3 +4,8 @@ export * from './protocol';
 export * from './movement';
 export * from './map';
 export * from './combat';
+export * from './pathfinding';
+export * from './classes';
+export * from './skills';
+export * from './vfx';
+export * from './progression';

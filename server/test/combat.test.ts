@@ -7,9 +7,9 @@
 import { after, before, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { fileURLToPath } from 'node:url';
-import { hasLineOfSight, tickMs, type Direction } from '@thistlevane/shared';
+import { DEFAULT_AGGRO, hasLineOfSight, tickMs, type Direction, type MobSpawn, type Walkability } from '@thistlevane/shared';
 import { startGameServer, type RunningGameServer } from '../src/GameServer';
-import type { Mob } from '../src/world/Mob';
+import { Mob, type MobTickContext } from '../src/world/Mob';
 import type { World } from '../src/world/World';
 import { BotClient } from './helpers/BotClient';
 
@@ -228,6 +228,105 @@ test('a player who dies is frozen, cannot act, and respawns at full health', asy
   await alice.close();
 });
 
+test('a killed mob stops blocking its tile immediately, hides from snapshots once its corpse window elapses, and respawns at full health inside its home region', async () => {
+  const alice = await BotClient.join(server.port, 'Alice');
+  const w = world();
+  const mob = freshMeleeMob(w);
+  const player = w.players.get(alice.yourId)!;
+  const aggro = mob.def.aggro!;
+  const corpseTicks = aggro.corpseTicks ?? DEFAULT_AGGRO.corpseTicks!;
+  const maxHp = mob.def.combat!.maxHp;
+  const mobTile = { x: mob.state.tileX, y: mob.state.tileY };
+
+  const spot = cardinalOffsets(w, mob, 1)[0]!;
+  player.resetAt(spot.x, spot.y, server.content.config.movement);
+  mob.state.hp = 0;
+
+  // Collision: the corpse must not block the tile it died on.
+  alice.input(spot.aim);
+  await sleep(TICK_MS * 6);
+  assert.deepEqual([player.state.tileX, player.state.tileY], [mobTile.x, mobTile.y], "walked straight onto the corpse's tile, unblocked");
+
+  // Briefly still visible (dead) right after death.
+  const deadSnap = await alice.nextSnapshot((s) => s.mobs.some((m) => m.id === mob.id));
+  assert.ok(deadSnap.mobs.find((m) => m.id === mob.id)!.hp <= 0, 'the corpse is visible, at 0 hp, just after death');
+
+  // Hidden once the corpse window elapses — well before the full respawn timer.
+  await sleep(TICK_MS * (corpseTicks + 10));
+  const hiddenSnap = await alice.nextSnapshot();
+  assert.ok(!hiddenSnap.mobs.some((m) => m.id === mob.id), 'the corpse is gone from snapshots once its corpse window elapses');
+
+  // Respawns at full health, inside its home region.
+  await sleep(TICK_MS * (aggro.respawnTicks - corpseTicks + 10));
+  assert.equal(mob.state.hp, maxHp, 'respawned at full health');
+  const inHome =
+    mob.state.tileX >= mob.home.x && mob.state.tileX < mob.home.x + mob.home.w &&
+    mob.state.tileY >= mob.home.y && mob.state.tileY < mob.home.y + mob.home.h;
+  assert.ok(inHome, 'respawned inside its home region');
+
+  await alice.close();
+});
+
+test('a mob_spawn region can override respawnTicks/corpseTicks for just that spawn group', () => {
+  const def = server.content.mobs.mobs['slime']!;
+  // slime's own aggro.respawnTicks is ~100 in mobs.json and has no corpseTicks at all — small,
+  // distinct override values here prove the per-spawn fields are what's actually being read.
+  const home: MobSpawn = { x: 0, y: 0, w: 3, h: 3, mob: 'slime', count: 1, respawnTicks: 5, corpseTicks: 2 };
+  const alwaysWalkable: Walkability = { isWalkable: () => true };
+  const ctx: MobTickContext = { world: alwaysWalkable, map: alwaysWalkable, players: new Map(), emit: () => {}, spawnProjectile: () => {} };
+  const mob = new Mob('test-mob', 'slime', def, home, 1, 1, () => 0.5);
+
+  mob.state.hp = 0;
+  mob.tick(ctx);
+  assert.ok(mob.isVisible, 'visible for the first tick of the overridden corpseTicks window');
+  mob.tick(ctx);
+  assert.ok(!mob.isVisible, 'hidden once the overridden corpseTicks window elapses, not the (much larger) mob-definition default');
+  mob.tick(ctx);
+  mob.tick(ctx);
+  assert.ok(mob.state.hp <= 0, 'not yet respawned');
+  mob.tick(ctx);
+  assert.equal(mob.state.hp, def.combat!.maxHp, 'respawned after the overridden respawnTicks, not the mob-definition default');
+  assert.ok(mob.isVisible, 'visible again once respawned');
+});
+
+test('a melee attack with a targetId lands even when the claimed aim points the wrong way', async () => {
+  const alice = await BotClient.join(server.port, 'Alice');
+  const w = world();
+  const mob = freshMeleeMob(w);
+  const player = w.players.get(alice.yourId)!;
+  const spot = cardinalOffsets(w, mob, 1)[0]!;
+  const wrongAim: Direction = (['up', 'down', 'left', 'right'] as const).find((d) => d !== spot.aim)!;
+  player.resetAt(spot.x, spot.y, server.content.config.movement);
+  const startHp = mob.state.hp;
+
+  alice.attack(wrongAim, mob.id);
+  const hitSnap = await alice.nextSnapshot((s) => s.events.some((e) => e.kind === 'hit' && e.sourceId === alice.yourId && e.targetId === mob.id));
+  const hit = hitSnap.events.find((e) => e.kind === 'hit' && e.targetId === mob.id)!;
+  assert.ok((hit.damage ?? 0) > 0, 'damage landed despite the claimed aim pointing away from the mob');
+  assert.equal(mob.state.hp, startHp - (hit.damage ?? 0), "server's own mob hp matches the reported damage");
+  const attackEvent = hitSnap.events.find((e) => e.kind === 'attack' && e.sourceId === alice.yourId)!;
+  assert.equal(attackEvent.aim, spot.aim, "the broadcast attack aim was recomputed toward the mob's real position, not the claimed one");
+
+  await alice.close();
+});
+
+test('a melee attack with a wrong aim and no targetId still misses (the untargeted path is deliberately unchanged)', async () => {
+  const alice = await BotClient.join(server.port, 'Alice');
+  const w = world();
+  const mob = freshMeleeMob(w);
+  const player = w.players.get(alice.yourId)!;
+  const spot = cardinalOffsets(w, mob, 1)[0]!;
+  const wrongAim: Direction = (['up', 'down', 'left', 'right'] as const).find((d) => d !== spot.aim)!;
+  player.resetAt(spot.x, spot.y, server.content.config.movement);
+  const startHp = mob.state.hp;
+
+  alice.attack(wrongAim); // no targetId
+  await sleep(TICK_MS * 4);
+  assert.equal(mob.state.hp, startHp, 'no damage: the claimed aim misses and there is no target to recompute from');
+
+  await alice.close();
+});
+
 test('PvP: a player can land a melee hit directly on another player', async () => {
   const alice = await BotClient.join(server.port, 'Alice');
   const bob = await BotClient.join(server.port, 'Bob');
@@ -245,6 +344,29 @@ test('PvP: a player can land a melee hit directly on another player', async () =
   const hitSnap = await alice.nextSnapshot((s) => s.events.some((e) => e.kind === 'hit' && e.sourceId === alice.yourId && e.targetId === bob.yourId));
   const hit = hitSnap.events.find((e) => e.kind === 'hit' && e.targetId === bob.yourId)!;
   assert.ok((hit.damage ?? 0) > 0, 'PvP damage was dealt');
+  assert.equal(bobP.state.hp, startHp - (hit.damage ?? 0), "Bob's server-side hp matches the reported PvP damage");
+
+  await alice.close();
+  await bob.close();
+});
+
+test('PvP: a targetId recomputes aim toward another player too, not just mobs', async () => {
+  const alice = await BotClient.join(server.port, 'Alice');
+  const bob = await BotClient.join(server.port, 'Bob');
+  await alice.nextSnapshot((s) => !!s.players.find((p) => p.id === bob.yourId));
+
+  const w = world();
+  const aliceP = w.players.get(alice.yourId)!;
+  const bobP = w.players.get(bob.yourId)!;
+
+  // Alice stands south of Bob (the real direction back to Bob is 'up'), but claims 'down'.
+  aliceP.resetAt(bobP.state.tileX, bobP.state.tileY + 1, server.content.config.movement);
+  const startHp = bobP.state.hp;
+
+  alice.attack('down', bob.yourId);
+  const hitSnap = await alice.nextSnapshot((s) => s.events.some((e) => e.kind === 'hit' && e.sourceId === alice.yourId && e.targetId === bob.yourId));
+  const hit = hitSnap.events.find((e) => e.kind === 'hit' && e.targetId === bob.yourId)!;
+  assert.ok((hit.damage ?? 0) > 0, 'PvP damage landed despite the claimed aim pointing away from Bob');
   assert.equal(bobP.state.hp, startHp - (hit.damage ?? 0), "Bob's server-side hp matches the reported PvP damage");
 
   await alice.close();

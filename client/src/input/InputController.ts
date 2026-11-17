@@ -16,18 +16,29 @@ export class InputController {
   private readonly runHeld = new Set<string>();
   private readonly attackCodes: Set<string>;
   private attackHeld = false;
+  private readonly mapGuideCodes: Set<string>;
+  private mapGuideHeld = false;
 
   /** Fired once per physical key press (not per OS key-repeat) when an attack binding goes down. */
   onAttackPressed: () => void = () => {};
+  /** Fired once per physical key press when a map-guide binding goes down. */
+  onMapGuidePressed: () => void = () => {};
 
   constructor(controls: Controls) {
     for (const dir of CARDINAL_ACTIONS) for (const code of controls[dir]) this.codeToDirection.set(code, dir);
     this.runCodes = new Set(controls.run);
     this.attackCodes = new Set(controls.attack);
+    this.mapGuideCodes = new Set(controls.mapGuide);
     window.addEventListener('keydown', this.onKeyDown);
     window.addEventListener('keyup', this.onKeyUp);
     window.addEventListener('blur', this.releaseAll);
     document.addEventListener('visibilitychange', this.releaseAll);
+  }
+
+  /** Whether a run key is currently held — read by click-to-move so an autopiloted path runs
+   * under the same Shift-held signal keyboard movement already uses, with no separate policy. */
+  get isRunHeld(): boolean {
+    return this.runHeld.size > 0;
   }
 
   get intent(): MoveIntent {
@@ -62,6 +73,14 @@ export class InputController {
       }
       return;
     }
+    if (this.mapGuideCodes.has(event.code)) {
+      event.preventDefault();
+      if (!this.mapGuideHeld) {
+        this.mapGuideHeld = true;
+        this.onMapGuidePressed();
+      }
+      return;
+    }
     const dir = this.codeToDirection.get(event.code);
     if (!dir) return;
     event.preventDefault();
@@ -74,6 +93,10 @@ export class InputController {
       this.attackHeld = false;
       return;
     }
+    if (this.mapGuideCodes.has(event.code)) {
+      this.mapGuideHeld = false;
+      return;
+    }
     const dir = this.codeToDirection.get(event.code);
     if (!dir) return;
     const index = this.held.indexOf(dir);
@@ -84,5 +107,6 @@ export class InputController {
     this.held.length = 0;
     this.runHeld.clear();
     this.attackHeld = false;
+    this.mapGuideHeld = false;
   };
 }

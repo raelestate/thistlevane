@@ -3,7 +3,15 @@
 // are populated while real reference art is produced. Writes assets/mobs/<id>.png and
 // assets/data/mobs.json (frame layout + behaviour). Replace per mob by editing mobs.json.
 //   node tools/art/mobs.mjs
-import { mkdirSync, writeFileSync } from 'node:fs';
+//
+// Death frames (columns 6-7) are a generic post-process, not bespoke per-body art: each mob's
+// own idle-frame-0 silhouette (its real shape/palette/outline) is squashed flat and anchored to
+// the ground line, in two steps for a brief collapse instead of an instant snap. This guarantees
+// every death pose actually matches its mob (same primitives, same hue ramp) rather than risking
+// a hand-painted guess that doesn't. `combat`/`weapon`/`aggro`/`level` — added by hand after this
+// generator was last run, for the server combat system — are preserved by merging with whatever
+// is already in mobs.json, never overwritten wholesale.
+import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { createRequire } from 'node:module';
@@ -98,33 +106,70 @@ function drawBody(b, m, pal, view, frame, moving) {
   }
 }
 
+/** Flattens `src` toward `ground` (keeps that row fixed) by `factor` (<1 compresses). Generic,
+ * body-shape-agnostic: works on an already-fully-rendered frame, so it inherits that frame's
+ * exact outline/shadow/palette instead of needing per-body-type death art. */
+function squashVertical(src, ground, factor) {
+  const { w, h } = src;
+  const out = new P.Buf(w, h);
+  for (let y = 0; y <= ground; y++) {
+    const sy = Math.round(ground - (ground - y) / factor);
+    if (sy < 0 || sy >= h) continue;
+    for (let x = 0; x < w; x++) out.px[y * w + x] = src.px[sy * w + x];
+  }
+  return out;
+}
+
+const DEATH_SQUASH_FACTORS = [0.7, 0.38]; // two steps: a brief collapse, not an instant snap
+
 mkdirSync(join(ROOT, 'assets', 'mobs'), { recursive: true });
+const existing = existsSync(join(ROOT, 'assets', 'data', 'mobs.json'))
+  ? JSON.parse(readFileSync(join(ROOT, 'assets', 'data', 'mobs.json'), 'utf8')).mobs
+  : {};
 const defs = {};
 for (const [id, m] of Object.entries(MOBS)) {
   const pal = ramp(m.hue, { sat: m.sat ?? 0.5, light: m.light ?? [0.16, 0.66] });
-  const S = m.size, cols = 6; // 0-1 idle, 2-5 walk
+  const S = m.size, ground = S - 3, idleCols = 6, deathCols = DEATH_SQUASH_FACTORS.length, cols = idleCols + deathCols;
   const sheet = new P.Buf(S * cols, S * ROWS.length);
   ROWS.forEach((view, r) => {
     for (let c = 0; c < cols; c++) {
-      const f = new P.Buf(S, S);
-      const moving = c >= 2;
-      drawBody(f, m, pal, view === 'right' ? 'left' : view, moving ? c - 2 : c, moving);
+      let f;
+      if (c < idleCols) {
+        f = new P.Buf(S, S);
+        const moving = c >= 2;
+        drawBody(f, m, pal, view === 'right' ? 'left' : view, moving ? c - 2 : c, moving);
+      } else {
+        const base = new P.Buf(S, S);
+        drawBody(base, m, pal, view === 'right' ? 'left' : view, 0, false); // idle frame 0, squashed
+        f = squashVertical(base, ground, DEATH_SQUASH_FACTORS[c - idleCols]);
+      }
       const src = view === 'right' ? mirror(f) : f;
       for (let y = 0; y < S; y++) sheet.px.set(src.px.subarray(y * S, (y + 1) * S), (r * S + y) * sheet.w + c * S);
     }
   });
   P.save(sheet, join(ROOT, 'assets', 'mobs', `${id}.png`));
+  // Start from whatever this mob already has — combat/weapon/aggro/effects, hand-added diagonal
+  // rows, anything else a future pass adds — and override only what this generator actually
+  // owns (art layout). This must never be a wholesale replacement: the generator predates the
+  // server combat fields entirely, so "regenerate art" must not mean "forget gameplay data".
+  const prior = existing[id] ?? {};
   defs[id] = {
+    ...prior,
     name: m.name, placeholder: true,
     sheet: `mobs/${id}.png`, frameWidth: S, frameHeight: S, columns: cols,
     anchor: { x: 0.5, y: (S - 2) / S }, footOffsetY: -1,
-    rows: Object.fromEntries(ROWS.map((v, i) => [v, i])),
-    animations: { idle: { startColumn: 0, frames: 2, frameRate: 2 }, walk: { startColumn: 2, frames: 4, frameRate: 8 } },
+    rows: { ...(prior.rows ?? {}), ...Object.fromEntries(ROWS.map((v, i) => [v, i])) },
+    animations: {
+      ...(prior.animations ?? {}),
+      idle: { startColumn: 0, frames: 2, frameRate: 2 },
+      walk: { startColumn: 2, frames: 4, frameRate: 8 },
+      death: { startColumn: idleCols, frames: deathCols, frameRate: 6 },
+    },
     walkTicksPerTile: m.speed,
     wander: { pauseTicksMin: 20, pauseTicksMax: 90, maxSteps: 4 },
   };
 }
 writeFileSync(join(ROOT, 'assets', 'data', 'mobs.json'), JSON.stringify({ mobs: defs }, null, 2) + '\n');
-console.log(`wrote ${Object.keys(defs).length} placeholder mobs`);
+console.log(`wrote ${Object.keys(defs).length} placeholder mobs (idle/walk/death)`);
 
 function mirror(f) { const m = new P.Buf(f.w, f.h); for (let y = 0; y < f.h; y++) for (let x = 0; x < f.w; x++) m.px[y * f.w + (f.w - 1 - x)] = f.px[y * f.w + x]; return m; }

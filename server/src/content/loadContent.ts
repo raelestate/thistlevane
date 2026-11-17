@@ -3,13 +3,18 @@ import { join, resolve } from 'node:path';
 import {
   CONTENT_FILES,
   MapModel,
+  classAnimationsPath,
+  mergeRichCharacters,
   validateCharacters,
+  validateClassMeta,
   validateGameConfig,
   validateMobs,
+  validateSkills,
   validateZones,
   type CharacterCatalog,
   type GameConfig,
   type MobCatalog,
+  type Skill,
   type TiledMapJson,
   type ZoneRegistry,
 } from '@thistlevane/shared';
@@ -26,6 +31,7 @@ export interface ServerContent {
   characters: CharacterCatalog;
   mobs: MobCatalog;
   zones: ZoneRegistry;
+  skills: Skill[];
   startZone: string;
   maps: Map<string, LoadedZone>;
 }
@@ -47,8 +53,14 @@ export function loadServerContent(assetsDir: string, overrides?: (config: GameCo
   const config = validateGameConfig(readJson(join(dir, CONTENT_FILES.config)));
   overrides?.(config);
   const zones = validateZones(readJson(join(dir, CONTENT_FILES.zones)));
-  const characters = validateCharacters(readJson(join(dir, CONTENT_FILES.characters)));
+  const baseCharacters = validateCharacters(readJson(join(dir, CONTENT_FILES.characters)));
   const mobs = validateMobs(readJson(join(dir, CONTENT_FILES.mobs)));
+  const skills = validateSkills(readJson(join(dir, CONTENT_FILES.skills)));
+  const classMetas = validateClassMeta(readJson(join(dir, CONTENT_FILES.classes)));
+  const rawAnimationsByClass = Object.fromEntries(
+    classMetas.map((meta) => [meta.id, readJson(join(dir, classAnimationsPath(meta.id)))]),
+  );
+  const characters = mergeRichCharacters(baseCharacters, classMetas, rawAnimationsByClass, skills, config.simulation.tickRate);
 
   const startZone = config.world.startZone;
   if (!zones.zones[startZone]) throw new Error(`world.startZone "${startZone}" is not listed in ${CONTENT_FILES.zones}`);
@@ -65,9 +77,19 @@ export function loadServerContent(assetsDir: string, overrides?: (config: GameCo
     }
     maps.set(id, { id, name: zone.name, map });
   }
-  // Portals must point at zones and spawns that exist.
+  validatePortals(maps);
+  return { assetsDir: dir, config, characters, mobs, zones, skills, startZone, maps };
+}
+
+/** Every portal's id must be unique within its own zone, and must point at a zone and spawn
+ * that actually exist — checked once at load so a content-authoring mistake fails loudly at
+ * startup instead of misbehaving (or silently colliding) at runtime. */
+export function validatePortals(maps: Map<string, LoadedZone>): void {
   for (const zone of maps.values()) {
+    const seenIds = new Set<string>();
     for (const portal of zone.map.portals) {
+      if (seenIds.has(portal.id)) throw new Error(`Zone "${zone.id}": duplicate portal id "${portal.id}"`);
+      seenIds.add(portal.id);
       const target = maps.get(portal.targetZone);
       if (!target) throw new Error(`Zone "${zone.id}": portal "${portal.name}" targets unknown zone "${portal.targetZone}"`);
       if (!target.map.spawnByName(portal.targetSpawn)) {
@@ -75,5 +97,4 @@ export function loadServerContent(assetsDir: string, overrides?: (config: GameCo
       }
     }
   }
-  return { assetsDir: dir, config, characters, mobs, zones, startZone, maps };
 }

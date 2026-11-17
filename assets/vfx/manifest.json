@@ -1,0 +1,669 @@
+{
+  "frame_size": 96,
+  "archetypes": {
+    "melee_impact": {
+      "frames": 5,
+      "loop": false,
+      "durations_ms": [
+        55,
+        55,
+        55,
+        55,
+        55
+      ]
+    },
+    "ranged_impact": {
+      "frames": 8,
+      "loop": false,
+      "durations_ms": [
+        55,
+        55,
+        55,
+        55,
+        55,
+        55,
+        55,
+        55
+      ]
+    },
+    "arcane_bolt": {
+      "frames": 8,
+      "loop": false,
+      "durations_ms": [
+        55,
+        55,
+        55,
+        55,
+        55,
+        55,
+        55,
+        55
+      ]
+    },
+    "aoe_burst": {
+      "frames": 10,
+      "loop": false,
+      "durations_ms": [
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60
+      ]
+    },
+    "release_burst": {
+      "frames": 8,
+      "loop": false,
+      "durations_ms": [
+        55,
+        55,
+        55,
+        55,
+        55,
+        55,
+        55,
+        55
+      ]
+    },
+    "dash_trail": {
+      "frames": 6,
+      "loop": false,
+      "durations_ms": [
+        55,
+        55,
+        55,
+        55,
+        55,
+        55
+      ]
+    },
+    "guard_shield": {
+      "frames": 7,
+      "loop": false,
+      "durations_ms": [
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90
+      ]
+    },
+    "ultimate_nova": {
+      "frames": 18,
+      "loop": false,
+      "durations_ms": [
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70
+      ]
+    },
+    "heal_sparkle": {
+      "frames": 14,
+      "loop": false,
+      "durations_ms": [
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90
+      ]
+    },
+    "summon_circle": {
+      "frames": 14,
+      "loop": false,
+      "durations_ms": [
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90
+      ]
+    },
+    "buff_aura": {
+      "frames": 9,
+      "loop": true,
+      "durations_ms": [
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90
+      ]
+    },
+    "passive_aura": {
+      "frames": 8,
+      "loop": true,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    "channel_pulse": {
+      "frames": 9,
+      "loop": true,
+      "durations_ms": [
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90
+      ]
+    }
+  },
+  "classes": {
+    "arcanist": {
+      "tint": {
+        "base": "#6fd8ff",
+        "light": "#8cfcff"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "arcane_bolt",
+        "channel_pulse",
+        "dash_trail",
+        "guard_shield",
+        "passive_aura",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/arcanist/aoe_burst.png",
+        "arcane_bolt": "assets/vfx/arcanist/arcane_bolt.png",
+        "channel_pulse": "assets/vfx/arcanist/channel_pulse.png",
+        "dash_trail": "assets/vfx/arcanist/dash_trail.png",
+        "guard_shield": "assets/vfx/arcanist/guard_shield.png",
+        "passive_aura": "assets/vfx/arcanist/passive_aura.png",
+        "release_burst": "assets/vfx/arcanist/release_burst.png",
+        "ultimate_nova": "assets/vfx/arcanist/ultimate_nova.png"
+      }
+    },
+    "beastmaster": {
+      "tint": {
+        "base": "#c0562a",
+        "light": "#d87f51"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "buff_aura",
+        "dash_trail",
+        "guard_shield",
+        "melee_impact",
+        "passive_aura",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/beastmaster/aoe_burst.png",
+        "buff_aura": "assets/vfx/beastmaster/buff_aura.png",
+        "dash_trail": "assets/vfx/beastmaster/dash_trail.png",
+        "guard_shield": "assets/vfx/beastmaster/guard_shield.png",
+        "melee_impact": "assets/vfx/beastmaster/melee_impact.png",
+        "passive_aura": "assets/vfx/beastmaster/passive_aura.png",
+        "release_burst": "assets/vfx/beastmaster/release_burst.png",
+        "ultimate_nova": "assets/vfx/beastmaster/ultimate_nova.png"
+      }
+    },
+    "briarwarden": {
+      "tint": {
+        "base": "#5e7e34",
+        "light": "#91b05d"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "buff_aura",
+        "dash_trail",
+        "guard_shield",
+        "melee_impact",
+        "passive_aura",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/briarwarden/aoe_burst.png",
+        "buff_aura": "assets/vfx/briarwarden/buff_aura.png",
+        "dash_trail": "assets/vfx/briarwarden/dash_trail.png",
+        "guard_shield": "assets/vfx/briarwarden/guard_shield.png",
+        "melee_impact": "assets/vfx/briarwarden/melee_impact.png",
+        "passive_aura": "assets/vfx/briarwarden/passive_aura.png",
+        "release_burst": "assets/vfx/briarwarden/release_burst.png",
+        "ultimate_nova": "assets/vfx/briarwarden/ultimate_nova.png"
+      }
+    },
+    "dawnkeeper": {
+      "tint": {
+        "base": "#d8b040",
+        "light": "#e7c565"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "dash_trail",
+        "guard_shield",
+        "heal_sparkle",
+        "melee_impact",
+        "passive_aura",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/dawnkeeper/aoe_burst.png",
+        "dash_trail": "assets/vfx/dawnkeeper/dash_trail.png",
+        "guard_shield": "assets/vfx/dawnkeeper/guard_shield.png",
+        "heal_sparkle": "assets/vfx/dawnkeeper/heal_sparkle.png",
+        "melee_impact": "assets/vfx/dawnkeeper/melee_impact.png",
+        "passive_aura": "assets/vfx/dawnkeeper/passive_aura.png",
+        "release_burst": "assets/vfx/dawnkeeper/release_burst.png",
+        "ultimate_nova": "assets/vfx/dawnkeeper/ultimate_nova.png"
+      }
+    },
+    "druid": {
+      "tint": {
+        "base": "#b8ff7a",
+        "light": "#ceff95"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "arcane_bolt",
+        "dash_trail",
+        "guard_shield",
+        "heal_sparkle",
+        "passive_aura",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/druid/aoe_burst.png",
+        "arcane_bolt": "assets/vfx/druid/arcane_bolt.png",
+        "dash_trail": "assets/vfx/druid/dash_trail.png",
+        "guard_shield": "assets/vfx/druid/guard_shield.png",
+        "heal_sparkle": "assets/vfx/druid/heal_sparkle.png",
+        "passive_aura": "assets/vfx/druid/passive_aura.png",
+        "release_burst": "assets/vfx/druid/release_burst.png",
+        "ultimate_nova": "assets/vfx/druid/ultimate_nova.png"
+      }
+    },
+    "flintlock": {
+      "tint": {
+        "base": "#e8a33a",
+        "light": "#f1ba60"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "buff_aura",
+        "dash_trail",
+        "passive_aura",
+        "ranged_impact",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/flintlock/aoe_burst.png",
+        "buff_aura": "assets/vfx/flintlock/buff_aura.png",
+        "dash_trail": "assets/vfx/flintlock/dash_trail.png",
+        "passive_aura": "assets/vfx/flintlock/passive_aura.png",
+        "ranged_impact": "assets/vfx/flintlock/ranged_impact.png",
+        "release_burst": "assets/vfx/flintlock/release_burst.png",
+        "ultimate_nova": "assets/vfx/flintlock/ultimate_nova.png"
+      }
+    },
+    "hollowstrider": {
+      "tint": {
+        "base": "#9a5cff",
+        "light": "#cd7dff"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "buff_aura",
+        "dash_trail",
+        "guard_shield",
+        "melee_impact",
+        "passive_aura",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/hollowstrider/aoe_burst.png",
+        "buff_aura": "assets/vfx/hollowstrider/buff_aura.png",
+        "dash_trail": "assets/vfx/hollowstrider/dash_trail.png",
+        "guard_shield": "assets/vfx/hollowstrider/guard_shield.png",
+        "melee_impact": "assets/vfx/hollowstrider/melee_impact.png",
+        "passive_aura": "assets/vfx/hollowstrider/passive_aura.png",
+        "release_burst": "assets/vfx/hollowstrider/release_burst.png",
+        "ultimate_nova": "assets/vfx/hollowstrider/ultimate_nova.png"
+      }
+    },
+    "ironwarden": {
+      "tint": {
+        "base": "#5a8ad8",
+        "light": "#7bc3e7"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "dash_trail",
+        "guard_shield",
+        "melee_impact",
+        "passive_aura",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/ironwarden/aoe_burst.png",
+        "dash_trail": "assets/vfx/ironwarden/dash_trail.png",
+        "guard_shield": "assets/vfx/ironwarden/guard_shield.png",
+        "melee_impact": "assets/vfx/ironwarden/melee_impact.png",
+        "passive_aura": "assets/vfx/ironwarden/passive_aura.png",
+        "release_burst": "assets/vfx/ironwarden/release_burst.png",
+        "ultimate_nova": "assets/vfx/ironwarden/ultimate_nova.png"
+      }
+    },
+    "minstrel": {
+      "tint": {
+        "base": "#c9a23a",
+        "light": "#debc60"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "arcane_bolt",
+        "buff_aura",
+        "dash_trail",
+        "guard_shield",
+        "heal_sparkle",
+        "passive_aura",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/minstrel/aoe_burst.png",
+        "arcane_bolt": "assets/vfx/minstrel/arcane_bolt.png",
+        "buff_aura": "assets/vfx/minstrel/buff_aura.png",
+        "dash_trail": "assets/vfx/minstrel/dash_trail.png",
+        "guard_shield": "assets/vfx/minstrel/guard_shield.png",
+        "heal_sparkle": "assets/vfx/minstrel/heal_sparkle.png",
+        "passive_aura": "assets/vfx/minstrel/passive_aura.png",
+        "release_burst": "assets/vfx/minstrel/release_burst.png",
+        "ultimate_nova": "assets/vfx/minstrel/ultimate_nova.png"
+      }
+    },
+    "monk": {
+      "tint": {
+        "base": "#d0a93c",
+        "light": "#e2c161"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "arcane_bolt",
+        "dash_trail",
+        "guard_shield",
+        "heal_sparkle",
+        "melee_impact",
+        "passive_aura",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/monk/aoe_burst.png",
+        "arcane_bolt": "assets/vfx/monk/arcane_bolt.png",
+        "dash_trail": "assets/vfx/monk/dash_trail.png",
+        "guard_shield": "assets/vfx/monk/guard_shield.png",
+        "heal_sparkle": "assets/vfx/monk/heal_sparkle.png",
+        "melee_impact": "assets/vfx/monk/melee_impact.png",
+        "passive_aura": "assets/vfx/monk/passive_aura.png",
+        "release_burst": "assets/vfx/monk/release_burst.png",
+        "ultimate_nova": "assets/vfx/monk/ultimate_nova.png"
+      }
+    },
+    "necromancer": {
+      "tint": {
+        "base": "#7cff9a",
+        "light": "#96ff9f"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "arcane_bolt",
+        "dash_trail",
+        "guard_shield",
+        "passive_aura",
+        "release_burst",
+        "summon_circle",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/necromancer/aoe_burst.png",
+        "arcane_bolt": "assets/vfx/necromancer/arcane_bolt.png",
+        "dash_trail": "assets/vfx/necromancer/dash_trail.png",
+        "guard_shield": "assets/vfx/necromancer/guard_shield.png",
+        "passive_aura": "assets/vfx/necromancer/passive_aura.png",
+        "release_burst": "assets/vfx/necromancer/release_burst.png",
+        "summon_circle": "assets/vfx/necromancer/summon_circle.png",
+        "ultimate_nova": "assets/vfx/necromancer/ultimate_nova.png"
+      }
+    },
+    "nightveil": {
+      "tint": {
+        "base": "#7a3a8a",
+        "light": "#b762b7"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "dash_trail",
+        "guard_shield",
+        "melee_impact",
+        "passive_aura",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/nightveil/aoe_burst.png",
+        "dash_trail": "assets/vfx/nightveil/dash_trail.png",
+        "guard_shield": "assets/vfx/nightveil/guard_shield.png",
+        "melee_impact": "assets/vfx/nightveil/melee_impact.png",
+        "passive_aura": "assets/vfx/nightveil/passive_aura.png",
+        "release_burst": "assets/vfx/nightveil/release_burst.png",
+        "ultimate_nova": "assets/vfx/nightveil/ultimate_nova.png"
+      }
+    },
+    "oathblade": {
+      "tint": {
+        "base": "#a82a2a",
+        "light": "#c95a51"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "dash_trail",
+        "guard_shield",
+        "melee_impact",
+        "passive_aura",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/oathblade/aoe_burst.png",
+        "dash_trail": "assets/vfx/oathblade/dash_trail.png",
+        "guard_shield": "assets/vfx/oathblade/guard_shield.png",
+        "melee_impact": "assets/vfx/oathblade/melee_impact.png",
+        "passive_aura": "assets/vfx/oathblade/passive_aura.png",
+        "release_burst": "assets/vfx/oathblade/release_burst.png",
+        "ultimate_nova": "assets/vfx/oathblade/ultimate_nova.png"
+      }
+    },
+    "ranger": {
+      "tint": {
+        "base": "#d8b85a",
+        "light": "#e7cc7b"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "buff_aura",
+        "dash_trail",
+        "passive_aura",
+        "ranged_impact",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/ranger/aoe_burst.png",
+        "buff_aura": "assets/vfx/ranger/buff_aura.png",
+        "dash_trail": "assets/vfx/ranger/dash_trail.png",
+        "passive_aura": "assets/vfx/ranger/passive_aura.png",
+        "ranged_impact": "assets/vfx/ranger/ranged_impact.png",
+        "release_burst": "assets/vfx/ranger/release_burst.png",
+        "ultimate_nova": "assets/vfx/ranger/ultimate_nova.png"
+      }
+    },
+    "ravager": {
+      "tint": {
+        "base": "#a8401e",
+        "light": "#c96d45"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "buff_aura",
+        "dash_trail",
+        "guard_shield",
+        "melee_impact",
+        "passive_aura",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/ravager/aoe_burst.png",
+        "buff_aura": "assets/vfx/ravager/buff_aura.png",
+        "dash_trail": "assets/vfx/ravager/dash_trail.png",
+        "guard_shield": "assets/vfx/ravager/guard_shield.png",
+        "melee_impact": "assets/vfx/ravager/melee_impact.png",
+        "passive_aura": "assets/vfx/ravager/passive_aura.png",
+        "release_burst": "assets/vfx/ravager/release_burst.png",
+        "ultimate_nova": "assets/vfx/ravager/ultimate_nova.png"
+      }
+    },
+    "thornlancer": {
+      "tint": {
+        "base": "#c84a2a",
+        "light": "#dd7651"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "dash_trail",
+        "guard_shield",
+        "melee_impact",
+        "passive_aura",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/thornlancer/aoe_burst.png",
+        "dash_trail": "assets/vfx/thornlancer/dash_trail.png",
+        "guard_shield": "assets/vfx/thornlancer/guard_shield.png",
+        "melee_impact": "assets/vfx/thornlancer/melee_impact.png",
+        "passive_aura": "assets/vfx/thornlancer/passive_aura.png",
+        "release_burst": "assets/vfx/thornlancer/release_burst.png",
+        "ultimate_nova": "assets/vfx/thornlancer/ultimate_nova.png"
+      }
+    },
+    "vaneweaver": {
+      "tint": {
+        "base": "#aee0ff",
+        "light": "#bef7ff"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "arcane_bolt",
+        "buff_aura",
+        "dash_trail",
+        "guard_shield",
+        "passive_aura",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/vaneweaver/aoe_burst.png",
+        "arcane_bolt": "assets/vfx/vaneweaver/arcane_bolt.png",
+        "buff_aura": "assets/vfx/vaneweaver/buff_aura.png",
+        "dash_trail": "assets/vfx/vaneweaver/dash_trail.png",
+        "guard_shield": "assets/vfx/vaneweaver/guard_shield.png",
+        "passive_aura": "assets/vfx/vaneweaver/passive_aura.png",
+        "release_burst": "assets/vfx/vaneweaver/release_burst.png",
+        "ultimate_nova": "assets/vfx/vaneweaver/ultimate_nova.png"
+      }
+    },
+    "warlock": {
+      "tint": {
+        "base": "#d06aff",
+        "light": "#f288ff"
+      },
+      "archetypes": [
+        "aoe_burst",
+        "arcane_bolt",
+        "buff_aura",
+        "dash_trail",
+        "guard_shield",
+        "passive_aura",
+        "release_burst",
+        "ultimate_nova"
+      ],
+      "sheets": {
+        "aoe_burst": "assets/vfx/warlock/aoe_burst.png",
+        "arcane_bolt": "assets/vfx/warlock/arcane_bolt.png",
+        "buff_aura": "assets/vfx/warlock/buff_aura.png",
+        "dash_trail": "assets/vfx/warlock/dash_trail.png",
+        "guard_shield": "assets/vfx/warlock/guard_shield.png",
+        "passive_aura": "assets/vfx/warlock/passive_aura.png",
+        "release_burst": "assets/vfx/warlock/release_burst.png",
+        "ultimate_nova": "assets/vfx/warlock/ultimate_nova.png"
+      }
+    }
+  }
+}

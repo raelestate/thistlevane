@@ -1,8 +1,10 @@
 // Thistlevane — combat effects sheet
 // 24×24 frames, laid out row-major for Phaser's uniform spritesheet slicing:
-//   row 0 (frames 0-4)   slash      — the weapon arc, played in front of the attacker
-//   row 1 (frames 5-9)   impact     — hit burst, played on the defender
-//   row 2 (frames 10-14) target-ring — one static frame: the selection ring under a target
+//   row 0 (frames 0-4)    slash             — the weapon arc, played in front of the attacker
+//   row 1 (frames 5-9)    impact            — hit burst, played on the defender
+//   row 2 (frame 10)      target-ring       — one static frame: corner ticks under a target
+//   row 2 (frame 11)      windup-telegraph  — one static frame: warning glyph before a mob attack lands
+//   row 2 (frame 12)      projectile-bolt   — one static frame: generic ranged shot, rotated at runtime
 // Build:  node .claude/skills/pxl-pixel-art/bin/pxl.js build assets/prototype/combat-fx.px.js
 // Output: out/sheets/combat_fx.png -> assets/effects/combat.png
 
@@ -85,19 +87,40 @@ anim("impact", { w: 24, h: 24, frames: 5, fps: 22, loop: false }, (c) => {
 })
 
 // ──────────────── TARGET RING ────────────────
-// A flattened ring that sits on the ground under the selected target. One frame:
-// the scene pulses and spins it with a tween, which costs no extra texture.
+// Four small corner ticks mark the selected target, reticle-style — deliberately *not* a ground
+// ring/ellipse (that read as a generic prototype selection circle). One frame: the scene pulses
+// it with a tween, which costs no extra texture.
 sprite("target_ring", { w: 24, h: 24 }, (c) => {
-  for (let i = 0; i < 360; i += 6) {
-    const a = i * D2R
-    const x = Math.round(CX + Math.cos(a) * 10)
-    const y = Math.round(CY + Math.sin(a) * 5)
-    c.px(x, y, i % 36 < 18 ? "g" : "G") // dashed
-  }
-  // four corner ticks mark the cardinal points, like a reticle
-  for (const [dx, dy] of [[-11, 0], [11, 0], [0, -6], [0, 6]]) {
-    c.px(CX + dx, CY + dy, "w")
+  const ticks = [
+    { x: CX - 9, y: CY, dx: 1, dy: 0 },
+    { x: CX + 9, y: CY, dx: -1, dy: 0 },
+    { x: CX, y: CY - 9, dx: 0, dy: 1 },
+    { x: CX, y: CY + 9, dx: 0, dy: -1 },
+  ]
+  for (const t of ticks) {
+    c.px(t.x, t.y, "g")
+    c.px(t.x + t.dx, t.y + t.dy, "G")
   }
 })
 
-sheet("combat_fx", ["slash", "impact", "target_ring"], { cols: 5, pad: 0 })
+// ──────────────── WINDUP TELEGRAPH ────────────────
+// A warning chevron with an exclamation mark — the brief tell before a mob's attack lands.
+// Replaces a plain red circle; the scene still owns the pulse/fade timing via tween.
+sprite("windup_telegraph", { w: 24, h: 24 }, (c) => {
+  c.line(12, 4, 4, 19, "R")
+  c.line(12, 4, 20, 19, "R")
+  c.line(4, 19, 20, 19, "R")
+  for (let y = 9; y <= 14; y++) c.px(12, y, "w")
+  c.px(12, 16, "w")
+})
+
+// ──────────────── PROJECTILE BOLT ────────────────
+// A small generic ranged shot, drawn pointing right (0°) — the scene rotates it to the actual
+// flight direction at runtime (setRotation), so one frame covers every aim instead of 8.
+sprite("projectile_bolt", { w: 24, h: 24 }, (c) => {
+  c.ellipse(CX - 1, CY, 6, 2, "o")
+  c.ellipse(CX + 1, CY, 4, 1.5, "s")
+  c.ellipse(CX + 3, CY, 2, 1, "w")
+})
+
+sheet("combat_fx", ["slash", "impact", "target_ring", "windup_telegraph", "projectile_bolt"], { cols: 5, pad: 0 })

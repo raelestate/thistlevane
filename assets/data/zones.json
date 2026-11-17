@@ -4,32 +4,38 @@
     "main_town": {
       "name": "Main Town",
       "file": "maps/test-map.json",
-      "difficulty": "safe"
+      "difficulty": "safe",
+      "description": "The starting town. No monsters — a safe place to get your bearings before heading out."
     },
     "barren_grasslands": {
       "name": "The Barren Grasslands",
       "file": "maps/barren_grasslands.json",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "description": "Open, windswept fields just past the town gates. Gentle creatures, easy footing."
     },
     "wastelands": {
       "name": "The Wastelands",
       "file": "maps/wastelands.json",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "description": "Cracked earth and scrub past the grasslands. Tougher wildlife roams here."
     },
     "thistlevane_hollow": {
       "name": "Thistlevane Hollow",
       "file": "maps/thistlevane_hollow.json",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "description": "A shaded, overgrown hollow — the land's namesake. Thorned and watchful inhabitants."
     },
     "frostvane_peaks": {
       "name": "Frostvane Peaks",
       "file": "maps/frostvane_peaks.json",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "description": "Icy high ground at the edge of the map. The coldest, most dangerous creatures live here."
     },
     "meadow": {
       "name": "Thistlevane Meadow",
       "file": "maps/meadow.json",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "description": "A small, flower-strewn meadow. Quiet, and close to town."
     }
   }
 }

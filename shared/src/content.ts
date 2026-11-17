@@ -4,7 +4,18 @@
  */
 import { ConfigError } from './config';
 import { CARDINAL_DIRECTIONS, DIRECTIONS, type Direction } from './protocol';
-import type { AggroConfig, WeaponDefinition } from './combat';
+import { type AggroConfig, type CombatStats, type WeaponDefinition } from './combat';
+import {
+  deriveBaselineCombatStats,
+  deriveBaselineWeapon,
+  classSpritePath,
+  parseClassAnimations,
+  type ClassMeta,
+  type RichClip,
+} from './classes';
+import type { Skill } from './skills';
+
+export type { CombatStats };
 
 export const CONTENT_FILES = {
   config: 'data/game-config.json',
@@ -12,15 +23,26 @@ export const CONTENT_FILES = {
   characters: 'data/characters.json',
   mobs: 'data/mobs.json',
   effects: 'data/effects.json',
+  classes: 'data/classes.json',
+  skills: 'data/skills.json',
+  vfxManifest: 'vfx/manifest.json',
 } as const;
 
 export type Gait = 'walk' | 'run';
 export const MOVEMENT_ANIM_NAMES = ['idle', 'walk', 'run', 'run_stop'] as const;
-export const COMBAT_ANIM_NAMES = ['attack', 'hit', 'death'] as const;
+/**
+ * `attack` covers melee; `attack_ranged` is used instead when the entity's weapon.kind is
+ * 'ranged', falling back to `attack` if undefined. `cast`/`interact`/`block` have no gameplay
+ * caller yet (no skill/interactable/guard system exists) — they're schema-ready so a future
+ * system doesn't need a second animation-schema migration.
+ */
+export const COMBAT_ANIM_NAMES = ['attack', 'attack_ranged', 'cast', 'hit', 'death', 'resurrect', 'interact', 'block'] as const;
 export const ANIMATION_NAMES = [...MOVEMENT_ANIM_NAMES, ...COMBAT_ANIM_NAMES] as const;
 export type AnimationName = (typeof ANIMATION_NAMES)[number];
-/** Animations that play once and stop, instead of looping. */
-export const NON_LOOPING_ANIM_NAMES = [...COMBAT_ANIM_NAMES, 'run_stop'] as const;
+/** Animations that play once and stop, instead of looping. `block` loops/holds like a stance. */
+export const NON_LOOPING_ANIM_NAMES = [
+  'attack', 'attack_ranged', 'cast', 'hit', 'death', 'resurrect', 'interact', 'run_stop',
+] as const;
 
 /** How a spritesheet is laid out and animated. Shared by characters and mobs. */
 export interface SpriteDefinition {
@@ -39,25 +61,87 @@ export interface SpriteDefinition {
   effects?: { walkStep?: string; runStep?: string; attackHit?: string; death?: string };
 }
 
-export interface CombatStats {
-  maxHp: number;
-  maxMp: number;
-  attack: number;
-  defense: number;
-}
-
-export interface CharacterDefinition extends SpriteDefinition {
+export interface GridCharacterDefinition extends SpriteDefinition {
   id: string;
   name: string;
   title?: string;
+  renderKind?: 'grid';
   combat?: CombatStats;
   /** Optional: classes without one fall back to DEFAULT_WEAPON (see shared/src/combat.ts). */
   weapon?: WeaponDefinition;
 }
 
+/**
+ * A Thistlevane class rendered faithfully: separate locomotion/combat sheets, explicit
+ * per-frame rects and durations, attach points — built by buildRichCharacter() from
+ * data/classes.json + a class's animations/<class>.json, never hand-authored as JSON.
+ */
+export interface RichCharacterDefinition {
+  id: string;
+  name: string;
+  title?: string;
+  renderKind: 'rich';
+  classId: string;
+  /** This class's resource name (ki, mana, rage, ...) — see World.ts for how the pool is modeled. */
+  resource: string;
+  frameWidth: number;
+  frameHeight: number;
+  anchor: { x: number; y: number };
+  footOffsetY: number;
+  sheets: { locomotion: string; combat: string };
+  portrait: string;
+  clips: Record<string, RichClip>;
+  signatureClips: string[];
+  /** Reference only — see classes.ts; this engine keeps one global tile movement speed. */
+  movementSpeedPxPerS: { walk: number; run: number };
+  effects?: { walkStep?: string; runStep?: string; attackHit?: string; death?: string };
+  combat: CombatStats;
+  weapon: WeaponDefinition;
+}
+
+export type CharacterDefinition = GridCharacterDefinition | RichCharacterDefinition;
+
+/** Also accepts a bare SpriteDefinition (mobs never have renderKind at all, so this is always
+ * false for them) — lets client rendering code call it on SpriteRef['def']
+ * (SpriteDefinition | RichCharacterDefinition) without a cast. */
+export function isRichCharacter(def: SpriteDefinition | CharacterDefinition): def is RichCharacterDefinition {
+  return (def as { renderKind?: string }).renderKind === 'rich';
+}
+
 export interface CharacterCatalog {
   defaultCharacter: string;
   characters: CharacterDefinition[];
+}
+
+/** Assembles one class's full CharacterDefinition from its parsed animations.json, its
+ * data/classes.json entry, and its level-1 active skill (used only to derive a stand-in
+ * basic-attack weapon — see classes.ts). Pure in-memory composition; nothing is written back. */
+export function buildRichCharacter(
+  meta: ClassMeta,
+  anim: { frameWidth: number; frameHeight: number; anchor: { x: number; y: number }; clips: Record<string, RichClip>; signatureClips: string[]; movementSpeedPxPerS: { walk: number; run: number } },
+  levelOneActive: Skill | undefined,
+  tickRate: number,
+): RichCharacterDefinition {
+  return {
+    id: meta.id,
+    name: meta.name,
+    title: meta.role,
+    renderKind: 'rich',
+    classId: meta.id,
+    resource: meta.resource,
+    frameWidth: anim.frameWidth,
+    frameHeight: anim.frameHeight,
+    anchor: anim.anchor,
+    footOffsetY: 0,
+    sheets: { locomotion: classSpritePath(meta.id, 'locomotion'), combat: classSpritePath(meta.id, 'combat') },
+    portrait: classSpritePath(meta.id, 'portrait'),
+    clips: anim.clips,
+    signatureClips: anim.signatureClips,
+    movementSpeedPxPerS: anim.movementSpeedPxPerS,
+    effects: { walkStep: 'dust-small', runStep: 'dust-large', attackHit: 'impact' },
+    combat: deriveBaselineCombatStats(meta),
+    weapon: deriveBaselineWeapon(meta, levelOneActive, tickRate),
+  };
 }
 
 export interface MobDefinition extends SpriteDefinition {
@@ -99,7 +183,7 @@ export interface EffectCatalog {
 
 export interface ZoneRegistry {
   startZone: string;
-  zones: Record<string, { name: string; file: string; difficulty?: string }>;
+  zones: Record<string, { name: string; file: string; difficulty?: string; description?: string }>;
 }
 
 const isObj = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null;
@@ -151,6 +235,26 @@ function validateAggro(value: unknown, where: string): void {
   if (!posNum(value.leashRangeTiles)) throw new ConfigError(`${where}: aggro.leashRangeTiles must be a positive number`);
   if (!posInt(value.attackWindupTicks)) throw new ConfigError(`${where}: aggro.attackWindupTicks must be a positive integer`);
   if (!posInt(value.respawnTicks)) throw new ConfigError(`${where}: aggro.respawnTicks must be a positive integer`);
+  if (value.corpseTicks !== undefined && !posInt(value.corpseTicks)) throw new ConfigError(`${where}: aggro.corpseTicks must be a positive integer`);
+}
+
+/** Merges the Thistlevane class roster (data/classes.json + per-class animations.json +
+ * data/skills.json) into a base CharacterCatalog (today just Ashvale). Both client and server
+ * call this identically after loading the same files, so the two sides can never disagree on
+ * a class's combat stats or stand-in weapon. */
+export function mergeRichCharacters(
+  base: CharacterCatalog,
+  classMetas: ClassMeta[],
+  rawAnimationsByClass: Record<string, unknown>,
+  skills: Skill[],
+  tickRate: number,
+): CharacterCatalog {
+  const richCharacters = classMetas.map((meta) => {
+    const parsed = parseClassAnimations(rawAnimationsByClass[meta.id], meta.id);
+    const levelOne = skills.find((s) => s.class === meta.id && s.category === 'active' && s.level_required === 1);
+    return buildRichCharacter(meta, parsed, levelOne, tickRate);
+  });
+  return { defaultCharacter: base.defaultCharacter, characters: [...base.characters, ...richCharacters] };
 }
 
 export function validateCharacters(raw: unknown, source = 'characters.json'): CharacterCatalog {

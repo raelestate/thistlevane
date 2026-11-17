@@ -20,7 +20,7 @@ export class WorldManager {
   constructor(private readonly content: ServerContent) {
     let seed = 1;
     for (const zone of content.maps.values()) {
-      this.worlds.set(zone.id, new World(zone.id, zone.map, content.config, content.mobs, seed++));
+      this.worlds.set(zone.id, new World(zone.id, zone.map, content.config, content.mobs, content.skills, seed++));
     }
   }
 

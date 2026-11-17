@@ -1,5 +1,7 @@
 import {
   CARDINAL_DIRECTIONS,
+  DEFAULT_AGGRO,
+  DIRECTION_ANGLES,
   DIRECTION_DELTAS,
   getAggro,
   getWeapon,
@@ -12,10 +14,10 @@ import {
   type CombatEvent,
   type Direction,
   type MobDefinition,
+  type MobSpawn,
   type MobState,
   type MovementRules,
   type PlayerState,
-  type TileRect,
   type Walkability,
   type WeaponDefinition,
 } from '@thistlevane/shared';
@@ -69,7 +71,7 @@ export class Mob {
     /** Key of this mob in mobs.json. */
     readonly kind: string,
     readonly def: MobDefinition,
-    readonly home: TileRect,
+    readonly home: MobSpawn,
     tileX: number,
     tileY: number,
     private readonly random: () => number,
@@ -77,10 +79,15 @@ export class Mob {
     this.state = {
       id, tileX, tileY, fromX: tileX, fromY: tileY, facing: 'down',
       moveTicksLeft: 0, stepTicks: def.walkTicksPerTile, gait: 'walk', turnTicksLeft: 0,
-      hp: def.combat?.maxHp ?? 1,
+      hp: def.combat?.maxHp ?? 1, level: 1,
     };
     this.weapon = getWeapon(def);
-    this.aggro = getAggro(def);
+    const baseAggro = getAggro(def);
+    this.aggro = {
+      ...baseAggro,
+      respawnTicks: home.respawnTicks ?? baseAggro.respawnTicks,
+      corpseTicks: home.corpseTicks ?? baseAggro.corpseTicks ?? DEFAULT_AGGRO.corpseTicks!,
+    };
     this.pauseTicks = this.randomPause();
   }
 
@@ -91,6 +98,14 @@ export class Mob {
 
   get aiStateName(): string {
     return this.aiState;
+  }
+
+  /** False once a corpse's brief on-screen window has elapsed — it drops out of snapshots
+   * entirely until it respawns, instead of lingering visibly for the whole respawn countdown. */
+  get isVisible(): boolean {
+    if (this.state.hp > 0) return true;
+    const corpseTicks = this.aggro.corpseTicks ?? DEFAULT_AGGRO.corpseTicks!;
+    return this.aggro.respawnTicks - this.respawnTicksLeft < corpseTicks;
   }
 
   /** Called by World whenever a player's attack (melee or projectile) lands on this mob. */
@@ -196,7 +211,7 @@ export class Mob {
       const distance = Math.hypot(targetPos.x - origin.x, targetPos.y - origin.y);
       if (distance <= this.weapon.rangeTiles) {
         if (this.weapon.kind === 'melee') {
-          if (meleeHitTest(origin, aim, targetPos, this.weapon, ctx.map)) this.applyDamageTo(target, attack, ctx);
+          if (meleeHitTest(origin, DIRECTION_ANGLES[aim], targetPos, this.weapon, ctx.map)) this.applyDamageTo(target, attack, ctx);
         } else {
           ctx.spawnProjectile(origin, aim, attack, this.weapon);
         }

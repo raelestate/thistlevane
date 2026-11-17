@@ -18,6 +18,18 @@ export interface QueuedInput extends MoveIntent {
 export interface QueuedAttack {
   seq: number;
   aim: Direction;
+  targetId?: string;
+  arrivedTick: number;
+}
+
+export interface QueuedCast {
+  seq: number;
+  skillId: string;
+  /** Snapped Direction — for the broadcast facing/animation only. */
+  aim: Direction;
+  /** Real, continuous aim angle (degrees) — for the hit-test math. See World.applySkillEffect. */
+  aimDeg: number;
+  targetId?: string;
   arrivedTick: number;
 }
 
@@ -46,6 +58,17 @@ export class Player {
   /** Counts down to 0 while dead, then the player is respawned. */
   respawnTicksLeft = 0;
 
+  /** Skill casts: own independent monotonic seq, same dedup pattern as attacks. */
+  readonly castQueue: QueuedCast[] = [];
+  lastQueuedCastSeq = 0;
+  /** skillId → world tick it was last used (see World.drainCast). */
+  readonly skillCooldowns = new Map<string, number>();
+  /** Gates which of this class's skills (data/skills.json level_required) are usable — see shared/src/progression.ts. */
+  level = 1;
+  xp = 0;
+  /** This class's resource pool (ki/mana/rage/...), 0-100. Grid characters (no class) never change it. */
+  resourceCurrent = 100;
+
   constructor(
     readonly id: string,
     readonly name: string,
@@ -65,9 +88,10 @@ export class Player {
   /** Teleport (zone transfer or respawn): new position, drop queued inputs/attacks; seq numbering continues. hp carries over (respawn overwrites it after calling this). */
   resetAt(tileX: number, tileY: number, rules: MovementRules): void {
     const { facing, hp } = this.state;
-    this.state = { ...createPlayerState(this.id, tileX, tileY, rules), facing, hp };
+    this.state = { ...createPlayerState(this.id, tileX, tileY, rules), facing, hp, level: this.level };
     this.inputQueue.length = 0;
     this.attackQueue.length = 0;
+    this.castQueue.length = 0;
     this.buffering = true;
   }
 

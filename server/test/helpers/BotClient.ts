@@ -1,5 +1,5 @@
 import { WebSocket } from 'ws';
-import { type ClientMessage, type Direction, type ServerMessage, type SnapshotMessage } from '@thistlevane/shared';
+import { DIRECTION_ANGLES, type ClientMessage, type Direction, type ServerMessage, type SnapshotMessage } from '@thistlevane/shared';
 
 /**
  * A scripted, independent network client used by tests. It talks to a real
@@ -12,6 +12,7 @@ export class BotClient {
   yourId = '';
   private seq = 0;
   private attackSeqCounter = 0;
+  private castSeqCounter = 0;
   private waiters: Array<{ predicate: (m: ServerMessage) => boolean; resolve: (m: ServerMessage) => void }> = [];
 
   private constructor(readonly socket: WebSocket) {
@@ -69,10 +70,19 @@ export class BotClient {
   }
 
   /** Send one basic-attack attempt aimed in `aim`. Returns the seq used (its own, independent counter). */
-  attack(aim: Direction): number {
+  attack(aim: Direction, targetId?: string): number {
     this.attackSeqCounter += 1;
-    this.send({ type: 'attack', seq: this.attackSeqCounter, aim });
+    this.send({ type: 'attack', seq: this.attackSeqCounter, aim, targetId });
     return this.attackSeqCounter;
+  }
+
+  /** Send one skill-cast attempt. `aimDeg` (the real, continuous aim angle) defaults to `aim`'s
+   * own snapped angle so existing targetId-based tests don't need to care; pass it explicitly to
+   * exercise free-aim targeting. Returns the seq used (its own, independent counter). */
+  cast(skillId: string, aim: Direction, targetId?: string, aimDeg = DIRECTION_ANGLES[aim]): number {
+    this.castSeqCounter += 1;
+    this.send({ type: 'cast', seq: this.castSeqCounter, skillId, aim, aimDeg, targetId });
+    return this.castSeqCounter;
   }
 
   waitFor(predicate: (m: ServerMessage) => boolean, timeoutMs = 3000): Promise<ServerMessage> {

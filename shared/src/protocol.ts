@@ -34,6 +34,21 @@ export interface PlayerState {
   turnTicksLeft: number;
   /** Authoritative health. Continuous state, like position — never predicted/rewound client-side. */
   hp: number;
+  /** Public level (gates which skills a class has unlocked — see skills.ts). Grid characters (no
+   * class/skills) stay at 1. */
+  level: number;
+}
+
+/** Sent only to the owning connection (never broadcast) — see ConnectionManager. */
+export interface PlayerPrivateState {
+  xp: number;
+  xpForLevel: number;
+  /** This class's resource pool (ki/mana/rage/...), 0-100 — see World.ts. Grid characters (no
+   * resource) read 0/0. */
+  resourceCurrent: number;
+  resourceMax: number;
+  /** skillId → ms remaining on cooldown. Omitted entries are ready. */
+  cooldownsMs: Record<string, number>;
 }
 
 export interface PlayerInfo {
@@ -88,9 +103,32 @@ export interface AttackMessage {
   type: 'attack';
   seq: number;
   aim: Direction;
+  /**
+   * Optional. When present and it resolves to a live mob/player, the server recomputes `aim`
+   * from the real attacker→target vector instead of trusting this field — this is what lets a
+   * swing land regardless of which way the attacker happens to be facing/aiming, as long as the
+   * target is in range. Omitted = untargeted swing in the claimed `aim` direction, unchanged.
+   */
+  targetId?: string;
 }
 
-export type ClientMessage = JoinMessage | InputMessage | AttackMessage;
+/**
+ * A skill-cast attempt, keyed by the skill's own id (data/skills.json). Independent `seq`,
+ * same dedup/ack pattern as AttackMessage; the server alone decides cooldown/resource/range.
+ * `aim` is the snapped Direction (still used server-side for the broadcast facing/animation);
+ * `aimDeg` is the real, continuous angle (degrees, 0-360) the client was actually pointed at —
+ * skill targeting is free-aim, not grid-snapped, even though movement stays tile-based.
+ */
+export interface CastMessage {
+  type: 'cast';
+  seq: number;
+  skillId: string;
+  aim: Direction;
+  aimDeg: number;
+  targetId?: string;
+}
+
+export type ClientMessage = JoinMessage | InputMessage | AttackMessage | CastMessage;
 
 // ---------- Server → Client ----------
 
@@ -107,11 +145,13 @@ export interface WelcomeMessage extends ZoneSnapshot {
   type: 'welcome';
   yourId: string;
   rules: GameRules;
+  you: PlayerPrivateState;
 }
 
 /** The player walked through a portal: same connection, new zone. */
 export interface ZoneChangeMessage extends ZoneSnapshot {
   type: 'zoneChange';
+  you: PlayerPrivateState;
 }
 
 export interface PlayerJoinedMessage {
@@ -130,7 +170,7 @@ export interface PlayerLeftMessage {
  * once and must be rendered exactly once, so they ride a discrete event list
  * rather than RemotePlayerBuffer's sample-based interpolation.
  */
-export type CombatEventKind = 'attack' | 'hit' | 'death' | 'aggro' | 'windup' | 'projectile';
+export type CombatEventKind = 'attack' | 'cast' | 'hit' | 'heal' | 'death' | 'aggro' | 'windup' | 'projectile';
 
 export interface CombatEvent {
   kind: CombatEventKind;
@@ -138,12 +178,16 @@ export interface CombatEvent {
   sourceId: string;
   /** Defender, or aggro target. */
   targetId?: string;
-  /** Aim direction — 'attack', 'windup', 'projectile'. */
+  /** Aim direction — 'attack', 'cast', 'windup', 'projectile'. */
   aim?: Direction;
+  /** 'cast' only: which skill (data/skills.json id) to look up clip/VFX/icon for. */
+  skillId?: string;
   /** 'hit' only. */
   damage?: number;
+  /** 'heal' only. */
+  healing?: number;
   crit?: boolean;
-  /** 'hit' only: target's hp after this damage was applied. */
+  /** 'hit'/'heal' only: target's hp after this was applied. */
   hpAfter?: number;
   /** Correlates a 'projectile' spawn with its later resolving 'hit' (or silent expiry). */
   projectileId?: string;
@@ -166,6 +210,7 @@ export interface SnapshotMessage {
   players: PlayerState[];
   mobs: MobState[];
   events: CombatEvent[];
+  you: PlayerPrivateState;
 }
 
 export interface ErrorMessage {
@@ -210,7 +255,18 @@ export function parseClientMessage(raw: string): ClientMessage | null {
     case 'attack':
       if (!Number.isSafeInteger(msg.seq) || (msg.seq as number) < 0) return null;
       if (!isDirection(msg.aim)) return null;
-      return { type: 'attack', seq: msg.seq as number, aim: msg.aim };
+      if (msg.targetId !== undefined && typeof msg.targetId !== 'string') return null;
+      return { type: 'attack', seq: msg.seq as number, aim: msg.aim, targetId: msg.targetId as string | undefined };
+    case 'cast':
+      if (!Number.isSafeInteger(msg.seq) || (msg.seq as number) < 0) return null;
+      if (typeof msg.skillId !== 'string' || !msg.skillId) return null;
+      if (!isDirection(msg.aim)) return null;
+      if (typeof msg.aimDeg !== 'number' || !Number.isFinite(msg.aimDeg)) return null;
+      if (msg.targetId !== undefined && typeof msg.targetId !== 'string') return null;
+      return {
+        type: 'cast', seq: msg.seq as number, skillId: msg.skillId, aim: msg.aim,
+        aimDeg: msg.aimDeg, targetId: msg.targetId as string | undefined,
+      };
     default:
       return null;
   }
