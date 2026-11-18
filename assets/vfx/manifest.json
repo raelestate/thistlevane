@@ -1,669 +1,6739 @@
 {
-  "frame_size": 96,
-  "archetypes": {
-    "melee_impact": {
-      "frames": 5,
-      "loop": false,
-      "durations_ms": [
-        55,
-        55,
-        55,
-        55,
-        55
-      ]
-    },
-    "ranged_impact": {
-      "frames": 8,
-      "loop": false,
-      "durations_ms": [
-        55,
-        55,
-        55,
-        55,
-        55,
-        55,
-        55,
-        55
-      ]
-    },
-    "arcane_bolt": {
-      "frames": 8,
-      "loop": false,
-      "durations_ms": [
-        55,
-        55,
-        55,
-        55,
-        55,
-        55,
-        55,
-        55
-      ]
-    },
-    "aoe_burst": {
-      "frames": 10,
-      "loop": false,
-      "durations_ms": [
-        60,
-        60,
-        60,
-        60,
-        60,
-        60,
-        60,
-        60,
-        60,
-        60
-      ]
-    },
-    "release_burst": {
-      "frames": 8,
-      "loop": false,
-      "durations_ms": [
-        55,
-        55,
-        55,
-        55,
-        55,
-        55,
-        55,
-        55
-      ]
-    },
-    "dash_trail": {
-      "frames": 6,
-      "loop": false,
-      "durations_ms": [
-        55,
-        55,
-        55,
-        55,
-        55,
-        55
-      ]
-    },
-    "guard_shield": {
-      "frames": 7,
-      "loop": false,
-      "durations_ms": [
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90
-      ]
-    },
-    "ultimate_nova": {
-      "frames": 18,
-      "loop": false,
-      "durations_ms": [
-        70,
-        70,
-        70,
-        70,
-        70,
-        70,
-        70,
-        70,
-        70,
-        70,
-        70,
-        70,
-        70,
-        70,
-        70,
-        70,
-        70,
-        70
-      ]
-    },
-    "heal_sparkle": {
-      "frames": 14,
-      "loop": false,
-      "durations_ms": [
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90
-      ]
-    },
-    "summon_circle": {
-      "frames": 14,
-      "loop": false,
-      "durations_ms": [
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90
-      ]
-    },
-    "buff_aura": {
-      "frames": 9,
-      "loop": true,
-      "durations_ms": [
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90
-      ]
-    },
-    "passive_aura": {
-      "frames": 8,
-      "loop": true,
-      "durations_ms": [
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100
-      ]
-    },
-    "channel_pulse": {
-      "frames": 9,
-      "loop": true,
-      "durations_ms": [
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90,
-        90
-      ]
-    }
+ "version": 3,
+ "frame_size": 256,
+ "anchor": {
+  "x": 128,
+  "y": 178,
+  "note": "the caster's foot point: draw the VFX frame so this pixel sits on the character frame's anchor"
+ },
+ "directions": [
+  "s",
+  "sw",
+  "w",
+  "nw",
+  "n",
+  "ne",
+  "e",
+  "se"
+ ],
+ "blend": "normal alpha (colours are un-premultiplied); additive blending also works and reads brighter",
+ "spawn": "start the sheet at the skill's animation.activate_ms (the clip's release event)",
+ "skills": {
+  "arcanist_arcane_step": {
+   "sheet": "assets/vfx/arcanist/arcane_step.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:ice:frost"
+   ]
   },
-  "classes": {
-    "arcanist": {
-      "tint": {
-        "base": "#6fd8ff",
-        "light": "#8cfcff"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "arcane_bolt",
-        "channel_pulse",
-        "dash_trail",
-        "guard_shield",
-        "passive_aura",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/arcanist/aoe_burst.png",
-        "arcane_bolt": "assets/vfx/arcanist/arcane_bolt.png",
-        "channel_pulse": "assets/vfx/arcanist/channel_pulse.png",
-        "dash_trail": "assets/vfx/arcanist/dash_trail.png",
-        "guard_shield": "assets/vfx/arcanist/guard_shield.png",
-        "passive_aura": "assets/vfx/arcanist/passive_aura.png",
-        "release_burst": "assets/vfx/arcanist/release_burst.png",
-        "ultimate_nova": "assets/vfx/arcanist/ultimate_nova.png"
-      }
-    },
-    "beastmaster": {
-      "tint": {
-        "base": "#c0562a",
-        "light": "#d87f51"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "buff_aura",
-        "dash_trail",
-        "guard_shield",
-        "melee_impact",
-        "passive_aura",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/beastmaster/aoe_burst.png",
-        "buff_aura": "assets/vfx/beastmaster/buff_aura.png",
-        "dash_trail": "assets/vfx/beastmaster/dash_trail.png",
-        "guard_shield": "assets/vfx/beastmaster/guard_shield.png",
-        "melee_impact": "assets/vfx/beastmaster/melee_impact.png",
-        "passive_aura": "assets/vfx/beastmaster/passive_aura.png",
-        "release_burst": "assets/vfx/beastmaster/release_burst.png",
-        "ultimate_nova": "assets/vfx/beastmaster/ultimate_nova.png"
-      }
-    },
-    "briarwarden": {
-      "tint": {
-        "base": "#5e7e34",
-        "light": "#91b05d"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "buff_aura",
-        "dash_trail",
-        "guard_shield",
-        "melee_impact",
-        "passive_aura",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/briarwarden/aoe_burst.png",
-        "buff_aura": "assets/vfx/briarwarden/buff_aura.png",
-        "dash_trail": "assets/vfx/briarwarden/dash_trail.png",
-        "guard_shield": "assets/vfx/briarwarden/guard_shield.png",
-        "melee_impact": "assets/vfx/briarwarden/melee_impact.png",
-        "passive_aura": "assets/vfx/briarwarden/passive_aura.png",
-        "release_burst": "assets/vfx/briarwarden/release_burst.png",
-        "ultimate_nova": "assets/vfx/briarwarden/ultimate_nova.png"
-      }
-    },
-    "dawnkeeper": {
-      "tint": {
-        "base": "#d8b040",
-        "light": "#e7c565"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "dash_trail",
-        "guard_shield",
-        "heal_sparkle",
-        "melee_impact",
-        "passive_aura",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/dawnkeeper/aoe_burst.png",
-        "dash_trail": "assets/vfx/dawnkeeper/dash_trail.png",
-        "guard_shield": "assets/vfx/dawnkeeper/guard_shield.png",
-        "heal_sparkle": "assets/vfx/dawnkeeper/heal_sparkle.png",
-        "melee_impact": "assets/vfx/dawnkeeper/melee_impact.png",
-        "passive_aura": "assets/vfx/dawnkeeper/passive_aura.png",
-        "release_burst": "assets/vfx/dawnkeeper/release_burst.png",
-        "ultimate_nova": "assets/vfx/dawnkeeper/ultimate_nova.png"
-      }
-    },
-    "druid": {
-      "tint": {
-        "base": "#b8ff7a",
-        "light": "#ceff95"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "arcane_bolt",
-        "dash_trail",
-        "guard_shield",
-        "heal_sparkle",
-        "passive_aura",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/druid/aoe_burst.png",
-        "arcane_bolt": "assets/vfx/druid/arcane_bolt.png",
-        "dash_trail": "assets/vfx/druid/dash_trail.png",
-        "guard_shield": "assets/vfx/druid/guard_shield.png",
-        "heal_sparkle": "assets/vfx/druid/heal_sparkle.png",
-        "passive_aura": "assets/vfx/druid/passive_aura.png",
-        "release_burst": "assets/vfx/druid/release_burst.png",
-        "ultimate_nova": "assets/vfx/druid/ultimate_nova.png"
-      }
-    },
-    "flintlock": {
-      "tint": {
-        "base": "#e8a33a",
-        "light": "#f1ba60"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "buff_aura",
-        "dash_trail",
-        "passive_aura",
-        "ranged_impact",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/flintlock/aoe_burst.png",
-        "buff_aura": "assets/vfx/flintlock/buff_aura.png",
-        "dash_trail": "assets/vfx/flintlock/dash_trail.png",
-        "passive_aura": "assets/vfx/flintlock/passive_aura.png",
-        "ranged_impact": "assets/vfx/flintlock/ranged_impact.png",
-        "release_burst": "assets/vfx/flintlock/release_burst.png",
-        "ultimate_nova": "assets/vfx/flintlock/ultimate_nova.png"
-      }
-    },
-    "hollowstrider": {
-      "tint": {
-        "base": "#9a5cff",
-        "light": "#cd7dff"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "buff_aura",
-        "dash_trail",
-        "guard_shield",
-        "melee_impact",
-        "passive_aura",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/hollowstrider/aoe_burst.png",
-        "buff_aura": "assets/vfx/hollowstrider/buff_aura.png",
-        "dash_trail": "assets/vfx/hollowstrider/dash_trail.png",
-        "guard_shield": "assets/vfx/hollowstrider/guard_shield.png",
-        "melee_impact": "assets/vfx/hollowstrider/melee_impact.png",
-        "passive_aura": "assets/vfx/hollowstrider/passive_aura.png",
-        "release_burst": "assets/vfx/hollowstrider/release_burst.png",
-        "ultimate_nova": "assets/vfx/hollowstrider/ultimate_nova.png"
-      }
-    },
-    "ironwarden": {
-      "tint": {
-        "base": "#5a8ad8",
-        "light": "#7bc3e7"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "dash_trail",
-        "guard_shield",
-        "melee_impact",
-        "passive_aura",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/ironwarden/aoe_burst.png",
-        "dash_trail": "assets/vfx/ironwarden/dash_trail.png",
-        "guard_shield": "assets/vfx/ironwarden/guard_shield.png",
-        "melee_impact": "assets/vfx/ironwarden/melee_impact.png",
-        "passive_aura": "assets/vfx/ironwarden/passive_aura.png",
-        "release_burst": "assets/vfx/ironwarden/release_burst.png",
-        "ultimate_nova": "assets/vfx/ironwarden/ultimate_nova.png"
-      }
-    },
-    "minstrel": {
-      "tint": {
-        "base": "#c9a23a",
-        "light": "#debc60"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "arcane_bolt",
-        "buff_aura",
-        "dash_trail",
-        "guard_shield",
-        "heal_sparkle",
-        "passive_aura",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/minstrel/aoe_burst.png",
-        "arcane_bolt": "assets/vfx/minstrel/arcane_bolt.png",
-        "buff_aura": "assets/vfx/minstrel/buff_aura.png",
-        "dash_trail": "assets/vfx/minstrel/dash_trail.png",
-        "guard_shield": "assets/vfx/minstrel/guard_shield.png",
-        "heal_sparkle": "assets/vfx/minstrel/heal_sparkle.png",
-        "passive_aura": "assets/vfx/minstrel/passive_aura.png",
-        "release_burst": "assets/vfx/minstrel/release_burst.png",
-        "ultimate_nova": "assets/vfx/minstrel/ultimate_nova.png"
-      }
-    },
-    "monk": {
-      "tint": {
-        "base": "#d0a93c",
-        "light": "#e2c161"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "arcane_bolt",
-        "dash_trail",
-        "guard_shield",
-        "heal_sparkle",
-        "melee_impact",
-        "passive_aura",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/monk/aoe_burst.png",
-        "arcane_bolt": "assets/vfx/monk/arcane_bolt.png",
-        "dash_trail": "assets/vfx/monk/dash_trail.png",
-        "guard_shield": "assets/vfx/monk/guard_shield.png",
-        "heal_sparkle": "assets/vfx/monk/heal_sparkle.png",
-        "melee_impact": "assets/vfx/monk/melee_impact.png",
-        "passive_aura": "assets/vfx/monk/passive_aura.png",
-        "release_burst": "assets/vfx/monk/release_burst.png",
-        "ultimate_nova": "assets/vfx/monk/ultimate_nova.png"
-      }
-    },
-    "necromancer": {
-      "tint": {
-        "base": "#7cff9a",
-        "light": "#96ff9f"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "arcane_bolt",
-        "dash_trail",
-        "guard_shield",
-        "passive_aura",
-        "release_burst",
-        "summon_circle",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/necromancer/aoe_burst.png",
-        "arcane_bolt": "assets/vfx/necromancer/arcane_bolt.png",
-        "dash_trail": "assets/vfx/necromancer/dash_trail.png",
-        "guard_shield": "assets/vfx/necromancer/guard_shield.png",
-        "passive_aura": "assets/vfx/necromancer/passive_aura.png",
-        "release_burst": "assets/vfx/necromancer/release_burst.png",
-        "summon_circle": "assets/vfx/necromancer/summon_circle.png",
-        "ultimate_nova": "assets/vfx/necromancer/ultimate_nova.png"
-      }
-    },
-    "nightveil": {
-      "tint": {
-        "base": "#7a3a8a",
-        "light": "#b762b7"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "dash_trail",
-        "guard_shield",
-        "melee_impact",
-        "passive_aura",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/nightveil/aoe_burst.png",
-        "dash_trail": "assets/vfx/nightveil/dash_trail.png",
-        "guard_shield": "assets/vfx/nightveil/guard_shield.png",
-        "melee_impact": "assets/vfx/nightveil/melee_impact.png",
-        "passive_aura": "assets/vfx/nightveil/passive_aura.png",
-        "release_burst": "assets/vfx/nightveil/release_burst.png",
-        "ultimate_nova": "assets/vfx/nightveil/ultimate_nova.png"
-      }
-    },
-    "oathblade": {
-      "tint": {
-        "base": "#a82a2a",
-        "light": "#c95a51"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "dash_trail",
-        "guard_shield",
-        "melee_impact",
-        "passive_aura",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/oathblade/aoe_burst.png",
-        "dash_trail": "assets/vfx/oathblade/dash_trail.png",
-        "guard_shield": "assets/vfx/oathblade/guard_shield.png",
-        "melee_impact": "assets/vfx/oathblade/melee_impact.png",
-        "passive_aura": "assets/vfx/oathblade/passive_aura.png",
-        "release_burst": "assets/vfx/oathblade/release_burst.png",
-        "ultimate_nova": "assets/vfx/oathblade/ultimate_nova.png"
-      }
-    },
-    "ranger": {
-      "tint": {
-        "base": "#d8b85a",
-        "light": "#e7cc7b"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "buff_aura",
-        "dash_trail",
-        "passive_aura",
-        "ranged_impact",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/ranger/aoe_burst.png",
-        "buff_aura": "assets/vfx/ranger/buff_aura.png",
-        "dash_trail": "assets/vfx/ranger/dash_trail.png",
-        "passive_aura": "assets/vfx/ranger/passive_aura.png",
-        "ranged_impact": "assets/vfx/ranger/ranged_impact.png",
-        "release_burst": "assets/vfx/ranger/release_burst.png",
-        "ultimate_nova": "assets/vfx/ranger/ultimate_nova.png"
-      }
-    },
-    "ravager": {
-      "tint": {
-        "base": "#a8401e",
-        "light": "#c96d45"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "buff_aura",
-        "dash_trail",
-        "guard_shield",
-        "melee_impact",
-        "passive_aura",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/ravager/aoe_burst.png",
-        "buff_aura": "assets/vfx/ravager/buff_aura.png",
-        "dash_trail": "assets/vfx/ravager/dash_trail.png",
-        "guard_shield": "assets/vfx/ravager/guard_shield.png",
-        "melee_impact": "assets/vfx/ravager/melee_impact.png",
-        "passive_aura": "assets/vfx/ravager/passive_aura.png",
-        "release_burst": "assets/vfx/ravager/release_burst.png",
-        "ultimate_nova": "assets/vfx/ravager/ultimate_nova.png"
-      }
-    },
-    "thornlancer": {
-      "tint": {
-        "base": "#c84a2a",
-        "light": "#dd7651"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "dash_trail",
-        "guard_shield",
-        "melee_impact",
-        "passive_aura",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/thornlancer/aoe_burst.png",
-        "dash_trail": "assets/vfx/thornlancer/dash_trail.png",
-        "guard_shield": "assets/vfx/thornlancer/guard_shield.png",
-        "melee_impact": "assets/vfx/thornlancer/melee_impact.png",
-        "passive_aura": "assets/vfx/thornlancer/passive_aura.png",
-        "release_burst": "assets/vfx/thornlancer/release_burst.png",
-        "ultimate_nova": "assets/vfx/thornlancer/ultimate_nova.png"
-      }
-    },
-    "vaneweaver": {
-      "tint": {
-        "base": "#aee0ff",
-        "light": "#bef7ff"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "arcane_bolt",
-        "buff_aura",
-        "dash_trail",
-        "guard_shield",
-        "passive_aura",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/vaneweaver/aoe_burst.png",
-        "arcane_bolt": "assets/vfx/vaneweaver/arcane_bolt.png",
-        "buff_aura": "assets/vfx/vaneweaver/buff_aura.png",
-        "dash_trail": "assets/vfx/vaneweaver/dash_trail.png",
-        "guard_shield": "assets/vfx/vaneweaver/guard_shield.png",
-        "passive_aura": "assets/vfx/vaneweaver/passive_aura.png",
-        "release_burst": "assets/vfx/vaneweaver/release_burst.png",
-        "ultimate_nova": "assets/vfx/vaneweaver/ultimate_nova.png"
-      }
-    },
-    "warlock": {
-      "tint": {
-        "base": "#d06aff",
-        "light": "#f288ff"
-      },
-      "archetypes": [
-        "aoe_burst",
-        "arcane_bolt",
-        "buff_aura",
-        "dash_trail",
-        "guard_shield",
-        "passive_aura",
-        "release_burst",
-        "ultimate_nova"
-      ],
-      "sheets": {
-        "aoe_burst": "assets/vfx/warlock/aoe_burst.png",
-        "arcane_bolt": "assets/vfx/warlock/arcane_bolt.png",
-        "buff_aura": "assets/vfx/warlock/buff_aura.png",
-        "dash_trail": "assets/vfx/warlock/dash_trail.png",
-        "guard_shield": "assets/vfx/warlock/guard_shield.png",
-        "passive_aura": "assets/vfx/warlock/passive_aura.png",
-        "release_burst": "assets/vfx/warlock/release_burst.png",
-        "ultimate_nova": "assets/vfx/warlock/ultimate_nova.png"
-      }
-    }
+  "arcanist_archmages_focus": {
+   "sheet": "assets/vfx/arcanist/archmages_focus.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:arcane"
+   ]
+  },
+  "arcanist_attunement_mastery": {
+   "sheet": "assets/vfx/arcanist/attunement_mastery.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:arcane"
+   ]
+  },
+  "arcanist_blink": {
+   "sheet": "assets/vfx/arcanist/blink.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "blink:arcane"
+   ]
+  },
+  "arcanist_chain_lightning": {
+   "sheet": "assets/vfx/arcanist/chain_lightning.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "chain:lightning"
+   ]
+  },
+  "arcanist_convergence": {
+   "sheet": "assets/vfx/arcanist/convergence.png",
+   "frames": 24,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "arch:arcane",
+    "field:fire:nova",
+    "field:ice:nova",
+    "sky:lightning:bolt"
+   ]
+  },
+  "arcanist_elemental_channel": {
+   "sheet": "assets/vfx/arcanist/elemental_channel.png",
+   "frames": 16,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "hand:arcane",
+    "proj:arcane:orb"
+   ]
+  },
+  "arcanist_fire_lance": {
+   "sheet": "assets/vfx/arcanist/fire_lance.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:fire:lance"
+   ]
+  },
+  "arcanist_frost_shard": {
+   "sheet": "assets/vfx/arcanist/frost_shard.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:ice:shard"
+   ]
+  },
+  "arcanist_insulation": {
+   "sheet": "assets/vfx/arcanist/insulation.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:arcane"
+   ]
+  },
+  "arcanist_mana_shield": {
+   "sheet": "assets/vfx/arcanist/mana_shield.png",
+   "frames": 12,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "ward:arcane"
+   ]
+  },
+  "arcanist_meteor": {
+   "sheet": "assets/vfx/arcanist/meteor.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "sky:fire:meteor"
+   ]
+  },
+  "arcanist_overchannel": {
+   "sheet": "assets/vfx/arcanist/overchannel.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:arcane"
+   ]
+  },
+  "arcanist_spark_bolt": {
+   "sheet": "assets/vfx/arcanist/spark_bolt.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:lightning:orb"
+   ]
+  },
+  "arcanist_storm_nova": {
+   "sheet": "assets/vfx/arcanist/storm_nova.png",
+   "frames": 14,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:lightning:nova",
+    "arch:lightning"
+   ]
+  },
+  "beastmaster_alphas_call": {
+   "sheet": "assets/vfx/beastmaster/alphas_call.png",
+   "frames": 19,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "shout:blood",
+    "summon:wild:wolf"
+   ]
+  },
+  "beastmaster_call_of_the_wild": {
+   "sheet": "assets/vfx/beastmaster/call_of_the_wild.png",
+   "frames": 23,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "arch:wild",
+    "summon:wild:wolf"
+   ]
+  },
+  "beastmaster_claw_strike": {
+   "sheet": "assets/vfx/beastmaster/claw_strike.png",
+   "frames": 7,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "claw:wild"
+   ]
+  },
+  "beastmaster_command": {
+   "sheet": "assets/vfx/beastmaster/command.png",
+   "frames": 16,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "mark:wild",
+    "summon:wild:wolf"
+   ]
+  },
+  "beastmaster_feral_pounce": {
+   "sheet": "assets/vfx/beastmaster/feral_pounce.png",
+   "frames": 12,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "claw:wild",
+    "impact:earth"
+   ]
+  },
+  "beastmaster_howl": {
+   "sheet": "assets/vfx/beastmaster/howl.png",
+   "frames": 14,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "shout:wild",
+    "aura:wild:rise"
+   ]
+  },
+  "beastmaster_loyal_bond": {
+   "sheet": "assets/vfx/beastmaster/loyal_bond.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:wild"
+   ]
+  },
+  "beastmaster_pack_hunt": {
+   "sheet": "assets/vfx/beastmaster/pack_hunt.png",
+   "frames": 12,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "mark:wild",
+    "claw:wild"
+   ]
+  },
+  "beastmaster_pack_tactics": {
+   "sheet": "assets/vfx/beastmaster/pack_tactics.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:wild"
+   ]
+  },
+  "beastmaster_prowl": {
+   "sheet": "assets/vfx/beastmaster/prowl.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:earth:speed"
+   ]
+  },
+  "beastmaster_savage_rend": {
+   "sheet": "assets/vfx/beastmaster/savage_rend.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "claw:blood"
+   ]
+  },
+  "beastmaster_thick_pelt": {
+   "sheet": "assets/vfx/beastmaster/thick_pelt.png",
+   "frames": 12,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "ward:earth"
+   ]
+  },
+  "beastmaster_unbreakable_bond": {
+   "sheet": "assets/vfx/beastmaster/unbreakable_bond.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:wild"
+   ]
+  },
+  "beastmaster_whistle": {
+   "sheet": "assets/vfx/beastmaster/whistle.png",
+   "frames": 18,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "shout:wild",
+    "summon:wild:wolf"
+   ]
+  },
+  "beastmaster_wild_instinct": {
+   "sheet": "assets/vfx/beastmaster/wild_instinct.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:wild"
+   ]
+  },
+  "briarwarden_ancient_bark": {
+   "sheet": "assets/vfx/briarwarden/ancient_bark.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:thorn"
+   ]
+  },
+  "briarwarden_bark_stacking": {
+   "sheet": "assets/vfx/briarwarden/bark_stacking.png",
+   "frames": 14,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:earth:quake",
+    "ward:thorn"
+   ]
+  },
+  "briarwarden_bramble_retaliation": {
+   "sheet": "assets/vfx/briarwarden/bramble_retaliation.png",
+   "frames": 15,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:thorn:nova",
+    "field:thorn:thorns"
+   ]
+  },
+  "briarwarden_groves_last_stand": {
+   "sheet": "assets/vfx/briarwarden/groves_last_stand.png",
+   "frames": 23,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "arch:nature",
+    "wall:nature:roots",
+    "ward:thorn"
+   ]
+  },
+  "briarwarden_heartwood_stand": {
+   "sheet": "assets/vfx/briarwarden/heartwood_stand.png",
+   "frames": 14,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:nature:roots",
+    "ward:thorn"
+   ]
+  },
+  "briarwarden_living_armour": {
+   "sheet": "assets/vfx/briarwarden/living_armour.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:thorn"
+   ]
+  },
+  "briarwarden_mossy_resilience": {
+   "sheet": "assets/vfx/briarwarden/mossy_resilience.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:thorn"
+   ]
+  },
+  "briarwarden_overgrown_step": {
+   "sheet": "assets/vfx/briarwarden/overgrown_step.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:thorn:thorn"
+   ]
+  },
+  "briarwarden_root_wall": {
+   "sheet": "assets/vfx/briarwarden/root_wall.png",
+   "frames": 13,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "wall:nature:roots"
+   ]
+  },
+  "briarwarden_seasons_of_stone": {
+   "sheet": "assets/vfx/briarwarden/seasons_of_stone.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:thorn"
+   ]
+  },
+  "briarwarden_shield_plant": {
+   "sheet": "assets/vfx/briarwarden/shield_plant.png",
+   "frames": 14,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "stance:thorn",
+    "field:nature:roots"
+   ]
+  },
+  "briarwarden_shield_slam": {
+   "sheet": "assets/vfx/briarwarden/shield_slam.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "impact:earth"
+   ]
+  },
+  "briarwarden_thorn_burst": {
+   "sheet": "assets/vfx/briarwarden/thorn_burst.png",
+   "frames": 15,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:thorn:thorns",
+    "field:thorn:nova"
+   ]
+  },
+  "briarwarden_thorn_jab": {
+   "sheet": "assets/vfx/briarwarden/thorn_jab.png",
+   "frames": 16,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "thrust:thorn",
+    "field:thorn:thorns"
+   ]
+  },
+  "briarwarden_thorned_ground": {
+   "sheet": "assets/vfx/briarwarden/thorned_ground.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:thorn:thorns"
+   ]
+  },
+  "dawnkeeper_avatar_of_dawn": {
+   "sheet": "assets/vfx/dawnkeeper/avatar_of_dawn.png",
+   "frames": 13,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "aura:holy:rise",
+    "ward:holy"
+   ]
+  },
+  "dawnkeeper_blessed_armour": {
+   "sheet": "assets/vfx/dawnkeeper/blessed_armour.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:holy"
+   ]
+  },
+  "dawnkeeper_consecration": {
+   "sheet": "assets/vfx/dawnkeeper/consecration.png",
+   "frames": 14,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:holy:consecrate"
+   ]
+  },
+  "dawnkeeper_dawnbreak": {
+   "sheet": "assets/vfx/dawnkeeper/dawnbreak.png",
+   "frames": 23,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "arch:holy",
+    "sky:fire:pillar"
+   ]
+  },
+  "dawnkeeper_divine_protection": {
+   "sheet": "assets/vfx/dawnkeeper/divine_protection.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:holy"
+   ]
+  },
+  "dawnkeeper_eternal_vigil": {
+   "sheet": "assets/vfx/dawnkeeper/eternal_vigil.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:holy"
+   ]
+  },
+  "dawnkeeper_guardians_grace": {
+   "sheet": "assets/vfx/dawnkeeper/guardians_grace.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:holy"
+   ]
+  },
+  "dawnkeeper_holy_raise": {
+   "sheet": "assets/vfx/dawnkeeper/holy_raise.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "sky:holy:pillar"
+   ]
+  },
+  "dawnkeeper_holy_strike": {
+   "sheet": "assets/vfx/dawnkeeper/holy_strike.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:holy:h"
+   ]
+  },
+  "dawnkeeper_judgment": {
+   "sheet": "assets/vfx/dawnkeeper/judgment.png",
+   "frames": 16,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:holy:v",
+    "sky:holy:pillar"
+   ]
+  },
+  "dawnkeeper_lay_on_hands": {
+   "sheet": "assets/vfx/dawnkeeper/lay_on_hands.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "heal:holy",
+    "hand:holy"
+   ]
+  },
+  "dawnkeeper_radiant_burst": {
+   "sheet": "assets/vfx/dawnkeeper/radiant_burst.png",
+   "frames": 16,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:holy:nova",
+    "heal:holy"
+   ]
+  },
+  "dawnkeeper_sanctified_step": {
+   "sheet": "assets/vfx/dawnkeeper/sanctified_step.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:holy:holy"
+   ]
+  },
+  "dawnkeeper_shield_block": {
+   "sheet": "assets/vfx/dawnkeeper/shield_block.png",
+   "frames": 13,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "wall:holy:energy"
+   ]
+  },
+  "dawnkeeper_smite": {
+   "sheet": "assets/vfx/dawnkeeper/smite.png",
+   "frames": 17,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:holy:v",
+    "sky:holy:pillar"
+   ]
+  },
+  "druid_ancient_roots": {
+   "sheet": "assets/vfx/druid/ancient_roots.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:nature"
+   ]
+  },
+  "druid_bark_skin": {
+   "sheet": "assets/vfx/druid/bark_skin.png",
+   "frames": 12,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "ward:thorn",
+    "aura:earth:rise"
+   ]
+  },
+  "druid_bloom": {
+   "sheet": "assets/vfx/druid/bloom.png",
+   "frames": 14,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "heal:nature",
+    "field:nature:glyph"
+   ]
+  },
+  "druid_bramble_strike": {
+   "sheet": "assets/vfx/druid/bramble_strike.png",
+   "frames": 16,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "thrust:thorn",
+    "field:nature:roots"
+   ]
+  },
+  "druid_heart_of_the_forest": {
+   "sheet": "assets/vfx/druid/heart_of_the_forest.png",
+   "frames": 18,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "summon:nature:tree",
+    "heal:nature",
+    "ward:nature"
+   ]
+  },
+  "druid_lifes_bounty": {
+   "sheet": "assets/vfx/druid/lifes_bounty.png",
+   "frames": 14,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "heal:nature",
+    "aura:holy:rise"
+   ]
+  },
+  "druid_natures_grasp": {
+   "sheet": "assets/vfx/druid/natures_grasp.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:nature:roots"
+   ]
+  },
+  "druid_regrowth": {
+   "sheet": "assets/vfx/druid/regrowth.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:nature"
+   ]
+  },
+  "druid_root_summon": {
+   "sheet": "assets/vfx/druid/root_summon.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:nature:roots"
+   ]
+  },
+  "druid_seasons_turn": {
+   "sheet": "assets/vfx/druid/seasons_turn.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:nature"
+   ]
+  },
+  "druid_thorn_lash": {
+   "sheet": "assets/vfx/druid/thorn_lash.png",
+   "frames": 16,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "thrust:thorn",
+    "field:thorn:thorns"
+   ]
+  },
+  "druid_verdant_growth": {
+   "sheet": "assets/vfx/druid/verdant_growth.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:nature"
+   ]
+  },
+  "druid_vine_step": {
+   "sheet": "assets/vfx/druid/vine_step.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:nature:vine"
+   ]
+  },
+  "druid_wildfire_bloom": {
+   "sheet": "assets/vfx/druid/wildfire_bloom.png",
+   "frames": 17,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:nature:consecrate",
+    "heal:nature"
+   ]
+  },
+  "druid_world_trees_blessing": {
+   "sheet": "assets/vfx/druid/world_trees_blessing.png",
+   "frames": 23,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "arch:nature",
+    "summon:nature:tree"
+   ]
+  },
+  "flintlock_fan_fire": {
+   "sheet": "assets/vfx/flintlock/fan_fire.png",
+   "frames": 11,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "multi:fire:bullet"
+   ]
+  },
+  "flintlock_gunslingers_luck": {
+   "sheet": "assets/vfx/flintlock/gunslingers_luck.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:fire"
+   ]
+  },
+  "flintlock_last_shot": {
+   "sheet": "assets/vfx/flintlock/last_shot.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:fire:bullet",
+    "impact:holy"
+   ]
+  },
+  "flintlock_pistol_shot": {
+   "sheet": "assets/vfx/flintlock/pistol_shot.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:fire:bullet"
+   ]
+  },
+  "flintlock_point_blank": {
+   "sheet": "assets/vfx/flintlock/point_blank.png",
+   "frames": 10,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:fire:bullet",
+    "arch:fire",
+    "impact:fire"
+   ]
+  },
+  "flintlock_powder_keg": {
+   "sheet": "assets/vfx/flintlock/powder_keg.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:fire"
+   ]
+  },
+  "flintlock_powder_step": {
+   "sheet": "assets/vfx/flintlock/powder_step.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:fire:speed",
+    "field:smoke:cloud"
+   ]
+  },
+  "flintlock_quick_hands": {
+   "sheet": "assets/vfx/flintlock/quick_hands.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:fire"
+   ]
+  },
+  "flintlock_quickdraw": {
+   "sheet": "assets/vfx/flintlock/quickdraw.png",
+   "frames": 7,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:fire:bullet"
+   ]
+  },
+  "flintlock_reload": {
+   "sheet": "assets/vfx/flintlock/reload.png",
+   "frames": 9,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "reload:fire"
+   ]
+  },
+  "flintlock_scattershot": {
+   "sheet": "assets/vfx/flintlock/scattershot.png",
+   "frames": 10,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "multi:fire:bullet",
+    "arch:fire"
+   ]
+  },
+  "flintlock_sharpshooter": {
+   "sheet": "assets/vfx/flintlock/sharpshooter.png",
+   "frames": 12,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "mark:fire",
+    "pierce:fire"
+   ]
+  },
+  "flintlock_six_shots_to_midnight": {
+   "sheet": "assets/vfx/flintlock/six_shots_to_midnight.png",
+   "frames": 22,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "mark:blood",
+    "multi:fire:bullet",
+    "field:fire:nova"
+   ]
+  },
+  "flintlock_smoke_screen": {
+   "sheet": "assets/vfx/flintlock/smoke_screen.png",
+   "frames": 16,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:fire:bullet",
+    "field:smoke:cloud"
+   ]
+  },
+  "flintlock_steady_hands": {
+   "sheet": "assets/vfx/flintlock/steady_hands.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:fire"
+   ]
+  },
+  "hollowstrider_avatar_of_the_hollow": {
+   "sheet": "assets/vfx/hollowstrider/avatar_of_the_hollow.png",
+   "frames": 15,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "aura:void:flame",
+    "aura:shadow:rise"
+   ]
+  },
+  "hollowstrider_collapse": {
+   "sheet": "assets/vfx/hollowstrider/collapse.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:void:rift"
+   ]
+  },
+  "hollowstrider_corruption_surge": {
+   "sheet": "assets/vfx/hollowstrider/corruption_surge.png",
+   "frames": 17,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "aura:void:flame",
+    "field:void:nova"
+   ]
+  },
+  "hollowstrider_creeping_corruption": {
+   "sheet": "assets/vfx/hollowstrider/creeping_corruption.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:void"
+   ]
+  },
+  "hollowstrider_eruption": {
+   "sheet": "assets/vfx/hollowstrider/eruption.png",
+   "frames": 16,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "impact:void",
+    "field:void:nova"
+   ]
+  },
+  "hollowstrider_hollow_resolve": {
+   "sheet": "assets/vfx/hollowstrider/hollow_resolve.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:void"
+   ]
+  },
+  "hollowstrider_self-harms_edge": {
+   "sheet": "assets/vfx/hollowstrider/self-harms_edge.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:void"
+   ]
+  },
+  "hollowstrider_the_hollow_opens": {
+   "sheet": "assets/vfx/hollowstrider/the_hollow_opens.png",
+   "frames": 23,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "arch:void",
+    "field:void:rift"
+   ]
+  },
+  "hollowstrider_twin_oblivion": {
+   "sheet": "assets/vfx/hollowstrider/twin_oblivion.png",
+   "frames": 17,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:void:x",
+    "field:void:nova"
+   ]
+  },
+  "hollowstrider_twin_rend": {
+   "sheet": "assets/vfx/hollowstrider/twin_rend.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:void:x"
+   ]
+  },
+  "hollowstrider_unstable_step": {
+   "sheet": "assets/vfx/hollowstrider/unstable_step.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:void:void"
+   ]
+  },
+  "hollowstrider_void-touched": {
+   "sheet": "assets/vfx/hollowstrider/void-touched.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:void"
+   ]
+  },
+  "hollowstrider_void_slash": {
+   "sheet": "assets/vfx/hollowstrider/void_slash.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:void:h"
+   ]
+  },
+  "hollowstrider_void_step": {
+   "sheet": "assets/vfx/hollowstrider/void_step.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "blink:void"
+   ]
+  },
+  "hollowstrider_void_ward": {
+   "sheet": "assets/vfx/hollowstrider/void_ward.png",
+   "frames": 12,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "ward:void"
+   ]
+  },
+  "ironwarden_advance": {
+   "sheet": "assets/vfx/ironwarden/advance.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:steel:charge"
+   ]
+  },
+  "ironwarden_brace": {
+   "sheet": "assets/vfx/ironwarden/brace.png",
+   "frames": 13,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "wall:lightning:energy"
+   ]
+  },
+  "ironwarden_bulwark_stance": {
+   "sheet": "assets/vfx/ironwarden/bulwark_stance.png",
+   "frames": 13,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "stance:lightning",
+    "ward:lightning"
+   ]
+  },
+  "ironwarden_counter_riposte": {
+   "sheet": "assets/vfx/ironwarden/counter_riposte.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "impact:holy",
+    "slash:steel:rev"
+   ]
+  },
+  "ironwarden_executioners_arc": {
+   "sheet": "assets/vfx/ironwarden/executioners_arc.png",
+   "frames": 18,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:lightning:v",
+    "field:earth:quake"
+   ]
+  },
+  "ironwarden_fortress": {
+   "sheet": "assets/vfx/ironwarden/fortress.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:lightning"
+   ]
+  },
+  "ironwarden_ground_slam": {
+   "sheet": "assets/vfx/ironwarden/ground_slam.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:earth:quake"
+   ]
+  },
+  "ironwarden_heavy_cleave": {
+   "sheet": "assets/vfx/ironwarden/heavy_cleave.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:steel:wide"
+   ]
+  },
+  "ironwarden_immovable_object": {
+   "sheet": "assets/vfx/ironwarden/immovable_object.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:lightning"
+   ]
+  },
+  "ironwarden_last_bastion": {
+   "sheet": "assets/vfx/ironwarden/last_bastion.png",
+   "frames": 23,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "arch:lightning",
+    "ward:steel"
+   ]
+  },
+  "ironwarden_shield_bash": {
+   "sheet": "assets/vfx/ironwarden/shield_bash.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "impact:steel",
+    "arch:lightning",
+    "shout:holy"
+   ]
+  },
+  "ironwarden_shield_strike": {
+   "sheet": "assets/vfx/ironwarden/shield_strike.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "impact:steel"
+   ]
+  },
+  "ironwarden_stalwart": {
+   "sheet": "assets/vfx/ironwarden/stalwart.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:lightning"
+   ]
+  },
+  "ironwarden_sword_draw": {
+   "sheet": "assets/vfx/ironwarden/sword_draw.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:steel:draw"
+   ]
+  },
+  "ironwarden_unyielding": {
+   "sheet": "assets/vfx/ironwarden/unyielding.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:lightning"
+   ]
+  },
+  "minstrel_battle_hymn": {
+   "sheet": "assets/vfx/minstrel/battle_hymn.png",
+   "frames": 14,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "shout:sound",
+    "aura:rage:rise"
+   ]
+  },
+  "minstrel_crowd_pleaser": {
+   "sheet": "assets/vfx/minstrel/crowd_pleaser.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:sound"
+   ]
+  },
+  "minstrel_dancers_step": {
+   "sheet": "assets/vfx/minstrel/dancers_step.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:sound:holy"
+   ]
+  },
+  "minstrel_discordant_note": {
+   "sheet": "assets/vfx/minstrel/discordant_note.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:sound:note"
+   ]
+  },
+  "minstrel_encouraging_refrain": {
+   "sheet": "assets/vfx/minstrel/encouraging_refrain.png",
+   "frames": 14,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "song:sound",
+    "stance:holy"
+   ]
+  },
+  "minstrel_finale": {
+   "sheet": "assets/vfx/minstrel/finale.png",
+   "frames": 10,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "arch:sound",
+    "multi:sound:note"
+   ]
+  },
+  "minstrel_grand_overture": {
+   "sheet": "assets/vfx/minstrel/grand_overture.png",
+   "frames": 15,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:sound:nova",
+    "song:sound"
+   ]
+  },
+  "minstrel_maestros_ear": {
+   "sheet": "assets/vfx/minstrel/maestros_ear.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:sound"
+   ]
+  },
+  "minstrel_perfect_pitch": {
+   "sheet": "assets/vfx/minstrel/perfect_pitch.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:sound"
+   ]
+  },
+  "minstrel_perform": {
+   "sheet": "assets/vfx/minstrel/perform.png",
+   "frames": 14,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "song:sound",
+    "aura:holy:rise"
+   ]
+  },
+  "minstrel_play_lute": {
+   "sheet": "assets/vfx/minstrel/play_lute.png",
+   "frames": 14,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "song:sound"
+   ]
+  },
+  "minstrel_rising_chord": {
+   "sheet": "assets/vfx/minstrel/rising_chord.png",
+   "frames": 11,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "multi:sound:note",
+    "shout:sound"
+   ]
+  },
+  "minstrel_soothing_verse": {
+   "sheet": "assets/vfx/minstrel/soothing_verse.png",
+   "frames": 16,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "song:nature",
+    "heal:nature"
+   ]
+  },
+  "minstrel_steady_rhythm": {
+   "sheet": "assets/vfx/minstrel/steady_rhythm.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:sound"
+   ]
+  },
+  "minstrel_symphonys_end": {
+   "sheet": "assets/vfx/minstrel/symphonys_end.png",
+   "frames": 23,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "arch:sound",
+    "song:holy"
+   ]
+  },
+  "monk_avatar_of_serenity": {
+   "sheet": "assets/vfx/monk/avatar_of_serenity.png",
+   "frames": 23,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "arch:spirit",
+    "flurry:spirit:palm"
+   ]
+  },
+  "monk_flowing_step": {
+   "sheet": "assets/vfx/monk/flowing_step.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:spirit:speed"
+   ]
+  },
+  "monk_hundred_hands": {
+   "sheet": "assets/vfx/monk/hundred_hands.png",
+   "frames": 12,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "flurry:spirit:palm"
+   ]
+  },
+  "monk_inner_serenity": {
+   "sheet": "assets/vfx/monk/inner_serenity.png",
+   "frames": 14,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "heal:spirit",
+    "stance:spirit"
+   ]
+  },
+  "monk_iron_body": {
+   "sheet": "assets/vfx/monk/iron_body.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:spirit"
+   ]
+  },
+  "monk_meditate": {
+   "sheet": "assets/vfx/monk/meditate.png",
+   "frames": 14,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "heal:spirit",
+    "aura:spirit:rise"
+   ]
+  },
+  "monk_monastery_discipline": {
+   "sheet": "assets/vfx/monk/monastery_discipline.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:spirit"
+   ]
+  },
+  "monk_palm_combo": {
+   "sheet": "assets/vfx/monk/palm_combo.png",
+   "frames": 15,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "impact:spirit",
+    "impact:spirit",
+    "impact:spirit",
+    "arch:spirit"
+   ]
+  },
+  "monk_rising_crane": {
+   "sheet": "assets/vfx/monk/rising_crane.png",
+   "frames": 15,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "impact:spirit",
+    "shout:spirit"
+   ]
+  },
+  "monk_spirit_palm": {
+   "sheet": "assets/vfx/monk/spirit_palm.png",
+   "frames": 7,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "impact:spirit"
+   ]
+  },
+  "monk_spirit_release": {
+   "sheet": "assets/vfx/monk/spirit_release.png",
+   "frames": 12,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "impact:spirit",
+    "arch:spirit"
+   ]
+  },
+  "monk_still_water": {
+   "sheet": "assets/vfx/monk/still_water.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:spirit"
+   ]
+  },
+  "monk_thousand_palm_strike": {
+   "sheet": "assets/vfx/monk/thousand_palm_strike.png",
+   "frames": 16,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "flurry:spirit:palm",
+    "impact:spirit"
+   ]
+  },
+  "monk_twin_fist": {
+   "sheet": "assets/vfx/monk/twin_fist.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "impact:spirit",
+    "impact:spirit"
+   ]
+  },
+  "monk_unbroken_will": {
+   "sheet": "assets/vfx/monk/unbroken_will.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:spirit"
+   ]
+  },
+  "necromancer_army_of_the_dead": {
+   "sheet": "assets/vfx/necromancer/army_of_the_dead.png",
+   "frames": 16,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "summon:necro:skeleton"
+   ]
+  },
+  "necromancer_bone_spear": {
+   "sheet": "assets/vfx/necromancer/bone_spear.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:bone:bone"
+   ]
+  },
+  "necromancer_bone_wall": {
+   "sheet": "assets/vfx/necromancer/bone_wall.png",
+   "frames": 13,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "wall:bone:bone"
+   ]
+  },
+  "necromancer_curse": {
+   "sheet": "assets/vfx/necromancer/curse.png",
+   "frames": 15,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:shadow:skull",
+    "mark:necro"
+   ]
+  },
+  "necromancer_drain_life": {
+   "sheet": "assets/vfx/necromancer/drain_life.png",
+   "frames": 13,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "beam:necro:drain"
+   ]
+  },
+  "necromancer_essence_harvest": {
+   "sheet": "assets/vfx/necromancer/essence_harvest.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:necro"
+   ]
+  },
+  "necromancer_grave_step": {
+   "sheet": "assets/vfx/necromancer/grave_step.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "blink:necro"
+   ]
+  },
+  "necromancer_harvest_of_souls": {
+   "sheet": "assets/vfx/necromancer/harvest_of_souls.png",
+   "frames": 23,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "arch:necro",
+    "field:shadow:rift"
+   ]
+  },
+  "necromancer_lichs_patience": {
+   "sheet": "assets/vfx/necromancer/lichs_patience.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:necro"
+   ]
+  },
+  "necromancer_plague_cloud": {
+   "sheet": "assets/vfx/necromancer/plague_cloud.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:poison:cloud"
+   ]
+  },
+  "necromancer_shadow_bolt": {
+   "sheet": "assets/vfx/necromancer/shadow_bolt.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:shadow:skull"
+   ]
+  },
+  "necromancer_soul_siphon": {
+   "sheet": "assets/vfx/necromancer/soul_siphon.png",
+   "frames": 18,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "beam:necro:drain",
+    "heal:necro"
+   ]
+  },
+  "necromancer_summon_raise": {
+   "sheet": "assets/vfx/necromancer/summon_raise.png",
+   "frames": 16,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "summon:necro:skeleton"
+   ]
+  },
+  "necromancer_undying_pact": {
+   "sheet": "assets/vfx/necromancer/undying_pact.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:necro"
+   ]
+  },
+  "necromancer_withered_flesh": {
+   "sheet": "assets/vfx/necromancer/withered_flesh.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:necro"
+   ]
+  },
+  "nightveil_backstab": {
+   "sheet": "assets/vfx/nightveil/backstab.png",
+   "frames": 11,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "blink:shadow",
+    "thrust:blood",
+    "impact:blood"
+   ]
+  },
+  "nightveil_cloak_of_night": {
+   "sheet": "assets/vfx/nightveil/cloak_of_night.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:shadow"
+   ]
+  },
+  "nightveil_combo_mastery": {
+   "sheet": "assets/vfx/nightveil/combo_mastery.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:shadow"
+   ]
+  },
+  "nightveil_death_from_shadow": {
+   "sheet": "assets/vfx/nightveil/death_from_shadow.png",
+   "frames": 12,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "blink:shadow",
+    "slash:blood:x",
+    "impact:holy"
+   ]
+  },
+  "nightveil_garrote": {
+   "sheet": "assets/vfx/nightveil/garrote.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "thrust:shadow",
+    "impact:blood",
+    "mark:shadow"
+   ]
+  },
+  "nightveil_nimble_reflexes": {
+   "sheet": "assets/vfx/nightveil/nimble_reflexes.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:shadow"
+   ]
+  },
+  "nightveil_predators_instinct": {
+   "sheet": "assets/vfx/nightveil/predators_instinct.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:shadow"
+   ]
+  },
+  "nightveil_quickstrike": {
+   "sheet": "assets/vfx/nightveil/quickstrike.png",
+   "frames": 7,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "thrust:shadow"
+   ]
+  },
+  "nightveil_shadow_slice": {
+   "sheet": "assets/vfx/nightveil/shadow_slice.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:shadow:rev"
+   ]
+  },
+  "nightveil_shadow_step": {
+   "sheet": "assets/vfx/nightveil/shadow_step.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "blink:shadow"
+   ]
+  },
+  "nightveil_shadows_embrace": {
+   "sheet": "assets/vfx/nightveil/shadows_embrace.png",
+   "frames": 23,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "arch:shadow",
+    "flurry:shadow:slash"
+   ]
+  },
+  "nightveil_smoke_bomb": {
+   "sheet": "assets/vfx/nightveil/smoke_bomb.png",
+   "frames": 17,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:smoke:bone",
+    "field:smoke:cloud"
+   ]
+  },
+  "nightveil_thousand_cuts": {
+   "sheet": "assets/vfx/nightveil/thousand_cuts.png",
+   "frames": 12,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "flurry:shadow:slash"
+   ]
+  },
+  "nightveil_twin_fangs": {
+   "sheet": "assets/vfx/nightveil/twin_fangs.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:shadow:x"
+   ]
+  },
+  "nightveil_vanish": {
+   "sheet": "assets/vfx/nightveil/vanish.png",
+   "frames": 6,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "blink:shadow"
+   ]
+  },
+  "oathblade_counter_stance": {
+   "sheet": "assets/vfx/oathblade/counter_stance.png",
+   "frames": 10,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "stance:moon"
+   ]
+  },
+  "oathblade_disciplined_mind": {
+   "sheet": "assets/vfx/oathblade/disciplined_mind.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:moon"
+   ]
+  },
+  "oathblade_final_sheath": {
+   "sheet": "assets/vfx/oathblade/final_sheath.png",
+   "frames": 27,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:blood:draw",
+    "arch:moon"
+   ]
+  },
+  "oathblade_flowing_strike": {
+   "sheet": "assets/vfx/oathblade/flowing_strike.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:moon:h"
+   ]
+  },
+  "oathblade_iai_cut": {
+   "sheet": "assets/vfx/oathblade/iai_cut.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:moon:draw"
+   ]
+  },
+  "oathblade_iai_draw": {
+   "sheet": "assets/vfx/oathblade/iai_draw.png",
+   "frames": 10,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:blood:draw",
+    "impact:moon"
+   ]
+  },
+  "oathblade_moonlit_arc": {
+   "sheet": "assets/vfx/oathblade/moonlit_arc.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:moon:wide"
+   ]
+  },
+  "oathblade_oath_unbroken": {
+   "sheet": "assets/vfx/oathblade/oath_unbroken.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:moon"
+   ]
+  },
+  "oathblade_parrying_stance": {
+   "sheet": "assets/vfx/oathblade/parrying_stance.png",
+   "frames": 10,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "stance:steel",
+    "impact:holy"
+   ]
+  },
+  "oathblade_resolve_stance": {
+   "sheet": "assets/vfx/oathblade/resolve_stance.png",
+   "frames": 13,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "stance:blood",
+    "ward:moon"
+   ]
+  },
+  "oathblade_second_cut": {
+   "sheet": "assets/vfx/oathblade/second_cut.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:blood:x"
+   ]
+  },
+  "oathblade_sheathed_focus": {
+   "sheet": "assets/vfx/oathblade/sheathed_focus.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:moon"
+   ]
+  },
+  "oathblade_step_through": {
+   "sheet": "assets/vfx/oathblade/step_through.png",
+   "frames": 11,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:moon:speed",
+    "slash:moon:draw"
+   ]
+  },
+  "oathblade_thousandfold_cut": {
+   "sheet": "assets/vfx/oathblade/thousandfold_cut.png",
+   "frames": 13,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "flurry:moon:slash"
+   ]
+  },
+  "oathblade_unbroken_blade": {
+   "sheet": "assets/vfx/oathblade/unbroken_blade.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:moon"
+   ]
+  },
+  "ranger_aim_draw": {
+   "sheet": "assets/vfx/ranger/aim_draw.png",
+   "frames": 12,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "mark:wild",
+    "hand:wild"
+   ]
+  },
+  "ranger_camouflage": {
+   "sheet": "assets/vfx/ranger/camouflage.png",
+   "frames": 13,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "camo:nature"
+   ]
+  },
+  "ranger_dead_eye": {
+   "sheet": "assets/vfx/ranger/dead_eye.png",
+   "frames": 12,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "mark:blood",
+    "proj:holy:arrow",
+    "impact:holy"
+   ]
+  },
+  "ranger_evasive_roll": {
+   "sheet": "assets/vfx/ranger/evasive_roll.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:earth:speed"
+   ]
+  },
+  "ranger_hunters_mark": {
+   "sheet": "assets/vfx/ranger/hunters_mark.png",
+   "frames": 19,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "mark:blood",
+    "sky:wild:arrows",
+    "multi:wild:arrow"
+   ]
+  },
+  "ranger_keen_eye": {
+   "sheet": "assets/vfx/ranger/keen_eye.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:wild"
+   ]
+  },
+  "ranger_pathfinder": {
+   "sheet": "assets/vfx/ranger/pathfinder.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:wild"
+   ]
+  },
+  "ranger_piercing_shot": {
+   "sheet": "assets/vfx/ranger/piercing_shot.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "pierce:wild"
+   ]
+  },
+  "ranger_power_shot": {
+   "sheet": "assets/vfx/ranger/power_shot.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:wild:arrow",
+    "impact:wild"
+   ]
+  },
+  "ranger_quick_shot": {
+   "sheet": "assets/vfx/ranger/quick_shot.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:steel:arrow"
+   ]
+  },
+  "ranger_rain_of_arrows": {
+   "sheet": "assets/vfx/ranger/rain_of_arrows.png",
+   "frames": 12,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "sky:steel:arrows"
+   ]
+  },
+  "ranger_steady_aim": {
+   "sheet": "assets/vfx/ranger/steady_aim.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:wild"
+   ]
+  },
+  "ranger_thick_boots": {
+   "sheet": "assets/vfx/ranger/thick_boots.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:wild"
+   ]
+  },
+  "ranger_trap_kneel": {
+   "sheet": "assets/vfx/ranger/trap_kneel.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:steel:trap"
+   ]
+  },
+  "ranger_volley": {
+   "sheet": "assets/vfx/ranger/volley.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "multi:steel:arrow"
+   ]
+  },
+  "ravager_axe_chop": {
+   "sheet": "assets/vfx/ravager/axe_chop.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:rage:h"
+   ]
+  },
+  "ravager_backhand_swing": {
+   "sheet": "assets/vfx/ravager/backhand_swing.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:rage:rev"
+   ]
+  },
+  "ravager_berserkers_grip": {
+   "sheet": "assets/vfx/ravager/berserkers_grip.png",
+   "frames": 12,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "aura:blood:flame"
+   ]
+  },
+  "ravager_blood_and_thunder": {
+   "sheet": "assets/vfx/ravager/blood_and_thunder.png",
+   "frames": 23,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "arch:rage",
+    "spin:blood",
+    "sky:lightning:bolt"
+   ]
+  },
+  "ravager_bloodscent": {
+   "sheet": "assets/vfx/ravager/bloodscent.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:rage"
+   ]
+  },
+  "ravager_cleaving_blow": {
+   "sheet": "assets/vfx/ravager/cleaving_blow.png",
+   "frames": 18,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:rage:v",
+    "field:earth:quake"
+   ]
+  },
+  "ravager_earthbreaker": {
+   "sheet": "assets/vfx/ravager/earthbreaker.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:earth:quake",
+    "arch:rage"
+   ]
+  },
+  "ravager_headsmans_swing": {
+   "sheet": "assets/vfx/ravager/headsmans_swing.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:blood:v",
+    "impact:blood"
+   ]
+  },
+  "ravager_reckless_charge": {
+   "sheet": "assets/vfx/ravager/reckless_charge.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:rage:charge"
+   ]
+  },
+  "ravager_roar": {
+   "sheet": "assets/vfx/ravager/roar.png",
+   "frames": 14,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "shout:rage",
+    "aura:rage:flame"
+   ]
+  },
+  "ravager_savage_cleave": {
+   "sheet": "assets/vfx/ravager/savage_cleave.png",
+   "frames": 11,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:blood:h",
+    "slash:blood:rev"
+   ]
+  },
+  "ravager_thick_hide": {
+   "sheet": "assets/vfx/ravager/thick_hide.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:rage"
+   ]
+  },
+  "ravager_undying_fury": {
+   "sheet": "assets/vfx/ravager/undying_fury.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:rage"
+   ]
+  },
+  "ravager_war-born": {
+   "sheet": "assets/vfx/ravager/war-born.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:rage"
+   ]
+  },
+  "ravager_whirlwind": {
+   "sheet": "assets/vfx/ravager/whirlwind.png",
+   "frames": 12,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "spin:rage"
+   ]
+  },
+  "thornlancer_brace_spear": {
+   "sheet": "assets/vfx/thornlancer/brace_spear.png",
+   "frames": 13,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "stance:rage",
+    "thrust:steel"
+   ]
+  },
+  "thornlancer_charging_step": {
+   "sheet": "assets/vfx/thornlancer/charging_step.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:rage:charge"
+   ]
+  },
+  "thornlancer_guard_stance": {
+   "sheet": "assets/vfx/thornlancer/guard_stance.png",
+   "frames": 13,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "wall:steel:energy"
+   ]
+  },
+  "thornlancer_impaling_sweep": {
+   "sheet": "assets/vfx/thornlancer/impaling_sweep.png",
+   "frames": 13,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:rage:low",
+    "flurry:steel:thrust"
+   ]
+  },
+  "thornlancer_lance_of_the_vanguard": {
+   "sheet": "assets/vfx/thornlancer/lance_of_the_vanguard.png",
+   "frames": 18,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "arch:rage",
+    "pierce:holy",
+    "field:rage:nova"
+   ]
+  },
+  "thornlancer_lunging_thrust": {
+   "sheet": "assets/vfx/thornlancer/lunging_thrust.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "thrust:rage"
+   ]
+  },
+  "thornlancer_momentum_mastery": {
+   "sheet": "assets/vfx/thornlancer/momentum_mastery.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:rage"
+   ]
+  },
+  "thornlancer_piercing_charge": {
+   "sheet": "assets/vfx/thornlancer/piercing_charge.png",
+   "frames": 11,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:rage:charge",
+    "pierce:rage"
+   ]
+  },
+  "thornlancer_relentless_advance": {
+   "sheet": "assets/vfx/thornlancer/relentless_advance.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:rage"
+   ]
+  },
+  "thornlancer_spear_charge": {
+   "sheet": "assets/vfx/thornlancer/spear_charge.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:rage:charge",
+    "thrust:rage"
+   ]
+  },
+  "thornlancer_spear_jab": {
+   "sheet": "assets/vfx/thornlancer/spear_jab.png",
+   "frames": 7,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "thrust:steel"
+   ]
+  },
+  "thornlancer_sure_footing": {
+   "sheet": "assets/vfx/thornlancer/sure_footing.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:rage"
+   ]
+  },
+  "thornlancer_sweep": {
+   "sheet": "assets/vfx/thornlancer/sweep.png",
+   "frames": 8,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "slash:rage:low"
+   ]
+  },
+  "thornlancer_thousand_spears": {
+   "sheet": "assets/vfx/thornlancer/thousand_spears.png",
+   "frames": 12,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "flurry:steel:thrust"
+   ]
+  },
+  "thornlancer_unstoppable_force": {
+   "sheet": "assets/vfx/thornlancer/unstoppable_force.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:rage"
+   ]
+  },
+  "vaneweaver_calm_air": {
+   "sheet": "assets/vfx/vaneweaver/calm_air.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:wind"
+   ]
+  },
+  "vaneweaver_cyclone": {
+   "sheet": "assets/vfx/vaneweaver/cyclone.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:wind:cyclone"
+   ]
+  },
+  "vaneweaver_eye_of_the_storm": {
+   "sheet": "assets/vfx/vaneweaver/eye_of_the_storm.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:wind"
+   ]
+  },
+  "vaneweaver_gale_charges": {
+   "sheet": "assets/vfx/vaneweaver/gale_charges.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:wind"
+   ]
+  },
+  "vaneweaver_gale_spin": {
+   "sheet": "assets/vfx/vaneweaver/gale_spin.png",
+   "frames": 14,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:wind:cyclone",
+    "spin:wind"
+   ]
+  },
+  "vaneweaver_gust_strike": {
+   "sheet": "assets/vfx/vaneweaver/gust_strike.png",
+   "frames": 10,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:wind:wind",
+    "arch:wind"
+   ]
+  },
+  "vaneweaver_hurricanes_herald": {
+   "sheet": "assets/vfx/vaneweaver/hurricanes_herald.png",
+   "frames": 23,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "arch:wind",
+    "field:wind:cyclone",
+    "sky:lightning:bolt"
+   ]
+  },
+  "vaneweaver_maelstrom": {
+   "sheet": "assets/vfx/vaneweaver/maelstrom.png",
+   "frames": 17,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:lightning:storm",
+    "field:wind:cyclone"
+   ]
+  },
+  "vaneweaver_storm_call": {
+   "sheet": "assets/vfx/vaneweaver/storm_call.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:lightning:storm"
+   ]
+  },
+  "vaneweaver_tailwind": {
+   "sheet": "assets/vfx/vaneweaver/tailwind.png",
+   "frames": 12,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "aura:wind:swirl",
+    "dash:wind:speed"
+   ]
+  },
+  "vaneweaver_tempest": {
+   "sheet": "assets/vfx/vaneweaver/tempest.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:lightning:storm"
+   ]
+  },
+  "vaneweaver_weathervane": {
+   "sheet": "assets/vfx/vaneweaver/weathervane.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:wind"
+   ]
+  },
+  "vaneweaver_wind_lash": {
+   "sheet": "assets/vfx/vaneweaver/wind_lash.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:wind:wind"
+   ]
+  },
+  "vaneweaver_wind_step": {
+   "sheet": "assets/vfx/vaneweaver/wind_step.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "dash:wind:speed"
+   ]
+  },
+  "vaneweaver_zephyr_shield": {
+   "sheet": "assets/vfx/vaneweaver/zephyr_shield.png",
+   "frames": 12,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "ward:wind",
+    "aura:wind:swirl"
+   ]
+  },
+  "warlock_book_open": {
+   "sheet": "assets/vfx/warlock/book_open.png",
+   "frames": 14,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "hand:shadow",
+    "aura:shadow:swirl"
+   ]
+  },
+  "warlock_dark_step": {
+   "sheet": "assets/vfx/warlock/dark_step.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "blink:shadow"
+   ]
+  },
+  "warlock_darkest_hour": {
+   "sheet": "assets/vfx/warlock/darkest_hour.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:shadow"
+   ]
+  },
+  "warlock_hex": {
+   "sheet": "assets/vfx/warlock/hex.png",
+   "frames": 16,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "mark:shadow",
+    "field:shadow:glyph"
+   ]
+  },
+  "warlock_hexbolt": {
+   "sheet": "assets/vfx/warlock/hexbolt.png",
+   "frames": 9,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:shadow:skull"
+   ]
+  },
+  "warlock_oblivion": {
+   "sheet": "assets/vfx/warlock/oblivion.png",
+   "frames": 20,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:void:rift",
+    "sky:shadow:pillar"
+   ]
+  },
+  "warlock_pact_bound": {
+   "sheet": "assets/vfx/warlock/pact_bound.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:shadow"
+   ]
+  },
+  "warlock_ritual_of_ruin": {
+   "sheet": "assets/vfx/warlock/ritual_of_ruin.png",
+   "frames": 15,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "field:shadow:glyph",
+    "multi:shadow:skull"
+   ]
+  },
+  "warlock_shadow_affinity": {
+   "sheet": "assets/vfx/warlock/shadow_affinity.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:shadow"
+   ]
+  },
+  "warlock_shadow_touch": {
+   "sheet": "assets/vfx/warlock/shadow_touch.png",
+   "frames": 7,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "impact:shadow"
+   ]
+  },
+  "warlock_shadow_ward": {
+   "sheet": "assets/vfx/warlock/shadow_ward.png",
+   "frames": 12,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "ward:shadow"
+   ]
+  },
+  "warlock_shard_pact": {
+   "sheet": "assets/vfx/warlock/shard_pact.png",
+   "frames": 12,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "aura:shadow:flame"
+   ]
+  },
+  "warlock_soul_rend": {
+   "sheet": "assets/vfx/warlock/soul_rend.png",
+   "frames": 18,
+   "rows": 8,
+   "directional": true,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "proj:shadow:skull",
+    "field:shadow:nova"
+   ]
+  },
+  "warlock_thick_shadow": {
+   "sheet": "assets/vfx/warlock/thick_shadow.png",
+   "frames": 11,
+   "rows": 1,
+   "directional": false,
+   "loop": true,
+   "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+   ],
+   "parts": [
+    "arch:shadow"
+   ]
+  },
+  "warlock_unholy_nova": {
+   "sheet": "assets/vfx/warlock/unholy_nova.png",
+   "frames": 13,
+   "rows": 1,
+   "directional": false,
+   "loop": false,
+   "durations_ms": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "parts": [
+    "arch:shadow"
+   ]
   }
+ }
 }

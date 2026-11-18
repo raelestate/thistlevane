@@ -88,7 +88,7 @@ export class EntitySprite {
   ) {
     const def = ref.def;
     const initial = isRichCharacter(def)
-      ? { tex: keys.sheet(ref, def.clips.idle?.sheet ?? 'locomotion'), frame: keys.richFrame('idle', 'down', 0) }
+      ? { tex: keys.richClipTexture(ref, 'idle'), frame: keys.richFrame('idle', 'down', 0) }
       : { tex: keys.sheet(ref), frame: 0 };
     this.sprite = scene.add.sprite(0, 0, initial.tex, initial.frame).setOrigin(def.anchor.x, def.anchor.y);
     this.labelOffsetY = labelStyle.offsetY;

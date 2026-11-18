@@ -775,9 +775,9 @@ export class WorldScene extends Phaser.Scene {
 
   /**
    * Renders a skill cast: plays the skill's own clip (if it has one — passives don't), then
-   * spawns its VFX archetype at hit_ms (impact-style skills) or activate_ms (everything else,
-   * including self-casts with no real "hit"), parented to the clip's own attach point for the
-   * frame nearest that moment. Fires for the local player's own optimistic cast and for every
+   * spawns its VFX sheet at hit_ms (impact-style skills) or activate_ms (everything else,
+   * including self-casts with no real "hit"), anchored on the caster's own foot point in the
+   * caster's current facing. Fires for the local player's own optimistic cast and for every
    * remote player's/mob's broadcast 'cast' event alike (see findEntitySprite).
    */
   private onCastEvent(s: Session, e: CombatEvent): void {
@@ -788,29 +788,29 @@ export class WorldScene extends Phaser.Scene {
     if (skill.animation.clip) sprite.playSkillClip(skill.animation.clip, aim, skill.category === 'ultimate' ? 'attacking' : 'casting');
     const delayMs = skill.animation.hit_ms > 0 ? skill.animation.hit_ms : skill.animation.activate_ms;
     this.time.delayedCall(Math.max(0, delayMs), () => {
-      if (this.session === s) this.spawnSkillVfx(sprite, skill);
+      if (this.session === s) this.spawnSkillVfx(sprite, skill, aim);
     });
   }
 
-  /** Spawns one skill's VFX archetype, tinted per-class by the pre-rendered sheet itself (no
-   * runtime tinting needed), positioned at the caster's "chest" attach point for whatever
-   * clip/direction/frame is playing right now — falling back to the sprite's own position if the
-   * clip has no attach data for this frame (e.g. a passive with no clip at all). */
-  private spawnSkillVfx(sprite: EntitySprite, skill: Skill): void {
+  /** Spawns one skill's VFX sheet, tinted per-class by the pre-rendered sheet itself (no runtime
+   * tinting needed), anchor-to-anchor on the caster's own foot point (the manifest's `anchor` is
+   * exactly this engine's own character anchor convention, so no per-effect offset is needed) and
+   * showing the caster's facing row for a directional (aimed) sheet. */
+  private spawnSkillVfx(sprite: EntitySprite, skill: Skill, aim: Direction): void {
     const { classId, archetype } = parseVfxRef(skill.vfx);
-    const archetypeDef = this.content.vfxManifest.archetypes[archetype];
-    if (!archetypeDef) {
-      console.warn(`[vfx] unknown archetype "${archetype}" (skill ${skill.id})`);
+    const entry = this.content.vfxManifest.skills[skill.id];
+    if (!entry) {
+      console.warn(`[vfx] no manifest entry for skill "${skill.id}"`);
       return;
     }
-    const attach = sprite.attachPoint('chest');
+    const { anchor, frame_size } = this.content.vfxManifest;
     const foot = sprite.footPosition;
-    const x = attach?.x ?? foot.x;
-    const y = attach?.y ?? foot.y - 24;
-    const depthY = attach ? foot.y + attach.depth * -0.01 : foot.y;
-    const img = this.add.sprite(x, y, keys.vfxSheet(classId, archetype)).setOrigin(0.5, 0.5).setDepth(depthY);
-    img.play(keys.vfxAnim(classId, archetype));
-    if (archetypeDef.loop) {
+    const img = this.add
+      .sprite(foot.x, foot.y, keys.vfxSheet(classId, archetype))
+      .setOrigin(anchor.x / frame_size, anchor.y / frame_size)
+      .setDepth(foot.y + 0.4);
+    img.play(keys.vfxAnim(classId, archetype, aim));
+    if (entry.loop) {
       this.activeLoopingVfx.add(img);
       this.time.delayedCall(LOOPING_VFX_FALLBACK_MS, () => {
         if (!img.active) return;

@@ -27,11 +27,14 @@
   "status": [],
   "animation": {
    "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "monk/arcane_bolt",
+  "vfx": "monk/spirit_palm",
+  "vfx_parts": [
+   "impact:spirit"
+  ],
   "sfx": [
    "sfx_monk_0_cast",
    "sfx_monk_0_hit"
@@ -70,12 +73,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "leap_strike",
+   "activate_ms": 520,
+   "hit_ms": 520,
+   "recover_ms": 1020
   },
-  "vfx": "monk/arcane_bolt",
+  "vfx": "monk/rising_crane",
+  "vfx_parts": [
+   "impact:spirit",
+   "shout:spirit"
+  ],
   "sfx": [
    "sfx_monk_1_cast",
    "sfx_monk_1_hit"
@@ -113,11 +120,15 @@
   "status": [],
   "animation": {
    "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "monk/arcane_bolt",
+  "vfx": "monk/twin_fist",
+  "vfx_parts": [
+   "impact:spirit",
+   "impact:spirit"
+  ],
   "sfx": [
    "sfx_monk_2_cast",
    "sfx_monk_2_hit"
@@ -155,11 +166,17 @@
   "status": [],
   "animation": {
    "clip": "palm_combo",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 230,
+   "hit_ms": 230,
+   "recover_ms": 1261
   },
-  "vfx": "monk/melee_impact",
+  "vfx": "monk/palm_combo",
+  "vfx_parts": [
+   "impact:spirit",
+   "impact:spirit",
+   "impact:spirit",
+   "arch:spirit"
+  ],
   "sfx": [
    "sfx_monk_3_cast",
    "sfx_monk_3_hit"
@@ -198,10 +215,14 @@
   "animation": {
    "clip": "meditate",
    "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "hit_ms": 80,
+   "recover_ms": 1132
   },
-  "vfx": "monk/heal_sparkle",
+  "vfx": "monk/inner_serenity",
+  "vfx_parts": [
+   "heal:spirit",
+   "stance:spirit"
+  ],
   "sfx": [
    "sfx_monk_4_cast",
    "sfx_monk_4_hit"
@@ -243,7 +264,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "monk/passive_aura",
+  "vfx": "monk/still_water",
+  "vfx_parts": [
+   "arch:spirit"
+  ],
   "sfx": [
    "sfx_monk_5_cast",
    "sfx_monk_5_hit"
@@ -281,11 +305,14 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "monk/dash_trail",
+  "vfx": "monk/flowing_step",
+  "vfx_parts": [
+   "dash:spirit:speed"
+  ],
   "sfx": [
    "sfx_monk_6_cast",
    "sfx_monk_6_hit"
@@ -322,12 +349,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "guard",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "kneel",
+   "activate_ms": 414,
+   "hit_ms": 414,
+   "recover_ms": 1352
   },
-  "vfx": "monk/guard_shield",
+  "vfx": "monk/meditate",
+  "vfx_parts": [
+   "heal:spirit",
+   "aura:spirit:rise"
+  ],
   "sfx": [
    "sfx_monk_7_cast",
    "sfx_monk_7_hit"
@@ -364,12 +395,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "flurry",
+   "activate_ms": 150,
+   "hit_ms": 150,
+   "recover_ms": 748
   },
-  "vfx": "monk/aoe_burst",
+  "vfx": "monk/hundred_hands",
+  "vfx_parts": [
+   "flurry:spirit:palm"
+  ],
   "sfx": [
    "sfx_monk_8_cast",
    "sfx_monk_8_hit"
@@ -411,7 +445,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "monk/passive_aura",
+  "vfx": "monk/iron_body",
+  "vfx_parts": [
+   "arch:spirit"
+  ],
   "sfx": [
    "sfx_monk_9_cast",
    "sfx_monk_9_hit"
@@ -449,11 +486,15 @@
   "status": [],
   "animation": {
    "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 656
   },
-  "vfx": "monk/release_burst",
+  "vfx": "monk/spirit_release",
+  "vfx_parts": [
+   "impact:spirit",
+   "arch:spirit"
+  ],
   "sfx": [
    "sfx_monk_10_cast",
    "sfx_monk_10_hit"
@@ -495,7 +536,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "monk/passive_aura",
+  "vfx": "monk/unbroken_will",
+  "vfx_parts": [
+   "arch:spirit"
+  ],
   "sfx": [
    "sfx_monk_11_cast",
    "sfx_monk_11_hit"
@@ -532,12 +576,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "flurry",
+   "activate_ms": 150,
+   "hit_ms": 150,
+   "recover_ms": 748
   },
-  "vfx": "monk/arcane_bolt",
+  "vfx": "monk/thousand_palm_strike",
+  "vfx_parts": [
+   "flurry:spirit:palm",
+   "impact:spirit"
+  ],
   "sfx": [
    "sfx_monk_12_cast",
    "sfx_monk_12_hit"
@@ -579,7 +627,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "monk/passive_aura",
+  "vfx": "monk/monastery_discipline",
+  "vfx_parts": [
+   "arch:spirit"
+  ],
   "sfx": [
    "sfx_monk_13_cast",
    "sfx_monk_13_hit"
@@ -617,11 +668,15 @@
   "status": [],
   "animation": {
    "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 670,
+   "hit_ms": 670,
+   "recover_ms": 1908
   },
-  "vfx": "monk/ultimate_nova",
+  "vfx": "monk/avatar_of_serenity",
+  "vfx_parts": [
+   "arch:spirit",
+   "flurry:spirit:palm"
+  ],
   "sfx": [
    "sfx_monk_14_cast",
    "sfx_monk_14_hit"
@@ -658,12 +713,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "shield_bash",
+   "activate_ms": 240,
+   "hit_ms": 240,
+   "recover_ms": 882
   },
-  "vfx": "ironwarden/melee_impact",
+  "vfx": "ironwarden/shield_strike",
+  "vfx_parts": [
+   "impact:steel"
+  ],
   "sfx": [
    "sfx_ironwarden_0_cast",
    "sfx_ironwarden_0_hit"
@@ -701,11 +759,14 @@
   "status": [],
   "animation": {
    "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 883
   },
-  "vfx": "ironwarden/melee_impact",
+  "vfx": "ironwarden/heavy_cleave",
+  "vfx_parts": [
+   "slash:steel:wide"
+  ],
   "sfx": [
    "sfx_ironwarden_1_cast",
    "sfx_ironwarden_1_hit"
@@ -742,12 +803,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "attack_1",
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "ironwarden/melee_impact",
+  "vfx": "ironwarden/sword_draw",
+  "vfx_parts": [
+   "slash:steel:draw"
+  ],
   "sfx": [
    "sfx_ironwarden_2_cast",
    "sfx_ironwarden_2_hit"
@@ -785,11 +849,16 @@
   "status": [],
   "animation": {
    "clip": "shield_bash",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 240,
+   "hit_ms": 240,
+   "recover_ms": 882
   },
-  "vfx": "ironwarden/melee_impact",
+  "vfx": "ironwarden/shield_bash",
+  "vfx_parts": [
+   "impact:steel",
+   "arch:lightning",
+   "shout:holy"
+  ],
   "sfx": [
    "sfx_ironwarden_3_cast",
    "sfx_ironwarden_3_hit"
@@ -827,11 +896,14 @@
   "status": [],
   "animation": {
    "clip": "brace",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 438
   },
-  "vfx": "ironwarden/guard_shield",
+  "vfx": "ironwarden/brace",
+  "vfx_parts": [
+   "wall:lightning:energy"
+  ],
   "sfx": [
    "sfx_ironwarden_4_cast",
    "sfx_ironwarden_4_hit"
@@ -873,7 +945,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "ironwarden/passive_aura",
+  "vfx": "ironwarden/stalwart",
+  "vfx_parts": [
+   "arch:lightning"
+  ],
   "sfx": [
    "sfx_ironwarden_5_cast",
    "sfx_ironwarden_5_hit"
@@ -911,11 +986,14 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "ironwarden/dash_trail",
+  "vfx": "ironwarden/advance",
+  "vfx_parts": [
+   "dash:steel:charge"
+  ],
   "sfx": [
    "sfx_ironwarden_6_cast",
    "sfx_ironwarden_6_hit"
@@ -953,11 +1031,15 @@
   "status": [],
   "animation": {
    "clip": "guard",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 438
   },
-  "vfx": "ironwarden/guard_shield",
+  "vfx": "ironwarden/bulwark_stance",
+  "vfx_parts": [
+   "stance:lightning",
+   "ward:lightning"
+  ],
   "sfx": [
    "sfx_ironwarden_7_cast",
    "sfx_ironwarden_7_hit"
@@ -995,11 +1077,14 @@
   "status": [],
   "animation": {
    "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 260,
+   "hit_ms": 260,
+   "recover_ms": 832
   },
-  "vfx": "ironwarden/aoe_burst",
+  "vfx": "ironwarden/ground_slam",
+  "vfx_parts": [
+   "field:earth:quake"
+  ],
   "sfx": [
    "sfx_ironwarden_8_cast",
    "sfx_ironwarden_8_hit"
@@ -1041,7 +1126,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "ironwarden/passive_aura",
+  "vfx": "ironwarden/unyielding",
+  "vfx_parts": [
+   "arch:lightning"
+  ],
   "sfx": [
    "sfx_ironwarden_9_cast",
    "sfx_ironwarden_9_hit"
@@ -1078,12 +1166,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "attack_2",
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "ironwarden/release_burst",
+  "vfx": "ironwarden/counter_riposte",
+  "vfx_parts": [
+   "impact:holy",
+   "slash:steel:rev"
+  ],
   "sfx": [
    "sfx_ironwarden_10_cast",
    "sfx_ironwarden_10_hit"
@@ -1125,7 +1217,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "ironwarden/passive_aura",
+  "vfx": "ironwarden/fortress",
+  "vfx_parts": [
+   "arch:lightning"
+  ],
   "sfx": [
    "sfx_ironwarden_11_cast",
    "sfx_ironwarden_11_hit"
@@ -1163,11 +1258,15 @@
   "status": [],
   "animation": {
    "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 883
   },
-  "vfx": "ironwarden/melee_impact",
+  "vfx": "ironwarden/executioners_arc",
+  "vfx_parts": [
+   "slash:lightning:v",
+   "field:earth:quake"
+  ],
   "sfx": [
    "sfx_ironwarden_12_cast",
    "sfx_ironwarden_12_hit"
@@ -1209,7 +1308,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "ironwarden/passive_aura",
+  "vfx": "ironwarden/immovable_object",
+  "vfx_parts": [
+   "arch:lightning"
+  ],
   "sfx": [
    "sfx_ironwarden_13_cast",
    "sfx_ironwarden_13_hit"
@@ -1247,11 +1349,15 @@
   "status": [],
   "animation": {
    "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 670,
+   "hit_ms": 670,
+   "recover_ms": 1908
   },
-  "vfx": "ironwarden/ultimate_nova",
+  "vfx": "ironwarden/last_bastion",
+  "vfx_parts": [
+   "arch:lightning",
+   "ward:steel"
+  ],
   "sfx": [
    "sfx_ironwarden_14_cast",
    "sfx_ironwarden_14_hit"
@@ -1289,11 +1395,14 @@
   "status": [],
   "animation": {
    "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "ravager/melee_impact",
+  "vfx": "ravager/axe_chop",
+  "vfx_parts": [
+   "slash:rage:h"
+  ],
   "sfx": [
    "sfx_ravager_0_cast",
    "sfx_ravager_0_hit"
@@ -1331,11 +1440,15 @@
   "status": [],
   "animation": {
    "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 1108
   },
-  "vfx": "ravager/melee_impact",
+  "vfx": "ravager/cleaving_blow",
+  "vfx_parts": [
+   "slash:rage:v",
+   "field:earth:quake"
+  ],
   "sfx": [
    "sfx_ravager_1_cast",
    "sfx_ravager_1_hit"
@@ -1373,11 +1486,14 @@
   "status": [],
   "animation": {
    "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "ravager/melee_impact",
+  "vfx": "ravager/backhand_swing",
+  "vfx_parts": [
+   "slash:rage:rev"
+  ],
   "sfx": [
    "sfx_ravager_2_cast",
    "sfx_ravager_2_hit"
@@ -1415,11 +1531,14 @@
   "status": [],
   "animation": {
    "clip": "whirlwind",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 230,
+   "hit_ms": 230,
+   "recover_ms": 1511
   },
-  "vfx": "ravager/aoe_burst",
+  "vfx": "ravager/whirlwind",
+  "vfx_parts": [
+   "spin:rage"
+  ],
   "sfx": [
    "sfx_ravager_3_cast",
    "sfx_ravager_3_hit"
@@ -1457,11 +1576,15 @@
   "status": [],
   "animation": {
    "clip": "roar",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 575,
+   "hit_ms": 575,
+   "recover_ms": 1223
   },
-  "vfx": "ravager/buff_aura",
+  "vfx": "ravager/roar",
+  "vfx_parts": [
+   "shout:rage",
+   "aura:rage:flame"
+  ],
   "sfx": [
    "sfx_ravager_4_cast",
    "sfx_ravager_4_hit"
@@ -1503,7 +1626,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "ravager/passive_aura",
+  "vfx": "ravager/bloodscent",
+  "vfx_parts": [
+   "arch:rage"
+  ],
   "sfx": [
    "sfx_ravager_5_cast",
    "sfx_ravager_5_hit"
@@ -1541,11 +1667,14 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "ravager/dash_trail",
+  "vfx": "ravager/reckless_charge",
+  "vfx_parts": [
+   "dash:rage:charge"
+  ],
   "sfx": [
    "sfx_ravager_6_cast",
    "sfx_ravager_6_hit"
@@ -1582,12 +1711,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "guard",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "buff",
+   "activate_ms": 485,
+   "hit_ms": 485,
+   "recover_ms": 1003
   },
-  "vfx": "ravager/guard_shield",
+  "vfx": "ravager/berserkers_grip",
+  "vfx_parts": [
+   "aura:blood:flame"
+  ],
   "sfx": [
    "sfx_ravager_7_cast",
    "sfx_ravager_7_hit"
@@ -1625,11 +1757,15 @@
   "status": [],
   "animation": {
    "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 260,
+   "hit_ms": 260,
+   "recover_ms": 832
   },
-  "vfx": "ravager/aoe_burst",
+  "vfx": "ravager/earthbreaker",
+  "vfx_parts": [
+   "field:earth:quake",
+   "arch:rage"
+  ],
   "sfx": [
    "sfx_ravager_8_cast",
    "sfx_ravager_8_hit"
@@ -1671,7 +1807,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "ravager/passive_aura",
+  "vfx": "ravager/thick_hide",
+  "vfx_parts": [
+   "arch:rage"
+  ],
   "sfx": [
    "sfx_ravager_9_cast",
    "sfx_ravager_9_hit"
@@ -1710,12 +1849,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "attack_heavy",
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 1108
   },
-  "vfx": "ravager/release_burst",
+  "vfx": "ravager/savage_cleave",
+  "vfx_parts": [
+   "slash:blood:h",
+   "slash:blood:rev"
+  ],
   "sfx": [
    "sfx_ravager_10_cast",
    "sfx_ravager_10_hit"
@@ -1757,7 +1900,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "ravager/passive_aura",
+  "vfx": "ravager/undying_fury",
+  "vfx_parts": [
+   "arch:rage"
+  ],
   "sfx": [
    "sfx_ravager_11_cast",
    "sfx_ravager_11_hit"
@@ -1795,11 +1941,15 @@
   "status": [],
   "animation": {
    "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 1108
   },
-  "vfx": "ravager/melee_impact",
+  "vfx": "ravager/headsmans_swing",
+  "vfx_parts": [
+   "slash:blood:v",
+   "impact:blood"
+  ],
   "sfx": [
    "sfx_ravager_12_cast",
    "sfx_ravager_12_hit"
@@ -1841,7 +1991,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "ravager/passive_aura",
+  "vfx": "ravager/war-born",
+  "vfx_parts": [
+   "arch:rage"
+  ],
   "sfx": [
    "sfx_ravager_13_cast",
    "sfx_ravager_13_hit"
@@ -1879,11 +2032,16 @@
   "status": [],
   "animation": {
    "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 670,
+   "hit_ms": 670,
+   "recover_ms": 1908
   },
-  "vfx": "ravager/ultimate_nova",
+  "vfx": "ravager/blood_and_thunder",
+  "vfx_parts": [
+   "arch:rage",
+   "spin:blood",
+   "sky:lightning:bolt"
+  ],
   "sfx": [
    "sfx_ravager_14_cast",
    "sfx_ravager_14_hit"
@@ -1921,11 +2079,14 @@
   "status": [],
   "animation": {
    "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "nightveil/melee_impact",
+  "vfx": "nightveil/quickstrike",
+  "vfx_parts": [
+   "thrust:shadow"
+  ],
   "sfx": [
    "sfx_nightveil_0_cast",
    "sfx_nightveil_0_hit"
@@ -1963,11 +2124,14 @@
   "status": [],
   "animation": {
    "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 883
   },
-  "vfx": "nightveil/melee_impact",
+  "vfx": "nightveil/twin_fangs",
+  "vfx_parts": [
+   "slash:shadow:x"
+  ],
   "sfx": [
    "sfx_nightveil_1_cast",
    "sfx_nightveil_1_hit"
@@ -2005,11 +2169,14 @@
   "status": [],
   "animation": {
    "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "nightveil/melee_impact",
+  "vfx": "nightveil/shadow_slice",
+  "vfx_parts": [
+   "slash:shadow:rev"
+  ],
   "sfx": [
    "sfx_nightveil_2_cast",
    "sfx_nightveil_2_hit"
@@ -2046,12 +2213,17 @@
   },
   "status": [],
   "animation": {
-   "clip": "vanish",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "backstab",
+   "activate_ms": 240,
+   "hit_ms": 240,
+   "recover_ms": 831
   },
-  "vfx": "nightveil/melee_impact",
+  "vfx": "nightveil/backstab",
+  "vfx_parts": [
+   "blink:shadow",
+   "thrust:blood",
+   "impact:blood"
+  ],
   "sfx": [
    "sfx_nightveil_3_cast",
    "sfx_nightveil_3_hit"
@@ -2090,12 +2262,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "backstab",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "vanish",
+   "activate_ms": 500,
+   "hit_ms": 500,
+   "recover_ms": 832
   },
-  "vfx": "nightveil/dash_trail",
+  "vfx": "nightveil/vanish",
+  "vfx_parts": [
+   "blink:shadow"
+  ],
   "sfx": [
    "sfx_nightveil_4_cast",
    "sfx_nightveil_4_hit"
@@ -2137,7 +2312,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "nightveil/passive_aura",
+  "vfx": "nightveil/combo_mastery",
+  "vfx_parts": [
+   "arch:shadow"
+  ],
   "sfx": [
    "sfx_nightveil_5_cast",
    "sfx_nightveil_5_hit"
@@ -2175,11 +2353,14 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "nightveil/dash_trail",
+  "vfx": "nightveil/shadow_step",
+  "vfx_parts": [
+   "blink:shadow"
+  ],
   "sfx": [
    "sfx_nightveil_6_cast",
    "sfx_nightveil_6_hit"
@@ -2216,12 +2397,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "guard",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "throw",
+   "activate_ms": 290,
+   "hit_ms": 290,
+   "recover_ms": 790
   },
-  "vfx": "nightveil/guard_shield",
+  "vfx": "nightveil/smoke_bomb",
+  "vfx_parts": [
+   "proj:smoke:bone",
+   "field:smoke:cloud"
+  ],
   "sfx": [
    "sfx_nightveil_7_cast",
    "sfx_nightveil_7_hit"
@@ -2258,12 +2443,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "flurry",
+   "activate_ms": 150,
+   "hit_ms": 150,
+   "recover_ms": 748
   },
-  "vfx": "nightveil/aoe_burst",
+  "vfx": "nightveil/thousand_cuts",
+  "vfx_parts": [
+   "flurry:shadow:slash"
+  ],
   "sfx": [
    "sfx_nightveil_8_cast",
    "sfx_nightveil_8_hit"
@@ -2305,7 +2493,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "nightveil/passive_aura",
+  "vfx": "nightveil/nimble_reflexes",
+  "vfx_parts": [
+   "arch:shadow"
+  ],
   "sfx": [
    "sfx_nightveil_9_cast",
    "sfx_nightveil_9_hit"
@@ -2342,12 +2533,17 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "backstab",
+   "activate_ms": 240,
+   "hit_ms": 240,
+   "recover_ms": 831
   },
-  "vfx": "nightveil/release_burst",
+  "vfx": "nightveil/garrote",
+  "vfx_parts": [
+   "thrust:shadow",
+   "impact:blood",
+   "mark:shadow"
+  ],
   "sfx": [
    "sfx_nightveil_10_cast",
    "sfx_nightveil_10_hit"
@@ -2389,7 +2585,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "nightveil/passive_aura",
+  "vfx": "nightveil/predators_instinct",
+  "vfx_parts": [
+   "arch:shadow"
+  ],
   "sfx": [
    "sfx_nightveil_11_cast",
    "sfx_nightveil_11_hit"
@@ -2426,12 +2625,17 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "backstab",
+   "activate_ms": 240,
+   "hit_ms": 240,
+   "recover_ms": 831
   },
-  "vfx": "nightveil/melee_impact",
+  "vfx": "nightveil/death_from_shadow",
+  "vfx_parts": [
+   "blink:shadow",
+   "slash:blood:x",
+   "impact:holy"
+  ],
   "sfx": [
    "sfx_nightveil_12_cast",
    "sfx_nightveil_12_hit"
@@ -2473,7 +2677,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "nightveil/passive_aura",
+  "vfx": "nightveil/cloak_of_night",
+  "vfx_parts": [
+   "arch:shadow"
+  ],
   "sfx": [
    "sfx_nightveil_13_cast",
    "sfx_nightveil_13_hit"
@@ -2511,11 +2718,15 @@
   "status": [],
   "animation": {
    "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 670,
+   "hit_ms": 670,
+   "recover_ms": 1908
   },
-  "vfx": "nightveil/ultimate_nova",
+  "vfx": "nightveil/shadows_embrace",
+  "vfx_parts": [
+   "arch:shadow",
+   "flurry:shadow:slash"
+  ],
   "sfx": [
    "sfx_nightveil_14_cast",
    "sfx_nightveil_14_hit"
@@ -2553,11 +2764,14 @@
   "status": [],
   "animation": {
    "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 1000
   },
-  "vfx": "arcanist/arcane_bolt",
+  "vfx": "arcanist/spark_bolt",
+  "vfx_parts": [
+   "proj:lightning:orb"
+  ],
   "sfx": [
    "sfx_arcanist_0_cast",
    "sfx_arcanist_0_hit"
@@ -2595,11 +2809,14 @@
   "status": [],
   "animation": {
    "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 983
   },
-  "vfx": "arcanist/arcane_bolt",
+  "vfx": "arcanist/fire_lance",
+  "vfx_parts": [
+   "proj:fire:lance"
+  ],
   "sfx": [
    "sfx_arcanist_1_cast",
    "sfx_arcanist_1_hit"
@@ -2637,11 +2854,14 @@
   "status": [],
   "animation": {
    "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 1000
   },
-  "vfx": "arcanist/arcane_bolt",
+  "vfx": "arcanist/frost_shard",
+  "vfx_parts": [
+   "proj:ice:shard"
+  ],
   "sfx": [
    "sfx_arcanist_2_cast",
    "sfx_arcanist_2_hit"
@@ -2679,11 +2899,15 @@
   "status": [],
   "animation": {
    "clip": "elemental_channel",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 410,
+   "hit_ms": 410,
+   "recover_ms": 786
   },
-  "vfx": "arcanist/channel_pulse",
+  "vfx": "arcanist/elemental_channel",
+  "vfx_parts": [
+   "hand:arcane",
+   "proj:arcane:orb"
+  ],
   "sfx": [
    "sfx_arcanist_3_cast",
    "sfx_arcanist_3_hit"
@@ -2721,11 +2945,14 @@
   "status": [],
   "animation": {
    "clip": "blink",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 670
   },
-  "vfx": "arcanist/dash_trail",
+  "vfx": "arcanist/blink",
+  "vfx_parts": [
+   "blink:arcane"
+  ],
   "sfx": [
    "sfx_arcanist_4_cast",
    "sfx_arcanist_4_hit"
@@ -2767,7 +2994,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "arcanist/passive_aura",
+  "vfx": "arcanist/attunement_mastery",
+  "vfx_parts": [
+   "arch:arcane"
+  ],
   "sfx": [
    "sfx_arcanist_5_cast",
    "sfx_arcanist_5_hit"
@@ -2805,11 +3035,14 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "arcanist/dash_trail",
+  "vfx": "arcanist/arcane_step",
+  "vfx_parts": [
+   "dash:ice:frost"
+  ],
   "sfx": [
    "sfx_arcanist_6_cast",
    "sfx_arcanist_6_hit"
@@ -2847,11 +3080,14 @@
   "status": [],
   "animation": {
    "clip": "guard",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 438
   },
-  "vfx": "arcanist/guard_shield",
+  "vfx": "arcanist/mana_shield",
+  "vfx_parts": [
+   "ward:arcane"
+  ],
   "sfx": [
    "sfx_arcanist_7_cast",
    "sfx_arcanist_7_hit"
@@ -2889,11 +3125,15 @@
   "status": [],
   "animation": {
    "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 260,
+   "hit_ms": 260,
+   "recover_ms": 832
   },
-  "vfx": "arcanist/aoe_burst",
+  "vfx": "arcanist/storm_nova",
+  "vfx_parts": [
+   "field:lightning:nova",
+   "arch:lightning"
+  ],
   "sfx": [
    "sfx_arcanist_8_cast",
    "sfx_arcanist_8_hit"
@@ -2935,7 +3175,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "arcanist/passive_aura",
+  "vfx": "arcanist/insulation",
+  "vfx_parts": [
+   "arch:arcane"
+  ],
   "sfx": [
    "sfx_arcanist_9_cast",
    "sfx_arcanist_9_hit"
@@ -2973,11 +3216,14 @@
   "status": [],
   "animation": {
    "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 656
   },
-  "vfx": "arcanist/release_burst",
+  "vfx": "arcanist/chain_lightning",
+  "vfx_parts": [
+   "chain:lightning"
+  ],
   "sfx": [
    "sfx_arcanist_10_cast",
    "sfx_arcanist_10_hit"
@@ -3019,7 +3265,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "arcanist/passive_aura",
+  "vfx": "arcanist/overchannel",
+  "vfx_parts": [
+   "arch:arcane"
+  ],
   "sfx": [
    "sfx_arcanist_11_cast",
    "sfx_arcanist_11_hit"
@@ -3056,12 +3305,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "cast_release",
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 656
   },
-  "vfx": "arcanist/arcane_bolt",
+  "vfx": "arcanist/meteor",
+  "vfx_parts": [
+   "sky:fire:meteor"
+  ],
   "sfx": [
    "sfx_arcanist_12_cast",
    "sfx_arcanist_12_hit"
@@ -3103,7 +3355,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "arcanist/passive_aura",
+  "vfx": "arcanist/archmages_focus",
+  "vfx_parts": [
+   "arch:arcane"
+  ],
   "sfx": [
    "sfx_arcanist_13_cast",
    "sfx_arcanist_13_hit"
@@ -3141,11 +3396,17 @@
   "status": [],
   "animation": {
    "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 670,
+   "hit_ms": 670,
+   "recover_ms": 1908
   },
-  "vfx": "arcanist/ultimate_nova",
+  "vfx": "arcanist/convergence",
+  "vfx_parts": [
+   "arch:arcane",
+   "field:fire:nova",
+   "field:ice:nova",
+   "sky:lightning:bolt"
+  ],
   "sfx": [
    "sfx_arcanist_14_cast",
    "sfx_arcanist_14_hit"
@@ -3183,11 +3444,14 @@
   "status": [],
   "animation": {
    "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 1000
   },
-  "vfx": "ranger/ranged_impact",
+  "vfx": "ranger/quick_shot",
+  "vfx_parts": [
+   "proj:steel:arrow"
+  ],
   "sfx": [
    "sfx_ranger_0_cast",
    "sfx_ranger_0_hit"
@@ -3225,11 +3489,15 @@
   "status": [],
   "animation": {
    "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 983
   },
-  "vfx": "ranger/ranged_impact",
+  "vfx": "ranger/power_shot",
+  "vfx_parts": [
+   "proj:wild:arrow",
+   "impact:wild"
+  ],
   "sfx": [
    "sfx_ranger_1_cast",
    "sfx_ranger_1_hit"
@@ -3266,12 +3534,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "aim_draw",
+   "activate_ms": 275,
+   "hit_ms": 275,
+   "recover_ms": 817
   },
-  "vfx": "ranger/ranged_impact",
+  "vfx": "ranger/aim_draw",
+  "vfx_parts": [
+   "mark:wild",
+   "hand:wild"
+  ],
   "sfx": [
    "sfx_ranger_2_cast",
    "sfx_ranger_2_hit"
@@ -3308,12 +3580,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "aim_draw",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "volley",
+   "activate_ms": 190,
+   "hit_ms": 190,
+   "recover_ms": 1006
   },
-  "vfx": "ranger/ranged_impact",
+  "vfx": "ranger/volley",
+  "vfx_parts": [
+   "multi:steel:arrow"
+  ],
   "sfx": [
    "sfx_ranger_3_cast",
    "sfx_ranger_3_hit"
@@ -3350,12 +3625,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "volley",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "trap_kneel",
+   "activate_ms": 305,
+   "hit_ms": 305,
+   "recover_ms": 880
   },
-  "vfx": "ranger/aoe_burst",
+  "vfx": "ranger/trap_kneel",
+  "vfx_parts": [
+   "field:steel:trap"
+  ],
   "sfx": [
    "sfx_ranger_4_cast",
    "sfx_ranger_4_hit"
@@ -3397,7 +3675,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "ranger/passive_aura",
+  "vfx": "ranger/steady_aim",
+  "vfx_parts": [
+   "arch:wild"
+  ],
   "sfx": [
    "sfx_ranger_5_cast",
    "sfx_ranger_5_hit"
@@ -3435,11 +3716,14 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "ranger/dash_trail",
+  "vfx": "ranger/evasive_roll",
+  "vfx_parts": [
+   "dash:earth:speed"
+  ],
   "sfx": [
    "sfx_ranger_6_cast",
    "sfx_ranger_6_hit"
@@ -3476,12 +3760,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "trap_kneel",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "kneel",
+   "activate_ms": 414,
+   "hit_ms": 414,
+   "recover_ms": 1352
   },
-  "vfx": "ranger/buff_aura",
+  "vfx": "ranger/camouflage",
+  "vfx_parts": [
+   "camo:nature"
+  ],
   "sfx": [
    "sfx_ranger_7_cast",
    "sfx_ranger_7_hit"
@@ -3518,12 +3805,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "volley",
+   "activate_ms": 190,
+   "hit_ms": 190,
+   "recover_ms": 1006
   },
-  "vfx": "ranger/aoe_burst",
+  "vfx": "ranger/rain_of_arrows",
+  "vfx_parts": [
+   "sky:steel:arrows"
+  ],
   "sfx": [
    "sfx_ranger_8_cast",
    "sfx_ranger_8_hit"
@@ -3565,7 +3855,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "ranger/passive_aura",
+  "vfx": "ranger/thick_boots",
+  "vfx_parts": [
+   "arch:wild"
+  ],
   "sfx": [
    "sfx_ranger_9_cast",
    "sfx_ranger_9_hit"
@@ -3602,12 +3895,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "attack_heavy",
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 983
   },
-  "vfx": "ranger/release_burst",
+  "vfx": "ranger/piercing_shot",
+  "vfx_parts": [
+   "pierce:wild"
+  ],
   "sfx": [
    "sfx_ranger_10_cast",
    "sfx_ranger_10_hit"
@@ -3649,7 +3945,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "ranger/passive_aura",
+  "vfx": "ranger/keen_eye",
+  "vfx_parts": [
+   "arch:wild"
+  ],
   "sfx": [
    "sfx_ranger_11_cast",
    "sfx_ranger_11_hit"
@@ -3686,12 +3985,17 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "aim_draw",
+   "activate_ms": 275,
+   "hit_ms": 275,
+   "recover_ms": 817
   },
-  "vfx": "ranger/ranged_impact",
+  "vfx": "ranger/dead_eye",
+  "vfx_parts": [
+   "mark:blood",
+   "proj:holy:arrow",
+   "impact:holy"
+  ],
   "sfx": [
    "sfx_ranger_12_cast",
    "sfx_ranger_12_hit"
@@ -3733,7 +4037,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "ranger/passive_aura",
+  "vfx": "ranger/pathfinder",
+  "vfx_parts": [
+   "arch:wild"
+  ],
   "sfx": [
    "sfx_ranger_13_cast",
    "sfx_ranger_13_hit"
@@ -3771,11 +4078,16 @@
   "status": [],
   "animation": {
    "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 670,
+   "hit_ms": 670,
+   "recover_ms": 1908
   },
-  "vfx": "ranger/ultimate_nova",
+  "vfx": "ranger/hunters_mark",
+  "vfx_parts": [
+   "mark:blood",
+   "sky:wild:arrows",
+   "multi:wild:arrow"
+  ],
   "sfx": [
    "sfx_ranger_14_cast",
    "sfx_ranger_14_hit"
@@ -3813,11 +4125,14 @@
   "status": [],
   "animation": {
    "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 1000
   },
-  "vfx": "necromancer/arcane_bolt",
+  "vfx": "necromancer/shadow_bolt",
+  "vfx_parts": [
+   "proj:shadow:skull"
+  ],
   "sfx": [
    "sfx_necromancer_0_cast",
    "sfx_necromancer_0_hit"
@@ -3854,12 +4169,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "throw",
+   "activate_ms": 290,
+   "hit_ms": 290,
+   "recover_ms": 790
   },
-  "vfx": "necromancer/arcane_bolt",
+  "vfx": "necromancer/bone_spear",
+  "vfx_parts": [
+   "proj:bone:bone"
+  ],
   "sfx": [
    "sfx_necromancer_1_cast",
    "sfx_necromancer_1_hit"
@@ -3896,12 +4214,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "point_cast",
+   "activate_ms": 290,
+   "hit_ms": 290,
+   "recover_ms": 1228
   },
-  "vfx": "necromancer/arcane_bolt",
+  "vfx": "necromancer/drain_life",
+  "vfx_parts": [
+   "beam:necro:drain"
+  ],
   "sfx": [
    "sfx_necromancer_2_cast",
    "sfx_necromancer_2_hit"
@@ -3939,11 +4260,14 @@
   "status": [],
   "animation": {
    "clip": "summon_raise",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 515,
+   "hit_ms": 515,
+   "recover_ms": 1105
   },
-  "vfx": "necromancer/summon_circle",
+  "vfx": "necromancer/summon_raise",
+  "vfx_parts": [
+   "summon:necro:skeleton"
+  ],
   "sfx": [
    "sfx_necromancer_3_cast",
    "sfx_necromancer_3_hit"
@@ -3981,11 +4305,15 @@
   "status": [],
   "animation": {
    "clip": "curse",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 260,
+   "hit_ms": 260,
+   "recover_ms": 793
   },
-  "vfx": "necromancer/release_burst",
+  "vfx": "necromancer/curse",
+  "vfx_parts": [
+   "proj:shadow:skull",
+   "mark:necro"
+  ],
   "sfx": [
    "sfx_necromancer_4_cast",
    "sfx_necromancer_4_hit"
@@ -4027,7 +4355,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "necromancer/passive_aura",
+  "vfx": "necromancer/essence_harvest",
+  "vfx_parts": [
+   "arch:necro"
+  ],
   "sfx": [
    "sfx_necromancer_5_cast",
    "sfx_necromancer_5_hit"
@@ -4065,11 +4396,14 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "necromancer/dash_trail",
+  "vfx": "necromancer/grave_step",
+  "vfx_parts": [
+   "blink:necro"
+  ],
   "sfx": [
    "sfx_necromancer_6_cast",
    "sfx_necromancer_6_hit"
@@ -4106,12 +4440,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "guard",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "cast_ground",
+   "activate_ms": 260,
+   "hit_ms": 260,
+   "recover_ms": 832
   },
-  "vfx": "necromancer/guard_shield",
+  "vfx": "necromancer/bone_wall",
+  "vfx_parts": [
+   "wall:bone:bone"
+  ],
   "sfx": [
    "sfx_necromancer_7_cast",
    "sfx_necromancer_7_hit"
@@ -4149,11 +4486,14 @@
   "status": [],
   "animation": {
    "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 260,
+   "hit_ms": 260,
+   "recover_ms": 832
   },
-  "vfx": "necromancer/aoe_burst",
+  "vfx": "necromancer/plague_cloud",
+  "vfx_parts": [
+   "field:poison:cloud"
+  ],
   "sfx": [
    "sfx_necromancer_8_cast",
    "sfx_necromancer_8_hit"
@@ -4195,7 +4535,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "necromancer/passive_aura",
+  "vfx": "necromancer/withered_flesh",
+  "vfx_parts": [
+   "arch:necro"
+  ],
   "sfx": [
    "sfx_necromancer_9_cast",
    "sfx_necromancer_9_hit"
@@ -4232,12 +4575,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "point_cast",
+   "activate_ms": 290,
+   "hit_ms": 290,
+   "recover_ms": 1228
   },
-  "vfx": "necromancer/release_burst",
+  "vfx": "necromancer/soul_siphon",
+  "vfx_parts": [
+   "beam:necro:drain",
+   "heal:necro"
+  ],
   "sfx": [
    "sfx_necromancer_10_cast",
    "sfx_necromancer_10_hit"
@@ -4279,7 +4626,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "necromancer/passive_aura",
+  "vfx": "necromancer/undying_pact",
+  "vfx_parts": [
+   "arch:necro"
+  ],
   "sfx": [
    "sfx_necromancer_11_cast",
    "sfx_necromancer_11_hit"
@@ -4316,12 +4666,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "summon_raise",
+   "activate_ms": 515,
+   "hit_ms": 515,
+   "recover_ms": 1105
   },
-  "vfx": "necromancer/arcane_bolt",
+  "vfx": "necromancer/army_of_the_dead",
+  "vfx_parts": [
+   "summon:necro:skeleton"
+  ],
   "sfx": [
    "sfx_necromancer_12_cast",
    "sfx_necromancer_12_hit"
@@ -4363,7 +4716,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "necromancer/passive_aura",
+  "vfx": "necromancer/lichs_patience",
+  "vfx_parts": [
+   "arch:necro"
+  ],
   "sfx": [
    "sfx_necromancer_13_cast",
    "sfx_necromancer_13_hit"
@@ -4401,11 +4757,15 @@
   "status": [],
   "animation": {
    "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 670,
+   "hit_ms": 670,
+   "recover_ms": 1908
   },
-  "vfx": "necromancer/ultimate_nova",
+  "vfx": "necromancer/harvest_of_souls",
+  "vfx_parts": [
+   "arch:necro",
+   "field:shadow:rift"
+  ],
   "sfx": [
    "sfx_necromancer_14_cast",
    "sfx_necromancer_14_hit"
@@ -4443,11 +4803,14 @@
   "status": [],
   "animation": {
    "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "dawnkeeper/melee_impact",
+  "vfx": "dawnkeeper/holy_strike",
+  "vfx_parts": [
+   "slash:holy:h"
+  ],
   "sfx": [
    "sfx_dawnkeeper_0_cast",
    "sfx_dawnkeeper_0_hit"
@@ -4485,11 +4848,15 @@
   "status": [],
   "animation": {
    "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 883
   },
-  "vfx": "dawnkeeper/melee_impact",
+  "vfx": "dawnkeeper/smite",
+  "vfx_parts": [
+   "slash:holy:v",
+   "sky:holy:pillar"
+  ],
   "sfx": [
    "sfx_dawnkeeper_1_cast",
    "sfx_dawnkeeper_1_hit"
@@ -4526,12 +4893,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "shield_block",
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 369
   },
-  "vfx": "dawnkeeper/melee_impact",
+  "vfx": "dawnkeeper/shield_block",
+  "vfx_parts": [
+   "wall:holy:energy"
+  ],
   "sfx": [
    "sfx_dawnkeeper_2_cast",
    "sfx_dawnkeeper_2_hit"
@@ -4568,12 +4938,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "shield_block",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "holy_raise",
+   "activate_ms": 515,
+   "hit_ms": 515,
+   "recover_ms": 1105
   },
-  "vfx": "dawnkeeper/aoe_burst",
+  "vfx": "dawnkeeper/holy_raise",
+  "vfx_parts": [
+   "sky:holy:pillar"
+  ],
   "sfx": [
    "sfx_dawnkeeper_3_cast",
    "sfx_dawnkeeper_3_hit"
@@ -4610,12 +4983,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "holy_raise",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "point_cast",
+   "activate_ms": 290,
+   "hit_ms": 290,
+   "recover_ms": 1228
   },
-  "vfx": "dawnkeeper/heal_sparkle",
+  "vfx": "dawnkeeper/lay_on_hands",
+  "vfx_parts": [
+   "heal:holy",
+   "hand:holy"
+  ],
   "sfx": [
    "sfx_dawnkeeper_4_cast",
    "sfx_dawnkeeper_4_hit"
@@ -4657,7 +5034,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "dawnkeeper/passive_aura",
+  "vfx": "dawnkeeper/blessed_armour",
+  "vfx_parts": [
+   "arch:holy"
+  ],
   "sfx": [
    "sfx_dawnkeeper_5_cast",
    "sfx_dawnkeeper_5_hit"
@@ -4695,11 +5075,14 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "dawnkeeper/dash_trail",
+  "vfx": "dawnkeeper/sanctified_step",
+  "vfx_parts": [
+   "dash:holy:holy"
+  ],
   "sfx": [
    "sfx_dawnkeeper_6_cast",
    "sfx_dawnkeeper_6_hit"
@@ -4736,12 +5119,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "guard",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "cast_ground",
+   "activate_ms": 260,
+   "hit_ms": 260,
+   "recover_ms": 832
   },
-  "vfx": "dawnkeeper/guard_shield",
+  "vfx": "dawnkeeper/consecration",
+  "vfx_parts": [
+   "field:holy:consecrate"
+  ],
   "sfx": [
    "sfx_dawnkeeper_7_cast",
    "sfx_dawnkeeper_7_hit"
@@ -4778,12 +5164,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "buff",
+   "activate_ms": 485,
+   "hit_ms": 485,
+   "recover_ms": 1003
   },
-  "vfx": "dawnkeeper/aoe_burst",
+  "vfx": "dawnkeeper/radiant_burst",
+  "vfx_parts": [
+   "field:holy:nova",
+   "heal:holy"
+  ],
   "sfx": [
    "sfx_dawnkeeper_8_cast",
    "sfx_dawnkeeper_8_hit"
@@ -4825,7 +5215,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "dawnkeeper/passive_aura",
+  "vfx": "dawnkeeper/divine_protection",
+  "vfx_parts": [
+   "arch:holy"
+  ],
   "sfx": [
    "sfx_dawnkeeper_9_cast",
    "sfx_dawnkeeper_9_hit"
@@ -4862,12 +5255,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "attack_heavy",
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 883
   },
-  "vfx": "dawnkeeper/release_burst",
+  "vfx": "dawnkeeper/judgment",
+  "vfx_parts": [
+   "slash:holy:v",
+   "sky:holy:pillar"
+  ],
   "sfx": [
    "sfx_dawnkeeper_10_cast",
    "sfx_dawnkeeper_10_hit"
@@ -4909,7 +5306,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "dawnkeeper/passive_aura",
+  "vfx": "dawnkeeper/guardians_grace",
+  "vfx_parts": [
+   "arch:holy"
+  ],
   "sfx": [
    "sfx_dawnkeeper_11_cast",
    "sfx_dawnkeeper_11_hit"
@@ -4946,12 +5346,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "holy_raise",
+   "activate_ms": 515,
+   "hit_ms": 515,
+   "recover_ms": 1105
   },
-  "vfx": "dawnkeeper/melee_impact",
+  "vfx": "dawnkeeper/avatar_of_dawn",
+  "vfx_parts": [
+   "aura:holy:rise",
+   "ward:holy"
+  ],
   "sfx": [
    "sfx_dawnkeeper_12_cast",
    "sfx_dawnkeeper_12_hit"
@@ -4993,7 +5397,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "dawnkeeper/passive_aura",
+  "vfx": "dawnkeeper/eternal_vigil",
+  "vfx_parts": [
+   "arch:holy"
+  ],
   "sfx": [
    "sfx_dawnkeeper_13_cast",
    "sfx_dawnkeeper_13_hit"
@@ -5031,11 +5438,15 @@
   "status": [],
   "animation": {
    "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 670,
+   "hit_ms": 670,
+   "recover_ms": 1908
   },
-  "vfx": "dawnkeeper/ultimate_nova",
+  "vfx": "dawnkeeper/dawnbreak",
+  "vfx_parts": [
+   "arch:holy",
+   "sky:fire:pillar"
+  ],
   "sfx": [
    "sfx_dawnkeeper_14_cast",
    "sfx_dawnkeeper_14_hit"
@@ -5073,11 +5484,14 @@
   "status": [],
   "animation": {
    "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 1000
   },
-  "vfx": "flintlock/ranged_impact",
+  "vfx": "flintlock/pistol_shot",
+  "vfx_parts": [
+   "proj:fire:bullet"
+  ],
   "sfx": [
    "sfx_flintlock_0_cast",
    "sfx_flintlock_0_hit"
@@ -5115,11 +5529,16 @@
   "status": [],
   "animation": {
    "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 1253
   },
-  "vfx": "flintlock/ranged_impact",
+  "vfx": "flintlock/point_blank",
+  "vfx_parts": [
+   "proj:fire:bullet",
+   "arch:fire",
+   "impact:fire"
+  ],
   "sfx": [
    "sfx_flintlock_1_cast",
    "sfx_flintlock_1_hit"
@@ -5156,12 +5575,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "quickdraw",
+   "activate_ms": 170,
+   "hit_ms": 170,
+   "recover_ms": 442
   },
-  "vfx": "flintlock/ranged_impact",
+  "vfx": "flintlock/quickdraw",
+  "vfx_parts": [
+   "proj:fire:bullet"
+  ],
   "sfx": [
    "sfx_flintlock_2_cast",
    "sfx_flintlock_2_hit"
@@ -5198,12 +5620,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "quickdraw",
+   "clip": "fan_fire",
    "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "hit_ms": 80,
+   "recover_ms": 676
   },
-  "vfx": "flintlock/ranged_impact",
+  "vfx": "flintlock/fan_fire",
+  "vfx_parts": [
+   "multi:fire:bullet"
+  ],
   "sfx": [
    "sfx_flintlock_3_cast",
    "sfx_flintlock_3_hit"
@@ -5241,11 +5666,14 @@
   "status": [],
   "animation": {
    "clip": "reload",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 305,
+   "hit_ms": 305,
+   "recover_ms": 865
   },
-  "vfx": "flintlock/buff_aura",
+  "vfx": "flintlock/reload",
+  "vfx_parts": [
+   "reload:fire"
+  ],
   "sfx": [
    "sfx_flintlock_4_cast",
    "sfx_flintlock_4_hit"
@@ -5287,7 +5715,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "flintlock/passive_aura",
+  "vfx": "flintlock/steady_hands",
+  "vfx_parts": [
+   "arch:fire"
+  ],
   "sfx": [
    "sfx_flintlock_5_cast",
    "sfx_flintlock_5_hit"
@@ -5325,11 +5756,15 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "flintlock/dash_trail",
+  "vfx": "flintlock/powder_step",
+  "vfx_parts": [
+   "dash:fire:speed",
+   "field:smoke:cloud"
+  ],
   "sfx": [
    "sfx_flintlock_6_cast",
    "sfx_flintlock_6_hit"
@@ -5366,12 +5801,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "fan_fire",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "attack_1",
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 1000
   },
-  "vfx": "flintlock/aoe_burst",
+  "vfx": "flintlock/smoke_screen",
+  "vfx_parts": [
+   "proj:fire:bullet",
+   "field:smoke:cloud"
+  ],
   "sfx": [
    "sfx_flintlock_7_cast",
    "sfx_flintlock_7_hit"
@@ -5408,12 +5847,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "attack_heavy",
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 1253
   },
-  "vfx": "flintlock/aoe_burst",
+  "vfx": "flintlock/scattershot",
+  "vfx_parts": [
+   "multi:fire:bullet",
+   "arch:fire"
+  ],
   "sfx": [
    "sfx_flintlock_8_cast",
    "sfx_flintlock_8_hit"
@@ -5455,7 +5898,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "flintlock/passive_aura",
+  "vfx": "flintlock/quick_hands",
+  "vfx_parts": [
+   "arch:fire"
+  ],
   "sfx": [
    "sfx_flintlock_9_cast",
    "sfx_flintlock_9_hit"
@@ -5492,12 +5938,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "attack_heavy",
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 1253
   },
-  "vfx": "flintlock/release_burst",
+  "vfx": "flintlock/last_shot",
+  "vfx_parts": [
+   "proj:fire:bullet",
+   "impact:holy"
+  ],
   "sfx": [
    "sfx_flintlock_10_cast",
    "sfx_flintlock_10_hit"
@@ -5539,7 +5989,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "flintlock/passive_aura",
+  "vfx": "flintlock/gunslingers_luck",
+  "vfx_parts": [
+   "arch:fire"
+  ],
   "sfx": [
    "sfx_flintlock_11_cast",
    "sfx_flintlock_11_hit"
@@ -5576,12 +6029,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "quickdraw",
+   "activate_ms": 170,
+   "hit_ms": 170,
+   "recover_ms": 442
   },
-  "vfx": "flintlock/ranged_impact",
+  "vfx": "flintlock/sharpshooter",
+  "vfx_parts": [
+   "mark:fire",
+   "pierce:fire"
+  ],
   "sfx": [
    "sfx_flintlock_12_cast",
    "sfx_flintlock_12_hit"
@@ -5623,7 +6080,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "flintlock/passive_aura",
+  "vfx": "flintlock/powder_keg",
+  "vfx_parts": [
+   "arch:fire"
+  ],
   "sfx": [
    "sfx_flintlock_13_cast",
    "sfx_flintlock_13_hit"
@@ -5660,12 +6120,17 @@
   },
   "status": [],
   "animation": {
-   "clip": "ultimate",
+   "clip": "fan_fire",
    "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "hit_ms": 80,
+   "recover_ms": 676
   },
-  "vfx": "flintlock/ultimate_nova",
+  "vfx": "flintlock/six_shots_to_midnight",
+  "vfx_parts": [
+   "mark:blood",
+   "multi:fire:bullet",
+   "field:fire:nova"
+  ],
   "sfx": [
    "sfx_flintlock_14_cast",
    "sfx_flintlock_14_hit"
@@ -5703,11 +6168,15 @@
   "status": [],
   "animation": {
    "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 1000
   },
-  "vfx": "druid/arcane_bolt",
+  "vfx": "druid/thorn_lash",
+  "vfx_parts": [
+   "thrust:thorn",
+   "field:thorn:thorns"
+  ],
   "sfx": [
    "sfx_druid_0_cast",
    "sfx_druid_0_hit"
@@ -5745,11 +6214,15 @@
   "status": [],
   "animation": {
    "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 983
   },
-  "vfx": "druid/arcane_bolt",
+  "vfx": "druid/bramble_strike",
+  "vfx_parts": [
+   "thrust:thorn",
+   "field:nature:roots"
+  ],
   "sfx": [
    "sfx_druid_1_cast",
    "sfx_druid_1_hit"
@@ -5786,12 +6259,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "root_summon",
+   "activate_ms": 290,
+   "hit_ms": 290,
+   "recover_ms": 859
   },
-  "vfx": "druid/arcane_bolt",
+  "vfx": "druid/root_summon",
+  "vfx_parts": [
+   "field:nature:roots"
+  ],
   "sfx": [
    "sfx_druid_2_cast",
    "sfx_druid_2_hit"
@@ -5828,12 +6304,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "root_summon",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "bloom",
+   "activate_ms": 545,
+   "hit_ms": 545,
+   "recover_ms": 1187
   },
-  "vfx": "druid/heal_sparkle",
+  "vfx": "druid/bloom",
+  "vfx_parts": [
+   "heal:nature",
+   "field:nature:glyph"
+  ],
   "sfx": [
    "sfx_druid_3_cast",
    "sfx_druid_3_hit"
@@ -5870,12 +6350,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "bloom",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "point_cast",
+   "activate_ms": 290,
+   "hit_ms": 290,
+   "recover_ms": 1228
   },
-  "vfx": "druid/release_burst",
+  "vfx": "druid/natures_grasp",
+  "vfx_parts": [
+   "field:nature:roots"
+  ],
   "sfx": [
    "sfx_druid_4_cast",
    "sfx_druid_4_hit"
@@ -5917,7 +6400,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "druid/passive_aura",
+  "vfx": "druid/verdant_growth",
+  "vfx_parts": [
+   "arch:nature"
+  ],
   "sfx": [
    "sfx_druid_5_cast",
    "sfx_druid_5_hit"
@@ -5955,11 +6441,14 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "druid/dash_trail",
+  "vfx": "druid/vine_step",
+  "vfx_parts": [
+   "dash:nature:vine"
+  ],
   "sfx": [
    "sfx_druid_6_cast",
    "sfx_druid_6_hit"
@@ -5997,11 +6486,15 @@
   "status": [],
   "animation": {
    "clip": "guard",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 438
   },
-  "vfx": "druid/guard_shield",
+  "vfx": "druid/bark_skin",
+  "vfx_parts": [
+   "ward:thorn",
+   "aura:earth:rise"
+  ],
   "sfx": [
    "sfx_druid_7_cast",
    "sfx_druid_7_hit"
@@ -6039,11 +6532,15 @@
   "status": [],
   "animation": {
    "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 260,
+   "hit_ms": 260,
+   "recover_ms": 832
   },
-  "vfx": "druid/aoe_burst",
+  "vfx": "druid/wildfire_bloom",
+  "vfx_parts": [
+   "field:nature:consecrate",
+   "heal:nature"
+  ],
   "sfx": [
    "sfx_druid_8_cast",
    "sfx_druid_8_hit"
@@ -6085,7 +6582,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "druid/passive_aura",
+  "vfx": "druid/regrowth",
+  "vfx_parts": [
+   "arch:nature"
+  ],
   "sfx": [
    "sfx_druid_9_cast",
    "sfx_druid_9_hit"
@@ -6122,12 +6622,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "buff",
+   "activate_ms": 485,
+   "hit_ms": 485,
+   "recover_ms": 1003
   },
-  "vfx": "druid/release_burst",
+  "vfx": "druid/lifes_bounty",
+  "vfx_parts": [
+   "heal:nature",
+   "aura:holy:rise"
+  ],
   "sfx": [
    "sfx_druid_10_cast",
    "sfx_druid_10_hit"
@@ -6169,7 +6673,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "druid/passive_aura",
+  "vfx": "druid/ancient_roots",
+  "vfx_parts": [
+   "arch:nature"
+  ],
   "sfx": [
    "sfx_druid_11_cast",
    "sfx_druid_11_hit"
@@ -6206,12 +6713,17 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "bloom",
+   "activate_ms": 545,
+   "hit_ms": 545,
+   "recover_ms": 1187
   },
-  "vfx": "druid/arcane_bolt",
+  "vfx": "druid/heart_of_the_forest",
+  "vfx_parts": [
+   "summon:nature:tree",
+   "heal:nature",
+   "ward:nature"
+  ],
   "sfx": [
    "sfx_druid_12_cast",
    "sfx_druid_12_hit"
@@ -6253,7 +6765,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "druid/passive_aura",
+  "vfx": "druid/seasons_turn",
+  "vfx_parts": [
+   "arch:nature"
+  ],
   "sfx": [
    "sfx_druid_13_cast",
    "sfx_druid_13_hit"
@@ -6291,11 +6806,15 @@
   "status": [],
   "animation": {
    "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 670,
+   "hit_ms": 670,
+   "recover_ms": 1908
   },
-  "vfx": "druid/ultimate_nova",
+  "vfx": "druid/world_trees_blessing",
+  "vfx_parts": [
+   "arch:nature",
+   "summon:nature:tree"
+  ],
   "sfx": [
    "sfx_druid_14_cast",
    "sfx_druid_14_hit"
@@ -6333,11 +6852,14 @@
   "status": [],
   "animation": {
    "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "oathblade/melee_impact",
+  "vfx": "oathblade/iai_cut",
+  "vfx_parts": [
+   "slash:moon:draw"
+  ],
   "sfx": [
    "sfx_oathblade_0_cast",
    "sfx_oathblade_0_hit"
@@ -6374,12 +6896,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "attack_2",
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "oathblade/melee_impact",
+  "vfx": "oathblade/flowing_strike",
+  "vfx_parts": [
+   "slash:moon:h"
+  ],
   "sfx": [
    "sfx_oathblade_1_cast",
    "sfx_oathblade_1_hit"
@@ -6416,12 +6941,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "counter_stance",
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 402
   },
-  "vfx": "oathblade/melee_impact",
+  "vfx": "oathblade/counter_stance",
+  "vfx_parts": [
+   "stance:moon"
+  ],
   "sfx": [
    "sfx_oathblade_2_cast",
    "sfx_oathblade_2_hit"
@@ -6459,11 +6987,15 @@
   "status": [],
   "animation": {
    "clip": "iai_draw",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 230,
+   "hit_ms": 230,
+   "recover_ms": 1011
   },
-  "vfx": "oathblade/melee_impact",
+  "vfx": "oathblade/iai_draw",
+  "vfx_parts": [
+   "slash:blood:draw",
+   "impact:moon"
+  ],
   "sfx": [
    "sfx_oathblade_3_cast",
    "sfx_oathblade_3_hit"
@@ -6500,12 +7032,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "counter_stance",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "guard",
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 438
   },
-  "vfx": "oathblade/guard_shield",
+  "vfx": "oathblade/resolve_stance",
+  "vfx_parts": [
+   "stance:blood",
+   "ward:moon"
+  ],
   "sfx": [
    "sfx_oathblade_4_cast",
    "sfx_oathblade_4_hit"
@@ -6547,7 +7083,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "oathblade/passive_aura",
+  "vfx": "oathblade/sheathed_focus",
+  "vfx_parts": [
+   "arch:moon"
+  ],
   "sfx": [
    "sfx_oathblade_5_cast",
    "sfx_oathblade_5_hit"
@@ -6585,11 +7124,15 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "oathblade/dash_trail",
+  "vfx": "oathblade/step_through",
+  "vfx_parts": [
+   "dash:moon:speed",
+   "slash:moon:draw"
+  ],
   "sfx": [
    "sfx_oathblade_6_cast",
    "sfx_oathblade_6_hit"
@@ -6626,12 +7169,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "guard",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "counter_stance",
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 402
   },
-  "vfx": "oathblade/guard_shield",
+  "vfx": "oathblade/parrying_stance",
+  "vfx_parts": [
+   "stance:steel",
+   "impact:holy"
+  ],
   "sfx": [
    "sfx_oathblade_7_cast",
    "sfx_oathblade_7_hit"
@@ -6668,12 +7215,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "attack_heavy",
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 1108
   },
-  "vfx": "oathblade/aoe_burst",
+  "vfx": "oathblade/moonlit_arc",
+  "vfx_parts": [
+   "slash:moon:wide"
+  ],
   "sfx": [
    "sfx_oathblade_8_cast",
    "sfx_oathblade_8_hit"
@@ -6715,7 +7265,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "oathblade/passive_aura",
+  "vfx": "oathblade/disciplined_mind",
+  "vfx_parts": [
+   "arch:moon"
+  ],
   "sfx": [
    "sfx_oathblade_9_cast",
    "sfx_oathblade_9_hit"
@@ -6752,12 +7305,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "attack_2",
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "oathblade/release_burst",
+  "vfx": "oathblade/second_cut",
+  "vfx_parts": [
+   "slash:blood:x"
+  ],
   "sfx": [
    "sfx_oathblade_10_cast",
    "sfx_oathblade_10_hit"
@@ -6799,7 +7355,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "oathblade/passive_aura",
+  "vfx": "oathblade/unbroken_blade",
+  "vfx_parts": [
+   "arch:moon"
+  ],
   "sfx": [
    "sfx_oathblade_11_cast",
    "sfx_oathblade_11_hit"
@@ -6836,12 +7395,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "flurry",
+   "activate_ms": 150,
+   "hit_ms": 150,
+   "recover_ms": 748
   },
-  "vfx": "oathblade/melee_impact",
+  "vfx": "oathblade/thousandfold_cut",
+  "vfx_parts": [
+   "flurry:moon:slash"
+  ],
   "sfx": [
    "sfx_oathblade_12_cast",
    "sfx_oathblade_12_hit"
@@ -6883,7 +7445,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "oathblade/passive_aura",
+  "vfx": "oathblade/oath_unbroken",
+  "vfx_parts": [
+   "arch:moon"
+  ],
   "sfx": [
    "sfx_oathblade_13_cast",
    "sfx_oathblade_13_hit"
@@ -6920,12 +7485,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "iai_draw",
+   "activate_ms": 230,
+   "hit_ms": 230,
+   "recover_ms": 1011
   },
-  "vfx": "oathblade/ultimate_nova",
+  "vfx": "oathblade/final_sheath",
+  "vfx_parts": [
+   "slash:blood:draw",
+   "arch:moon"
+  ],
   "sfx": [
    "sfx_oathblade_14_cast",
    "sfx_oathblade_14_hit"
@@ -6963,11 +7532,14 @@
   "status": [],
   "animation": {
    "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "minstrel/arcane_bolt",
+  "vfx": "minstrel/discordant_note",
+  "vfx_parts": [
+   "proj:sound:note"
+  ],
   "sfx": [
    "sfx_minstrel_0_cast",
    "sfx_minstrel_0_hit"
@@ -7005,11 +7577,15 @@
   "status": [],
   "animation": {
    "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 883
   },
-  "vfx": "minstrel/arcane_bolt",
+  "vfx": "minstrel/rising_chord",
+  "vfx_parts": [
+   "multi:sound:note",
+   "shout:sound"
+  ],
   "sfx": [
    "sfx_minstrel_1_cast",
    "sfx_minstrel_1_hit"
@@ -7046,12 +7622,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "play_lute",
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 490
   },
-  "vfx": "minstrel/arcane_bolt",
+  "vfx": "minstrel/play_lute",
+  "vfx_parts": [
+   "song:sound"
+  ],
   "sfx": [
    "sfx_minstrel_2_cast",
    "sfx_minstrel_2_hit"
@@ -7088,12 +7667,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "play_lute",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "perform",
+   "activate_ms": 320,
+   "hit_ms": 320,
+   "recover_ms": 895
   },
-  "vfx": "minstrel/buff_aura",
+  "vfx": "minstrel/perform",
+  "vfx_parts": [
+   "song:sound",
+   "aura:holy:rise"
+  ],
   "sfx": [
    "sfx_minstrel_3_cast",
    "sfx_minstrel_3_hit"
@@ -7130,12 +7713,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "perform",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "play_lute",
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 490
   },
-  "vfx": "minstrel/heal_sparkle",
+  "vfx": "minstrel/soothing_verse",
+  "vfx_parts": [
+   "song:nature",
+   "heal:nature"
+  ],
   "sfx": [
    "sfx_minstrel_4_cast",
    "sfx_minstrel_4_hit"
@@ -7177,7 +7764,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "minstrel/passive_aura",
+  "vfx": "minstrel/perfect_pitch",
+  "vfx_parts": [
+   "arch:sound"
+  ],
   "sfx": [
    "sfx_minstrel_5_cast",
    "sfx_minstrel_5_hit"
@@ -7215,11 +7805,14 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "minstrel/dash_trail",
+  "vfx": "minstrel/dancers_step",
+  "vfx_parts": [
+   "dash:sound:holy"
+  ],
   "sfx": [
    "sfx_minstrel_6_cast",
    "sfx_minstrel_6_hit"
@@ -7256,12 +7849,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "guard",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "perform",
+   "activate_ms": 320,
+   "hit_ms": 320,
+   "recover_ms": 895
   },
-  "vfx": "minstrel/guard_shield",
+  "vfx": "minstrel/encouraging_refrain",
+  "vfx_parts": [
+   "song:sound",
+   "stance:holy"
+  ],
   "sfx": [
    "sfx_minstrel_7_cast",
    "sfx_minstrel_7_hit"
@@ -7298,12 +7895,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "battle_cry",
+   "activate_ms": 350,
+   "hit_ms": 350,
+   "recover_ms": 1346
   },
-  "vfx": "minstrel/aoe_burst",
+  "vfx": "minstrel/battle_hymn",
+  "vfx_parts": [
+   "shout:sound",
+   "aura:rage:rise"
+  ],
   "sfx": [
    "sfx_minstrel_8_cast",
    "sfx_minstrel_8_hit"
@@ -7345,7 +7946,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "minstrel/passive_aura",
+  "vfx": "minstrel/steady_rhythm",
+  "vfx_parts": [
+   "arch:sound"
+  ],
   "sfx": [
    "sfx_minstrel_9_cast",
    "sfx_minstrel_9_hit"
@@ -7383,11 +7987,15 @@
   "status": [],
   "animation": {
    "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 656
   },
-  "vfx": "minstrel/release_burst",
+  "vfx": "minstrel/finale",
+  "vfx_parts": [
+   "arch:sound",
+   "multi:sound:note"
+  ],
   "sfx": [
    "sfx_minstrel_10_cast",
    "sfx_minstrel_10_hit"
@@ -7429,7 +8037,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "minstrel/passive_aura",
+  "vfx": "minstrel/crowd_pleaser",
+  "vfx_parts": [
+   "arch:sound"
+  ],
   "sfx": [
    "sfx_minstrel_11_cast",
    "sfx_minstrel_11_hit"
@@ -7466,12 +8077,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "perform",
+   "activate_ms": 320,
+   "hit_ms": 320,
+   "recover_ms": 895
   },
-  "vfx": "minstrel/arcane_bolt",
+  "vfx": "minstrel/grand_overture",
+  "vfx_parts": [
+   "field:sound:nova",
+   "song:sound"
+  ],
   "sfx": [
    "sfx_minstrel_12_cast",
    "sfx_minstrel_12_hit"
@@ -7513,7 +8128,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "minstrel/passive_aura",
+  "vfx": "minstrel/maestros_ear",
+  "vfx_parts": [
+   "arch:sound"
+  ],
   "sfx": [
    "sfx_minstrel_13_cast",
    "sfx_minstrel_13_hit"
@@ -7551,11 +8169,15 @@
   "status": [],
   "animation": {
    "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 670,
+   "hit_ms": 670,
+   "recover_ms": 1908
   },
-  "vfx": "minstrel/ultimate_nova",
+  "vfx": "minstrel/symphonys_end",
+  "vfx_parts": [
+   "arch:sound",
+   "song:holy"
+  ],
   "sfx": [
    "sfx_minstrel_14_cast",
    "sfx_minstrel_14_hit"
@@ -7593,11 +8215,14 @@
   "status": [],
   "animation": {
    "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "thornlancer/melee_impact",
+  "vfx": "thornlancer/spear_jab",
+  "vfx_parts": [
+   "thrust:steel"
+  ],
   "sfx": [
    "sfx_thornlancer_0_cast",
    "sfx_thornlancer_0_hit"
@@ -7635,11 +8260,14 @@
   "status": [],
   "animation": {
    "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 883
   },
-  "vfx": "thornlancer/melee_impact",
+  "vfx": "thornlancer/lunging_thrust",
+  "vfx_parts": [
+   "thrust:rage"
+  ],
   "sfx": [
    "sfx_thornlancer_1_cast",
    "sfx_thornlancer_1_hit"
@@ -7676,12 +8304,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "spear_charge",
+   "activate_ms": 240,
+   "hit_ms": 240,
+   "recover_ms": 876
   },
-  "vfx": "thornlancer/melee_impact",
+  "vfx": "thornlancer/spear_charge",
+  "vfx_parts": [
+   "dash:rage:charge",
+   "thrust:rage"
+  ],
   "sfx": [
    "sfx_thornlancer_2_cast",
    "sfx_thornlancer_2_hit"
@@ -7718,12 +8350,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "spear_charge",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "sweep",
+   "activate_ms": 240,
+   "hit_ms": 240,
+   "recover_ms": 876
   },
-  "vfx": "thornlancer/aoe_burst",
+  "vfx": "thornlancer/sweep",
+  "vfx_parts": [
+   "slash:rage:low"
+  ],
   "sfx": [
    "sfx_thornlancer_3_cast",
    "sfx_thornlancer_3_hit"
@@ -7760,12 +8395,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "sweep",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "guard",
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 438
   },
-  "vfx": "thornlancer/guard_shield",
+  "vfx": "thornlancer/brace_spear",
+  "vfx_parts": [
+   "stance:rage",
+   "thrust:steel"
+  ],
   "sfx": [
    "sfx_thornlancer_4_cast",
    "sfx_thornlancer_4_hit"
@@ -7807,7 +8446,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "thornlancer/passive_aura",
+  "vfx": "thornlancer/momentum_mastery",
+  "vfx_parts": [
+   "arch:rage"
+  ],
   "sfx": [
    "sfx_thornlancer_5_cast",
    "sfx_thornlancer_5_hit"
@@ -7845,11 +8487,14 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "thornlancer/dash_trail",
+  "vfx": "thornlancer/charging_step",
+  "vfx_parts": [
+   "dash:rage:charge"
+  ],
   "sfx": [
    "sfx_thornlancer_6_cast",
    "sfx_thornlancer_6_hit"
@@ -7887,11 +8532,14 @@
   "status": [],
   "animation": {
    "clip": "guard",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 438
   },
-  "vfx": "thornlancer/guard_shield",
+  "vfx": "thornlancer/guard_stance",
+  "vfx_parts": [
+   "wall:steel:energy"
+  ],
   "sfx": [
    "sfx_thornlancer_7_cast",
    "sfx_thornlancer_7_hit"
@@ -7928,12 +8576,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "sweep",
+   "activate_ms": 240,
+   "hit_ms": 240,
+   "recover_ms": 876
   },
-  "vfx": "thornlancer/aoe_burst",
+  "vfx": "thornlancer/impaling_sweep",
+  "vfx_parts": [
+   "slash:rage:low",
+   "flurry:steel:thrust"
+  ],
   "sfx": [
    "sfx_thornlancer_8_cast",
    "sfx_thornlancer_8_hit"
@@ -7975,7 +8627,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "thornlancer/passive_aura",
+  "vfx": "thornlancer/sure_footing",
+  "vfx_parts": [
+   "arch:rage"
+  ],
   "sfx": [
    "sfx_thornlancer_9_cast",
    "sfx_thornlancer_9_hit"
@@ -8012,12 +8667,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "spear_charge",
+   "activate_ms": 240,
+   "hit_ms": 240,
+   "recover_ms": 876
   },
-  "vfx": "thornlancer/release_burst",
+  "vfx": "thornlancer/piercing_charge",
+  "vfx_parts": [
+   "dash:rage:charge",
+   "pierce:rage"
+  ],
   "sfx": [
    "sfx_thornlancer_10_cast",
    "sfx_thornlancer_10_hit"
@@ -8059,7 +8718,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "thornlancer/passive_aura",
+  "vfx": "thornlancer/relentless_advance",
+  "vfx_parts": [
+   "arch:rage"
+  ],
   "sfx": [
    "sfx_thornlancer_11_cast",
    "sfx_thornlancer_11_hit"
@@ -8096,12 +8758,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "flurry",
+   "activate_ms": 150,
+   "hit_ms": 150,
+   "recover_ms": 748
   },
-  "vfx": "thornlancer/melee_impact",
+  "vfx": "thornlancer/thousand_spears",
+  "vfx_parts": [
+   "flurry:steel:thrust"
+  ],
   "sfx": [
    "sfx_thornlancer_12_cast",
    "sfx_thornlancer_12_hit"
@@ -8143,7 +8808,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "thornlancer/passive_aura",
+  "vfx": "thornlancer/unstoppable_force",
+  "vfx_parts": [
+   "arch:rage"
+  ],
   "sfx": [
    "sfx_thornlancer_13_cast",
    "sfx_thornlancer_13_hit"
@@ -8180,12 +8848,17 @@
   },
   "status": [],
   "animation": {
-   "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "spear_charge",
+   "activate_ms": 240,
+   "hit_ms": 240,
+   "recover_ms": 876
   },
-  "vfx": "thornlancer/ultimate_nova",
+  "vfx": "thornlancer/lance_of_the_vanguard",
+  "vfx_parts": [
+   "arch:rage",
+   "pierce:holy",
+   "field:rage:nova"
+  ],
   "sfx": [
    "sfx_thornlancer_14_cast",
    "sfx_thornlancer_14_hit"
@@ -8222,12 +8895,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "point_cast",
+   "activate_ms": 290,
+   "hit_ms": 290,
+   "recover_ms": 1228
   },
-  "vfx": "warlock/arcane_bolt",
+  "vfx": "warlock/shadow_touch",
+  "vfx_parts": [
+   "impact:shadow"
+  ],
   "sfx": [
    "sfx_warlock_0_cast",
    "sfx_warlock_0_hit"
@@ -8265,11 +8941,14 @@
   "status": [],
   "animation": {
    "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 983
   },
-  "vfx": "warlock/arcane_bolt",
+  "vfx": "warlock/hexbolt",
+  "vfx_parts": [
+   "proj:shadow:skull"
+  ],
   "sfx": [
    "sfx_warlock_1_cast",
    "sfx_warlock_1_hit"
@@ -8306,12 +8985,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "book_open",
+   "activate_ms": 515,
+   "hit_ms": 515,
+   "recover_ms": 1105
   },
-  "vfx": "warlock/arcane_bolt",
+  "vfx": "warlock/book_open",
+  "vfx_parts": [
+   "hand:shadow",
+   "aura:shadow:swirl"
+  ],
   "sfx": [
    "sfx_warlock_2_cast",
    "sfx_warlock_2_hit"
@@ -8348,12 +9031,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "book_open",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "hex",
+   "activate_ms": 260,
+   "hit_ms": 260,
+   "recover_ms": 793
   },
-  "vfx": "warlock/release_burst",
+  "vfx": "warlock/hex",
+  "vfx_parts": [
+   "mark:shadow",
+   "field:shadow:glyph"
+  ],
   "sfx": [
    "sfx_warlock_3_cast",
    "sfx_warlock_3_hit"
@@ -8390,12 +9077,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "hex",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "buff",
+   "activate_ms": 485,
+   "hit_ms": 485,
+   "recover_ms": 1003
   },
-  "vfx": "warlock/buff_aura",
+  "vfx": "warlock/shard_pact",
+  "vfx_parts": [
+   "aura:shadow:flame"
+  ],
   "sfx": [
    "sfx_warlock_4_cast",
    "sfx_warlock_4_hit"
@@ -8437,7 +9127,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "warlock/passive_aura",
+  "vfx": "warlock/shadow_affinity",
+  "vfx_parts": [
+   "arch:shadow"
+  ],
   "sfx": [
    "sfx_warlock_5_cast",
    "sfx_warlock_5_hit"
@@ -8475,11 +9168,14 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "warlock/dash_trail",
+  "vfx": "warlock/dark_step",
+  "vfx_parts": [
+   "blink:shadow"
+  ],
   "sfx": [
    "sfx_warlock_6_cast",
    "sfx_warlock_6_hit"
@@ -8517,11 +9213,14 @@
   "status": [],
   "animation": {
    "clip": "guard",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 438
   },
-  "vfx": "warlock/guard_shield",
+  "vfx": "warlock/shadow_ward",
+  "vfx_parts": [
+   "ward:shadow"
+  ],
   "sfx": [
    "sfx_warlock_7_cast",
    "sfx_warlock_7_hit"
@@ -8559,11 +9258,14 @@
   "status": [],
   "animation": {
    "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 260,
+   "hit_ms": 260,
+   "recover_ms": 832
   },
-  "vfx": "warlock/aoe_burst",
+  "vfx": "warlock/unholy_nova",
+  "vfx_parts": [
+   "arch:shadow"
+  ],
   "sfx": [
    "sfx_warlock_8_cast",
    "sfx_warlock_8_hit"
@@ -8605,7 +9307,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "warlock/passive_aura",
+  "vfx": "warlock/thick_shadow",
+  "vfx_parts": [
+   "arch:shadow"
+  ],
   "sfx": [
    "sfx_warlock_9_cast",
    "sfx_warlock_9_hit"
@@ -8643,11 +9348,15 @@
   "status": [],
   "animation": {
    "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 656
   },
-  "vfx": "warlock/release_burst",
+  "vfx": "warlock/soul_rend",
+  "vfx_parts": [
+   "proj:shadow:skull",
+   "field:shadow:nova"
+  ],
   "sfx": [
    "sfx_warlock_10_cast",
    "sfx_warlock_10_hit"
@@ -8689,7 +9398,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "warlock/passive_aura",
+  "vfx": "warlock/pact_bound",
+  "vfx_parts": [
+   "arch:shadow"
+  ],
   "sfx": [
    "sfx_warlock_11_cast",
    "sfx_warlock_11_hit"
@@ -8726,12 +9438,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "book_open",
+   "activate_ms": 515,
+   "hit_ms": 515,
+   "recover_ms": 1105
   },
-  "vfx": "warlock/arcane_bolt",
+  "vfx": "warlock/ritual_of_ruin",
+  "vfx_parts": [
+   "field:shadow:glyph",
+   "multi:shadow:skull"
+  ],
   "sfx": [
    "sfx_warlock_12_cast",
    "sfx_warlock_12_hit"
@@ -8773,7 +9489,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "warlock/passive_aura",
+  "vfx": "warlock/darkest_hour",
+  "vfx_parts": [
+   "arch:shadow"
+  ],
   "sfx": [
    "sfx_warlock_13_cast",
    "sfx_warlock_13_hit"
@@ -8811,11 +9530,15 @@
   "status": [],
   "animation": {
    "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 670,
+   "hit_ms": 670,
+   "recover_ms": 1908
   },
-  "vfx": "warlock/ultimate_nova",
+  "vfx": "warlock/oblivion",
+  "vfx_parts": [
+   "field:void:rift",
+   "sky:shadow:pillar"
+  ],
   "sfx": [
    "sfx_warlock_14_cast",
    "sfx_warlock_14_hit"
@@ -8853,11 +9576,14 @@
   "status": [],
   "animation": {
    "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "beastmaster/melee_impact",
+  "vfx": "beastmaster/claw_strike",
+  "vfx_parts": [
+   "claw:wild"
+  ],
   "sfx": [
    "sfx_beastmaster_0_cast",
    "sfx_beastmaster_0_hit"
@@ -8895,11 +9621,14 @@
   "status": [],
   "animation": {
    "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 883
   },
-  "vfx": "beastmaster/melee_impact",
+  "vfx": "beastmaster/savage_rend",
+  "vfx_parts": [
+   "claw:blood"
+  ],
   "sfx": [
    "sfx_beastmaster_1_cast",
    "sfx_beastmaster_1_hit"
@@ -8936,12 +9665,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "whistle",
+   "activate_ms": 500,
+   "hit_ms": 500,
+   "recover_ms": 1090
   },
-  "vfx": "beastmaster/melee_impact",
+  "vfx": "beastmaster/whistle",
+  "vfx_parts": [
+   "shout:wild",
+   "summon:wild:wolf"
+  ],
   "sfx": [
    "sfx_beastmaster_2_cast",
    "sfx_beastmaster_2_hit"
@@ -8978,12 +9711,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "whistle",
+   "clip": "command",
    "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "hit_ms": 80,
+   "recover_ms": 880
   },
-  "vfx": "beastmaster/buff_aura",
+  "vfx": "beastmaster/command",
+  "vfx_parts": [
+   "mark:wild",
+   "summon:wild:wolf"
+  ],
   "sfx": [
    "sfx_beastmaster_3_cast",
    "sfx_beastmaster_3_hit"
@@ -9020,12 +9757,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "command",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "battle_cry",
+   "activate_ms": 350,
+   "hit_ms": 350,
+   "recover_ms": 1346
   },
-  "vfx": "beastmaster/buff_aura",
+  "vfx": "beastmaster/howl",
+  "vfx_parts": [
+   "shout:wild",
+   "aura:wild:rise"
+  ],
   "sfx": [
    "sfx_beastmaster_4_cast",
    "sfx_beastmaster_4_hit"
@@ -9067,7 +9808,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "beastmaster/passive_aura",
+  "vfx": "beastmaster/pack_tactics",
+  "vfx_parts": [
+   "arch:wild"
+  ],
   "sfx": [
    "sfx_beastmaster_5_cast",
    "sfx_beastmaster_5_hit"
@@ -9105,11 +9849,14 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "beastmaster/dash_trail",
+  "vfx": "beastmaster/prowl",
+  "vfx_parts": [
+   "dash:earth:speed"
+  ],
   "sfx": [
    "sfx_beastmaster_6_cast",
    "sfx_beastmaster_6_hit"
@@ -9147,11 +9894,14 @@
   "status": [],
   "animation": {
    "clip": "guard",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 438
   },
-  "vfx": "beastmaster/guard_shield",
+  "vfx": "beastmaster/thick_pelt",
+  "vfx_parts": [
+   "ward:earth"
+  ],
   "sfx": [
    "sfx_beastmaster_7_cast",
    "sfx_beastmaster_7_hit"
@@ -9188,12 +9938,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_ground",
+   "clip": "command",
    "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "hit_ms": 80,
+   "recover_ms": 880
   },
-  "vfx": "beastmaster/aoe_burst",
+  "vfx": "beastmaster/pack_hunt",
+  "vfx_parts": [
+   "mark:wild",
+   "claw:wild"
+  ],
   "sfx": [
    "sfx_beastmaster_8_cast",
    "sfx_beastmaster_8_hit"
@@ -9235,7 +9989,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "beastmaster/passive_aura",
+  "vfx": "beastmaster/loyal_bond",
+  "vfx_parts": [
+   "arch:wild"
+  ],
   "sfx": [
    "sfx_beastmaster_9_cast",
    "sfx_beastmaster_9_hit"
@@ -9272,12 +10029,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "leap_strike",
+   "activate_ms": 520,
+   "hit_ms": 520,
+   "recover_ms": 1020
   },
-  "vfx": "beastmaster/release_burst",
+  "vfx": "beastmaster/feral_pounce",
+  "vfx_parts": [
+   "claw:wild",
+   "impact:earth"
+  ],
   "sfx": [
    "sfx_beastmaster_10_cast",
    "sfx_beastmaster_10_hit"
@@ -9319,7 +10080,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "beastmaster/passive_aura",
+  "vfx": "beastmaster/unbreakable_bond",
+  "vfx_parts": [
+   "arch:wild"
+  ],
   "sfx": [
    "sfx_beastmaster_11_cast",
    "sfx_beastmaster_11_hit"
@@ -9356,12 +10120,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "battle_cry",
+   "activate_ms": 350,
+   "hit_ms": 350,
+   "recover_ms": 1346
   },
-  "vfx": "beastmaster/melee_impact",
+  "vfx": "beastmaster/alphas_call",
+  "vfx_parts": [
+   "shout:blood",
+   "summon:wild:wolf"
+  ],
   "sfx": [
    "sfx_beastmaster_12_cast",
    "sfx_beastmaster_12_hit"
@@ -9403,7 +10171,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "beastmaster/passive_aura",
+  "vfx": "beastmaster/wild_instinct",
+  "vfx_parts": [
+   "arch:wild"
+  ],
   "sfx": [
    "sfx_beastmaster_13_cast",
    "sfx_beastmaster_13_hit"
@@ -9441,11 +10212,15 @@
   "status": [],
   "animation": {
    "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 670,
+   "hit_ms": 670,
+   "recover_ms": 1908
   },
-  "vfx": "beastmaster/ultimate_nova",
+  "vfx": "beastmaster/call_of_the_wild",
+  "vfx_parts": [
+   "arch:wild",
+   "summon:wild:wolf"
+  ],
   "sfx": [
    "sfx_beastmaster_14_cast",
    "sfx_beastmaster_14_hit"
@@ -9483,11 +10258,14 @@
   "status": [],
   "animation": {
    "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "briarwarden/melee_impact",
+  "vfx": "briarwarden/shield_slam",
+  "vfx_parts": [
+   "impact:earth"
+  ],
   "sfx": [
    "sfx_briarwarden_0_cast",
    "sfx_briarwarden_0_hit"
@@ -9524,12 +10302,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "attack_2",
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "briarwarden/melee_impact",
+  "vfx": "briarwarden/thorn_jab",
+  "vfx_parts": [
+   "thrust:thorn",
+   "field:thorn:thorns"
+  ],
   "sfx": [
    "sfx_briarwarden_1_cast",
    "sfx_briarwarden_1_hit"
@@ -9566,12 +10348,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "shield_plant",
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 379
   },
-  "vfx": "briarwarden/melee_impact",
+  "vfx": "briarwarden/shield_plant",
+  "vfx_parts": [
+   "stance:thorn",
+   "field:nature:roots"
+  ],
   "sfx": [
    "sfx_briarwarden_2_cast",
    "sfx_briarwarden_2_hit"
@@ -9608,12 +10394,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "shield_plant",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "thorn_burst",
+   "activate_ms": 530,
+   "hit_ms": 530,
+   "recover_ms": 1172
   },
-  "vfx": "briarwarden/aoe_burst",
+  "vfx": "briarwarden/thorn_burst",
+  "vfx_parts": [
+   "field:thorn:thorns",
+   "field:thorn:nova"
+  ],
   "sfx": [
    "sfx_briarwarden_3_cast",
    "sfx_briarwarden_3_hit"
@@ -9650,12 +10440,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "thorn_burst",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "cast_ground",
+   "activate_ms": 260,
+   "hit_ms": 260,
+   "recover_ms": 832
   },
-  "vfx": "briarwarden/buff_aura",
+  "vfx": "briarwarden/bark_stacking",
+  "vfx_parts": [
+   "field:earth:quake",
+   "ward:thorn"
+  ],
   "sfx": [
    "sfx_briarwarden_4_cast",
    "sfx_briarwarden_4_hit"
@@ -9697,7 +10491,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "briarwarden/passive_aura",
+  "vfx": "briarwarden/mossy_resilience",
+  "vfx_parts": [
+   "arch:thorn"
+  ],
   "sfx": [
    "sfx_briarwarden_5_cast",
    "sfx_briarwarden_5_hit"
@@ -9735,11 +10532,14 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "briarwarden/dash_trail",
+  "vfx": "briarwarden/overgrown_step",
+  "vfx_parts": [
+   "dash:thorn:thorn"
+  ],
   "sfx": [
    "sfx_briarwarden_6_cast",
    "sfx_briarwarden_6_hit"
@@ -9776,12 +10576,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "guard",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "cast_ground",
+   "activate_ms": 260,
+   "hit_ms": 260,
+   "recover_ms": 832
   },
-  "vfx": "briarwarden/guard_shield",
+  "vfx": "briarwarden/root_wall",
+  "vfx_parts": [
+   "wall:nature:roots"
+  ],
   "sfx": [
    "sfx_briarwarden_7_cast",
    "sfx_briarwarden_7_hit"
@@ -9819,11 +10622,14 @@
   "status": [],
   "animation": {
    "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 260,
+   "hit_ms": 260,
+   "recover_ms": 832
   },
-  "vfx": "briarwarden/aoe_burst",
+  "vfx": "briarwarden/thorned_ground",
+  "vfx_parts": [
+   "field:thorn:thorns"
+  ],
   "sfx": [
    "sfx_briarwarden_8_cast",
    "sfx_briarwarden_8_hit"
@@ -9865,7 +10671,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "briarwarden/passive_aura",
+  "vfx": "briarwarden/living_armour",
+  "vfx_parts": [
+   "arch:thorn"
+  ],
   "sfx": [
    "sfx_briarwarden_9_cast",
    "sfx_briarwarden_9_hit"
@@ -9902,12 +10711,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "thorn_burst",
+   "activate_ms": 530,
+   "hit_ms": 530,
+   "recover_ms": 1172
   },
-  "vfx": "briarwarden/release_burst",
+  "vfx": "briarwarden/bramble_retaliation",
+  "vfx_parts": [
+   "field:thorn:nova",
+   "field:thorn:thorns"
+  ],
   "sfx": [
    "sfx_briarwarden_10_cast",
    "sfx_briarwarden_10_hit"
@@ -9949,7 +10762,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "briarwarden/passive_aura",
+  "vfx": "briarwarden/ancient_bark",
+  "vfx_parts": [
+   "arch:thorn"
+  ],
   "sfx": [
    "sfx_briarwarden_11_cast",
    "sfx_briarwarden_11_hit"
@@ -9986,12 +10802,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "shield_plant",
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 379
   },
-  "vfx": "briarwarden/melee_impact",
+  "vfx": "briarwarden/heartwood_stand",
+  "vfx_parts": [
+   "field:nature:roots",
+   "ward:thorn"
+  ],
   "sfx": [
    "sfx_briarwarden_12_cast",
    "sfx_briarwarden_12_hit"
@@ -10033,7 +10853,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "briarwarden/passive_aura",
+  "vfx": "briarwarden/seasons_of_stone",
+  "vfx_parts": [
+   "arch:thorn"
+  ],
   "sfx": [
    "sfx_briarwarden_13_cast",
    "sfx_briarwarden_13_hit"
@@ -10071,11 +10894,16 @@
   "status": [],
   "animation": {
    "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 670,
+   "hit_ms": 670,
+   "recover_ms": 1908
   },
-  "vfx": "briarwarden/ultimate_nova",
+  "vfx": "briarwarden/groves_last_stand",
+  "vfx_parts": [
+   "arch:nature",
+   "wall:nature:roots",
+   "ward:thorn"
+  ],
   "sfx": [
    "sfx_briarwarden_14_cast",
    "sfx_briarwarden_14_hit"
@@ -10113,11 +10941,14 @@
   "status": [],
   "animation": {
    "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 1000
   },
-  "vfx": "vaneweaver/arcane_bolt",
+  "vfx": "vaneweaver/wind_lash",
+  "vfx_parts": [
+   "proj:wind:wind"
+  ],
   "sfx": [
    "sfx_vaneweaver_0_cast",
    "sfx_vaneweaver_0_hit"
@@ -10155,11 +10986,15 @@
   "status": [],
   "animation": {
    "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 983
   },
-  "vfx": "vaneweaver/arcane_bolt",
+  "vfx": "vaneweaver/gust_strike",
+  "vfx_parts": [
+   "proj:wind:wind",
+   "arch:wind"
+  ],
   "sfx": [
    "sfx_vaneweaver_1_cast",
    "sfx_vaneweaver_1_hit"
@@ -10196,12 +11031,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_2",
+   "clip": "gale_spin",
    "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "hit_ms": 80,
+   "recover_ms": 786
   },
-  "vfx": "vaneweaver/arcane_bolt",
+  "vfx": "vaneweaver/gale_spin",
+  "vfx_parts": [
+   "field:wind:cyclone",
+   "spin:wind"
+  ],
   "sfx": [
    "sfx_vaneweaver_2_cast",
    "sfx_vaneweaver_2_hit"
@@ -10238,12 +11077,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "gale_spin",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "storm_call",
+   "activate_ms": 545,
+   "hit_ms": 545,
+   "recover_ms": 1187
   },
-  "vfx": "vaneweaver/aoe_burst",
+  "vfx": "vaneweaver/storm_call",
+  "vfx_parts": [
+   "field:lightning:storm"
+  ],
   "sfx": [
    "sfx_vaneweaver_3_cast",
    "sfx_vaneweaver_3_hit"
@@ -10280,12 +11122,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "storm_call",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "buff",
+   "activate_ms": 485,
+   "hit_ms": 485,
+   "recover_ms": 1003
   },
-  "vfx": "vaneweaver/buff_aura",
+  "vfx": "vaneweaver/tailwind",
+  "vfx_parts": [
+   "aura:wind:swirl",
+   "dash:wind:speed"
+  ],
   "sfx": [
    "sfx_vaneweaver_4_cast",
    "sfx_vaneweaver_4_hit"
@@ -10327,7 +11173,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "vaneweaver/passive_aura",
+  "vfx": "vaneweaver/gale_charges",
+  "vfx_parts": [
+   "arch:wind"
+  ],
   "sfx": [
    "sfx_vaneweaver_5_cast",
    "sfx_vaneweaver_5_hit"
@@ -10365,11 +11214,14 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "vaneweaver/dash_trail",
+  "vfx": "vaneweaver/wind_step",
+  "vfx_parts": [
+   "dash:wind:speed"
+  ],
   "sfx": [
    "sfx_vaneweaver_6_cast",
    "sfx_vaneweaver_6_hit"
@@ -10407,11 +11259,15 @@
   "status": [],
   "animation": {
    "clip": "guard",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 438
   },
-  "vfx": "vaneweaver/guard_shield",
+  "vfx": "vaneweaver/zephyr_shield",
+  "vfx_parts": [
+   "ward:wind",
+   "aura:wind:swirl"
+  ],
   "sfx": [
    "sfx_vaneweaver_7_cast",
    "sfx_vaneweaver_7_hit"
@@ -10449,11 +11305,14 @@
   "status": [],
   "animation": {
    "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 260,
+   "hit_ms": 260,
+   "recover_ms": 832
   },
-  "vfx": "vaneweaver/aoe_burst",
+  "vfx": "vaneweaver/tempest",
+  "vfx_parts": [
+   "field:lightning:storm"
+  ],
   "sfx": [
    "sfx_vaneweaver_8_cast",
    "sfx_vaneweaver_8_hit"
@@ -10495,7 +11354,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "vaneweaver/passive_aura",
+  "vfx": "vaneweaver/calm_air",
+  "vfx_parts": [
+   "arch:wind"
+  ],
   "sfx": [
    "sfx_vaneweaver_9_cast",
    "sfx_vaneweaver_9_hit"
@@ -10533,11 +11395,14 @@
   "status": [],
   "animation": {
    "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 656
   },
-  "vfx": "vaneweaver/release_burst",
+  "vfx": "vaneweaver/cyclone",
+  "vfx_parts": [
+   "field:wind:cyclone"
+  ],
   "sfx": [
    "sfx_vaneweaver_10_cast",
    "sfx_vaneweaver_10_hit"
@@ -10579,7 +11444,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "vaneweaver/passive_aura",
+  "vfx": "vaneweaver/eye_of_the_storm",
+  "vfx_parts": [
+   "arch:wind"
+  ],
   "sfx": [
    "sfx_vaneweaver_11_cast",
    "sfx_vaneweaver_11_hit"
@@ -10616,12 +11484,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "storm_call",
+   "activate_ms": 545,
+   "hit_ms": 545,
+   "recover_ms": 1187
   },
-  "vfx": "vaneweaver/arcane_bolt",
+  "vfx": "vaneweaver/maelstrom",
+  "vfx_parts": [
+   "field:lightning:storm",
+   "field:wind:cyclone"
+  ],
   "sfx": [
    "sfx_vaneweaver_12_cast",
    "sfx_vaneweaver_12_hit"
@@ -10663,7 +11535,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "vaneweaver/passive_aura",
+  "vfx": "vaneweaver/weathervane",
+  "vfx_parts": [
+   "arch:wind"
+  ],
   "sfx": [
    "sfx_vaneweaver_13_cast",
    "sfx_vaneweaver_13_hit"
@@ -10701,11 +11576,16 @@
   "status": [],
   "animation": {
    "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 670,
+   "hit_ms": 670,
+   "recover_ms": 1908
   },
-  "vfx": "vaneweaver/ultimate_nova",
+  "vfx": "vaneweaver/hurricanes_herald",
+  "vfx_parts": [
+   "arch:wind",
+   "field:wind:cyclone",
+   "sky:lightning:bolt"
+  ],
   "sfx": [
    "sfx_vaneweaver_14_cast",
    "sfx_vaneweaver_14_hit"
@@ -10743,11 +11623,14 @@
   "status": [],
   "animation": {
    "clip": "attack_1",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 250,
+   "hit_ms": 250,
+   "recover_ms": 775
   },
-  "vfx": "hollowstrider/melee_impact",
+  "vfx": "hollowstrider/void_slash",
+  "vfx_parts": [
+   "slash:void:h"
+  ],
   "sfx": [
    "sfx_hollowstrider_0_cast",
    "sfx_hollowstrider_0_hit"
@@ -10785,11 +11668,14 @@
   "status": [],
   "animation": {
    "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 883
   },
-  "vfx": "hollowstrider/melee_impact",
+  "vfx": "hollowstrider/twin_rend",
+  "vfx_parts": [
+   "slash:void:x"
+  ],
   "sfx": [
    "sfx_hollowstrider_1_cast",
    "sfx_hollowstrider_1_hit"
@@ -10826,12 +11712,15 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_2",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "void_step",
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 670
   },
-  "vfx": "hollowstrider/melee_impact",
+  "vfx": "hollowstrider/void_step",
+  "vfx_parts": [
+   "blink:void"
+  ],
   "sfx": [
    "sfx_hollowstrider_2_cast",
    "sfx_hollowstrider_2_hit"
@@ -10868,12 +11757,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "void_step",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "eruption",
+   "activate_ms": 545,
+   "hit_ms": 545,
+   "recover_ms": 1187
   },
-  "vfx": "hollowstrider/aoe_burst",
+  "vfx": "hollowstrider/eruption",
+  "vfx_parts": [
+   "impact:void",
+   "field:void:nova"
+  ],
   "sfx": [
    "sfx_hollowstrider_3_cast",
    "sfx_hollowstrider_3_hit"
@@ -10910,12 +11803,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "eruption",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "buff",
+   "activate_ms": 485,
+   "hit_ms": 485,
+   "recover_ms": 1003
   },
-  "vfx": "hollowstrider/buff_aura",
+  "vfx": "hollowstrider/corruption_surge",
+  "vfx_parts": [
+   "aura:void:flame",
+   "field:void:nova"
+  ],
   "sfx": [
    "sfx_hollowstrider_4_cast",
    "sfx_hollowstrider_4_hit"
@@ -10957,7 +11854,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "hollowstrider/passive_aura",
+  "vfx": "hollowstrider/creeping_corruption",
+  "vfx_parts": [
+   "arch:void"
+  ],
   "sfx": [
    "sfx_hollowstrider_5_cast",
    "sfx_hollowstrider_5_hit"
@@ -10995,11 +11895,14 @@
   "status": [],
   "animation": {
    "clip": "dash",
-   "activate_ms": 80,
+   "activate_ms": 160,
    "hit_ms": 160,
-   "recover_ms": 280
+   "recover_ms": 528
   },
-  "vfx": "hollowstrider/dash_trail",
+  "vfx": "hollowstrider/unstable_step",
+  "vfx_parts": [
+   "dash:void:void"
+  ],
   "sfx": [
    "sfx_hollowstrider_6_cast",
    "sfx_hollowstrider_6_hit"
@@ -11037,11 +11940,14 @@
   "status": [],
   "animation": {
    "clip": "guard",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 0,
+   "hit_ms": 0,
+   "recover_ms": 438
   },
-  "vfx": "hollowstrider/guard_shield",
+  "vfx": "hollowstrider/void_ward",
+  "vfx_parts": [
+   "ward:void"
+  ],
   "sfx": [
    "sfx_hollowstrider_7_cast",
    "sfx_hollowstrider_7_hit"
@@ -11079,11 +11985,14 @@
   "status": [],
   "animation": {
    "clip": "cast_ground",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 260,
+   "hit_ms": 260,
+   "recover_ms": 832
   },
-  "vfx": "hollowstrider/aoe_burst",
+  "vfx": "hollowstrider/collapse",
+  "vfx_parts": [
+   "field:void:rift"
+  ],
   "sfx": [
    "sfx_hollowstrider_8_cast",
    "sfx_hollowstrider_8_hit"
@@ -11125,7 +12034,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "hollowstrider/passive_aura",
+  "vfx": "hollowstrider/self-harms_edge",
+  "vfx_parts": [
+   "arch:void"
+  ],
   "sfx": [
    "sfx_hollowstrider_9_cast",
    "sfx_hollowstrider_9_hit"
@@ -11162,12 +12074,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "cast_release",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "attack_heavy",
+   "activate_ms": 280,
+   "hit_ms": 280,
+   "recover_ms": 883
   },
-  "vfx": "hollowstrider/release_burst",
+  "vfx": "hollowstrider/twin_oblivion",
+  "vfx_parts": [
+   "slash:void:x",
+   "field:void:nova"
+  ],
   "sfx": [
    "sfx_hollowstrider_10_cast",
    "sfx_hollowstrider_10_hit"
@@ -11209,7 +12125,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "hollowstrider/passive_aura",
+  "vfx": "hollowstrider/hollow_resolve",
+  "vfx_parts": [
+   "arch:void"
+  ],
   "sfx": [
    "sfx_hollowstrider_11_cast",
    "sfx_hollowstrider_11_hit"
@@ -11246,12 +12165,16 @@
   },
   "status": [],
   "animation": {
-   "clip": "attack_heavy",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "clip": "buff",
+   "activate_ms": 485,
+   "hit_ms": 485,
+   "recover_ms": 1003
   },
-  "vfx": "hollowstrider/melee_impact",
+  "vfx": "hollowstrider/avatar_of_the_hollow",
+  "vfx_parts": [
+   "aura:void:flame",
+   "aura:shadow:rise"
+  ],
   "sfx": [
    "sfx_hollowstrider_12_cast",
    "sfx_hollowstrider_12_hit"
@@ -11293,7 +12216,10 @@
    "hit_ms": 0,
    "recover_ms": 0
   },
-  "vfx": "hollowstrider/passive_aura",
+  "vfx": "hollowstrider/void-touched",
+  "vfx_parts": [
+   "arch:void"
+  ],
   "sfx": [
    "sfx_hollowstrider_13_cast",
    "sfx_hollowstrider_13_hit"
@@ -11331,11 +12257,15 @@
   "status": [],
   "animation": {
    "clip": "ultimate",
-   "activate_ms": 80,
-   "hit_ms": 160,
-   "recover_ms": 280
+   "activate_ms": 670,
+   "hit_ms": 670,
+   "recover_ms": 1908
   },
-  "vfx": "hollowstrider/ultimate_nova",
+  "vfx": "hollowstrider/the_hollow_opens",
+  "vfx_parts": [
+   "arch:void",
+   "field:void:rift"
+  ],
   "sfx": [
    "sfx_hollowstrider_14_cast",
    "sfx_hollowstrider_14_hit"

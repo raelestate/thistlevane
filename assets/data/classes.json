@@ -14,8 +14,8 @@
    "weight": 0.2,
    "posture": "balanced",
    "speed_px_per_s": {
-    "walk": 31.7,
-    "run": 69.8
+    "walk": 32.6,
+    "run": 78.1
    }
   },
   "sprites": "assets/characters/monk/sprites/monk_locomotion.png",
@@ -312,8 +312,8 @@
    "weight": 1.0,
    "posture": "guarded",
    "speed_px_per_s": {
-    "walk": 23.0,
-    "run": 49.3
+    "walk": 24.2,
+    "run": 49.2
    }
   },
   "sprites": "assets/characters/ironwarden/sprites/ironwarden_locomotion.png",
@@ -588,8 +588,8 @@
    "weight": 0.85,
    "posture": "aggressive",
    "speed_px_per_s": {
-    "walk": 24.4,
-    "run": 52.4
+    "walk": 25.7,
+    "run": 53.6
    }
   },
   "sprites": "assets/characters/ravager/sprites/ravager_locomotion.png",
@@ -865,8 +865,8 @@
    "weight": 0.0,
    "posture": "low",
    "speed_px_per_s": {
-    "walk": 34.4,
-    "run": 76.9
+    "walk": 35.3,
+    "run": 87.4
    }
   },
   "sprites": "assets/characters/nightveil/sprites/nightveil_locomotion.png",
@@ -1148,8 +1148,8 @@
    "weight": 0.3,
    "posture": "scholar",
    "speed_px_per_s": {
-    "walk": 30.4,
-    "run": 66.6
+    "walk": 31.6,
+    "run": 72.7
    }
   },
   "sprites": "assets/characters/arcanist/sprites/arcanist_locomotion.png",
@@ -1424,8 +1424,8 @@
    "weight": 0.15,
    "posture": "alert",
    "speed_px_per_s": {
-    "walk": 32.3,
-    "run": 71.5
+    "walk": 33.2,
+    "run": 79.7
    }
   },
   "sprites": "assets/characters/ranger/sprites/ranger_locomotion.png",
@@ -1700,8 +1700,8 @@
    "weight": 0.35,
    "posture": "hunched",
    "speed_px_per_s": {
-    "walk": 29.8,
-    "run": 65.1
+    "walk": 31.0,
+    "run": 71.3
    }
   },
   "sprites": "assets/characters/necromancer/sprites/necromancer_locomotion.png",
@@ -1977,8 +1977,8 @@
    "weight": 0.7,
    "posture": "guarded",
    "speed_px_per_s": {
-    "walk": 25.9,
-    "run": 55.8
+    "walk": 27.0,
+    "run": 58.5
    }
   },
   "sprites": "assets/characters/dawnkeeper/sprites/dawnkeeper_locomotion.png",
@@ -2253,8 +2253,8 @@
    "weight": 0.3,
    "posture": "swagger",
    "speed_px_per_s": {
-    "walk": 30.4,
-    "run": 66.6
+    "walk": 31.6,
+    "run": 72.7
    }
   },
   "sprites": "assets/characters/flintlock/sprites/flintlock_locomotion.png",
@@ -2536,8 +2536,8 @@
    "weight": 0.2,
    "posture": "serene",
    "speed_px_per_s": {
-    "walk": 31.7,
-    "run": 69.8
+    "walk": 32.6,
+    "run": 78.1
    }
   },
   "sprites": "assets/characters/druid/sprites/druid_locomotion.png",
@@ -2812,8 +2812,8 @@
    "weight": 0.25,
    "posture": "poised",
    "speed_px_per_s": {
-    "walk": 31.0,
-    "run": 68.2
+    "walk": 32.3,
+    "run": 75.4
    }
   },
   "sprites": "assets/characters/oathblade/sprites/oathblade_locomotion.png",
@@ -3109,8 +3109,8 @@
    "weight": 0.1,
    "posture": "jaunty",
    "speed_px_per_s": {
-    "walk": 33.0,
-    "run": 73.2
+    "walk": 33.9,
+    "run": 82.6
    }
   },
   "sprites": "assets/characters/minstrel/sprites/minstrel_locomotion.png",
@@ -3399,8 +3399,8 @@
    "weight": 0.35,
    "posture": "alert",
    "speed_px_per_s": {
-    "walk": 29.8,
-    "run": 65.1
+    "walk": 31.0,
+    "run": 71.3
    }
   },
   "sprites": "assets/characters/thornlancer/sprites/thornlancer_locomotion.png",
@@ -3682,8 +3682,8 @@
    "weight": 0.2,
    "posture": "sinister",
    "speed_px_per_s": {
-    "walk": 31.7,
-    "run": 69.8
+    "walk": 32.6,
+    "run": 78.1
    }
   },
   "sprites": "assets/characters/warlock/sprites/warlock_locomotion.png",
@@ -3965,8 +3965,8 @@
    "weight": 0.5,
    "posture": "prowl",
    "speed_px_per_s": {
-    "walk": 28.0,
-    "run": 60.9
+    "walk": 29.2,
+    "run": 65.2
    }
   },
   "sprites": "assets/characters/beastmaster/sprites/beastmaster_locomotion.png",
@@ -4241,8 +4241,8 @@
    "weight": 0.95,
    "posture": "planted",
    "speed_px_per_s": {
-    "walk": 23.5,
-    "run": 50.3
+    "walk": 24.7,
+    "run": 50.8
    }
   },
   "sprites": "assets/characters/briarwarden/sprites/briarwarden_locomotion.png",
@@ -4517,8 +4517,8 @@
    "weight": 0.0,
    "posture": "floating",
    "speed_px_per_s": {
-    "walk": 34.4,
-    "run": 76.9
+    "walk": 35.3,
+    "run": 87.4
    }
   },
   "sprites": "assets/characters/vaneweaver/sprites/vaneweaver_locomotion.png",
@@ -4808,8 +4808,8 @@
    "weight": 0.1,
    "posture": "twisted",
    "speed_px_per_s": {
-    "walk": 33.0,
-    "run": 73.2
+    "walk": 33.9,
+    "run": 82.6
    }
   },
   "sprites": "assets/characters/hollowstrider/sprites/hollowstrider_locomotion.png",

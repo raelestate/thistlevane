@@ -8,7 +8,7 @@ import { type AggroConfig, type CombatStats, type WeaponDefinition } from './com
 import {
   deriveBaselineCombatStats,
   deriveBaselineWeapon,
-  classSpritePath,
+  classPortraitPath,
   parseClassAnimations,
   type ClassMeta,
   type RichClip,
@@ -72,9 +72,9 @@ export interface GridCharacterDefinition extends SpriteDefinition {
 }
 
 /**
- * A Thistlevane class rendered faithfully: separate locomotion/combat sheets, explicit
- * per-frame rects and durations, attach points — built by buildRichCharacter() from
- * data/classes.json + a class's animations/<class>.json, never hand-authored as JSON.
+ * A Thistlevane class rendered faithfully: one strip image per clip, explicit per-frame
+ * rects and durations, attach points — built by buildRichCharacter() from data/classes.json
+ * + a class's animations/<class>.json, never hand-authored as JSON.
  */
 export interface RichCharacterDefinition {
   id: string;
@@ -88,7 +88,6 @@ export interface RichCharacterDefinition {
   frameHeight: number;
   anchor: { x: number; y: number };
   footOffsetY: number;
-  sheets: { locomotion: string; combat: string };
   portrait: string;
   clips: Record<string, RichClip>;
   signatureClips: string[];
@@ -133,8 +132,7 @@ export function buildRichCharacter(
     frameHeight: anim.frameHeight,
     anchor: anim.anchor,
     footOffsetY: 0,
-    sheets: { locomotion: classSpritePath(meta.id, 'locomotion'), combat: classSpritePath(meta.id, 'combat') },
-    portrait: classSpritePath(meta.id, 'portrait'),
+    portrait: classPortraitPath(meta.id),
     clips: anim.clips,
     signatureClips: anim.signatureClips,
     movementSpeedPxPerS: anim.movementSpeedPxPerS,

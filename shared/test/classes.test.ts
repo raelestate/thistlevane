@@ -23,23 +23,23 @@ const monkAnim = readJson('characters/monk/animations/monk.json');
 
 test('parseClassAnimations reads the real monk.json: 8 directions, explicit rects, attach points', () => {
   const parsed = parseClassAnimations(monkAnim, 'monk');
-  assert.equal(parsed.frameWidth, 96);
-  assert.equal(parsed.frameHeight, 96);
+  assert.equal(parsed.frameWidth, 160);
+  assert.equal(parsed.frameHeight, 152);
   assert.ok(Math.abs(parsed.anchor.x - 0.5) < 1e-6);
-  assert.ok(Math.abs(parsed.anchor.y - 76 / 96) < 1e-6);
+  assert.ok(Math.abs(parsed.anchor.y - 126 / 152) < 1e-6);
 
   const idle = parsed.clips.idle!;
-  assert.equal(idle.frames, 4);
   assert.equal(idle.loop, true);
-  assert.equal(idle.durationsMs.length, 4);
+  assert.equal(idle.durationsMs.length, idle.frames);
+  assert.equal(idle.image, 'monk_idle.png');
   for (const dir of ['down', 'down-left', 'left', 'up-left', 'up', 'up-right', 'right', 'down-right'] as const) {
-    assert.equal(idle.rects[dir].length, 4, `idle must have 4 frame rects for ${dir}`);
+    assert.equal(idle.rects[dir].length, idle.frames, `idle must have ${idle.frames} frame rects for ${dir}`);
   }
   assert.ok(idle.attach, 'idle has attach data in the real file');
   assert.ok(idle.attach!.down[0]!.chest, 'idle attach includes a chest point');
 
   const attack1 = parsed.clips.attack_1!;
-  assert.equal(attack1.sheet, 'combat');
+  assert.equal(attack1.image, 'monk_attack_1.png');
   assert.equal(attack1.loop, false);
   assert.ok(parsed.signatureClips.includes('palm_combo'));
 });

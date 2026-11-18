@@ -1,0 +1,350 @@
+{
+ "classes": {
+  "monk": {
+   "issues": [],
+   "colours": 77,
+   "idle_height_range": [
+    74,
+    82
+   ],
+   "speed": {
+    "walk": 32.6,
+    "run": 78.1
+   },
+   "combat_clips": 22,
+   "signature_clips": [
+    "palm_combo",
+    "meditate"
+   ]
+  },
+  "ironwarden": {
+   "issues": [],
+   "colours": 73,
+   "idle_height_range": [
+    75,
+    79
+   ],
+   "speed": {
+    "walk": 24.2,
+    "run": 49.2
+   },
+   "combat_clips": 22,
+   "signature_clips": [
+    "shield_bash",
+    "brace"
+   ]
+  },
+  "ravager": {
+   "issues": [],
+   "colours": 70,
+   "idle_height_range": [
+    74,
+    81
+   ],
+   "speed": {
+    "walk": 25.7,
+    "run": 53.6
+   },
+   "combat_clips": 22,
+   "signature_clips": [
+    "whirlwind",
+    "roar"
+   ]
+  },
+  "nightveil": {
+   "issues": [],
+   "colours": 79,
+   "idle_height_range": [
+    71,
+    76
+   ],
+   "speed": {
+    "walk": 35.3,
+    "run": 87.4
+   },
+   "combat_clips": 22,
+   "signature_clips": [
+    "vanish",
+    "backstab"
+   ]
+  },
+  "arcanist": {
+   "issues": [],
+   "colours": 67,
+   "idle_height_range": [
+    77,
+    88
+   ],
+   "speed": {
+    "walk": 31.6,
+    "run": 72.7
+   },
+   "combat_clips": 22,
+   "signature_clips": [
+    "elemental_channel",
+    "blink"
+   ]
+  },
+  "ranger": {
+   "issues": [],
+   "colours": 94,
+   "idle_height_range": [
+    75,
+    79
+   ],
+   "speed": {
+    "walk": 33.2,
+    "run": 79.7
+   },
+   "combat_clips": 23,
+   "signature_clips": [
+    "aim_draw",
+    "volley",
+    "trap_kneel"
+   ]
+  },
+  "necromancer": {
+   "issues": [],
+   "colours": 63,
+   "idle_height_range": [
+    74,
+    86
+   ],
+   "speed": {
+    "walk": 31.0,
+    "run": 71.3
+   },
+   "combat_clips": 22,
+   "signature_clips": [
+    "summon_raise",
+    "curse"
+   ]
+  },
+  "dawnkeeper": {
+   "issues": [],
+   "colours": 87,
+   "idle_height_range": [
+    74,
+    77
+   ],
+   "speed": {
+    "walk": 27.0,
+    "run": 58.5
+   },
+   "combat_clips": 22,
+   "signature_clips": [
+    "shield_block",
+    "holy_raise"
+   ]
+  },
+  "flintlock": {
+   "issues": [],
+   "colours": 91,
+   "idle_height_range": [
+    79,
+    87
+   ],
+   "speed": {
+    "walk": 31.6,
+    "run": 72.7
+   },
+   "combat_clips": 23,
+   "signature_clips": [
+    "quickdraw",
+    "reload",
+    "fan_fire"
+   ]
+  },
+  "druid": {
+   "issues": [],
+   "colours": 70,
+   "idle_height_range": [
+    82,
+    88
+   ],
+   "speed": {
+    "walk": 32.6,
+    "run": 78.1
+   },
+   "combat_clips": 22,
+   "signature_clips": [
+    "root_summon",
+    "bloom"
+   ]
+  },
+  "oathblade": {
+   "issues": [],
+   "colours": 90,
+   "idle_height_range": [
+    77,
+    80
+   ],
+   "speed": {
+    "walk": 32.3,
+    "run": 75.4
+   },
+   "combat_clips": 22,
+   "signature_clips": [
+    "iai_draw",
+    "counter_stance"
+   ]
+  },
+  "minstrel": {
+   "issues": [],
+   "colours": 94,
+   "idle_height_range": [
+    76,
+    79
+   ],
+   "speed": {
+    "walk": 33.9,
+    "run": 82.6
+   },
+   "combat_clips": 22,
+   "signature_clips": [
+    "play_lute",
+    "perform"
+   ]
+  },
+  "thornlancer": {
+   "issues": [],
+   "colours": 83,
+   "idle_height_range": [
+    80,
+    101
+   ],
+   "speed": {
+    "walk": 31.0,
+    "run": 71.3
+   },
+   "combat_clips": 22,
+   "signature_clips": [
+    "spear_charge",
+    "sweep"
+   ]
+  },
+  "warlock": {
+   "issues": [],
+   "colours": 77,
+   "idle_height_range": [
+    76,
+    78
+   ],
+   "speed": {
+    "walk": 32.6,
+    "run": 78.1
+   },
+   "combat_clips": 22,
+   "signature_clips": [
+    "book_open",
+    "hex"
+   ]
+  },
+  "beastmaster": {
+   "issues": [],
+   "colours": 86,
+   "idle_height_range": [
+    75,
+    81
+   ],
+   "speed": {
+    "walk": 29.2,
+    "run": 65.2
+   },
+   "combat_clips": 22,
+   "signature_clips": [
+    "whistle",
+    "command"
+   ]
+  },
+  "briarwarden": {
+   "issues": [],
+   "colours": 52,
+   "idle_height_range": [
+    74,
+    78
+   ],
+   "speed": {
+    "walk": 24.7,
+    "run": 50.8
+   },
+   "combat_clips": 22,
+   "signature_clips": [
+    "shield_plant",
+    "thorn_burst"
+   ]
+  },
+  "vaneweaver": {
+   "issues": [],
+   "colours": 98,
+   "idle_height_range": [
+    77,
+    87
+   ],
+   "speed": {
+    "walk": 35.3,
+    "run": 87.4
+   },
+   "combat_clips": 22,
+   "signature_clips": [
+    "gale_spin",
+    "storm_call"
+   ]
+  },
+  "hollowstrider": {
+   "issues": [],
+   "colours": 77,
+   "idle_height_range": [
+    76,
+    78
+   ],
+   "speed": {
+    "walk": 33.9,
+    "run": 82.6
+   },
+   "combat_clips": 22,
+   "signature_clips": [
+    "void_step",
+    "eruption"
+   ]
+  }
+ },
+ "total_issues": 0,
+ "most_similar_silhouettes": [
+  [
+   0.899,
+   "arcanist",
+   "vaneweaver"
+  ],
+  [
+   0.883,
+   "arcanist",
+   "druid"
+  ],
+  [
+   0.88,
+   "ranger",
+   "hollowstrider"
+  ],
+  [
+   0.864,
+   "monk",
+   "necromancer"
+  ],
+  [
+   0.863,
+   "ironwarden",
+   "dawnkeeper"
+  ]
+ ],
+ "skills_checked": 270,
+ "milestone_6": {
+  "vfx_manifest_found": true,
+  "icons_checked": 270,
+  "icons_missing": 0,
+  "icons_malformed": 0,
+  "vfx_checked": 270,
+  "vfx_missing": 0,
+  "vfx_malformed": 0
+ }
+}

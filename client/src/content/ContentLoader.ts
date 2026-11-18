@@ -101,16 +101,18 @@ export function findMob(content: ClientContent, id: string): SpriteRef | null {
 
 /** Texture / animation key conventions, derived from data ids. */
 export const keys = {
-  /** Grid characters/mobs: one shared sheet. Rich characters: `which` picks locomotion or combat
-   * (they're separate textures) — defaults to locomotion since that's always present. */
-  sheet: (ref: Pick<SpriteRef, 'kind' | 'id'>, which: 'locomotion' | 'combat' = 'locomotion') => `${ref.kind}:${ref.id}:${which}`,
+  /** Grid characters/mobs: one shared sheet. */
+  sheet: (ref: Pick<SpriteRef, 'kind' | 'id'>) => `${ref.kind}:${ref.id}`,
+  /** Rich (Thistlevane) characters: each clip is its own strip/texture. */
+  richClipTexture: (ref: Pick<SpriteRef, 'kind' | 'id'>, clipName: string) => `${ref.kind}:${ref.id}:clip:${clipName}`,
   anim: (ref: Pick<SpriteRef, 'kind' | 'id'>, anim: string, dir: string) => `${ref.kind}:${ref.id}:${anim}:${dir}`,
-  /** Custom (non-grid) texture frame name within a rich character's sheet. */
+  /** Custom (non-grid) texture frame name within a rich character's clip texture. */
   richFrame: (clip: string, dir: string, frameIndex: number) => `${clip}:${dir}:${frameIndex}`,
   effectSheet: (sheet: string, w: number, h: number) => `effect-sheet:${sheet}:${w}x${h}`,
   effectAnim: (id: string) => `effect:${id}`,
   vfxSheet: (classId: string, archetype: string) => `vfx:${classId}:${archetype}`,
-  vfxAnim: (classId: string, archetype: string) => `vfx-anim:${classId}:${archetype}`,
+  /** Directional: a skill's VFX plays the row matching the caster's facing (see vfxDirectionRow). */
+  vfxAnim: (classId: string, archetype: string, dir: string) => `vfx-anim:${classId}:${archetype}:${dir}`,
   map: (id: string) => `map:${id}`,
   tileset: (mapId: string, name: string) => `tileset:${mapId}:${name}`,
 };

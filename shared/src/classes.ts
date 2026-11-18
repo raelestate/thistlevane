@@ -35,7 +35,10 @@ export interface RichClip {
   frames: number;
   loop: boolean;
   durationsMs: number[];
-  sheet: 'locomotion' | 'combat';
+  /** Filename only (e.g. "arcanist_idle.png") — this clip's own strip, a sibling of this
+   * class's animations/<class>.json (see classAnimationImagePath). v2 gives every clip,
+   * locomotion or combat, its own strip; there's no combined per-kind sheet to pick between. */
+  image: string;
   rects: Record<Direction, SpriteFrameRect[]>;
   attach?: Record<Direction, AttachFrame[]>;
 }
@@ -112,11 +115,15 @@ export function parseClassAnimations(raw: unknown, classId: string): ParsedClass
       attach = built;
     }
 
+    if (typeof value.image !== 'string' || !value.image) {
+      throw new ConfigError(`${classId}.json: animation "${name}" missing "image"`);
+    }
+
     clips[name] = {
       frames,
       loop: value.loop === true,
       durationsMs: durationsMs as number[],
-      sheet: value.sheet === 'combat_sheet' ? 'combat' : 'locomotion',
+      image: value.image,
       rects,
       attach,
     };
@@ -230,8 +237,13 @@ export function deriveBaselineWeapon(meta: ClassMeta, levelOneActive: Skill | un
   };
 }
 
-export function classSpritePath(classId: string, which: 'locomotion' | 'combat' | 'portrait'): string {
-  return `characters/${classId}/sprites/${classId}_${which}.png`;
+export function classPortraitPath(classId: string): string {
+  return `characters/${classId}/sprites/${classId}_portrait.png`;
+}
+
+/** A clip's own strip image (see RichClip.image), inside a class's animations/ folder. */
+export function classAnimationImagePath(classId: string, image: string): string {
+  return `characters/${classId}/animations/${image}`;
 }
 
 export function classAnimationsPath(classId: string): string {
