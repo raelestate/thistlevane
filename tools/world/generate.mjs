@@ -11,10 +11,11 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
-  P, T, N, E, S, W, NE, SE, SW, NW, DIRS8, Tileset, prop, normMask, groundTile, rimOverlay,
-  materialOverlay, waterTile, cliffFaceTile, rampTile, faceShadowTile, composite, lighten,
+  P, T, N, E, S, W, NE, SE, SW, NW, DIRS8, Tileset, prop, normMask, rimOverlay,
+  materialOverlay, cliffFaceTile, rampTile, faceShadowTile, composite, lighten,
 } from './tileset.mjs';
 import * as Props from './props.mjs';
+import * as Pack from './packTiles.mjs';
 import { ZONES, OPPOSITE } from './biomes.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -146,30 +147,27 @@ function generateZone(id, B) {
   }
   const shadowGid = TS.add('faceShadow', faceShadowTile()) + 1;
 
-  const groundCache = new Map();
   const groundKind = (x, y) => {
     // smooth patches of the alternate ground, with an ordered-dither transition at cell level
     const v = P.fbm(x * 0.03, y * 0.03, 3, seed + 5) + (P.fbm(x * 0.11, y * 0.11, 2, seed + 6) - 0.5) * 0.25;
     const edge = 1 - B.altAmount;
     const alt = v + (P.fbm(x * 0.35, y * 0.35, 2, seed + 7) - 0.5) * 0.08 > edge;   // noisy, not dithered, boundary
-    // tone variant (light/dark) also as smooth patches
-    const tone = P.fbm(x * 0.02 + 100, y * 0.02, 3, seed + 8) + (P.fbm(x * 0.3, y * 0.3, 2, seed + 12) - 0.5) * 0.1;
-    const shade = tone > 0.62 ? 1 : tone < 0.4 ? -1 : 0;
-    return { alt, shade };
+    return { alt };
   };
   const altAt = (x, y) => inb(x, y) && groundKind(x, y).alt;
   const groundGid = (x, y) => {
     const { alt } = groundKind(x, y);
-    const v = P.hash(x, y, seed + 9) < 0.5 ? 0 : 1 + (P.hash(x, y, seed + 10) * 3 | 0);   // 4 flat variants
-    const key = `g:${v}`;
-    if (!groundCache.has(key)) groundCache.set(key, TS.add(key, groundTile(B.ground, v, 0, { dab: v === 0 ? 0.02 : 0.08 })) + 1);
-    if (!alt) return groundCache.get(key);
-    // alternate ground = ragged patch overlaid on the base, auto-tiled by its neighbours
-    let m = 0;
-    for (const [bit, dx, dy] of DIRS8) if (!inb(x + dx, y + dy) || altAt(x + dx, y + dy)) m |= bit;
-    m = normMask(m);
-    const akey = `alt:${m}:${x & 1}:${y & 1}:${v}`;
-    if (!TS.byKey.has(akey)) TS.add(akey, composite(TS.tiles[groundCache.get(key) - 1], materialOverlay('patch', m, B.groundAlt, x & 1, y & 1, { seed })));
+    const v = P.hash(x, y, seed + 9) * 6 | 0;   // 6 real ground variants
+    if (!alt) {
+      const key = `g:${v}`;
+      if (!TS.byKey.has(key)) TS.add(key, Pack.groundTile(id, B.pack.ground, v));
+      return TS.byKey.get(key) + 1;
+    }
+    // alt patch = the pack's own blob-transition tile, picked whole (not composited — pack transition
+    // art is opaque and complete, unlike the old procedural ragged-patch overlay)
+    const code = Pack.neighbourCode(x, y, (nx, ny) => altAt(nx, ny));
+    const akey = `alt:${code}:${v}`;
+    if (!TS.byKey.has(akey)) TS.add(akey, Pack.transitionTile(id, B.pack.groundAlt, B.pack.ground, code));
     return TS.byKey.get(akey) + 1;
   };
   const rimGid = (mask, x, y) => {
@@ -186,16 +184,10 @@ function generateZone(id, B) {
     if (!TS.byKey.has(key)) TS.add(key, materialOverlay(kind, mask, pal, x & 3, y & 3, { seed }));
     return TS.byKey.get(key) + 1;
   };
-  const waterGid = (mask, x, y) => {
-    const key = `water:${mask}:${x & 1}:${y & 1}`;
+  const waterGid = (code) => {
+    const key = `water:${code}`;
     if (!TS.byKey.has(key)) {
-      const props = [prop('collides', true), prop('bumpEffect', 'splash')];
-      if (B.water.ice) TS.add(key, waterTile(mask, B.water.pal, x & 1, y & 1, 0, true), []);
-      else {
-        const ids = [0, 1, 2, 3].map((f) => TS.add(`${key}:f${f}`, waterTile(mask, B.water.pal, x & 1, y & 1, f), props));
-        TS.byKey.set(key, ids[0]);
-        TS.setMeta(ids[0], { animation: ids.map((t) => ({ tileid: t, duration: 300 })) });
-      }
+      TS.add(key, Pack.shoreTile(id, B.pack.ground, B.pack.liquid, code), [prop('collides', true), prop('bumpEffect', 'splash')]);
     }
     return TS.byKey.get(key) + 1;
   };
@@ -221,9 +213,8 @@ function generateZone(id, B) {
     ground[i] = rim === 0xff ? groundGid(x, y) : rimGid(rim, x, y);
     // water (auto-tiled over ground, replaces it)
     if (water[i]) {
-      let m = 0;
-      for (const [bit, dx, dy] of DIRS8) if (!inb(x + dx, y + dy) || water[idx(x + dx, y + dy)]) m |= bit;
-      ground[i] = waterGid(normMask(m), x, y);
+      const code = Pack.neighbourCode(x, y, (nx, ny) => !inb(nx, ny) || !!water[idx(nx, ny)]);
+      ground[i] = waterGid(code);
       occupied[i] = 1;
       continue;
     }
@@ -299,50 +290,60 @@ function generateZone(id, B) {
     return true;
   };
   const nearSpawn = (x, y) => Math.hypot(x - CX, y - CY) < 14 || spawnPoints.some((s) => Math.hypot(x - s.x, y - s.y) < 5);
-  const treeWeights = B.trees.map((t) => t.weight), treeTotal = treeWeights.reduce((a, b) => a + b, 0);
-  const pickTree = () => { let v = rng() * treeTotal; for (let i = 0; i < B.trees.length; i++) { v -= treeWeights[i]; if (v <= 0) return i; } return 0; };
-  const VARIANTS = 6;
+  const treeWeights = B.pack.trees.map((t) => t.weight), treeTotal = treeWeights.reduce((a, b) => a + b, 0);
+  const pickTree = () => { let v = rng() * treeTotal; for (let i = 0; i < B.pack.trees.length; i++) { v -= treeWeights[i]; if (v <= 0) return i; } return 0; };
+
+  // a pack prop prefix -> its block-descriptor list, resolved once per biome
+  const propPool = new Map();
+  const poolFor = (prefix) => {
+    if (!propPool.has(prefix)) propPool.set(prefix, Pack.propsByPrefix(id, prefix));
+    return propPool.get(prefix);
+  };
+  /** Pick a random pack prop variant for `prefix`, cache its built object, and place it. */
+  const placePackProp = (x, y, prefix, key, o) => {
+    const pool = poolFor(prefix);
+    if (!pool.length) return false;
+    const entry = pool[Math.floor(rng() * pool.length)];
+    const cacheKey = `${key}:${entry.name}:${entry.first_tile}`;
+    if (!propCache.has(cacheKey + ':p')) propCache.set(cacheKey + ':p', Pack.propObject(id, entry, o));
+    return placeProp(x, y, propCache.get(cacheKey + ':p'), cacheKey);
+  };
 
   // trees (forest density field)
   for (let y = 0; y < MH; y++) for (let x = 0; x < MW; x++) {
     if (nearSpawn(x, y) || occupied[idx(x, y)] || !interior(x, y)) continue;
     const forest = P.fbm(x * B.forestScale, y * B.forestScale, 3, seed + 7);
     const dens = Math.max(0, (forest - 0.45) * 2.2) * B.treeDensity + B.treeDensity * 0.08;
-    if (rng() < dens) {
-      const ti = pickTree(), v = Math.floor(rng() * VARIANTS);
-      const key = `tree${ti}v${v}`;
-      if (!propCache.has(key + ':p')) propCache.set(key + ':p', B.trees[ti].make(B, seed * 100 + ti * 10 + v));
-      placeProp(x, y, propCache.get(key + ':p'), key);
-    }
+    if (rng() < dens) placePackProp(x, y, B.pack.trees[pickTree()].prefix, 'tree');
   }
   // rocks, bushes, cacti, ruins
-  const scatter = (density, makeFn, keyBase, variants = 4) => {
+  const scatter = (density, prefix, keyBase) => {
+    if (!prefix) return;
     for (let y = 1; y < MH - 1; y++) for (let x = 1; x < MW - 1; x++) {
       if (nearSpawn(x, y) || occupied[idx(x, y)] || !interior(x, y) || rng() >= density) continue;
-      const v = Math.floor(rng() * variants), key = `${keyBase}v${v}`;
-      if (!propCache.has(key + ':p')) propCache.set(key + ':p', makeFn(seed * 7 + v));
-      placeProp(x, y, propCache.get(key + ':p'), key);
+      placePackProp(x, y, prefix, keyBase);
     }
   };
-  scatter(B.rocks2, (s) => Props.rock(B.rock, 2, s), 'rock2', 3);
-  scatter(B.rocks, (s) => Props.rock(B.rock, 1, s), 'rock1');
-  scatter(B.bushes, (s) => Props.bush(B.leaf, s, id === 'barren_grasslands' ? [200, 70, 70] : null), 'bush');
-  if (B.cacti) scatter(B.cacti, (s) => Props.cactus(B.leaf, s), 'cactus');
-  if (B.ruins) {
-    scatter(B.ruins, (s) => Props.pillar(B.rock, s, s % 2 === 0), 'pillar');
-    scatter(B.ruins * 2, (s) => Props.ruinWall(B.rock, B.leaf, s), 'ruinwall');
-  }
-  // small decorations (walkable, decor layer)
-  for (const [kind, density, accent] of B.decors) {
+  scatter(B.rocks2, B.pack.rock2, 'rock2');
+  scatter(B.rocks, B.pack.rock1, 'rock1');
+  scatter(B.bushes, B.pack.bush, 'bush');
+  if (B.cacti) scatter(B.cacti, B.pack.cactus, 'cactus');
+  if (B.ruins && B.pack.ruins) B.pack.ruins.forEach((prefix, i) => scatter(B.ruins * (i === 0 ? 1 : i === 1 ? 1 : 0.5), prefix, `ruins${i}`));
+  // small decorations (walkable or prop-shaped scatter, decor layer)
+  for (const d of B.pack.decor) {
     for (let y = 0; y < MH; y++) for (let x = 0; x < MW; x++) {
       const i = idx(x, y);
-      if (occupied[i] || decor[i] || water[i] || isFace[i] || rng() >= density) continue;
-      const v = Math.floor(rng() * 4), key = `${kind}v${v}`;
-      if (!propCache.has(key + ':p')) {
-        const pal = kind === 'bones' ? B.rock : kind === 'snowlump' ? B.snow : kind === 'iceshard' ? B.water.pal : kind === 'crack' ? B.groundAlt : kind === 'mushrooms' || kind === 'glowshroom' ? B.rock : B.leaf;
-        propCache.set(key + ':p', kind === 'bones' ? Props.bones(B.rock, seed + v) : Props.decor(kind, pal, seed * 3 + v, accent));
+      if (occupied[i] || decor[i] || water[i] || isFace[i] || rng() >= d.density) continue;
+      if (d.prop) {
+        placePackProp(x, y, d.prop, `decor:${d.prop}`, { walkable: true });
+      } else {
+        const v = Math.floor(rng() * 4);
+        const crop = Pack.detailTile(id, d.detail, v);
+        if (!crop) continue;
+        const key = `detail:${d.detail}:v${v}`;
+        if (!propCache.has(key + ':p')) propCache.set(key + ':p', { w: 1, h: 1, buf: crop, collides: [], above: [] });
+        placeProp(x, y, propCache.get(key + ':p'), key);
       }
-      placeProp(x, y, propCache.get(key + ':p'), key);
     }
   }
 

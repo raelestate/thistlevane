@@ -1,6 +1,6 @@
-# Thistlevane — Test Report (Milestones 1–6, v2 rebuild)
+# Thistlevane — Test Report (Milestones 1–6, v2.2)
 
-Automated checks: `generator/qa_classes.py` (raw results in `docs/qa_results.json`).
+Automated checks: `generator/qa_classes.py` (characters → `docs/qa_results.json`) and `generator/qa_tiles.py` (tilesets → `docs/qa_tilesets.json`).
 Visual checks: idle, walk, run and run_stop reviewed for all 18 classes in contact sheets and in `preview/roster.html`.
 
 ## Completed and tested
@@ -160,7 +160,84 @@ Plague Cloud, Army of the Dead (3 skeletons rise), Smoke Bomb (thrown, then smok
 + dome + heal), Play Lute (notes), Roar (shockwaves + rage flames), Storm Call (cloud, rain, lightning), Fan Fire,
 Scattershot, Rain of Arrows, Trap, Thorned Ground, Cyclone, Collapse (void pull).
 
+## v2.2: anatomy
+
+| Area | Check | Result |
+|---|---|---|
+| Anatomy | The bare body was rendered, with clothing disabled, to see what the silhouette actually was | Confirmed the report: wide pelvis, soft stomach, no neck. Measured, not guessed — the chest ellipsoid's top sat at z = 42.2 against a head bottom at z = 41.0, so the head intersected the chest |
+| Anatomy | Crotch height as a fraction of total height | ~45% before, ~52% after (heroic proportions) |
+| Anatomy | Hip, trouser, belt and skirt volumes no longer stack into a diaper | Pelvis, trousers and belt all narrowed; skirts and hip flaps clamped so they can't swell past the hip |
+| Anatomy | **The gut** — found on a second pass after the first fix was wrongly called complete | `skirt()` was a capsule, so it was as deep front-to-back as it was wide and its spherical top cap rose over the waist. Rebuilt as a stack of flattened ellipsoids. Isolated by rendering each clothing piece disabled in turn at 8x; 11 of 18 classes were affected |
+| Anatomy | Arms read as attached to the torso | Shoulder joint moved inboard (×0.82 of build width), deltoid spheres added outboard, default arm roll cut from 9° to ~2° |
+| Anatomy | Idle reads as standing, not hunching | Head counter-pitched by half the spine lean; posture leans reduced |
+| Format | Frame size, anchor, row order, clip names, JSON schema | Unchanged — v2.2 drops in over v2.1 |
+| Build | All 18 classes re-rendered, then `attach.py`, `skills.py`, `export_data.py`, `qa_classes.py` re-run | See `docs/qa_results.json` |
+
+The union in the renderer is a hard `min`, not a smooth one, so the silhouette is exactly what the primitive
+parameters produce — which is why reading the numbers off the rig was enough to find each cause.
+
+## v2.2: map tilesets
+
+Automated checks: `generator/qa_tiles.py` (raw results in `docs/qa_tilesets.json`).
+
+| Area | Check | Result |
+|---|---|---|
+| Atlas | 16×16 tiles in a 16-column, 256 px-wide atlas — the same shape as the project's existing tileset | Pass, 5 biomes |
+| Atlas | Manifest tile count matches the PNG, and the `.tsj` matches both | Pass, 5 biomes at 16 px and at 64 px |
+| Atlas | Every blob set has all 47 cases, no duplicates | Pass: 15 sets (2 terrain pairs + 1 shoreline per biome) |
+| Atlas | Ground and liquid tiles are fully opaque | Pass |
+| Atlas | Six ground variants per terrain | Pass — four was enough at 64 px, visibly repetitive at 16 px |
+| Atlas | Cliff sets have all 15 named parts, plus 3 variants of each repeating part | Pass |
+| Atlas | Prop blocks are contiguous, inside the atlas, and have no empty rows or columns | Pass, after fixing footprints that were a tile taller than the art |
+| Tiled | Wang sets are well-formed: 47 tiles each, 8-entry wangids | Pass, 15 sets |
+| Seams | Ground repeats without showing the tile grid | Verified by folding a rendered field's row and column means onto one 64 px cell, and by eye on 3×3 tilings |
+| Props | Props sit in the same light and palette world as the characters | Rendered through the characters' own renderer; checked side by side in the demo maps |
+
+**Caught and fixed during QA:**
+
+- **A detail-free band around every tile.** Marks were scattered with a 2 px margin, so columns 0 and 63 had
+  essentially no tufts in any variant while the middle columns had ~0.4 per tile. A field of grass showed a faint
+  lattice. Marks are now scattered edge to edge (they wrap).
+- **A rim drawn along tile edges.** `edge_shade` and `overlay` used `np.roll`, so a terrain boundary that simply ran
+  off the tile was read as an edge and got a light or dark lip drawn along it. Folding the demo map's columns showed
+  position 0 at 117.5 against an interior mean of 124. Both now shift with border replication; the folded profile is
+  flat.
+- **Blob masks with holes.** A corner-rounding test had its sign inverted and its radius set to 19 px instead of 15,
+  punching holes out of regions that should have been solid.
+- **Transitions that were invisible.** The boundary sat exactly on the tile edge, so there was nothing to see. The
+  upper terrain now pulls back 11 px, which shows a real band of the lower one.
+- **Cliff faces like melted wax.** `sin()` of the x coordinate drew smooth vertical drips. Replaced with blocky
+  strata whose course heights and block widths each sum to the tile size, so the face tiles in both directions.
+- **Shadows that read as outlines.** A two-step drop shadow lands most of the way down the ramp on snow and drew a
+  grey line around every patch of ice. Reduced to one step everywhere.
+- **Lava that read as dried blood,** then as orange noodles. Settled on Voronoi plates of cooled crust with the melt
+  glowing in the seams between them.
+- **Prop footprints a tile too large.** Trees and boulders declared a 2×3 or 2×2 block but only filled part of it.
+  Footprints are now trimmed to the art, and `anchor_tile` recomputed, so a prop blocks only the cells it occupies.
+- **Demo maps painting rectangles.** Two separate bugs: terrain noise sampled with a coarse stride (aliased into
+  rectangles) and the demo picking a transition pair that didn't match the terrain it was painting, which exposed a
+  third terrain's colour along every boundary.
+- **The whole set built at the wrong size.** It was first built at 64×64 on a stated preference; measuring the
+  project's own `barren_grasslands.png` (256 × 1824, strongest edge period 16 px in both axes) showed the game uses
+  16×16 in a 16-column atlas. Rebuilt at 16, with `TILE_SIZE` as the knob and the 64 px sets kept alongside.
+- **Camouflage at 16 px.** Scaling cluster frequency by the tile's side keeps clusters the same size in pixels,
+  which is a third of a 16 px tile. The fourth root of the area ratio keeps them at about 2 px. Picked by rendering
+  a 5×5 field at six parameter settings and comparing.
+- **A brick wall instead of a cliff.** Course heights and block widths scaled down to 2–4 px, which is a line, and
+  a wall of lines is brickwork. Both now hold a floor of 3–4 px, and block highlights drop to one palette step.
+- **Lava as an orange lattice.** A dilated seam is most of a 16 px tile. Below 32 px the seam is drawn 1 px wide
+  with no halo. (Found alongside a precedence bug — `seam & (a + b) % 3 == 0` parses as `(seam & ((a+b)%3)) == 0` —
+  which painted almost the whole tile at the hottest palette step.)
+- **Shorelines that read as a cut.** Water now steps up two palette levels against the land. Applying both bands at
+  two steps each clamped the inner one to the top of the ramp and drew a glowing cyan outline; one step per band
+  reads as shallows.
+
 ## Known issues and limits
+
+- **One pixel of clipping.** `oathblade/leap_strike`, facing north, frame 5: a single pixel of the sword tip
+  touches the top edge of the frame. The longer legs in v2.2 raise the apex of the leap by about 3 px. One pixel
+  did not justify re-rendering 18 classes; if it bothers you, lower `leap` in `combat.py` by 2 and rebuild that
+  class alone.
 
 - **Silhouette similarity.** The automated overlap check still ranks Arcanist/Vaneweaver and Ironwarden/Dawnkeeper as the closest idle-pose pairs (now joined by Ranger/Hollowstrider, Necromancer/Minstrel and Minstrel/Warlock). They remain separated by palette, headgear and weapon; combat now also separates them further through each class's weapon archetype and signature clips (e.g. Arcanist blinks and bolts, Vaneweaver spins and calls storms). Review them in the preview and tell me if you want a stronger idle silhouette change too.
 - **Robes while running.** On robed classes the hem lifts and the legs show through during the run's flight frames. This is intentional, so the stride stays readable, but it is a stylistic choice.
@@ -177,6 +254,22 @@ Scattershot, Rain of Arrows, Trap, Thorned Ground, Cyclone, Collapse (void pull)
   and rejected: it bands the glows visibly.
 - **Effects are generic within a part.** Every meteor looks like a meteor and every skeleton like a skeleton. They are
   built procedurally from parts, not hand-animated per skill.
+- **New tilesets renumber tile IDs.** The atlas is packed from scratch on every build and props are placed by size,
+  so adding a terrain, prop or variant moves tile IDs and scrambles maps painted against an older build. The sets
+  shipped here are stable; `docs/TILESETS.md` explains how to build a remap table if you change a biome.
+- **Tilesets are not tested in an engine.** They open correctly in Tiled (`.tsj` tilesets with working terrain
+  brushes, `.tmj` demo maps), and the manifest is checked against the PNG, but nothing here has been rendered by a
+  game.
+- **The existing maps will need repainting.** These are new sets with their own layout, so `maps/meadow.json` and
+  the rest can't just point at the new PNG — the tile IDs are different. `docs/TILESETS.md` explains how to build a
+  remap table if repainting by hand is too much.
+- **Characters and tiles are at different scales.** Characters are ~75 px tall; a 16 px tile makes that 4.7 tiles,
+  against trees that are 3 tiles. Either the map is drawn zoomed or one of the two needs to move. The 64 px sets
+  are included for the second case.
+- **One elevation edge per biome.** The cliff set draws a ledge with a top, a face and a base. It has no outer
+  corners for a plateau that juts out, no stairs or ramps, and no second rock type.
+- **Four variants per terrain.** Enough that a large field doesn't visibly repeat, but a very large open map benefits
+  from more; `base_tiles(..., n=4)` is the number to raise.
 - **Integration has not been started.** It is Milestone 7, blocked until your project is uploaded.
 
 ## Not testable without the game project

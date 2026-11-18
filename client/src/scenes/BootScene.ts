@@ -33,21 +33,52 @@ import { assetUrl, keys, loadClientContent, type ClientContent, type SpriteRef }
  * combined combat.png required.
  */
 export class BootScene extends Phaser.Scene {
+  private loadingRoot!: HTMLElement;
+  private loadingFill!: HTMLElement;
+  private loadingText!: HTMLElement;
+
   constructor() {
     super('boot');
   }
 
   create(): void {
+    this.buildLoadingUi();
     loadClientContent()
       .then((content) => this.loadSheets(content))
       .catch((err: Error) => {
         console.error('[boot]', err);
-        const hud = document.getElementById('hud');
-        if (hud) {
-          hud.textContent = `Failed to load game data:\n${err.message}`;
-          hud.classList.add('bad');
-        }
+        this.loadingRoot.classList.add('bad');
+        this.loadingText.textContent = `Failed to load game data:\n${err.message}`;
       });
+  }
+
+  /** WorldScene's GameHud clears #game-ui when it takes over, so this never needs explicit teardown. */
+  private buildLoadingUi(): void {
+    const container = document.getElementById('game-ui');
+    if (!container) return;
+
+    this.loadingRoot = document.createElement('div');
+    this.loadingRoot.id = 'loading-screen';
+    this.loadingRoot.className = 'panel';
+
+    const title = document.createElement('div');
+    title.className = 'loading-title';
+    title.textContent = 'Loading Thistlevane…';
+    this.loadingRoot.appendChild(title);
+
+    const track = document.createElement('div');
+    track.className = 'loading-bar-track';
+    this.loadingFill = document.createElement('div');
+    this.loadingFill.className = 'loading-bar-fill';
+    track.appendChild(this.loadingFill);
+    this.loadingRoot.appendChild(track);
+
+    this.loadingText = document.createElement('div');
+    this.loadingText.className = 'loading-text';
+    this.loadingText.textContent = 'Fetching game data…';
+    this.loadingRoot.appendChild(this.loadingText);
+
+    container.appendChild(this.loadingRoot);
   }
 
   /** Grid-sheet entities only: mobs, plus any character still on the simple single-sheet
@@ -91,6 +122,12 @@ export class BootScene extends Phaser.Scene {
     }
     this.load.on(Phaser.Loader.Events.FILE_LOAD_ERROR, (file: Phaser.Loader.File) => {
       console.error(`[boot] failed to load ${file.key} (${String(file.src)})`);
+    });
+    this.load.on(Phaser.Loader.Events.PROGRESS, (value: number) => {
+      this.loadingFill.style.width = `${Math.round(value * 100)}%`;
+    });
+    this.load.on(Phaser.Loader.Events.FILE_COMPLETE, () => {
+      this.loadingText.textContent = `Loading assets… ${this.load.totalComplete}/${this.load.totalToLoad}`;
     });
     this.load.once(Phaser.Loader.Events.COMPLETE, () => {
       this.createAnimations(content);

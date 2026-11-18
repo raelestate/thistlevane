@@ -455,3 +455,61 @@ thousand cuts, thousand spears), `battle_cry` (howl, battle hymn, alpha's call) 
 `assets/vfx/manifest.json → skills.<skill_id>` (sheet, frames, rows, directional, loop, durations_ms, parts). Aimed
 effects have 8 rows (facings in the character row order); self-centred ones have 1. Frames are 256 × 256 with the
 anchor at (128, 178). Icons now take their colour from the skill's element and their glyph from its main effect part.
+
+## 9. v2.2 — anatomy and maps
+
+### 9.1 The anatomy fix
+
+The complaint was exact: big stomachs, big butts, "like they have a diaper". Rendering the bare body confirmed it,
+and the cause was in four places at once.
+
+| Problem | Where it came from | v2.2 |
+|---|---|---|
+| **The gut** | `skirt()` was a **capsule** — a sphere swept along a line. Its radius applies front-to-back as well as side-to-side, so at the width a coat tail needs it was also that deep, and its spherical top cap rose up over the waist. 11 of the 18 classes call it. | A stack of flattened ellipsoids: as wide as the garment, only as deep as the body (`depth=3.3`). This is the fix that actually removed the silhouette. |
+| Wide, heavy hips | pelvis ellipsoid `[hip+1.8, 3.5, 3.6]`, trousers `[hip+2.15, 3.85, 3.7]` and a belt at `[hip+2.65, 4.3, 1.05]` stacked on top of each other | pelvis `[hip+1.5, 2.85, 2.85]`, trousers `[hip+1.85, 3.1, 2.6]`, belt `[hip+1.6, 3.55, 1.0]`; skirts and hip flaps are clamped so they can't swell past the hip |
+| A soft stomach | the waist ellipsoid was nearly as wide as the chest | chest widest, waist pinched to `0.94 ×` the waist build value, with the depth cut back |
+| Short legs, squat stance | crotch at ~45% of height | `PELVIS_Z = 28.0`, `THIGH, SHIN = 12.8, 12.5` — crotch at ~52%, heroic proportions |
+| No neck | chest top at z = 42.2 against a head bottom at z = 41.0, so the head intersected the chest | the neck joint sits above the collarbones, the head rides 5.7 above it, and a trapezius cap bridges the gap |
+| Arms floating off the torso | shoulder joint at the full build width, plus a 9° default arm roll | joint moved inboard (`sh × 0.82`), deltoid spheres added outboard of it, default roll cut to ~2° |
+| Hunched idle | posture `lean` rotated the whole spine and carried the head forward with it | the head is counter-pitched by half the lean, and the posture leans themselves were reduced (aggressive 9→7, low 14→11, hunched 10→8, prowl 8→7) |
+
+The head was made slightly smaller (`HEAD_R = [4.3, 4.7, 5.15]`) to pay for the longer legs and the taller neck
+inside the same 160 × 152 frame. Frame size, anchor, row order, clip names and the JSON schema are all unchanged, so
+v2.2 drops straight in over v2.1.
+
+### 9.2 Map tilesets
+
+Five biomes at 16 × 16 — the size the project's existing `barren_grasslands.png` is drawn at — built by
+`generator/make_tiles.py`. The same sets build at 64 × 64 from `TILE_SIZE=64`. The full format is in `docs/TILESETS.md`; the design
+decisions worth recording here:
+
+* **Ground is flat, not noisy.** The first pass used large soft fbm blobs and heavy dithering, and every terrain read
+  as camouflage. Ground is now a flat base in one palette step (~85% of the tile), small crisp clusters one step
+  either side of it (`patch()` at frequency 10–18 covering 6–15%), then drawn marks — grass tufts, pebbles, cracks,
+  wave crests. Internal contrast stays low so characters and props read against it.
+* **Seamlessness is tested, not assumed.** Everything that draws into a tile wraps. Two bugs showed up as a visible
+  grid in large fields and were found by folding the rendered map's column means modulo 64: detail marks were being
+  scattered with a 2 px margin, leaving a blank band around every tile, and `edge_shade`/`overlay` used `np.roll`,
+  so a boundary that simply ran off the tile was read as an edge and got a rim drawn along it. Both now use a
+  border-replicating shift.
+* **Transitions are a 47-tile blob set**, not a 16-tile corner set: the boundary wobble is a sum of harmonics with
+  period 64, so one tile's edge always continues into its neighbour's, and free corners are rounded while inner
+  corners are notched. Exported as Tiled wang sets of `type: "mixed"` so the terrain brush paints them directly.
+* **Cliffs are strata, not striations.** The first rock face used `sin()` of the x coordinate and looked like candle
+  wax running down a wall. It is now courses of blocks whose heights and widths each sum to exactly the tile size —
+  so the face tiles in both directions — each block lit on its top edge and shaded at its foot. The parts that repeat
+  along a ledge ship in three variants.
+* **Shadows are one palette step.** A two-step drop shadow lands most of the way down the ramp on a pale terrain like
+  snow and reads as a drawn outline. One step reads as depth on every terrain.
+* **One source, two sizes.** Everything is written in 64 px units and scaled: counts by area, lengths by the side,
+  noise frequencies by the fourth root of the area ratio. The last one matters — scale a cluster's frequency by the
+  side and a 5 px cluster on a 64 px tile becomes a 5 px cluster on a 16 px one, which is a third of the tile and
+  reads as camouflage; the fourth root keeps it at about 2 px. Marks themselves (a blade, a pebble) keep their
+  pixel size at both, because below a pixel they vanish and the ground goes flat. A few things switch outright
+  rather than scale: lava seams lose their dilation, rock courses hold a floor of 3 px so a wall doesn't become a
+  brick pattern of lines, and block highlights drop from two palette steps to one.
+* **Props use the character renderer.** `tileprops.py` builds trees, rocks, ruins and crystals out of the same
+  primitives, and renders them through `engine.py` with the same camera, the same key light from the upper left and
+  the same 7-step palettes, at `engine.SCALE × TILE / 64` pixels per world unit. That is what keeps props and
+  sprites in one world instead of two. It also survives the drop to 16 px better than expected: a 32 × 48 tree off
+  the signed-distance renderer, quantised to seven steps with a hard outline and no anti-aliasing, is pixel art.

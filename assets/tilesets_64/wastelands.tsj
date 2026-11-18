@@ -1,0 +1,8035 @@
+{
+ "columns": 16,
+ "image": "wastelands.png",
+ "imagewidth": 1024,
+ "imageheight": 1024,
+ "margin": 0,
+ "spacing": 0,
+ "name": "Wastelands",
+ "tilecount": 256,
+ "tiledversion": "1.10.2",
+ "tilewidth": 64,
+ "tileheight": 64,
+ "type": "tileset",
+ "version": "1.10",
+ "tiles": [
+  {
+   "id": 0,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Ash 1"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 1,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Ash 2"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Ash 3"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Ash 4"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Ash 5"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Ash 6"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Cracked earth 1"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Cracked earth 2"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Cracked earth 3"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Cracked earth 4"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 10,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Cracked earth 5"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Cracked earth 6"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Dust 1"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 13,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Dust 2"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 14,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Dust 3"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 15,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Dust 4"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 16,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Dust 5"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 17,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "Dust 6"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "ground"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 18,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 19,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 20,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "4"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 21,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "5"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 22,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "7"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 23,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "16"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 24,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "17"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 25,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "20"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 26,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "21"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 27,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "23"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 28,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "28"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 29,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "29"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 30,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "31"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 31,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "64"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 32,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "65"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 33,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "68"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 34,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "69"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 35,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "71"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 36,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "80"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 37,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "81"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 38,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "84"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 39,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "85"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 40,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "87"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 41,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "92"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 42,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "93"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 43,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "95"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 44,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "112"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 45,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "113"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 46,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "116"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 47,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "117"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 48,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "119"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 49,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "124"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 50,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "125"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 51,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "127"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 52,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "193"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 53,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "197"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 54,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "199"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 55,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "209"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 56,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "213"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 57,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "215"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 58,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "221"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 59,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "223"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 60,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "241"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 61,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "245"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 62,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "247"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 63,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "253"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 64,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "255"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "crack"
+    }
+   ]
+  },
+  {
+   "id": 65,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 66,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 67,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "4"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 68,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "5"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 69,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "7"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 70,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "16"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 71,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "17"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 72,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "20"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 73,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "21"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 74,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "23"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 75,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "28"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 76,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "29"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 77,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "31"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 78,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "64"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 79,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "65"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 80,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "68"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 81,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "69"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 82,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "71"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 83,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "80"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 84,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "81"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 85,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "84"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 86,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "85"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 87,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "87"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 88,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "92"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 89,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "93"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 90,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "95"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 91,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "112"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 92,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "113"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 93,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "116"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 94,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "117"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 95,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "119"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 96,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "124"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 97,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "125"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 98,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "127"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 99,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "193"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 100,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "197"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 101,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "199"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 102,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "209"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 103,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "213"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 104,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "215"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 105,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "221"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 106,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "223"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 107,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "241"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 108,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "245"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 109,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "247"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 110,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "253"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 111,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "ash"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "255"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "transition"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "sand"
+    }
+   ]
+  },
+  {
+   "id": 112,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "lava 1"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "liquid"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "lava"
+    }
+   ]
+  },
+  {
+   "id": 113,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "lava 2"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "liquid"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "lava"
+    }
+   ]
+  },
+  {
+   "id": 114,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "lava 3"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "liquid"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "lava"
+    }
+   ]
+  },
+  {
+   "id": 115,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "lava 4"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "liquid"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "lava"
+    }
+   ]
+  },
+  {
+   "id": 116,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "lava 5"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "liquid"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "lava"
+    }
+   ]
+  },
+  {
+   "id": 117,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "lava 6"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "liquid"
+    },
+    {
+     "name": "terrain",
+     "type": "string",
+     "value": "lava"
+    }
+   ]
+  },
+  {
+   "id": 118,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 119,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 120,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "4"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 121,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "5"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 122,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "7"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 123,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "16"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 124,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "17"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 125,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "20"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 126,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "21"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 127,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "23"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 128,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "28"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 129,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "29"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 130,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "31"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 131,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "64"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 132,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "65"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 133,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "68"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 134,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "69"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 135,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "71"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 136,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "80"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 137,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "81"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 138,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "84"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 139,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "85"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 140,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "87"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 141,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "92"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 142,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "93"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 143,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "95"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 144,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "112"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 145,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "113"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 146,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "116"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 147,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "117"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 148,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "119"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 149,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "124"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 150,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "125"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 151,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "127"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 152,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "193"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 153,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "197"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 154,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "199"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 155,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "209"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 156,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "213"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 157,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "215"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 158,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "221"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 159,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "223"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 160,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "241"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 161,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "245"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 162,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "247"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 163,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "253"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 164,
+   "properties": [
+    {
+     "name": "bottom",
+     "type": "string",
+     "value": "lava"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "value": "255"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "shore"
+    },
+    {
+     "name": "top",
+     "type": "string",
+     "value": "ash"
+    }
+   ]
+  },
+  {
+   "id": 165,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "top_tl"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 166,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "top_t"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 167,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "top_t2"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 168,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "top_t3"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 169,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "top_tr"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 170,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "top_c"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 171,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "top_c2"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 172,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "top_c3"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 173,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "in_il"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 174,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "in_ir"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 175,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "lip_bl"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 176,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "lip_b"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 177,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "lip_b2"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 178,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "lip_b3"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 179,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "lip_br"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 180,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "face_fl"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 181,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "face_f"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 182,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "face_f2"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 183,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "face_f3"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 184,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "face_fr"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 185,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "base_sl"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 186,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "base_s"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 187,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "base_s2"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 188,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "base_s3"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 189,
+   "properties": [
+    {
+     "name": "part",
+     "type": "string",
+     "value": "base_sr"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "cliff"
+    }
+   ]
+  },
+  {
+   "id": 190,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "pebbles"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "detail"
+    }
+   ]
+  },
+  {
+   "id": 191,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "cracks"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "detail"
+    }
+   ]
+  },
+  {
+   "id": 192,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "bonebits"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "detail"
+    }
+   ]
+  },
+  {
+   "id": 193,
+   "properties": [
+    {
+     "name": "label",
+     "type": "string",
+     "value": "tuft"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "detail"
+    }
+   ]
+  },
+  {
+   "id": 194,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "tree_dead"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 195,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "tree_dead"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 196,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "tree_dead"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 197,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "tree_dead"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 198,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "2"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "tree_dead"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 199,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "2"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "tree_dead"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 200,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "3"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "tree_dead"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 201,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "3"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "tree_dead"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 202,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "ruin_wall"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 203,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "ruin_wall"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 204,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "ruin_wall"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 205,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "ruin_wall"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 206,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "boulder"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 1]"
+    }
+   ]
+  },
+  {
+   "id": 207,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "boulder"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 1]"
+    }
+   ]
+  },
+  {
+   "id": 208,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "boulder"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 1]"
+    }
+   ]
+  },
+  {
+   "id": 209,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "boulder"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 1]"
+    }
+   ]
+  },
+  {
+   "id": 210,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "tree_dead"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 211,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "tree_dead"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 212,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "tree_dead"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 213,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "tree_dead"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 214,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "2"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "tree_dead"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 215,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "2"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "tree_dead"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 216,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "3"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "tree_dead"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 217,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "3"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "tree_dead"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 218,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "ruin_wall"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 219,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "ruin_wall"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 220,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "ruin_wall"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 221,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "ruin_wall"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 2]"
+    }
+   ]
+  },
+  {
+   "id": 222,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "bones"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 1]"
+    }
+   ]
+  },
+  {
+   "id": 223,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "bones"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 1]"
+    }
+   ]
+  },
+  {
+   "id": 224,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "bones"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 1]"
+    }
+   ]
+  },
+  {
+   "id": 225,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "bones"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 1]"
+    }
+   ]
+  },
+  {
+   "id": 226,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "2"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "bones"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 1]"
+    }
+   ]
+  },
+  {
+   "id": 227,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "2"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "bones"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 1]"
+    }
+   ]
+  },
+  {
+   "id": 228,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "log"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 1]"
+    }
+   ]
+  },
+  {
+   "id": 229,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[1, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "log"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[2, 1]"
+    }
+   ]
+  },
+  {
+   "id": 230,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "pillar"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 2]"
+    }
+   ]
+  },
+  {
+   "id": 231,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "pillar"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 2]"
+    }
+   ]
+  },
+  {
+   "id": 232,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "crystal"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 2]"
+    }
+   ]
+  },
+  {
+   "id": 233,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "crystal"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 2]"
+    }
+   ]
+  },
+  {
+   "id": 234,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "cactus"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 2]"
+    }
+   ]
+  },
+  {
+   "id": 235,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "rock"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 1]"
+    }
+   ]
+  },
+  {
+   "id": 236,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "rock"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 1]"
+    }
+   ]
+  },
+  {
+   "id": 237,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "2"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "rock"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 1]"
+    }
+   ]
+  },
+  {
+   "id": 238,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "stump"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 1]"
+    }
+   ]
+  },
+  {
+   "id": 239,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "thornbush"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 1]"
+    }
+   ]
+  },
+  {
+   "id": 240,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "thornbush"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 1]"
+    }
+   ]
+  },
+  {
+   "id": 241,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 0]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "brazier"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 1]"
+    }
+   ]
+  },
+  {
+   "id": 242,
+   "properties": [
+    {
+     "name": "role",
+     "type": "string",
+     "value": "empty"
+    }
+   ]
+  },
+  {
+   "id": 243,
+   "properties": [
+    {
+     "name": "role",
+     "type": "string",
+     "value": "empty"
+    }
+   ]
+  },
+  {
+   "id": 244,
+   "properties": [
+    {
+     "name": "role",
+     "type": "string",
+     "value": "empty"
+    }
+   ]
+  },
+  {
+   "id": 245,
+   "properties": [
+    {
+     "name": "role",
+     "type": "string",
+     "value": "empty"
+    }
+   ]
+  },
+  {
+   "id": 246,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "pillar"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 2]"
+    }
+   ]
+  },
+  {
+   "id": 247,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "pillar"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 2]"
+    }
+   ]
+  },
+  {
+   "id": 248,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "crystal"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 2]"
+    }
+   ]
+  },
+  {
+   "id": 249,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "1"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "crystal"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 2]"
+    }
+   ]
+  },
+  {
+   "id": 250,
+   "properties": [
+    {
+     "name": "cell",
+     "type": "string",
+     "value": "[0, 1]"
+    },
+    {
+     "name": "index",
+     "type": "string",
+     "value": "0"
+    },
+    {
+     "name": "prop",
+     "type": "string",
+     "value": "cactus"
+    },
+    {
+     "name": "role",
+     "type": "string",
+     "value": "prop"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "value": "[1, 2]"
+    }
+   ]
+  },
+  {
+   "id": 251,
+   "properties": [
+    {
+     "name": "role",
+     "type": "string",
+     "value": "empty"
+    }
+   ]
+  },
+  {
+   "id": 252,
+   "properties": [
+    {
+     "name": "role",
+     "type": "string",
+     "value": "empty"
+    }
+   ]
+  },
+  {
+   "id": 253,
+   "properties": [
+    {
+     "name": "role",
+     "type": "string",
+     "value": "empty"
+    }
+   ]
+  },
+  {
+   "id": 254,
+   "properties": [
+    {
+     "name": "role",
+     "type": "string",
+     "value": "empty"
+    }
+   ]
+  },
+  {
+   "id": 255,
+   "properties": [
+    {
+     "name": "role",
+     "type": "string",
+     "value": "empty"
+    }
+   ]
+  }
+ ],
+ "wangsets": [
+  {
+   "name": "crack over ash",
+   "type": "mixed",
+   "tile": -1,
+   "colors": [
+    {
+     "name": "crack",
+     "color": "#7fdc55",
+     "tile": 18,
+     "probability": 1
+    },
+    {
+     "name": "ash",
+     "color": "#c08a4a",
+     "tile": -1,
+     "probability": 1
+    }
+   ],
+   "wangtiles": [
+    {
+     "tileid": 18,
+     "wangid": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 19,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 20,
+     "wangid": [
+      2,
+      2,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 21,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 22,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 23,
+     "wangid": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 24,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 25,
+     "wangid": [
+      2,
+      2,
+      1,
+      2,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 26,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 27,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 28,
+     "wangid": [
+      2,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 29,
+     "wangid": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 30,
+     "wangid": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 31,
+     "wangid": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 32,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 33,
+     "wangid": [
+      2,
+      2,
+      1,
+      2,
+      2,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 34,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      2,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 35,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 36,
+     "wangid": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 37,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 38,
+     "wangid": [
+      2,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 39,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 40,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 41,
+     "wangid": [
+      2,
+      2,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 42,
+     "wangid": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 43,
+     "wangid": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 44,
+     "wangid": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 45,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 46,
+     "wangid": [
+      2,
+      2,
+      1,
+      2,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 47,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 48,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 49,
+     "wangid": [
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 50,
+     "wangid": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 51,
+     "wangid": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 52,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 53,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      2,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 54,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 55,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      1,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 56,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 57,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 58,
+     "wangid": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 59,
+     "wangid": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 60,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 61,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 62,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 63,
+     "wangid": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 64,
+     "wangid": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sand over ash",
+   "type": "mixed",
+   "tile": -1,
+   "colors": [
+    {
+     "name": "sand",
+     "color": "#7fdc55",
+     "tile": 65,
+     "probability": 1
+    },
+    {
+     "name": "ash",
+     "color": "#c08a4a",
+     "tile": -1,
+     "probability": 1
+    }
+   ],
+   "wangtiles": [
+    {
+     "tileid": 65,
+     "wangid": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 66,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 67,
+     "wangid": [
+      2,
+      2,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 68,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 69,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 70,
+     "wangid": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 71,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 72,
+     "wangid": [
+      2,
+      2,
+      1,
+      2,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 73,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 74,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 75,
+     "wangid": [
+      2,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 76,
+     "wangid": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 77,
+     "wangid": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 78,
+     "wangid": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 79,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 80,
+     "wangid": [
+      2,
+      2,
+      1,
+      2,
+      2,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 81,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      2,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 82,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 83,
+     "wangid": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 84,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 85,
+     "wangid": [
+      2,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 86,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 87,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 88,
+     "wangid": [
+      2,
+      2,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 89,
+     "wangid": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 90,
+     "wangid": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 91,
+     "wangid": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 92,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 93,
+     "wangid": [
+      2,
+      2,
+      1,
+      2,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 94,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 95,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 96,
+     "wangid": [
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 97,
+     "wangid": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 98,
+     "wangid": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 99,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 100,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      2,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 101,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 102,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      1,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 103,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 104,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 105,
+     "wangid": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 106,
+     "wangid": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 107,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 108,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 109,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 110,
+     "wangid": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 111,
+     "wangid": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ash over lava",
+   "type": "mixed",
+   "tile": -1,
+   "colors": [
+    {
+     "name": "ash",
+     "color": "#7fdc55",
+     "tile": 118,
+     "probability": 1
+    },
+    {
+     "name": "lava",
+     "color": "#4aa0d8",
+     "tile": -1,
+     "probability": 1
+    }
+   ],
+   "wangtiles": [
+    {
+     "tileid": 118,
+     "wangid": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 119,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 120,
+     "wangid": [
+      2,
+      2,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 121,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 122,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 123,
+     "wangid": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 124,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 125,
+     "wangid": [
+      2,
+      2,
+      1,
+      2,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 126,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 127,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 128,
+     "wangid": [
+      2,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 129,
+     "wangid": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 130,
+     "wangid": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "tileid": 131,
+     "wangid": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 132,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 133,
+     "wangid": [
+      2,
+      2,
+      1,
+      2,
+      2,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 134,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      2,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 135,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 136,
+     "wangid": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 137,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 138,
+     "wangid": [
+      2,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 139,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 140,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 141,
+     "wangid": [
+      2,
+      2,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 142,
+     "wangid": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 143,
+     "wangid": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 144,
+     "wangid": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 145,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 146,
+     "wangid": [
+      2,
+      2,
+      1,
+      2,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 147,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 148,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 149,
+     "wangid": [
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 150,
+     "wangid": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 151,
+     "wangid": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "tileid": 152,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 153,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      2,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 154,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 155,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      1,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 156,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 157,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 158,
+     "wangid": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 159,
+     "wangid": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 160,
+     "wangid": [
+      1,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 161,
+     "wangid": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 162,
+     "wangid": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 163,
+     "wangid": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "tileid": 164,
+     "wangid": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -14,6 +14,22 @@ import { TileAnimator } from './TileAnimator';
 /** Depth for layers flagged as drawn above characters (tree canopies). */
 const ABOVE_DEPTH = 1_000_000;
 
+/** Shared across every zone's MapView — generated once, reused by every portal glow sprite. */
+const PORTAL_GLOW_KEY = 'fx:portal-glow';
+const PORTAL_GLOW_SIZE = 64;
+
+function ensurePortalGlowTexture(scene: Phaser.Scene): void {
+  if (scene.textures.exists(PORTAL_GLOW_KEY)) return;
+  const g = scene.add.graphics();
+  const steps = 10;
+  for (let i = steps; i >= 1; i--) {
+    g.fillStyle(0xd4b060, 0.55 * (1 - i / steps) + 0.05);
+    g.fillCircle(PORTAL_GLOW_SIZE / 2, PORTAL_GLOW_SIZE / 2, (PORTAL_GLOW_SIZE / 2) * (i / steps));
+  }
+  g.generateTexture(PORTAL_GLOW_KEY, PORTAL_GLOW_SIZE, PORTAL_GLOW_SIZE);
+  g.destroy();
+}
+
 interface WindowLayer {
   data: number[];
   layer: Phaser.Tilemaps.TilemapLayer;
@@ -33,6 +49,7 @@ export class MapView {
   private readonly animator: TileAnimator;
   private readonly bumpCooldown = new Map<string, number>();
   private readonly win: { w: number; h: number; margin: number };
+  private readonly portalMarkers: Phaser.GameObjects.Sprite[] = [];
   private winX = Number.NaN;
   private winY = Number.NaN;
 
@@ -66,6 +83,34 @@ export class MapView {
 
     this.animator = new TileAnimator(this.model, (name, x, y) => this.tileAt(name, x, y));
     scene.cameras.main.setBounds(0, 0, this.model.width * this.tileSize.width, this.model.height * this.tileSize.height);
+    this.spawnPortalMarkers();
+  }
+
+  /** A portal is otherwise an invisible trigger box (Tiled object layer, no tile art of its
+   * own) — this is purely cosmetic so a player can actually see where one is instead of only
+   * finding out from the Map Guide (M) or by walking into it. */
+  private spawnPortalMarkers(): void {
+    ensurePortalGlowTexture(this.scene);
+    this.model.portals.forEach((portal, i) => {
+      const cx = (portal.x + portal.w / 2) * this.tileSize.width;
+      const cy = (portal.y + portal.h / 2) * this.tileSize.height;
+      const footY = (portal.y + portal.h) * this.tileSize.height;
+      const marker = this.scene.add
+        .sprite(cx, cy, PORTAL_GLOW_KEY)
+        .setBlendMode(Phaser.BlendModes.ADD)
+        .setDepth(footY - 0.5);
+      this.scene.tweens.add({
+        targets: marker,
+        scale: { from: 0.8, to: 1.3 },
+        alpha: { from: 0.9, to: 0.35 },
+        duration: 1100,
+        delay: i * 150,
+        ease: 'Sine.easeInOut',
+        yoyo: true,
+        repeat: -1,
+      });
+      this.portalMarkers.push(marker);
+    });
   }
 
   /** Fetch the zone's map JSON and its tileset images, then build the view. */
@@ -122,6 +167,10 @@ export class MapView {
   }
 
   destroy(): void {
+    for (const marker of this.portalMarkers) {
+      this.scene.tweens.killTweensOf(marker);
+      marker.destroy();
+    }
     this.tilemap.destroy();
   }
 

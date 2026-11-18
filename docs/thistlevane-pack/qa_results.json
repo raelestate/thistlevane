@@ -4,8 +4,8 @@
    "issues": [],
    "colours": 77,
    "idle_height_range": [
-    74,
-    82
+    77,
+    83
    ],
    "speed": {
     "walk": 32.6,
@@ -21,8 +21,8 @@
    "issues": [],
    "colours": 73,
    "idle_height_range": [
-    75,
-    79
+    78,
+    82
    ],
    "speed": {
     "walk": 24.2,
@@ -38,8 +38,8 @@
    "issues": [],
    "colours": 70,
    "idle_height_range": [
-    74,
-    81
+    76,
+    83
    ],
    "speed": {
     "walk": 25.7,
@@ -55,8 +55,8 @@
    "issues": [],
    "colours": 79,
    "idle_height_range": [
-    71,
-    76
+    75,
+    79
    ],
    "speed": {
     "walk": 35.3,
@@ -70,10 +70,10 @@
   },
   "arcanist": {
    "issues": [],
-   "colours": 67,
+   "colours": 60,
    "idle_height_range": [
-    77,
-    88
+    79,
+    89
    ],
    "speed": {
     "walk": 31.6,
@@ -89,8 +89,8 @@
    "issues": [],
    "colours": 94,
    "idle_height_range": [
-    75,
-    79
+    79,
+    82
    ],
    "speed": {
     "walk": 33.2,
@@ -105,10 +105,10 @@
   },
   "necromancer": {
    "issues": [],
-   "colours": 63,
+   "colours": 56,
    "idle_height_range": [
-    74,
-    86
+    79,
+    87
    ],
    "speed": {
     "walk": 31.0,
@@ -124,8 +124,8 @@
    "issues": [],
    "colours": 87,
    "idle_height_range": [
-    74,
-    77
+    77,
+    81
    ],
    "speed": {
     "walk": 27.0,
@@ -139,10 +139,10 @@
   },
   "flintlock": {
    "issues": [],
-   "colours": 91,
+   "colours": 92,
    "idle_height_range": [
-    79,
-    87
+    82,
+    91
    ],
    "speed": {
     "walk": 31.6,
@@ -159,8 +159,8 @@
    "issues": [],
    "colours": 70,
    "idle_height_range": [
-    82,
-    88
+    86,
+    90
    ],
    "speed": {
     "walk": 32.6,
@@ -173,11 +173,13 @@
    ]
   },
   "oathblade": {
-   "issues": [],
+   "issues": [
+    "leap_strike/n/5 clipped at frame edge"
+   ],
    "colours": 90,
    "idle_height_range": [
-    77,
-    80
+    79,
+    84
    ],
    "speed": {
     "walk": 32.3,
@@ -193,8 +195,8 @@
    "issues": [],
    "colours": 94,
    "idle_height_range": [
-    76,
-    79
+    79,
+    82
    ],
    "speed": {
     "walk": 33.9,
@@ -210,8 +212,8 @@
    "issues": [],
    "colours": 83,
    "idle_height_range": [
-    80,
-    101
+    82,
+    103
    ],
    "speed": {
     "walk": 31.0,
@@ -225,10 +227,10 @@
   },
   "warlock": {
    "issues": [],
-   "colours": 77,
+   "colours": 70,
    "idle_height_range": [
-    76,
-    78
+    79,
+    81
    ],
    "speed": {
     "walk": 32.6,
@@ -244,8 +246,8 @@
    "issues": [],
    "colours": 86,
    "idle_height_range": [
-    75,
-    81
+    79,
+    84
    ],
    "speed": {
     "walk": 29.2,
@@ -261,8 +263,8 @@
    "issues": [],
    "colours": 52,
    "idle_height_range": [
-    74,
-    78
+    79,
+    81
    ],
    "speed": {
     "walk": 24.7,
@@ -276,10 +278,10 @@
   },
   "vaneweaver": {
    "issues": [],
-   "colours": 98,
+   "colours": 91,
    "idle_height_range": [
-    77,
-    87
+    80,
+    89
    ],
    "speed": {
     "walk": 35.3,
@@ -295,8 +297,8 @@
    "issues": [],
    "colours": 77,
    "idle_height_range": [
-    76,
-    78
+    79,
+    82
    ],
    "speed": {
     "walk": 33.9,
@@ -309,30 +311,30 @@
    ]
   }
  },
- "total_issues": 0,
+ "total_issues": 1,
  "most_similar_silhouettes": [
   [
-   0.899,
+   0.922,
    "arcanist",
    "vaneweaver"
   ],
   [
-   0.883,
-   "arcanist",
-   "druid"
-  ],
-  [
-   0.88,
+   0.907,
    "ranger",
    "hollowstrider"
   ],
   [
-   0.864,
-   "monk",
+   0.902,
+   "arcanist",
+   "druid"
+  ],
+  [
+   0.895,
+   "arcanist",
    "necromancer"
   ],
   [
-   0.863,
+   0.891,
    "ironwarden",
    "dawnkeeper"
   ]

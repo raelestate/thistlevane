@@ -37,6 +37,7 @@ import { ServerClock } from '../net/ServerClock';
 import { CombatTextManager } from '../ui/CombatText';
 import { GameHud } from '../ui/GameHud';
 import { MapGuide } from '../ui/MapGuide';
+import { Minimap } from '../ui/Minimap';
 import { DebugOverlay, type DebugMobInfo } from '../world/DebugOverlay';
 import { EffectsManager } from '../world/EffectsManager';
 import { MapView } from '../world/MapView';
@@ -88,6 +89,7 @@ export class WorldScene extends Phaser.Scene {
   private controls!: InputController;
   private hud!: GameHud;
   private mapGuide!: MapGuide;
+  private minimap!: Minimap;
   private effects!: EffectsManager;
   private combatText!: CombatTextManager;
   private debugOverlay: DebugOverlay | null = null;
@@ -147,6 +149,7 @@ export class WorldScene extends Phaser.Scene {
 
     this.hud = new GameHud(document.getElementById('game-ui')!, this.content, import.meta.env.DEV);
     this.mapGuide = new MapGuide(document.getElementById('game-ui')!, this.content);
+    this.minimap = new Minimap(document.getElementById('game-ui')!);
     this.controls = new InputController(config.client.controls);
     this.controls.onAttackPressed = () => this.useSkill(this.hud.skillAt(0)?.id ?? null);
     this.controls.onMapGuidePressed = () => this.mapGuide.toggle();
@@ -207,13 +210,17 @@ export class WorldScene extends Phaser.Scene {
     s.sprite.update(pos.x, pos.y, me.facing, alive && isMoving(me), me.gait);
     this.hud.setDowned(!alive);
 
+    const otherPlayerPositions: Array<{ x: number; y: number }> = [];
     const serverNow = this.clock.serverNow();
     if (serverNow !== null) {
       const renderTime = serverNow - this.content.config.client.interpolationDelayMs;
       for (const group of [s.remotes, s.mobs]) {
         for (const remote of group.values()) {
           const pose = remote.buffer.sample(renderTime);
-          if (pose) remote.sprite.update(pose.x, pose.y, pose.facing, pose.moving, pose.gait);
+          if (pose) {
+            remote.sprite.update(pose.x, pose.y, pose.facing, pose.moving, pose.gait);
+            if (group === s.remotes) otherPlayerPositions.push({ x: pose.x, y: pose.y });
+          }
         }
       }
     }
@@ -222,6 +229,7 @@ export class WorldScene extends Phaser.Scene {
     this.updateHoverCombat(s);
     this.updateCombatUi();
     this.updateDebugOverlay(s, pos);
+    this.minimap.update(pos.x, pos.y, otherPlayerPositions);
     if (import.meta.env.DEV) {
       this.hud.update({
         zone: this.content.zones.zones[s.zoneId]?.name ?? s.zoneId,
@@ -296,6 +304,7 @@ export class WorldScene extends Phaser.Scene {
         this.loadingZone = null;
         this.mapGuide.setCurrentZone(zone.zoneId);
         this.mapGuide.recordPortals(zone.zoneId, map.model.portals);
+        this.minimap.setZone(map.model);
 
         const lerp = this.content.config.client.cameraLerp;
         const start = predictor.renderPosition(0);

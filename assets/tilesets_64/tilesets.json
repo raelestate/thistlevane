@@ -1,0 +1,10850 @@
+{
+ "tile_size": 64,
+ "columns": 16,
+ "biomes": {
+  "meadow": {
+   "biome": "meadow",
+   "name": "Meadow",
+   "tile": 64,
+   "columns": 16,
+   "tilecount": 256,
+   "image": "assets/tilesets/meadow.png",
+   "tiles": [
+    {
+     "role": "ground",
+     "terrain": "grass",
+     "label": "Grass 1"
+    },
+    {
+     "role": "ground",
+     "terrain": "grass",
+     "label": "Grass 2"
+    },
+    {
+     "role": "ground",
+     "terrain": "grass",
+     "label": "Grass 3"
+    },
+    {
+     "role": "ground",
+     "terrain": "grass",
+     "label": "Grass 4"
+    },
+    {
+     "role": "ground",
+     "terrain": "grass",
+     "label": "Grass 5"
+    },
+    {
+     "role": "ground",
+     "terrain": "grass",
+     "label": "Grass 6"
+    },
+    {
+     "role": "ground",
+     "terrain": "grass2",
+     "label": "Lush grass 1"
+    },
+    {
+     "role": "ground",
+     "terrain": "grass2",
+     "label": "Lush grass 2"
+    },
+    {
+     "role": "ground",
+     "terrain": "grass2",
+     "label": "Lush grass 3"
+    },
+    {
+     "role": "ground",
+     "terrain": "grass2",
+     "label": "Lush grass 4"
+    },
+    {
+     "role": "ground",
+     "terrain": "grass2",
+     "label": "Lush grass 5"
+    },
+    {
+     "role": "ground",
+     "terrain": "grass2",
+     "label": "Lush grass 6"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Path 1"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Path 2"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Path 3"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Path 4"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Path 5"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Path 6"
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 0
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 1
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 4
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 5
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 7
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 16
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 17
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 20
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 21
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 23
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 28
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 29
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 31
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 64
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 65
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 68
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 69
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 71
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 80
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 81
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 84
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 85
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 87
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 92
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 93
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 95
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 112
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 113
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 116
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 117
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 119
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 124
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 125
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 127
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 193
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 197
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 199
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 209
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 213
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 215
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 221
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 223
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 241
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 245
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 247
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 253
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 255
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 0
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 1
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 4
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 5
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 7
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 16
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 17
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 20
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 21
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 23
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 28
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 29
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 31
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 64
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 65
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 68
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 69
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 71
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 80
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 81
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 84
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 85
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 87
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 92
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 93
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 95
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 112
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 113
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 116
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 117
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 119
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 124
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 125
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 127
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 193
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 197
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 199
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 209
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 213
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 215
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 221
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 223
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 241
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 245
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 247
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 253
+    },
+    {
+     "role": "transition",
+     "top": "grass2",
+     "bottom": "grass",
+     "code": 255
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 1"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 2"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 3"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 4"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 5"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 6"
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 0
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 1
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 4
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 5
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 7
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 16
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 17
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 20
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 21
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 23
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 28
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 29
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 31
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 64
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 65
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 68
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 69
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 71
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 80
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 81
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 84
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 85
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 87
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 92
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 93
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 95
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 112
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 113
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 116
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 117
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 119
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 124
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 125
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 127
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 193
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 197
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 199
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 209
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 213
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 215
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 221
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 223
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 241
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 245
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 247
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 253
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 255
+    },
+    {
+     "role": "cliff",
+     "part": "top_tl"
+    },
+    {
+     "role": "cliff",
+     "part": "top_t"
+    },
+    {
+     "role": "cliff",
+     "part": "top_t2"
+    },
+    {
+     "role": "cliff",
+     "part": "top_t3"
+    },
+    {
+     "role": "cliff",
+     "part": "top_tr"
+    },
+    {
+     "role": "cliff",
+     "part": "top_c"
+    },
+    {
+     "role": "cliff",
+     "part": "top_c2"
+    },
+    {
+     "role": "cliff",
+     "part": "top_c3"
+    },
+    {
+     "role": "cliff",
+     "part": "in_il"
+    },
+    {
+     "role": "cliff",
+     "part": "in_ir"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_bl"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_b"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_b2"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_b3"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_br"
+    },
+    {
+     "role": "cliff",
+     "part": "face_fl"
+    },
+    {
+     "role": "cliff",
+     "part": "face_f"
+    },
+    {
+     "role": "cliff",
+     "part": "face_f2"
+    },
+    {
+     "role": "cliff",
+     "part": "face_f3"
+    },
+    {
+     "role": "cliff",
+     "part": "face_fr"
+    },
+    {
+     "role": "cliff",
+     "part": "base_sl"
+    },
+    {
+     "role": "cliff",
+     "part": "base_s"
+    },
+    {
+     "role": "cliff",
+     "part": "base_s2"
+    },
+    {
+     "role": "cliff",
+     "part": "base_s3"
+    },
+    {
+     "role": "cliff",
+     "part": "base_sr"
+    },
+    {
+     "role": "detail",
+     "label": "tuft"
+    },
+    {
+     "role": "detail",
+     "label": "pebbles"
+    },
+    {
+     "role": "detail",
+     "label": "petals"
+    },
+    {
+     "role": "detail",
+     "label": "clover"
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      2,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      2,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 2,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 2,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 2,
+     "cell": [
+      2,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bush",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "boulder",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "boulder",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      2,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      2,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 2,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 2,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 2,
+     "cell": [
+      2,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bush",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "log",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "log",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      2,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      2,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 2,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 2,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 2,
+     "cell": [
+      2,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "rock",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "rock",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "stump",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "flowers",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "flowers",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "mushroom",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "reeds",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "reeds",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "fence",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "signpost",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    }
+   ],
+   "props": [
+    {
+     "name": "tree_broadleaf_0",
+     "first_tile": 194,
+     "w": 3,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_broadleaf_1",
+     "first_tile": 197,
+     "w": 3,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_broadleaf_2",
+     "first_tile": 200,
+     "w": 3,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_broadleaf_0",
+     "first_tile": 203,
+     "w": 2,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_broadleaf_1",
+     "first_tile": 205,
+     "w": 2,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "boulder_0",
+     "first_tile": 208,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "log_0",
+     "first_tile": 224,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "bush_0",
+     "first_tile": 207,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "bush_1",
+     "first_tile": 223,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "rock_0",
+     "first_tile": 239,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "rock_1",
+     "first_tile": 240,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "stump_0",
+     "first_tile": 241,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "flowers_0",
+     "first_tile": 242,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "flowers_0",
+     "first_tile": 243,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "mushroom_0",
+     "first_tile": 244,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "reeds_0",
+     "first_tile": 245,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "reeds_1",
+     "first_tile": 246,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "fence_0",
+     "first_tile": 247,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "signpost_0",
+     "first_tile": 248,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    }
+   ],
+   "terrains": [
+    {
+     "key": "grass",
+     "label": "Grass"
+    },
+    {
+     "key": "grass2",
+     "label": "Lush grass"
+    },
+    {
+     "key": "dirt",
+     "label": "Path"
+    }
+   ]
+  },
+  "barren_grasslands": {
+   "biome": "barren_grasslands",
+   "name": "Barren Grasslands",
+   "tile": 64,
+   "columns": 16,
+   "tilecount": 256,
+   "image": "assets/tilesets/barren_grasslands.png",
+   "tiles": [
+    {
+     "role": "ground",
+     "terrain": "grass",
+     "label": "Dry grass 1"
+    },
+    {
+     "role": "ground",
+     "terrain": "grass",
+     "label": "Dry grass 2"
+    },
+    {
+     "role": "ground",
+     "terrain": "grass",
+     "label": "Dry grass 3"
+    },
+    {
+     "role": "ground",
+     "terrain": "grass",
+     "label": "Dry grass 4"
+    },
+    {
+     "role": "ground",
+     "terrain": "grass",
+     "label": "Dry grass 5"
+    },
+    {
+     "role": "ground",
+     "terrain": "grass",
+     "label": "Dry grass 6"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Bare earth 1"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Bare earth 2"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Bare earth 3"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Bare earth 4"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Bare earth 5"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Bare earth 6"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Rock 1"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Rock 2"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Rock 3"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Rock 4"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Rock 5"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Rock 6"
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 0
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 1
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 4
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 5
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 7
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 16
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 17
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 20
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 21
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 23
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 28
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 29
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 31
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 64
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 65
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 68
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 69
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 71
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 80
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 81
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 84
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 85
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 87
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 92
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 93
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 95
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 112
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 113
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 116
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 117
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 119
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 124
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 125
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 127
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 193
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 197
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 199
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 209
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 213
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 215
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 221
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 223
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 241
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 245
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 247
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 253
+    },
+    {
+     "role": "transition",
+     "top": "grass",
+     "bottom": "dirt",
+     "code": 255
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 0
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 1
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 4
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 5
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 7
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 16
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 17
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 20
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 21
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 23
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 28
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 29
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 31
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 64
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 65
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 68
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 69
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 71
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 80
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 81
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 84
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 85
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 87
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 92
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 93
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 95
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 112
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 113
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 116
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 117
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 119
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 124
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 125
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 127
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 193
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 197
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 199
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 209
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 213
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 215
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 221
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 223
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 241
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 245
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 247
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 253
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "dirt",
+     "code": 255
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 1"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 2"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 3"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 4"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 5"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 6"
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 0
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 1
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 4
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 5
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 7
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 16
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 17
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 20
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 21
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 23
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 28
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 29
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 31
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 64
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 65
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 68
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 69
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 71
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 80
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 81
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 84
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 85
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 87
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 92
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 93
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 95
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 112
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 113
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 116
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 117
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 119
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 124
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 125
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 127
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 193
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 197
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 199
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 209
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 213
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 215
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 221
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 223
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 241
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 245
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 247
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 253
+    },
+    {
+     "role": "shore",
+     "top": "grass",
+     "bottom": "water",
+     "code": 255
+    },
+    {
+     "role": "cliff",
+     "part": "top_tl"
+    },
+    {
+     "role": "cliff",
+     "part": "top_t"
+    },
+    {
+     "role": "cliff",
+     "part": "top_t2"
+    },
+    {
+     "role": "cliff",
+     "part": "top_t3"
+    },
+    {
+     "role": "cliff",
+     "part": "top_tr"
+    },
+    {
+     "role": "cliff",
+     "part": "top_c"
+    },
+    {
+     "role": "cliff",
+     "part": "top_c2"
+    },
+    {
+     "role": "cliff",
+     "part": "top_c3"
+    },
+    {
+     "role": "cliff",
+     "part": "in_il"
+    },
+    {
+     "role": "cliff",
+     "part": "in_ir"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_bl"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_b"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_b2"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_b3"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_br"
+    },
+    {
+     "role": "cliff",
+     "part": "face_fl"
+    },
+    {
+     "role": "cliff",
+     "part": "face_f"
+    },
+    {
+     "role": "cliff",
+     "part": "face_f2"
+    },
+    {
+     "role": "cliff",
+     "part": "face_f3"
+    },
+    {
+     "role": "cliff",
+     "part": "face_fr"
+    },
+    {
+     "role": "cliff",
+     "part": "base_sl"
+    },
+    {
+     "role": "cliff",
+     "part": "base_s"
+    },
+    {
+     "role": "cliff",
+     "part": "base_s2"
+    },
+    {
+     "role": "cliff",
+     "part": "base_s3"
+    },
+    {
+     "role": "cliff",
+     "part": "base_sr"
+    },
+    {
+     "role": "detail",
+     "label": "tuft"
+    },
+    {
+     "role": "detail",
+     "label": "pebbles"
+    },
+    {
+     "role": "detail",
+     "label": "cracks"
+    },
+    {
+     "role": "detail",
+     "label": "bonebits"
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 2,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 2,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "boulder",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "boulder",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "boulder",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "boulder",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bones",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bones",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 2,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 2,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bones",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bones",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "log",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "log",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "cactus",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bush",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 2,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 2,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 0,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_broadleaf",
+     "index": 1,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bush",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "rock",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "rock",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "rock",
+     "index": 2,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "cactus",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "stump",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "reeds",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "reeds",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "fence",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "signpost",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    }
+   ],
+   "props": [
+    {
+     "name": "tree_dead_0",
+     "first_tile": 194,
+     "w": 2,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_dead_1",
+     "first_tile": 196,
+     "w": 2,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_dead_2",
+     "first_tile": 198,
+     "w": 2,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_broadleaf_0",
+     "first_tile": 200,
+     "w": 2,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_broadleaf_1",
+     "first_tile": 202,
+     "w": 2,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "boulder_0",
+     "first_tile": 204,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "boulder_1",
+     "first_tile": 206,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "bones_0",
+     "first_tile": 208,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "bones_1",
+     "first_tile": 220,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "log_0",
+     "first_tile": 222,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "cactus_0",
+     "first_tile": 224,
+     "w": 1,
+     "h": 2,
+     "anchor_tile": [
+      0,
+      1
+     ]
+    },
+    {
+     "name": "bush_0",
+     "first_tile": 225,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "bush_1",
+     "first_tile": 236,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "rock_0",
+     "first_tile": 237,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "rock_1",
+     "first_tile": 238,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "rock_2",
+     "first_tile": 239,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "stump_0",
+     "first_tile": 241,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "reeds_0",
+     "first_tile": 242,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "reeds_1",
+     "first_tile": 243,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "fence_0",
+     "first_tile": 244,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "signpost_0",
+     "first_tile": 245,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    }
+   ],
+   "terrains": [
+    {
+     "key": "grass",
+     "label": "Dry grass"
+    },
+    {
+     "key": "dirt",
+     "label": "Bare earth"
+    },
+    {
+     "key": "stone",
+     "label": "Rock"
+    }
+   ]
+  },
+  "thistlevane_hollow": {
+   "biome": "thistlevane_hollow",
+   "name": "Thistlevane Hollow",
+   "tile": 64,
+   "columns": 16,
+   "tilecount": 288,
+   "image": "assets/tilesets/thistlevane_hollow.png",
+   "tiles": [
+    {
+     "role": "ground",
+     "terrain": "moss",
+     "label": "Moss 1"
+    },
+    {
+     "role": "ground",
+     "terrain": "moss",
+     "label": "Moss 2"
+    },
+    {
+     "role": "ground",
+     "terrain": "moss",
+     "label": "Moss 3"
+    },
+    {
+     "role": "ground",
+     "terrain": "moss",
+     "label": "Moss 4"
+    },
+    {
+     "role": "ground",
+     "terrain": "moss",
+     "label": "Moss 5"
+    },
+    {
+     "role": "ground",
+     "terrain": "moss",
+     "label": "Moss 6"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Loam 1"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Loam 2"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Loam 3"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Loam 4"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Loam 5"
+    },
+    {
+     "role": "ground",
+     "terrain": "dirt",
+     "label": "Loam 6"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Old stone 1"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Old stone 2"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Old stone 3"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Old stone 4"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Old stone 5"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Old stone 6"
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 0
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 1
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 4
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 5
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 7
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 16
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 17
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 20
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 21
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 23
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 28
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 29
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 31
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 64
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 65
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 68
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 69
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 71
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 80
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 81
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 84
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 85
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 87
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 92
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 93
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 95
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 112
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 113
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 116
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 117
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 119
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 124
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 125
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 127
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 193
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 197
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 199
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 209
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 213
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 215
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 221
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 223
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 241
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 245
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 247
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 253
+    },
+    {
+     "role": "transition",
+     "top": "moss",
+     "bottom": "dirt",
+     "code": 255
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 0
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 1
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 4
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 5
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 7
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 16
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 17
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 20
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 21
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 23
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 28
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 29
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 31
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 64
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 65
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 68
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 69
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 71
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 80
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 81
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 84
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 85
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 87
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 92
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 93
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 95
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 112
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 113
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 116
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 117
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 119
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 124
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 125
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 127
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 193
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 197
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 199
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 209
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 213
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 215
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 221
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 223
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 241
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 245
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 247
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 253
+    },
+    {
+     "role": "transition",
+     "top": "stone",
+     "bottom": "moss",
+     "code": 255
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 1"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 2"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 3"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 4"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 5"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 6"
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 0
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 1
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 4
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 5
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 7
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 16
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 17
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 20
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 21
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 23
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 28
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 29
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 31
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 64
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 65
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 68
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 69
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 71
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 80
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 81
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 84
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 85
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 87
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 92
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 93
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 95
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 112
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 113
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 116
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 117
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 119
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 124
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 125
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 127
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 193
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 197
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 199
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 209
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 213
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 215
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 221
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 223
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 241
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 245
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 247
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 253
+    },
+    {
+     "role": "shore",
+     "top": "moss",
+     "bottom": "water",
+     "code": 255
+    },
+    {
+     "role": "cliff",
+     "part": "top_tl"
+    },
+    {
+     "role": "cliff",
+     "part": "top_t"
+    },
+    {
+     "role": "cliff",
+     "part": "top_t2"
+    },
+    {
+     "role": "cliff",
+     "part": "top_t3"
+    },
+    {
+     "role": "cliff",
+     "part": "top_tr"
+    },
+    {
+     "role": "cliff",
+     "part": "top_c"
+    },
+    {
+     "role": "cliff",
+     "part": "top_c2"
+    },
+    {
+     "role": "cliff",
+     "part": "top_c3"
+    },
+    {
+     "role": "cliff",
+     "part": "in_il"
+    },
+    {
+     "role": "cliff",
+     "part": "in_ir"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_bl"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_b"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_b2"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_b3"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_br"
+    },
+    {
+     "role": "cliff",
+     "part": "face_fl"
+    },
+    {
+     "role": "cliff",
+     "part": "face_f"
+    },
+    {
+     "role": "cliff",
+     "part": "face_f2"
+    },
+    {
+     "role": "cliff",
+     "part": "face_f3"
+    },
+    {
+     "role": "cliff",
+     "part": "face_fr"
+    },
+    {
+     "role": "cliff",
+     "part": "base_sl"
+    },
+    {
+     "role": "cliff",
+     "part": "base_s"
+    },
+    {
+     "role": "cliff",
+     "part": "base_s2"
+    },
+    {
+     "role": "cliff",
+     "part": "base_s3"
+    },
+    {
+     "role": "cliff",
+     "part": "base_sr"
+    },
+    {
+     "role": "detail",
+     "label": "tuft"
+    },
+    {
+     "role": "detail",
+     "label": "pebbles"
+    },
+    {
+     "role": "detail",
+     "label": "roots"
+    },
+    {
+     "role": "detail",
+     "label": "spores"
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 0,
+     "cell": [
+      2,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 1,
+     "cell": [
+      2,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 2,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 2,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 2,
+     "cell": [
+      2,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "pillar",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 0,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 0,
+     "cell": [
+      2,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 1,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 1,
+     "cell": [
+      2,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 2,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 2,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 2,
+     "cell": [
+      2,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 0,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 1,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "pillar",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 0,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 0,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 0,
+     "cell": [
+      2,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 1,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 1,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 1,
+     "cell": [
+      2,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 2,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 2,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 2,
+     "cell": [
+      2,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 0,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 0,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 1,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_gnarled",
+     "index": 1,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "pillar",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ruin_wall",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ruin_wall",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ruin_wall",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ruin_wall",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "arch",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "arch",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "boulder",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "boulder",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bones",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bones",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "crystal",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "pillar",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "thornbush",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "thornbush",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ruin_wall",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ruin_wall",
+     "index": 0,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ruin_wall",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ruin_wall",
+     "index": 1,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "arch",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "arch",
+     "index": 0,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bush",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bush",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "rock",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "rock",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "crystal",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "mushroom",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "mushroom",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "stump",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "brazier",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    }
+   ],
+   "props": [
+    {
+     "name": "tree_gnarled_0",
+     "first_tile": 194,
+     "w": 3,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_gnarled_1",
+     "first_tile": 197,
+     "w": 3,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_gnarled_2",
+     "first_tile": 200,
+     "w": 3,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_gnarled_0",
+     "first_tile": 203,
+     "w": 2,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_gnarled_1",
+     "first_tile": 205,
+     "w": 2,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_dead_0",
+     "first_tile": 208,
+     "w": 2,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_dead_1",
+     "first_tile": 242,
+     "w": 2,
+     "h": 2,
+     "anchor_tile": [
+      1,
+      1
+     ]
+    },
+    {
+     "name": "ruin_wall_0",
+     "first_tile": 244,
+     "w": 2,
+     "h": 2,
+     "anchor_tile": [
+      1,
+      1
+     ]
+    },
+    {
+     "name": "ruin_wall_1",
+     "first_tile": 246,
+     "w": 2,
+     "h": 2,
+     "anchor_tile": [
+      1,
+      1
+     ]
+    },
+    {
+     "name": "arch_0",
+     "first_tile": 248,
+     "w": 2,
+     "h": 2,
+     "anchor_tile": [
+      1,
+      1
+     ]
+    },
+    {
+     "name": "boulder_0",
+     "first_tile": 250,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "pillar_0",
+     "first_tile": 207,
+     "w": 1,
+     "h": 2,
+     "anchor_tile": [
+      0,
+      1
+     ]
+    },
+    {
+     "name": "pillar_1",
+     "first_tile": 239,
+     "w": 1,
+     "h": 2,
+     "anchor_tile": [
+      0,
+      1
+     ]
+    },
+    {
+     "name": "bones_0",
+     "first_tile": 252,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "crystal_0",
+     "first_tile": 254,
+     "w": 1,
+     "h": 2,
+     "anchor_tile": [
+      0,
+      1
+     ]
+    },
+    {
+     "name": "thornbush_0",
+     "first_tile": 256,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "thornbush_1",
+     "first_tile": 257,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "bush_0",
+     "first_tile": 266,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "bush_1",
+     "first_tile": 267,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "rock_0",
+     "first_tile": 268,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "rock_1",
+     "first_tile": 269,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "mushroom_0",
+     "first_tile": 271,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "mushroom_1",
+     "first_tile": 272,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "stump_0",
+     "first_tile": 273,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "brazier_0",
+     "first_tile": 274,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    }
+   ],
+   "terrains": [
+    {
+     "key": "moss",
+     "label": "Moss"
+    },
+    {
+     "key": "dirt",
+     "label": "Loam"
+    },
+    {
+     "key": "stone",
+     "label": "Old stone"
+    }
+   ]
+  },
+  "frostvane_peaks": {
+   "biome": "frostvane_peaks",
+   "name": "Frostvane Peaks",
+   "tile": 64,
+   "columns": 16,
+   "tilecount": 272,
+   "image": "assets/tilesets/frostvane_peaks.png",
+   "tiles": [
+    {
+     "role": "ground",
+     "terrain": "snow",
+     "label": "Snow 1"
+    },
+    {
+     "role": "ground",
+     "terrain": "snow",
+     "label": "Snow 2"
+    },
+    {
+     "role": "ground",
+     "terrain": "snow",
+     "label": "Snow 3"
+    },
+    {
+     "role": "ground",
+     "terrain": "snow",
+     "label": "Snow 4"
+    },
+    {
+     "role": "ground",
+     "terrain": "snow",
+     "label": "Snow 5"
+    },
+    {
+     "role": "ground",
+     "terrain": "snow",
+     "label": "Snow 6"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Bare rock 1"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Bare rock 2"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Bare rock 3"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Bare rock 4"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Bare rock 5"
+    },
+    {
+     "role": "ground",
+     "terrain": "stone",
+     "label": "Bare rock 6"
+    },
+    {
+     "role": "ground",
+     "terrain": "ice",
+     "label": "Ice 1"
+    },
+    {
+     "role": "ground",
+     "terrain": "ice",
+     "label": "Ice 2"
+    },
+    {
+     "role": "ground",
+     "terrain": "ice",
+     "label": "Ice 3"
+    },
+    {
+     "role": "ground",
+     "terrain": "ice",
+     "label": "Ice 4"
+    },
+    {
+     "role": "ground",
+     "terrain": "ice",
+     "label": "Ice 5"
+    },
+    {
+     "role": "ground",
+     "terrain": "ice",
+     "label": "Ice 6"
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 0
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 1
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 4
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 5
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 7
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 16
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 17
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 20
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 21
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 23
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 28
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 29
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 31
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 64
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 65
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 68
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 69
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 71
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 80
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 81
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 84
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 85
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 87
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 92
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 93
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 95
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 112
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 113
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 116
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 117
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 119
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 124
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 125
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 127
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 193
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 197
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 199
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 209
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 213
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 215
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 221
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 223
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 241
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 245
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 247
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 253
+    },
+    {
+     "role": "transition",
+     "top": "snow",
+     "bottom": "stone",
+     "code": 255
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 0
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 1
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 4
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 5
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 7
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 16
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 17
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 20
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 21
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 23
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 28
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 29
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 31
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 64
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 65
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 68
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 69
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 71
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 80
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 81
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 84
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 85
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 87
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 92
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 93
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 95
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 112
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 113
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 116
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 117
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 119
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 124
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 125
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 127
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 193
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 197
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 199
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 209
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 213
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 215
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 221
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 223
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 241
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 245
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 247
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 253
+    },
+    {
+     "role": "transition",
+     "top": "ice",
+     "bottom": "snow",
+     "code": 255
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 1"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 2"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 3"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 4"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 5"
+    },
+    {
+     "role": "liquid",
+     "terrain": "water",
+     "label": "water 6"
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 0
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 1
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 4
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 5
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 7
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 16
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 17
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 20
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 21
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 23
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 28
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 29
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 31
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 64
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 65
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 68
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 69
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 71
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 80
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 81
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 84
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 85
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 87
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 92
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 93
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 95
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 112
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 113
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 116
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 117
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 119
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 124
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 125
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 127
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 193
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 197
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 199
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 209
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 213
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 215
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 221
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 223
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 241
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 245
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 247
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 253
+    },
+    {
+     "role": "shore",
+     "top": "snow",
+     "bottom": "water",
+     "code": 255
+    },
+    {
+     "role": "cliff",
+     "part": "top_tl"
+    },
+    {
+     "role": "cliff",
+     "part": "top_t"
+    },
+    {
+     "role": "cliff",
+     "part": "top_t2"
+    },
+    {
+     "role": "cliff",
+     "part": "top_t3"
+    },
+    {
+     "role": "cliff",
+     "part": "top_tr"
+    },
+    {
+     "role": "cliff",
+     "part": "top_c"
+    },
+    {
+     "role": "cliff",
+     "part": "top_c2"
+    },
+    {
+     "role": "cliff",
+     "part": "top_c3"
+    },
+    {
+     "role": "cliff",
+     "part": "in_il"
+    },
+    {
+     "role": "cliff",
+     "part": "in_ir"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_bl"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_b"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_b2"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_b3"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_br"
+    },
+    {
+     "role": "cliff",
+     "part": "face_fl"
+    },
+    {
+     "role": "cliff",
+     "part": "face_f"
+    },
+    {
+     "role": "cliff",
+     "part": "face_f2"
+    },
+    {
+     "role": "cliff",
+     "part": "face_f3"
+    },
+    {
+     "role": "cliff",
+     "part": "face_fr"
+    },
+    {
+     "role": "cliff",
+     "part": "base_sl"
+    },
+    {
+     "role": "cliff",
+     "part": "base_s"
+    },
+    {
+     "role": "cliff",
+     "part": "base_s2"
+    },
+    {
+     "role": "cliff",
+     "part": "base_s3"
+    },
+    {
+     "role": "cliff",
+     "part": "base_sr"
+    },
+    {
+     "role": "detail",
+     "label": "pebbles"
+    },
+    {
+     "role": "detail",
+     "label": "sparkle"
+    },
+    {
+     "role": "detail",
+     "label": "tuft"
+    },
+    {
+     "role": "detail",
+     "label": "cracks"
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 0,
+     "cell": [
+      2,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 1,
+     "cell": [
+      2,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 2,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 2,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 2,
+     "cell": [
+      2,
+      0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ice_spike",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 0,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 0,
+     "cell": [
+      2,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 1,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 1,
+     "cell": [
+      2,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 2,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 2,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 2,
+     "cell": [
+      2,
+      1
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 0,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 1,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ice_spike",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 0,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 0,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 0,
+     "cell": [
+      2,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 1,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 1,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 1,
+     "cell": [
+      2,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 2,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 2,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 2,
+     "cell": [
+      2,
+      2
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 0,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 0,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 1,
+     "cell": [
+      0,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_pine",
+     "index": 1,
+     "cell": [
+      1,
+      2
+     ],
+     "size": [
+      2,
+      3
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ice_spike",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "boulder",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "boulder",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "boulder",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "boulder",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "crystal",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "snow_drift",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "snow_drift",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "snow_drift",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "snow_drift",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "snow_drift",
+     "index": 2,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "snow_drift",
+     "index": 2,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bones",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bones",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ice_spike",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "rock",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "rock",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "rock",
+     "index": 2,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "stump",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "crystal",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "fence",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "signpost",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    }
+   ],
+   "props": [
+    {
+     "name": "tree_pine_0",
+     "first_tile": 194,
+     "w": 3,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_pine_1",
+     "first_tile": 197,
+     "w": 3,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_pine_2",
+     "first_tile": 200,
+     "w": 3,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_pine_0",
+     "first_tile": 203,
+     "w": 2,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_pine_1",
+     "first_tile": 205,
+     "w": 2,
+     "h": 3,
+     "anchor_tile": [
+      1,
+      2
+     ]
+    },
+    {
+     "name": "tree_dead_0",
+     "first_tile": 208,
+     "w": 2,
+     "h": 2,
+     "anchor_tile": [
+      1,
+      1
+     ]
+    },
+    {
+     "name": "tree_dead_1",
+     "first_tile": 240,
+     "w": 2,
+     "h": 2,
+     "anchor_tile": [
+      1,
+      1
+     ]
+    },
+    {
+     "name": "boulder_0",
+     "first_tile": 242,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "boulder_1",
+     "first_tile": 244,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "ice_spike_0",
+     "first_tile": 207,
+     "w": 1,
+     "h": 2,
+     "anchor_tile": [
+      0,
+      1
+     ]
+    },
+    {
+     "name": "ice_spike_1",
+     "first_tile": 239,
+     "w": 1,
+     "h": 2,
+     "anchor_tile": [
+      0,
+      1
+     ]
+    },
+    {
+     "name": "crystal_0",
+     "first_tile": 246,
+     "w": 1,
+     "h": 2,
+     "anchor_tile": [
+      0,
+      1
+     ]
+    },
+    {
+     "name": "snow_drift_0",
+     "first_tile": 247,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "snow_drift_1",
+     "first_tile": 249,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "snow_drift_2",
+     "first_tile": 251,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "bones_0",
+     "first_tile": 253,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "rock_0",
+     "first_tile": 258,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "rock_1",
+     "first_tile": 259,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "rock_2",
+     "first_tile": 260,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "stump_0",
+     "first_tile": 261,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "fence_0",
+     "first_tile": 263,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "signpost_0",
+     "first_tile": 264,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    }
+   ],
+   "terrains": [
+    {
+     "key": "snow",
+     "label": "Snow"
+    },
+    {
+     "key": "stone",
+     "label": "Bare rock"
+    },
+    {
+     "key": "ice",
+     "label": "Ice"
+    }
+   ]
+  },
+  "wastelands": {
+   "biome": "wastelands",
+   "name": "Wastelands",
+   "tile": 64,
+   "columns": 16,
+   "tilecount": 256,
+   "image": "assets/tilesets/wastelands.png",
+   "tiles": [
+    {
+     "role": "ground",
+     "terrain": "ash",
+     "label": "Ash 1"
+    },
+    {
+     "role": "ground",
+     "terrain": "ash",
+     "label": "Ash 2"
+    },
+    {
+     "role": "ground",
+     "terrain": "ash",
+     "label": "Ash 3"
+    },
+    {
+     "role": "ground",
+     "terrain": "ash",
+     "label": "Ash 4"
+    },
+    {
+     "role": "ground",
+     "terrain": "ash",
+     "label": "Ash 5"
+    },
+    {
+     "role": "ground",
+     "terrain": "ash",
+     "label": "Ash 6"
+    },
+    {
+     "role": "ground",
+     "terrain": "crack",
+     "label": "Cracked earth 1"
+    },
+    {
+     "role": "ground",
+     "terrain": "crack",
+     "label": "Cracked earth 2"
+    },
+    {
+     "role": "ground",
+     "terrain": "crack",
+     "label": "Cracked earth 3"
+    },
+    {
+     "role": "ground",
+     "terrain": "crack",
+     "label": "Cracked earth 4"
+    },
+    {
+     "role": "ground",
+     "terrain": "crack",
+     "label": "Cracked earth 5"
+    },
+    {
+     "role": "ground",
+     "terrain": "crack",
+     "label": "Cracked earth 6"
+    },
+    {
+     "role": "ground",
+     "terrain": "sand",
+     "label": "Dust 1"
+    },
+    {
+     "role": "ground",
+     "terrain": "sand",
+     "label": "Dust 2"
+    },
+    {
+     "role": "ground",
+     "terrain": "sand",
+     "label": "Dust 3"
+    },
+    {
+     "role": "ground",
+     "terrain": "sand",
+     "label": "Dust 4"
+    },
+    {
+     "role": "ground",
+     "terrain": "sand",
+     "label": "Dust 5"
+    },
+    {
+     "role": "ground",
+     "terrain": "sand",
+     "label": "Dust 6"
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 0
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 1
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 4
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 5
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 7
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 16
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 17
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 20
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 21
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 23
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 28
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 29
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 31
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 64
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 65
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 68
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 69
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 71
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 80
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 81
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 84
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 85
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 87
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 92
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 93
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 95
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 112
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 113
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 116
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 117
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 119
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 124
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 125
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 127
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 193
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 197
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 199
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 209
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 213
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 215
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 221
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 223
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 241
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 245
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 247
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 253
+    },
+    {
+     "role": "transition",
+     "top": "crack",
+     "bottom": "ash",
+     "code": 255
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 0
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 1
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 4
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 5
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 7
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 16
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 17
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 20
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 21
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 23
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 28
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 29
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 31
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 64
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 65
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 68
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 69
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 71
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 80
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 81
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 84
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 85
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 87
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 92
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 93
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 95
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 112
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 113
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 116
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 117
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 119
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 124
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 125
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 127
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 193
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 197
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 199
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 209
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 213
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 215
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 221
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 223
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 241
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 245
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 247
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 253
+    },
+    {
+     "role": "transition",
+     "top": "sand",
+     "bottom": "ash",
+     "code": 255
+    },
+    {
+     "role": "liquid",
+     "terrain": "lava",
+     "label": "lava 1"
+    },
+    {
+     "role": "liquid",
+     "terrain": "lava",
+     "label": "lava 2"
+    },
+    {
+     "role": "liquid",
+     "terrain": "lava",
+     "label": "lava 3"
+    },
+    {
+     "role": "liquid",
+     "terrain": "lava",
+     "label": "lava 4"
+    },
+    {
+     "role": "liquid",
+     "terrain": "lava",
+     "label": "lava 5"
+    },
+    {
+     "role": "liquid",
+     "terrain": "lava",
+     "label": "lava 6"
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 0
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 1
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 4
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 5
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 7
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 16
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 17
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 20
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 21
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 23
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 28
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 29
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 31
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 64
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 65
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 68
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 69
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 71
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 80
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 81
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 84
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 85
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 87
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 92
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 93
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 95
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 112
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 113
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 116
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 117
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 119
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 124
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 125
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 127
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 193
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 197
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 199
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 209
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 213
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 215
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 221
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 223
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 241
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 245
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 247
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 253
+    },
+    {
+     "role": "shore",
+     "top": "ash",
+     "bottom": "lava",
+     "code": 255
+    },
+    {
+     "role": "cliff",
+     "part": "top_tl"
+    },
+    {
+     "role": "cliff",
+     "part": "top_t"
+    },
+    {
+     "role": "cliff",
+     "part": "top_t2"
+    },
+    {
+     "role": "cliff",
+     "part": "top_t3"
+    },
+    {
+     "role": "cliff",
+     "part": "top_tr"
+    },
+    {
+     "role": "cliff",
+     "part": "top_c"
+    },
+    {
+     "role": "cliff",
+     "part": "top_c2"
+    },
+    {
+     "role": "cliff",
+     "part": "top_c3"
+    },
+    {
+     "role": "cliff",
+     "part": "in_il"
+    },
+    {
+     "role": "cliff",
+     "part": "in_ir"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_bl"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_b"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_b2"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_b3"
+    },
+    {
+     "role": "cliff",
+     "part": "lip_br"
+    },
+    {
+     "role": "cliff",
+     "part": "face_fl"
+    },
+    {
+     "role": "cliff",
+     "part": "face_f"
+    },
+    {
+     "role": "cliff",
+     "part": "face_f2"
+    },
+    {
+     "role": "cliff",
+     "part": "face_f3"
+    },
+    {
+     "role": "cliff",
+     "part": "face_fr"
+    },
+    {
+     "role": "cliff",
+     "part": "base_sl"
+    },
+    {
+     "role": "cliff",
+     "part": "base_s"
+    },
+    {
+     "role": "cliff",
+     "part": "base_s2"
+    },
+    {
+     "role": "cliff",
+     "part": "base_s3"
+    },
+    {
+     "role": "cliff",
+     "part": "base_sr"
+    },
+    {
+     "role": "detail",
+     "label": "pebbles"
+    },
+    {
+     "role": "detail",
+     "label": "cracks"
+    },
+    {
+     "role": "detail",
+     "label": "bonebits"
+    },
+    {
+     "role": "detail",
+     "label": "tuft"
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 2,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 2,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 3,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 3,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ruin_wall",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ruin_wall",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ruin_wall",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ruin_wall",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "boulder",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "boulder",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "boulder",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "boulder",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 0,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 1,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 2,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 2,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 3,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "tree_dead",
+     "index": 3,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ruin_wall",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ruin_wall",
+     "index": 0,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ruin_wall",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "ruin_wall",
+     "index": 1,
+     "cell": [
+      1,
+      1
+     ],
+     "size": [
+      2,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bones",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bones",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bones",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bones",
+     "index": 1,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bones",
+     "index": 2,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "bones",
+     "index": 2,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "log",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "log",
+     "index": 0,
+     "cell": [
+      1,
+      0
+     ],
+     "size": [
+      2,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "pillar",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "pillar",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "crystal",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "crystal",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "cactus",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "rock",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "rock",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "rock",
+     "index": 2,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "stump",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "thornbush",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "thornbush",
+     "index": 1,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "brazier",
+     "index": 0,
+     "cell": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ]
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "prop",
+     "prop": "pillar",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "pillar",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "crystal",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "crystal",
+     "index": 1,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "prop",
+     "prop": "cactus",
+     "index": 0,
+     "cell": [
+      0,
+      1
+     ],
+     "size": [
+      1,
+      2
+     ]
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    },
+    {
+     "role": "empty"
+    }
+   ],
+   "props": [
+    {
+     "name": "tree_dead_0",
+     "first_tile": 194,
+     "w": 2,
+     "h": 2,
+     "anchor_tile": [
+      1,
+      1
+     ]
+    },
+    {
+     "name": "tree_dead_1",
+     "first_tile": 196,
+     "w": 2,
+     "h": 2,
+     "anchor_tile": [
+      1,
+      1
+     ]
+    },
+    {
+     "name": "tree_dead_2",
+     "first_tile": 198,
+     "w": 2,
+     "h": 2,
+     "anchor_tile": [
+      1,
+      1
+     ]
+    },
+    {
+     "name": "tree_dead_3",
+     "first_tile": 200,
+     "w": 2,
+     "h": 2,
+     "anchor_tile": [
+      1,
+      1
+     ]
+    },
+    {
+     "name": "ruin_wall_0",
+     "first_tile": 202,
+     "w": 2,
+     "h": 2,
+     "anchor_tile": [
+      1,
+      1
+     ]
+    },
+    {
+     "name": "ruin_wall_1",
+     "first_tile": 204,
+     "w": 2,
+     "h": 2,
+     "anchor_tile": [
+      1,
+      1
+     ]
+    },
+    {
+     "name": "boulder_0",
+     "first_tile": 206,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "boulder_1",
+     "first_tile": 208,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "bones_0",
+     "first_tile": 222,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "bones_1",
+     "first_tile": 224,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "bones_2",
+     "first_tile": 226,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "log_0",
+     "first_tile": 228,
+     "w": 2,
+     "h": 1,
+     "anchor_tile": [
+      1,
+      0
+     ]
+    },
+    {
+     "name": "pillar_0",
+     "first_tile": 230,
+     "w": 1,
+     "h": 2,
+     "anchor_tile": [
+      0,
+      1
+     ]
+    },
+    {
+     "name": "pillar_1",
+     "first_tile": 231,
+     "w": 1,
+     "h": 2,
+     "anchor_tile": [
+      0,
+      1
+     ]
+    },
+    {
+     "name": "crystal_0",
+     "first_tile": 232,
+     "w": 1,
+     "h": 2,
+     "anchor_tile": [
+      0,
+      1
+     ]
+    },
+    {
+     "name": "crystal_1",
+     "first_tile": 233,
+     "w": 1,
+     "h": 2,
+     "anchor_tile": [
+      0,
+      1
+     ]
+    },
+    {
+     "name": "cactus_0",
+     "first_tile": 234,
+     "w": 1,
+     "h": 2,
+     "anchor_tile": [
+      0,
+      1
+     ]
+    },
+    {
+     "name": "rock_0",
+     "first_tile": 235,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "rock_1",
+     "first_tile": 236,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "rock_2",
+     "first_tile": 237,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "stump_0",
+     "first_tile": 238,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "thornbush_0",
+     "first_tile": 239,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "thornbush_1",
+     "first_tile": 240,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "brazier_0",
+     "first_tile": 241,
+     "w": 1,
+     "h": 1,
+     "anchor_tile": [
+      0,
+      0
+     ]
+    }
+   ],
+   "terrains": [
+    {
+     "key": "ash",
+     "label": "Ash"
+    },
+    {
+     "key": "crack",
+     "label": "Cracked earth"
+    },
+    {
+     "key": "sand",
+     "label": "Dust"
+    }
+   ]
+  }
+ }
+}

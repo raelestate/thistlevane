@@ -1,16 +1,17 @@
-# Prompt for integrating Thistlevane v2 with Claude Code
+# Prompt for integrating Thistlevane v2.2 with Claude Code
 
 Paste everything below the line into Claude Code, opened in your game's repo. Replace `<PATH>` with the folder you
 unzipped the package into.
 
 ---
 
-I'm integrating a pre-built character, animation, skill and VFX package called "Thistlevane" (v2) into this game. It
-was generated outside this codebase and covers an 18-class MMORPG roster: 8-direction locomotion and combat
-animations, a 270-skill database, 270 skill icons and a directional VFX library. It is at: `<PATH>`
+I'm integrating a pre-built character, animation, skill, VFX and map-tileset package called "Thistlevane" (v2.2) into
+this game. It was generated outside this codebase and covers an 18-class MMORPG roster — 8-direction locomotion and
+combat animations, a 270-skill database, 270 skill icons, a directional VFX library — plus five 64×64 map tilesets.
+It is at: `<PATH>`
 
-Read `<PATH>/README.md`, `<PATH>/docs/DESIGN.md` (especially §3 and §8) and `<PATH>/docs/TEST_REPORT.md` in full
-first. Do not regenerate or edit anything under `assets/` or `data/`: it's a finished, QA'd deliverable. Only write
+Read `<PATH>/README.md`, `<PATH>/docs/DESIGN.md` (especially §3, §8 and §9), `<PATH>/docs/TILESETS.md` and
+`<PATH>/docs/TEST_REPORT.md` in full first. Do not regenerate or edit anything under `assets/` or `data/`: it's a finished, QA'd deliverable. Only write
 adapter/integration code on this project's side.
 
 ## Package formats (v2)
@@ -47,6 +48,24 @@ field + `.png`).
 - Passive skills have a looping aura (loop: true) to show while the passive is active, if you want one.
 - Colours are un-premultiplied: normal alpha blending works, and additive blending reads brighter.
 
+**Map tilesets**: `assets/tilesets/<biome>.png` (the atlas) + `<biome>.tsj` (Tiled) + `tilesets.json` (plain
+manifest), for `meadow`, `barren_grasslands`, `thistlevane_hollow`, `frostvane_peaks`, `wastelands`.
+- 16×16 tiles, 16 columns, 256 px wide, no margin or spacing — the same atlas shape as the tileset already in the
+  project. Tile ids are 0-based, row-major. In a `.tmj`, layer data is `firstgid + id`, so 0 means empty.
+- These are new sets with their own layout, so the existing maps in `maps/` cannot simply point at the new PNGs:
+  the tile ids are different and the maps need repainting (or a remap table — see `docs/TILESETS.md`).
+- `assets/tilesets_64/` holds the identical sets at 64×64; ignore it unless the map is being scaled up.
+- Every tile has a `role`: `ground` (6 seamless variants per terrain), `transition` and `shore` (47-tile blob sets,
+  with an 8-bit neighbour `code`, bit order N, NE, E, SE, S, SW, W, NW), `liquid`, `cliff` (named `part`), `detail`
+  (transparent scatter), `prop` (one cell of a `w × h` block) and `empty` (atlas padding — never place these).
+- Transition tiles are opaque and complete: they draw the upper terrain over the lower one with an organic edge, so
+  they replace the ground tile rather than sitting on a layer above it. `docs/TILESETS.md` has the exact neighbour-code
+  function.
+- Props are listed in `tilesets.json → biomes.<id>.props` with `first_tile`, `w`, `h` and `anchor_tile` (the cell the
+  prop stands on — use it for depth sorting against characters and for collision). Props and details are transparent
+  and belong on a layer above the ground.
+- Demo maps: `demo_<biome>.tmj` + `.png` show a set assembled; they're examples, not content.
+
 ## What I need you to do
 
 1. Inspect this repo first. Find the sprite/animation loading, the animation state machine, how abilities are
@@ -64,6 +83,9 @@ field + `.png`).
    - `attach` points are used for weapon trails, projectile spawn (hand), nameplates (head_top) and footstep dust
 3. Keep it data-driven: no per-class or per-skill special cases where the JSON already encodes it.
 4. Lazy-load per class (18 classes × ~20 strips + 140 VFX sheets is too much to load up front).
+5. For maps: load the tileset atlas by biome, paint terrain through the blob-transition lookup (or import the `.tsj`
+   straight into Tiled if this project already uses Tiled maps), and depth-sort props against characters by their
+   `anchor_tile` row so a character can walk behind a tree.
 
 ## Final QA once wired up
 
@@ -72,6 +94,8 @@ field + `.png`).
 - Cast one skill of each category per class. Check that the right clip plays, the VFX appears at the release frame in
   the right facing and aligned to the body, damage lands on the hit frame, and the icon, cooldown and cost behave.
 - Looping VFX hold while their buff is active and stop cleanly when it ends.
+- Load one demo map per biome and walk a character across it: ground tiles show no seams at the tile grid, terrain
+  transitions read as organic edges, and characters sort correctly in front of and behind props.
 - Report what works, what's rough, and anything in the package that was awkward for this engine. Flag it rather than
   patching around it silently.
 
